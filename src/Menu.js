@@ -8,6 +8,11 @@ export default class Menu extends Component {
       <div>
           <ul>
               <li>
+                 <NavLink exact to='/'>
+                    홈
+                  </NavLink>
+              </li>
+              <li>
                   <NavLink exact to='/MyPage'>
                     마이페이지
                   </NavLink>

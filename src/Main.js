@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MyPage from './MyPage';
 import SignUp from './SignUp';
+import Home from './Home';
 import Menu from './Menu';
 import { Route } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ export default class Main extends Component {
         return (
             <div>
                 <Menu/>
+                <Route exact path='/' component={Home} />
                 <Route exact path='/mypage' component={MyPage} />
                 <Route exact path='/signup' component={SignUp} />
             </div>
