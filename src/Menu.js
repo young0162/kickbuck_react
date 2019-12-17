@@ -9,7 +9,7 @@ export default class Menu extends Component {
           <ul>
               <li>
                  <NavLink exact to='/'>
-                    홈
+                    홈11
                   </NavLink>
               </li>
               <li>
