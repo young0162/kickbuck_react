@@ -4,7 +4,7 @@ export default class componentName extends Component {
   render() {
     return (
       <div> 
-        yj 2
+        yj 2.1
         textInComponent </div>
     );
   }
