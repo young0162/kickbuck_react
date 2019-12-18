@@ -11,8 +11,7 @@ class Solo extends Component {
                         <p>환상적인 오로라 보러가기</p>
                     </div>           
                 </div>
-            </div>
-            
+            </div>  
         );
     }
 }
