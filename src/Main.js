@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MyPage from './mypage/MyPage';
 import SignUp from './sign/SignUp';
-import Home from './Home';
 import Menu from './Menu';
 import Solo from './bucketlist/Solo';
 import Together from './bucketlist/Together';
@@ -9,6 +8,7 @@ import Off from './bucketlist/Off';
 import With from './bucketlist/With';
 import All from './bucketlist/All';
 import Category from './Category';
+import CardDetail from './CardDetail';
 import { Route } from 'react-router-dom';
 import './css/main.css';
 
@@ -31,6 +31,7 @@ export default class Main extends Component {
                 <Route exact path='/off' component={Off} />
                 <Route exact path='/with' component={With} />
                 <Route exact path='/all' component={All} />
+                <CardDetail/>
             </div>
         )
     }
