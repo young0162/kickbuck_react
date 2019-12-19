@@ -9,17 +9,17 @@ export default class Menu extends Component {
           <ul>
               <li>
                  <NavLink exact to='/'>
-                    홈11
+                    home
                   </NavLink>
               </li>
               <li>
                   <NavLink exact to='/MyPage'>
-                    마이페이지
+                    mypage
                   </NavLink>
               </li>
               <li>
                   <NavLink exact to='/SignUp'>
-                    회원가입
+                    sign
                   </NavLink>
               </li>
           </ul>
