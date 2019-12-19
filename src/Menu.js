@@ -22,6 +22,11 @@ export default class Menu extends Component {
                     회원가입
                   </NavLink>
               </li>
+              <li>
+                  <NavLink exact to='/enroll'>
+                    버킷리스트 등록
+                  </NavLink>
+              </li>
           </ul>
       </div>
     );
