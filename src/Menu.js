@@ -22,6 +22,11 @@ export default class Menu extends Component {
                     회원가입
                   </NavLink>
               </li>
+              <li>
+                  <NavLink exact to='/community/qnaboard'>
+                    Q&A 게시판
+                  </NavLink>
+              </li>
           </ul>
       </div>
     );
