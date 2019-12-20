@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;  
 }
+body{
+    overflow-x: hidden;
+}
 ul li {
     list-style: none;
 }
@@ -64,11 +67,80 @@ a {
     margin-left: 17px;
 }
 .menubar .menu_but {
-    margin-left: 20px;
-    padding-top: 5px;
-}
-.menubar .menu_but img{
+    position: relative;
     width: 30px;
+    height: 30px;
+    cursor: pointer;
+    top: 23px;
+    left: 15px;
+}
+.menubar .menu_but span{
+    width: 25px;
+    height: 3px;
+    background: #639ACC;
+    display: block;
+    position: absolute;
+    transition: .4s;
+}
+.menubar .menu_but span.one{
+    top: 0px;
+}
+.menubar .menu_but span.two{
+    top: 9px;
+}
+.menubar .menu_but span.thr{
+    top: 18px;
+}
+.menubar .classSide span.two{
+    opacity: 0;
+}
+.menubar .classSide span.one{
+    transform: rotate(45deg);
+    top: 9px;
+}
+.menubar .classSide span.thr{
+    transform: rotate(-45deg);
+    top: 9px;
+}
+.menubar .sidebox{
+    position: absolute;
+    top: 126px;
+    right: -300px;
+    width: 300px;
+    height: 811px;
+    background: #639ACC;
+    z-index: 100;
+    transition: .4s;
+}
+.menubar .bgon{
+    width: 100%;
+    height: 811px;
+    position: absolute;
+    top: 126px;
+    left: 0px;
+    background: rgba(0,0,0,.5);
+    z-index: 99;
+    transition: .4s;
+}
+.menubar .searchbox {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 100;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: .4s;
+}
+.menubar .searchbox .close_but{
+    color: #3886CE;
+    position: absolute;
+    top: 50px;
+    right: 70px;
+    cursor: pointer;
+}
+.menubar .searchbox .close_but svg{
+    font-size: 45px;
 }
 
 .category_bar {
@@ -109,6 +181,9 @@ a {
     float: left;
     position: relative;
     margin-bottom: -4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 4px solid #3886CE;
 }
 .buket_form img{
     width: 100%;

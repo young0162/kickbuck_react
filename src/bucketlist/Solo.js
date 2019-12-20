@@ -1,33 +1,46 @@
 import React, { Component } from 'react';
-import orora from '../image/main/orora.png';
-import { FavoriteBorder, Archive} from '@material-ui/icons';
-
+import SoloItem from './SoloItem';
+import CardDetail from '../CardDetail';
 
 class Solo extends Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            show: false,      
+        }
+
+        this.detailShow = this.detailShow.bind(this);
+        this.detailHide = this.detailHide.bind(this);
+    }
+    
+
+    detailShow = () => {
+        this.setState({
+            show : true
+        })
+    }
+
+    detailHide = () => {
+        this.setState({
+            show : false
+        })
+    }
+
     render() {
-       
+
+        let box;
+
+        if(this.state.show) {
+            box = <CardDetail detailHide={this.detailHide} />
+        }
+
         return (
-            
-            <div className="buket_form_box">
-                <div className="buket_form" >
-                    <img src={orora} alt="" />     
-                    <div className="buket_content">
-                        <p>환상적인 오로라 보러가기</p>
-                        <div className="bottom_but">
-                            <p>
-                                <FavoriteBorder/>
-                                <span>함께하기 </span>
-                            </p>
-                            
-                            <p>
-                                <Archive/>
-                                <span>공유하기</span>
-                            </p>
-                        </div>                        
-                    </div>           
-                </div>
-            </div>  
+            <div>
+                <SoloItem detailShow={this.detailShow} />
+                {box}
+            </div>
         );
     }
 }

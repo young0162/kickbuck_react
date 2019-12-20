@@ -1,12 +1,81 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
-import menu_but from './image/main/menu_but.png';
+import { HighlightOff} from '@material-ui/icons';
 
 
 
 export default class Menu extends Component {
+
+  constructor() {
+      super();
+
+      this.state = {
+          active: '-300px',
+          opacSide: 0,
+          visibiSide: 'hidden',
+          opac: 0,
+          visibi: 'hidden',
+          classSide: ''
+      }
+
+      this.addActive = this.addActive.bind(this);
+      this.goSearch = this.goSearch.bind(this);
+  }
+
+  addActive() {
+    if(this.state.active === '-300px') {
+      this.setState({
+        active: '0px',
+        opacSide: 1,
+        visibiSide: 'inherit',
+        classSide: 'classSide'
+      })
+    }
+    else {
+      this.setState({
+        active: '-300px',
+        opacSide: 0,
+        visibiSide: 'hidden',
+        classSide: ''
+      })
+    }
+
+  }
+
+  goSearch() {
+    if(this.state.visibi === 'hidden') {
+      this.setState({
+        opac: 1,
+        visibi: 'inherit'
+      })
+    }
+    else {
+      this.setState({
+        opac: 0,
+        visibi: 'hidden'
+      })
+    }
+  }
+
+
+
   render() {
+
+    const sideActive = {
+      right: this.state.active
+    }
+
+    const sideBg = {
+      opacity: this.state.opacSide,
+      visibility: this.state.visibiSide
+    }
+
+    const searchBg = {
+      opacity: this.state.opac,
+      visibility: this.state.visibi
+    }
+
     return (
       <div>
         <div className="menubar">
@@ -21,7 +90,7 @@ export default class Menu extends Component {
               <li>
                 <div className="search_box">
                   <input type="text" />
-                  <img src={search_icon} alt="" />
+                  <img src={search_icon} alt="" onClick={this.goSearch} />
                 </div>
               </li>
               <li>
@@ -34,10 +103,29 @@ export default class Menu extends Component {
                     <p className="plus"></p>
                   </NavLink>
               </li>
-              <li className="menu_but">
-                <img src={menu_but} alt="" />
+              <li>
+                <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
+                  <span className="one"></span>
+                  <span className="two"></span>
+                  <span className="thr"></span>
+                </div>
               </li>
           </ul>
+
+          <div className="searchbox" style={searchBg}>
+            <p>검색리스트</p>
+            <div className="close_but" onClick={this.goSearch}>
+              <HighlightOff/>
+            </div>
+          </div>
+
+
+          <div className="bgon" style={sideBg}></div>
+          <div className="sidebox" style={sideActive}>
+            <p>
+              side_menu
+            </p>
+          </div>
         </div>
       </div>
     );

@@ -7,14 +7,17 @@ import { Slide } from 'react-slideshow-image';
 
 class CardDetail extends Component {
 
-    
+    detailHide = () => {
+        this.props.detailHide();
+    }
+
     render() {
 
         const slideImages = [
             orora,
             orora2,
             orora3,
-          ];
+        ];
 
         const properties = {
             duration: 5000,
@@ -22,9 +25,6 @@ class CardDetail extends Component {
             infinite: true,
             indicators: true,
             arrows: true,
-            onChange: (oldIndex, newIndex) => {
-                console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-            }
         }
 
         return (
@@ -68,12 +68,10 @@ class CardDetail extends Component {
                             </div>
                         </div>
                     </div>
-                    <p className="close_but">
+                    <p className="close_but" onClick={this.detailHide}>
                         <HighlightOff/>
                     </p>
                 </div>
-
-                
             </div>
         );
     }
