@@ -20,7 +20,7 @@ class QnaBoardWrite extends Component {
 
     // 저장하는 함수
     onDataSave=(data)=>{
-        var url="http://localhost:9000/controller/qnaboard/write";
+        var url="http://localhost:8080/controller/qnaboard/write";
         axios.post(url,{nickname:data.nickname.value,title:data.title.value,
             content:data.content.value})
             .then((responseData)=>{

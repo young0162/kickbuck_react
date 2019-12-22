@@ -23,7 +23,7 @@ class QnaBoardDetail extends Component {
 
     // 글 선택 시 호출되는 함수
     onSelect=()=>{
-        var url="http://localhost:9000/controller/qnaboard/select?num="+this.num;
+        var url="http://localhost:8080/controller/qnaboard/select?num="+this.num;
 
         Axios.get(url)
         .then((responseData)=>{
@@ -43,6 +43,7 @@ class QnaBoardDetail extends Component {
         this.onSelect();
     }
 
+
     render() {
         return (
             <div>
@@ -51,6 +52,34 @@ class QnaBoardDetail extends Component {
                     <h2> Q&A 글보기 </h2>
                 </div>
                 <br/><br/>
+
+                <table className="board qnaboard detail qnaboarddetail">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" width="1000px">
+                                    <b style={{fontSize: "1.3em"}}>{this.state.selectData.title}</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="900px">
+                                    {this.state.selectData.nickname}
+                                </td>
+                                <td width="100px">
+                                    {this.state.selectData.readcnt}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="1000px">
+                                    {this.state.selectData.daytime}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" width="1000px" height="600px">
+                                    <pre>{this.state.selectData.content}</pre>
+                                </td>
+                            </tr>                            
+                        </tbody>
+                    </table>
 
 
                 <button type="button" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}

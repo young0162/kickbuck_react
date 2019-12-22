@@ -26,7 +26,7 @@ class QnaBoard extends Component {
 
     // 목록을 가져올 함수
     list=()=>{
-        var url="http://localhost:9000/controller/qnaboard/list"
+        var url="http://localhost:8080/controller/qnaboard/list"
         Axios.get(url)
         .then((resData)=>{
             // 스프링 서버로부터 받은 데이타로 qnaData로 수정
