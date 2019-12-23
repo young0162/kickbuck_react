@@ -11,9 +11,8 @@ import Category from './Category';
 import { Route } from 'react-router-dom';
 import './css/main.css';
 
-export default class Main extends Component {
 
-   
+export default class Main extends Component {
 
     render() {
         return (
@@ -21,6 +20,7 @@ export default class Main extends Component {
                 {/* 메인페이지 로딩 되는 컴포넌트 */}
                 <Menu/>
                 <Category/>
+                
                 
                 {/* 페이지 이동 로딩 컴포넌트 */}
                 <Route exact path='/' component={All} />

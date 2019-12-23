@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
 import { HighlightOff} from '@material-ui/icons';
-
+import Login from './sign/Login';
+import './css/login.css';
 
 
 export default class Menu extends Component {
@@ -16,9 +17,11 @@ export default class Menu extends Component {
           visibiSide: 'hidden',
           opac: 0,
           visibi: 'hidden',
-          classSide: ''
+          classSide: '',
+          loginShow: 'none'
       }
 
+      this.onLogin = this.onLogin.bind(this);
       this.addActive = this.addActive.bind(this);
       this.goSearch = this.goSearch.bind(this);
   }
@@ -58,6 +61,19 @@ export default class Menu extends Component {
     }
   }
 
+  onLogin() {
+    if (this.state.loginShow === 'none'){
+      this.setState({
+        loginShow: 'block'
+      })
+    }
+    else {
+      this.setState({
+        loginShow: 'none'
+      })
+    }
+  }
+
 
 
   render() {
@@ -74,6 +90,10 @@ export default class Menu extends Component {
     const searchBg = {
       opacity: this.state.opac,
       visibility: this.state.visibi
+    }
+
+    const loginShow = {
+      display: this.state.loginShow
     }
 
     return (
@@ -99,9 +119,8 @@ export default class Menu extends Component {
                   </NavLink>
               </li>
               <li>
-                  <NavLink exact to='/SignUp'>
-                    <p className="plus"></p>
-                  </NavLink>
+                  <p className="plus" onClick={this.onLogin}>로그인</p>
+                  <Login loginShow={loginShow} onLogin={this.onLogin} />
               </li>
               <li>
                 <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
