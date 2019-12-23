@@ -129,11 +129,8 @@ export default class Enroll extends Component {
 
                     년 &nbsp; &nbsp;
                     <select name="month">
-
-                      for(var i=1; i<=12; i++){
-                          <option value="i">i</option>
-                      }
-               {/*        <option value="1">1</option>
+                      
+                      <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
@@ -145,15 +142,12 @@ export default class Enroll extends Component {
                       <option value="10">10</option>
                       <option value="11">11</option>
                       <option value="12">12</option>
-                     */}
+                    
                     </select>
 
                     월 &nbsp; &nbsp;
                     <select name="day">
-                      for (var j=1; j<=31; j++){
-                          <option value="j">j</option>
-                      }
-                      {/* <option value="1">1</option>
+                      <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
@@ -183,7 +177,7 @@ export default class Enroll extends Component {
                       <option value="28">28</option>
                       <option value="29">29</option>
                       <option value="30">30</option>
-                      <option value="31">31</option> */}
+                      <option value="31">31</option>
                     </select>
                     일
                                 </td>
