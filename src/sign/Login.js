@@ -7,13 +7,16 @@ import Axios from 'axios';
 
 class Login extends Component {
 
-
+    constructor({history}) {
+        super();
+    }
 
     onLoginClick = () => {
         this.props.onLogin();
+        window.location.reload();
     }
-
-    loginCheck = (data) => {
+ 
+    loginCheck = () => {
 
         const {email1,password} = this.refs;
 
@@ -24,7 +27,16 @@ class Login extends Component {
             password: password.value
         })
         .then( (resData) => {
-
+            console.log(resData.data);
+            if(resData.data === 1)
+            {
+                this.onLoginClick();
+                localStorage.state = email1.value;
+                console.log("localStorage"  + localStorage.state);
+            }
+            else{
+                alert("아이디와 비밀번호가 일치하지 않습니다");
+            }
         })
         .catch( (error) => {
             console.log("login error" + error);
@@ -35,6 +47,8 @@ class Login extends Component {
 
 
     render() {
+
+      
 
         return (
             <div className="login_container" style={this.props.loginShow}>
@@ -55,7 +69,9 @@ class Login extends Component {
                         <p className="title">이메일 로그인</p>
                         <input type="text" placeholder="아이디" ref="email1" />
                         <input type="password" placeholder="비밀번호" ref="password" />
-                        <p onClick={this.loginCheck.bind(this)}>로그인</p>
+                        <p onClick={this.loginCheck.bind(this)}>
+                            로그인
+                        </p>
                         <div className="login_menu">
                             <p>이메일 저장</p>
                             <p>비밀번호 찾기</p>
@@ -69,8 +85,8 @@ class Login extends Component {
                     <div className="close_but" onClick={this.onLoginClick}>
                         <HighlightOff/>
                     </div> 
-                </div>
-                   
+                </div>   
+                
             </div>
         );
     }

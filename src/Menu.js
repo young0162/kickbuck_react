@@ -22,6 +22,7 @@ export default class Menu extends Component {
       }
 
       this.onLogin = this.onLogin.bind(this);
+      this.onLogOut = this.onLogOut.bind(this);
       this.addActive = this.addActive.bind(this);
       this.goSearch = this.goSearch.bind(this);
   }
@@ -74,6 +75,11 @@ export default class Menu extends Component {
     }
   }
 
+  onLogOut() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
 
 
   render() {
@@ -94,6 +100,17 @@ export default class Menu extends Component {
 
     const loginShow = {
       display: this.state.loginShow
+    }
+
+    let loginState = null;
+
+    if(localStorage.state)
+    {
+        loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
+    }
+    else
+    {
+        loginState = <p className="plus" onClick={this.onLogin}>로그인</p>
     }
 
     return (
@@ -119,7 +136,7 @@ export default class Menu extends Component {
                   </NavLink>
               </li>
               <li>
-                  <p className="plus" onClick={this.onLogin}>로그인</p>
+                  {loginState}
                   <Login loginShow={loginShow} onLogin={this.onLogin} />
               </li>
               <li>
