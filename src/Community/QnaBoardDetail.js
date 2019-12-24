@@ -18,10 +18,11 @@ class QnaBoardDetail extends Component {
             selectData:''
         }
 
-
         this.onSelect=this.onSelect.bind(this);
 
         this.onDataDelete=this.onDataDelete.bind(this);
+
+       
     }
 
     // 글 선택 시 호출되는 함수
@@ -35,6 +36,10 @@ class QnaBoardDetail extends Component {
             this.setState({
                 selectData:responseData.data
             });
+
+           this.state({
+               n:0
+           });
         })
         .catch((error)=>{
             console.log("select one error"+error.data);
@@ -66,6 +71,7 @@ class QnaBoardDetail extends Component {
 
 
     render() {
+
         return (
             <div>
                 <hr/>
@@ -77,7 +83,7 @@ class QnaBoardDetail extends Component {
                 <table className="board qnaboard detail qnaboarddetail">
                         <tbody>
                             <tr>
-                                <td colspan="2" width="1000px">
+                                <td colSpan="2" width="1000px">
                                     <b style={{fontSize: "1.3em"}}>{this.state.selectData.title}</b>
                                 </td>
                             </tr>
@@ -90,12 +96,12 @@ class QnaBoardDetail extends Component {
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" width="1000px">
+                                <td colSpan="2" width="1000px">
                                     {this.state.selectData.daytime}
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" width="1000px" height="600px">
+                                <td colSpan="2" width="1000px" height="600px">
                                     <pre>{this.state.selectData.content}</pre>
                                 </td>
                             </tr>                            
@@ -103,17 +109,16 @@ class QnaBoardDetail extends Component {
                     </table>
                 <button className="btn btn-write" style={{width:'150px', height:'50px'}}
                      onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</button>
-                <button className="btn btn-write" style={{width:'150px', height:'50px'}}>
-                    <a href={"/community/qnaboardupdate/"+this.state.selectData.num}>
-                        수    정     
-                    </a>
-                </button>
+                <button className="btn btn-write" style={{width:'150px', height:'50px'}}
+                     onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
+                     수    정</button>
                 <button type="button" className="btn btn-delete" style={{width:'150px', height:'50px'}}
                                  onClick={this.onDataDelete}>삭    제</button>
                 <button type="button" className="btn btn-list" style={{width:'150px', height:'50px'}}
                                  onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</button>
 
-                <QnaComment/>
+                
+                <QnaComment qnanum={this.num}/>
             </div>
            
                 

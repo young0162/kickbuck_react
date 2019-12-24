@@ -8,6 +8,7 @@ import QnaBoardWrite from './Community/QnaBoardWrite';
 import { Route } from 'react-router-dom';
 import QnaBoardDetail from './Community/QnaBoardDetail';
 import QnaBoardUpdate from './Community/QnaBoardUpdate';
+import QnaCommet from './Community/QnaComment';
 
 export default class Main extends Component {
     render() {
@@ -21,6 +22,7 @@ export default class Main extends Component {
                 <Route exact path='/community/qnaboardwrite' component={QnaBoardWrite} />
                 <Route exact path='/community/qnaboarddetail/:num' component={QnaBoardDetail} />
                 <Route exact path='/community/qnaboardupdate/:num' component={QnaBoardUpdate} />
+                <Route exact path='/community/qnacomment/:num' component={QnaCommet} />
             </div>
     
         )
