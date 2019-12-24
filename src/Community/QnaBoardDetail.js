@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import QnaComment from './QnaComment';
 
 
 class QnaBoardDetail extends Component {
@@ -19,11 +20,13 @@ class QnaBoardDetail extends Component {
 
 
         this.onSelect=this.onSelect.bind(this);
+
+        this.onDataDelete=this.onDataDelete.bind(this);
     }
 
     // 글 선택 시 호출되는 함수
     onSelect=()=>{
-        var url="http://localhost:8080/controller/qnaboard/select?num="+this.num;
+        var url="http://localhost:9000/controller/qnaboard/select?num="+this.num;
 
         Axios.get(url)
         .then((responseData)=>{
@@ -38,9 +41,27 @@ class QnaBoardDetail extends Component {
         })
     }
 
+    
+
     componentWillMount=()=>{
         // 랜더링 직전 스프링으로부터 목록을 받아온다
         this.onSelect();
+    }
+
+
+    // 삭제하는 함수
+    onDataDelete=(num)=>{
+        console.log("list num="+this.state.selectData.num);
+        var url="http://localhost:9000/controller/qnaboard/delete?num="+this.state.selectData.num;
+
+        Axios.get(url)
+        .then((responseData)=>{
+            // QnaBoard로 이동
+            this.history.push("/community/qnaboard");
+        })
+        .catch((error)=>{
+            console.log("delete error");
+        });
     }
 
 
@@ -80,11 +101,23 @@ class QnaBoardDetail extends Component {
                             </tr>                            
                         </tbody>
                     </table>
+                <button className="btn btn-write" style={{width:'150px', height:'50px'}}
+                     onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</button>
+                <button className="btn btn-write" style={{width:'150px', height:'50px'}}>
+                    <a href={"/community/qnaboardupdate/"+this.state.selectData.num}>
+                        수    정     
+                    </a>
+                </button>
+                <button type="button" className="btn btn-delete" style={{width:'150px', height:'50px'}}
+                                 onClick={this.onDataDelete}>삭    제</button>
+                <button type="button" className="btn btn-list" style={{width:'150px', height:'50px'}}
+                                 onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</button>
 
-
-                <button type="button" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}
-                                 onClick={()=>{this.history.push("/community/qnaboard");}}>목록으로</button>
+                <QnaComment/>
             </div>
+           
+                
+            
         );
     }
 }

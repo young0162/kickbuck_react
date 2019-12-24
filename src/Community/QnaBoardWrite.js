@@ -20,13 +20,13 @@ class QnaBoardWrite extends Component {
 
     // 저장하는 함수
     onDataSave=(data)=>{
-        var url="http://localhost:8080/controller/qnaboard/write";
+        var url="http://localhost:9000/controller/qnaboard/write";
         axios.post(url,{nickname:data.nickname.value,title:data.title.value,
             content:data.content.value})
             .then((responseData)=>{
                 // 추가를 한 후에 필요한 코드
-                // QnaBoard로 이동
-                this.history.push("/community/qnaboarddetail");
+                // 작성한 글(qnaboarddetail)로 이동
+                this.history.push("/community/qnaboard");
                 
             })
             .catch((error)=>{
@@ -60,21 +60,24 @@ class QnaBoardWrite extends Component {
                                 <th style={{width:'200px', height:'50px'}}>닉 네 임</th>
                                 <td>
                                     <input type="text" ref="nickname" className="input qnainput titleinput"
-                                    style={{width:'800px', height: '50px'}} placeholder="닉네임을 입력하세요."/>
+                                    style={{width:'800px', height: '50px'}} placeholder="닉네임을 입력하세요."
+                                    required="required"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>제    목</th>
                                 <td>
                                     <input type="text" ref="title" className="input qnainput titleinput"
-                                    style={{width:'800px', height: '50px'}} placeholder="제목을 입력하세요."/>
+                                    style={{width:'800px', height: '50px'}} placeholder="제목을 입력하세요."
+                                    required="required"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>질문내용</th>
                                 <td>
                                     <textarea ref="content" className="input qnainput contentinput" 
-                                    style={{width:'800px', height:'400px'}} placeholder="질문을 입력하세요."/>
+                                    style={{width:'800px', height:'400px'}} placeholder="질문을 입력하세요."
+                                    required="required"/>
                                 </td>
                             </tr>
                             <tr>
