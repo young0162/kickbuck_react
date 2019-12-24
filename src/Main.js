@@ -3,7 +3,12 @@ import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Home from "./Home";
 import Menu from "./Menu";
-import FreeBoardList from "./community/FreeBoardList";
+import {
+  FreeBoard,
+  FreeBoardDetail,
+  FreeBoardInsert,
+  FreeBoardUpdate
+} from "./community/FreeBoard/Export";
 import { Route } from "react-router-dom";
 
 export default class Main extends Component {
@@ -14,11 +19,13 @@ export default class Main extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/mypage" component={MyPage} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/community/freeboardlist" component={FreeBoard} />
         <Route
-          exact
-          path="/community/freeboardlist"
-          component={FreeBoardList}
+          path="/community/freeboarddetail/:num"
+          component={FreeBoardDetail}
         />
+        <Route path="/community/freeboardinsert" component={FreeBoardInsert} />
+        <Route path="/community/freeboardupdate" component={FreeBoardUpdate} />
       </div>
     );
   }
