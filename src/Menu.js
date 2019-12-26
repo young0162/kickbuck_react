@@ -120,7 +120,7 @@ export default class Menu extends Component {
               <li>
                 <p className="logo">
                  <NavLink exact to='/'>
-                    로고
+                    홈11
                   </NavLink>
                 </p>
               </li>
