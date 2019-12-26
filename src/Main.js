@@ -28,7 +28,6 @@ export default class Main extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
             <BrowserRouter>
                 <div>
                     {/* 메인페이지 로딩 되는 컴포넌트 */}
