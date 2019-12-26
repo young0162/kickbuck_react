@@ -37,7 +37,7 @@ class QnaBoardWrite extends Component {
     onSubmit=(e)=>{
         e.preventDefault();
 
-        const {nickname,title,content}=this.refs;
+        let {nickname,title,content}=this.refs;
         console.log(nickname.value,title.value,content.value);
 
         

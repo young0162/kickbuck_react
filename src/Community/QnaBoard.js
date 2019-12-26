@@ -25,7 +25,7 @@ class QnaBoard extends Component {
    
 
     // 목록을 가져올 함수
-    list=()=>{
+    qnaList=()=>{
         var url="http://localhost:9000/controller/qnaboard/list"
         Axios.get(url)
         .then((resData)=>{
@@ -41,9 +41,9 @@ class QnaBoard extends Component {
 
 
 
-    componentWillMount(){
+    componentDidMount(){
         // 랜더링 직전 스프링으로 목록을 받아온다
-        this.list();
+        this.qnaList();
     }
 
     render() {

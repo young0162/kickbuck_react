@@ -37,18 +37,15 @@ class QnaBoardDetail extends Component {
                 selectData:responseData.data
             });
 
-           this.state({
-               n:0
-           });
         })
         .catch((error)=>{
-            console.log("select one error"+error.data);
+            console.log("select one error "+error.data);
         })
     }
 
     
 
-    componentWillMount=()=>{
+    componentDidMount=()=>{
         // 랜더링 직전 스프링으로부터 목록을 받아온다
         this.onSelect();
     }
