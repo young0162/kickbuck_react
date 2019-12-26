@@ -17,7 +17,7 @@ import {
   FreeBoardDetail,
   FreeBoardInsert,
   FreeBoardUpdate
-} from "./community/FreeBoard/Export";
+} from './community/FreeBoard/Export';
 import QnaBoardDetail from './community/QnaBoardDetail';
 import QnaBoardUpdate from './community/QnaBoardUpdate';
 import QnaCommet from './community/QnaComment';
