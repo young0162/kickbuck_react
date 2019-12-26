@@ -25,7 +25,10 @@ export default class Main extends Component {
           component={FreeBoardDetail}
         />
         <Route path="/community/freeboardinsert" component={FreeBoardInsert} />
-        <Route path="/community/freeboardupdate" component={FreeBoardUpdate} />
+        <Route
+          path="/community/freeboardupdate/:num"
+          component={FreeBoardUpdate}
+        />
       </div>
     );
   }

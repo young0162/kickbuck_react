@@ -103,7 +103,9 @@ export default class FreeBoardDetail extends Component {
         <button
           type="button"
           onClick={() => {
-            this.history.push("/community/freeboardupdate");
+            this.history.push(
+              "/community/freeboardupdate/" + this.state.selectData.num
+            );
           }}
         >
           수정

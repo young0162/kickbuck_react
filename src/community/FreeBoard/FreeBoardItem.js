@@ -13,7 +13,7 @@ export default class FreeBoardItem extends Component {
         </td>
         <td>{this.props.row.writer}</td>
         <td>{this.props.row.readcnt}</td>
-        <td>{this.props.row.day}</td>
+        <td>{this.props.row.today}</td>
       </tr>
     );
   }
