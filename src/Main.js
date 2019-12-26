@@ -12,6 +12,12 @@ import Category from './Category';
 import { Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './css/main.css';
+import {
+  FreeBoard,
+  FreeBoardDetail,
+  FreeBoardInsert,
+  FreeBoardUpdate
+} from "./community/FreeBoard/Export";
 
 
 export default class Main extends Component {
@@ -37,6 +43,16 @@ export default class Main extends Component {
                     <Route exact path='/with' component={With} />
                     <Route exact path='/all' component={All} />
                     <Route exact path='/add' component={Add} />
+                    <Route exact path="/community/freeboardlist" component={FreeBoard} />
+                    <Route
+                      path="/community/freeboarddetail/:num"
+                      component={FreeBoardDetail}
+                    />
+                    <Route path="/community/freeboardinsert" component={FreeBoardInsert} />
+                    <Route
+                      path="/community/freeboardupdate/:num"
+                      component={FreeBoardUpdate}
+                    />
                 </div>
             </BrowserRouter>
         )
