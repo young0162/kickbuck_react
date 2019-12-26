@@ -18,11 +18,17 @@ import {
   FreeBoardInsert,
   FreeBoardUpdate
 } from "./community/FreeBoard/Export";
+import QnaBoardDetail from './Community/QnaBoardDetail';
+import QnaBoardUpdate from './Community/QnaBoardUpdate';
+import QnaCommet from './Community/QnaComment';
+import QnaBoard from './Community/QnaBoard';
+import QnaBoardWrite from './Community/QnaBoardWrite';
 
 export default class Main extends Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <BrowserRouter>
                 <div>
                     {/* 메인페이지 로딩 되는 컴포넌트 */}
@@ -52,6 +58,11 @@ export default class Main extends Component {
                       path="/community/freeboardupdate/:num"
                       component={FreeBoardUpdate}
                     />
+                    <Route exact path='/community/qnaboard' component={QnaBoard} />
+                    <Route exact path='/community/qnaboardwrite' component={QnaBoardWrite} />
+                    <Route exact path='/community/qnaboarddetail/:num' component={QnaBoardDetail} />
+                    <Route exact path='/community/qnaboardupdate/:num' component={QnaBoardUpdate} />
+                    <Route exact path='/community/qnacomment/:num' component={QnaCommet} />
                 </div>
             </BrowserRouter>
         )

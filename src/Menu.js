@@ -120,7 +120,7 @@ export default class Menu extends Component {
               <li>
                 <p className="logo">
                  <NavLink exact to='/'>
-                    홈11
+                    홈
                   </NavLink>
                 </p>
               </li>
@@ -160,6 +160,9 @@ export default class Menu extends Component {
           <div className="sidebox" style={sideActive}>
             <NavLink exact to="/community/freeboardlist">
               자유게시판
+            </NavLink>
+            <NavLink exact to='/community/qnaboard'>
+              Q&A 게시판
             </NavLink>
           </div>
         </div>
