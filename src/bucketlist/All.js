@@ -15,7 +15,6 @@ class All extends Component {
                 <Solo/>
                 <Off/>
                 <With/>
-                
             </div>
         );
     }

@@ -13,7 +13,6 @@ class Login extends Component {
 
     onLoginClick = () => {
         this.props.onLogin();
-        window.location.reload();
     }
  
     loginCheck = () => {

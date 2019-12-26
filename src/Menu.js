@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
-import { HighlightOff} from '@material-ui/icons';
+import { HighlightOff , Add} from '@material-ui/icons';
 import Login from './sign/Login';
 import './css/login.css';
 
@@ -131,8 +131,8 @@ export default class Menu extends Component {
                 </div>
               </li>
               <li>
-                  <NavLink exact to='/MyPage'>
-                    <p className="plus"></p>
+                  <NavLink exact to='/add'>
+                    <p className="plus"><Add/></p>
                   </NavLink>
               </li>
               <li>

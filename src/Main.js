@@ -7,6 +7,7 @@ import Together from './bucketlist/Together';
 import Off from './bucketlist/Off';
 import With from './bucketlist/With';
 import All from './bucketlist/All';
+import Add from './bucketlist/Add';
 import Category from './Category';
 import { Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -35,6 +36,7 @@ export default class Main extends Component {
                     <Route exact path='/off' component={Off} />
                     <Route exact path='/with' component={With} />
                     <Route exact path='/all' component={All} />
+                    <Route exact path='/add' component={Add} />
                 </div>
             </BrowserRouter>
         )
