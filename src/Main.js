@@ -18,11 +18,11 @@ import {
   FreeBoardInsert,
   FreeBoardUpdate
 } from "./community/FreeBoard/Export";
-import QnaBoardDetail from './Community/QnaBoardDetail';
-import QnaBoardUpdate from './Community/QnaBoardUpdate';
-import QnaCommet from './Community/QnaComment';
-import QnaBoard from './Community/QnaBoard';
-import QnaBoardWrite from './Community/QnaBoardWrite';
+import QnaBoardDetail from './community/QnaBoardDetail';
+import QnaBoardUpdate from './community/QnaBoardUpdate';
+import QnaCommet from './community/QnaComment';
+import QnaBoard from './community/QnaBoard';
+import QnaBoardWrite from './community/QnaBoardWrite';
 
 export default class Main extends Component {
 
