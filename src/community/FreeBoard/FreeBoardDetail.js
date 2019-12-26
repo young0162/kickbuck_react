@@ -16,7 +16,7 @@ export default class FreeBoardDetail extends Component {
   //글선택 함수
   onSelect = () => {
     var url =
-      "http://localhost:8080/controller/community/freeboarddetail?num=" +
+      "http://localhost:9000/controller/community/freeboarddetail?num=" +
       this.num;
 
     axios
@@ -34,7 +34,7 @@ export default class FreeBoardDetail extends Component {
 
   onDelete = () => {
     var url =
-      "http://localhost:8080/controller/community/freeboarddetail/delete?num=" +
+      "http://localhost:9000/controller/community/freeboarddetail/delete?num=" +
       this.num;
 
     axios
@@ -53,7 +53,7 @@ export default class FreeBoardDetail extends Component {
   };
 
   render() {
-    const url = "http://localhost:8080/controller/save/";
+    const url = "http://localhost:9000/controller/save/";
     return (
       <Fragment>
         <table>

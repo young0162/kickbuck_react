@@ -15,7 +15,7 @@ class FreeBoardList extends Component {
 
   //리스트 함수
   list = () => {
-    var url = "http://localhost:8080/controller/community/freeboardlist";
+    var url = "http://localhost:9000/controller/community/freeboardlist";
     axios
       .get(url)
       .then(responseData => {

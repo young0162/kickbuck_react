@@ -33,7 +33,7 @@ class FreeBoardInsert extends Component {
     stufile.append("uploadFile", uploadFile);
     axios({
       method: "post",
-      url: "http://localhost:8080/controller/community/freeboardinsert/save",
+      url: "http://localhost:9000/controller/community/freeboardinsert/save",
       data: stufile,
       headers: { "Content-Type": "multipart/form-data" }
     })
@@ -50,7 +50,7 @@ class FreeBoardInsert extends Component {
 
     const uploadFile = this.state;
     var url =
-      "http://localhost:8080/controller/community/freeboardinsert/input";
+      "http://localhost:9000/controller/community/freeboardinsert/input";
     axios
       .post(url, uploadFile)
       .then(res => {
