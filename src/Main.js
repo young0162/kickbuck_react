@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
-import Home from "./Home";
 import Menu from "./Menu";
-import React, { Component } from 'react';
-import MyPage from './mypage/MyPage';
-import SignUp from './sign/SignUp';
-import Menu from './Menu';
 import Solo from './bucketlist/Solo';
 import Together from './bucketlist/Together';
 import Off from './bucketlist/Off';
