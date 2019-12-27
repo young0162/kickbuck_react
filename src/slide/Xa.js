@@ -1,39 +1,28 @@
 import React from 'react';
-import Collapsible from 'react-collapsible';
+//import Collapsible from 'react-collapsible';
+import {Collapse} from 'react-collapse';
+//import {UnmountClosed} from 'react-collapse';
+//import xb from './cirque-du-soleil-o.jpg';
 
 export default class Xa extends React.Component{
     render(){
         return(
             <div>
-                <Collapsible trigger="first">
-                    <p>1111111111111</p>
-                </Collapsible>
-                <Collapsible trigger="second">
-                    <p>22222222222222</p>
-                </Collapsible>
-                <Collapsible trigger="3">
-                    <p>3333333</p>
-                </Collapsible>
-                <Collapsible trigger="4">
-                    <p>44444444444</p>
-                </Collapsible>
+                <Collapse isOpened={true || false}>
+                    <div>111</div>
+                </Collapse>
+
+
+                
+                <br></br>
+                <Collapse isOpened={true}>
+                    <p>Paragraph of text</p>
+                    <p>Another paragraph is also OK</p>
+                    <p>Images and any other content are ok too</p>
+                    {/* <img src={xb} alt="" /> */}
+                </Collapse>
+                
             </div>
         );
     }
 }
-// var Xa = React.createClass({
- 
-//     render: function() {
-//       return(
-   
-//         <Collapsible trigger="Start here">
-//           <p>This is the collapsible content. It can be any element or React component you like.</p>
-//           <p>It can even be another Collapsible component. Check out the next section!</p>
-//         </Collapsible>
-   
-//       );
-//     }
-   
-//   });
-   
-//   export default Xa;
