@@ -8,7 +8,7 @@ export default class Menu extends Component {
       <div>
           <ul>
               <li>
-                 <NavLink exact to='/'>
+                  <NavLink exact to='/'>
                     home
                   </NavLink>
               </li>
@@ -20,6 +20,16 @@ export default class Menu extends Component {
               <li>
                   <NavLink exact to='/SignUp'>
                     sign
+                  </NavLink>
+              </li>
+              <li>
+                  <NavLink exact to='/FAQ'>
+                    FAQ
+                  </NavLink>
+              </li>
+              <li>
+                  <NavLink exact to='/profile'>
+                    profile
                   </NavLink>
               </li>
           </ul>

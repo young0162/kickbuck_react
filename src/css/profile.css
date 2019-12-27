@@ -1,0 +1,21 @@
+.profile{
+    text-align: center;
+}
+
+.text{
+    width: 200px;
+    height: 20px;
+}
+.my_img{
+    width: 200px;
+    height: 200px;
+}
+
+p{
+    padding: 10px;
+}
+
+.save{
+    width: 100px;
+    height: 30px;
+}

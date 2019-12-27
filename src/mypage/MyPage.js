@@ -15,7 +15,7 @@ export default class MyPage extends Component {
         </div>
         <div className="profile_name">
           <b>그나</b>님의 마이페이지
-          </div>
+        </div>
         <Category />
       </div>
     );

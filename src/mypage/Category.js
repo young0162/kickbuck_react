@@ -6,19 +6,19 @@ export default class Category extends Component {
     return (
       <div className="category_bar">
           <ul>
-              <NavLink exact to='/mylist'>
+              <NavLink exact to='/mypage/mylist'>
                   <li>나의 버킷리스트</li>
               </NavLink>
-              <NavLink exact to='/ourlist'>
+              <NavLink exact to='/mypage/ourlist'>
                   <li>우리의 버킷리스트</li>
               </NavLink>
-              <NavLink exact to='/standby'>
-                  <li>우리의 버킷리스트 대기중</li>
+              <NavLink exact to='/mypage/standby'>
+                  <li>대기중인 버킷리스트</li>
               </NavLink>
-              <NavLink exact to='/offlist'>
+              <NavLink exact to='/mypage/offlist'>
                   <li>오프 버킷리스트</li>
               </NavLink>
-              <NavLink exact to='/empathize'>
+              <NavLink exact to='/mypage/empathize'>
                   <li>공감한 버킷리스트</li>
               </NavLink>
           </ul>
