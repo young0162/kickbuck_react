@@ -24,7 +24,7 @@ class Add extends Component {
                 subject: subject.value,
                 area: area.value,
                 content: content.value,
-                id: localStorage.state,
+                user_name: localStorage.state,
                 image: this.state.image
             })
             .then( (resData) => {

@@ -17,12 +17,12 @@ class Login extends Component {
  
     loginCheck = () => {
 
-        const {email1,password} = this.refs;
+        const {user_name,password} = this.refs;
 
         var url = "http://localhost:9000/controller/login";
         Axios.post(url, 
         {
-            email1: email1.value,
+            user_name: user_name.value,
             password: password.value
         })
         .then( (resData) => {
@@ -30,7 +30,7 @@ class Login extends Component {
             if(resData.data === 1)
             {
                 this.onLoginClick();
-                localStorage.state = email1.value;
+                localStorage.state = user_name.value;
                 console.log("localStorage"  + localStorage.state);
             }
             else{
@@ -41,7 +41,7 @@ class Login extends Component {
             console.log("login error" + error);
         })
 
-        console.log(email1.value, password.value);
+        console.log(user_name.value, password.value);
     }
 
 
@@ -66,7 +66,7 @@ class Login extends Component {
                     </div>
                     <div className="login_form">
                         <p className="title">이메일 로그인</p>
-                        <input type="text" placeholder="아이디" ref="email1" />
+                        <input type="text" placeholder="아이디" ref="user_name" />
                         <input type="password" placeholder="비밀번호" ref="password" />
                         <p onClick={this.loginCheck.bind(this)}>
                             로그인

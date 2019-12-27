@@ -6,12 +6,12 @@ import Axios from 'axios';
 class SignUp extends Component {
 
   MemberInsert = (data) => {
-    const {name, email1, email2, password, hp1, hp2, hp3,} = this.refs;
+    const {user_name, email1, email2, password, hp1, hp2, hp3,} = this.refs;
 
     var url = "http://localhost:9000/controller/signup";
     Axios.post( url, 
       {
-        name: name.value,
+        user_name: user_name.value,
         email1: email1.value + '@' + email2.value,
         email2: email2.value,
         password: password.value,
@@ -24,7 +24,7 @@ class SignUp extends Component {
         console.log("insert error");
       })
 
-      console.log(name.value, email1.value, email2.value, password.value, hp1.value, hp2.value, hp3.value);
+      console.log(user_name.value, email1.value, email2.value, password.value, hp1.value, hp2.value, hp3.value);
   }
 
   render() {
@@ -34,7 +34,7 @@ class SignUp extends Component {
           <p className="title">이메일 주소 회원가입</p>
           <div className="input_box">
             <div className="mb">
-              <input type="text" placeholder="이름" className="pull" ref="name" />
+              <input type="text" placeholder="사용자 이름" className="pull" ref="user_name" />
             </div>
             <div className="mb">
               <input type="text" placeholder="이메일" className="pull email" ref="email1" />
