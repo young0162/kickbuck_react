@@ -3,8 +3,9 @@ import MyPage from './mypage/MyPage';
 import SignUp from './sign/SignUp';
 import Home from './Home';
 import Menu from './Menu';
-import FAQ from './FAQ';
+import Faq_copy from './Faq_copy';
 import { Route } from 'react-router-dom';
+import Xa from './slide/Xa';
 
 export default class Main extends Component {
     render() {
@@ -14,7 +15,8 @@ export default class Main extends Component {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/mypage' component={MyPage} />
                 <Route exact path='/signup' component={SignUp} />
-                <Route exact path='/FAQ' component={FAQ}/>
+                <Route exact path='/Faq_copy' component={Faq_copy}/>
+                <Route exact path='/xa' component={Xa}/>
             </div>
         )
     }
