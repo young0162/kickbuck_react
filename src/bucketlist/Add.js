@@ -1,47 +1,111 @@
 import React, { Component } from 'react';
 import '../css/add.css';
+import Axios from 'axios';
+import { NavLink } from 'react-router-dom';
+
+
 
 class Add extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            image: ''
+        }
+    }
+
+    BucketInsert = (data) => {
+        const {subject, area, content} = this.refs;
+
+        var url = "http://localhost:9000/controller/bucketadd";
+        Axios.post( url,
+            {
+                subject: subject.value,
+                area: area.value,
+                content: content.value,
+                id: localStorage.state,
+                image: this.state.image
+            })
+            .then( (resData) => {
+
+            })
+            .catch( (error) => {
+                console.log("insert error" + error.data);
+            })
+
+            
+    }
+
+    onImageUpload = (e) => {
+        const uploadFile = e.target.files[0];
+        const image = e.target.files[0].name;
+        console.log("uploadFile : " + uploadFile);
+        console.log("image : " + image);
+
+        this.setState({
+            image
+        })
+
+        const bucketfile = new FormData();
+        bucketfile.append('uploadFile',uploadFile);
+
+        Axios({
+            method: 'post',
+            url: 'http://localhost:9000/controller/save',
+            data: bucketfile,
+            headers: {'Content-Type' : 'multipart/form-data'}
+        })
+        .then( (resData) => {
+            console.log("resData: " + resData.data);
+        })
+        .catch( (error) => {
+            console.log("이미지 업로드 오류" + error.data);
+        })
+    }
+
     render() {
         return (
             <div className="add_box">
                 <p className="title">버킷리스트 등록하기</p>
                 <div className="input_box">
                     <div className="mb">
-                        <input type="text" placeholder="타이틀을 입력해주세요" className="pull" />
+                        <input type="text" placeholder="타이틀을 입력해주세요" className="pull" ref="subject" />
                     </div>
                     <div className="mb">
-                        최대 10장까지 등록 가능합니다<input type="file" />
-                        <div className="img_box"></div>
+                        최대 10장까지 등록 가능합니다<input type="file" onChange={this.onImageUpload.bind(this)} />
+                        <div className="img_box">
+                            이미지 등록되는곳
+                        </div>
                     </div>
                     <div className="mb">
-                        <input type="text" placeholder="위치를 입력하세요" />
-                        <p>위치 추가</p>
+                        <input type="text" placeholder="위치를 입력하세요" ref="area" />
+                        <p className="but">위치 추가</p>
                     </div>
                     <div className="mb">
-                        디데이 추가
+                        <p className="but">디데이 추가</p>
                     </div>
                     <div className="mb">
-                        <textarea placeholder="내용을 입력해주세요"></textarea>
+                        <textarea placeholder="내용을 입력해주세요" ref="content"></textarea>
                     </div>
                     <div className="mb">
-                        <input type="text" placeholder="해시태그를 입력 해주세요" />
+                        <input type="text" placeholder="해시태그를 입력 해주세요" className="pull" ref="hashtag" />
                     </div>
                     <div className="mb">
                         <label for="on">
-                            <input type="radio" id="on" name="onoff"/> 공개
+                            <input type="radio" id="on" name="onoff" ref="on" /> 공개
                         </label>
                         <label for="off">
-                            <input type="radio" id="off" name="onoff"/> 비공개
+                            <input type="radio" id="off" name="onoff" ref="off" /> 비공개
                         </label>
                     </div>
                     <div className="but_box">
-                        <p className="ok">
+                        <NavLink className="ok" exact to='/' onClick={this.BucketInsert.bind(this)}>
                             등록
-                        </p>
-                        <p className="cencel">
+                        </NavLink>
+                        <NavLink className="cancel" exact to='/'>
                             취소
-                        </p>
+                        </NavLink>
                     </div>    
                 </div>
             </div>

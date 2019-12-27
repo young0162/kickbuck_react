@@ -8,7 +8,7 @@ class SignUp extends Component {
   MemberInsert = (data) => {
     const {name, email1, email2, password, hp1, hp2, hp3,} = this.refs;
 
-    var url = "http://localhost:9000/react/signup";
+    var url = "http://localhost:9000/controller/signup";
     Axios.post( url, 
       {
         name: name.value,

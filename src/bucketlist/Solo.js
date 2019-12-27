@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SoloItem from './SoloItem';
 import CardDetail from '../CardDetail';
+import Axios from 'axios';
 
 class Solo extends Component {
 
@@ -9,6 +10,8 @@ class Solo extends Component {
 
         this.state = {
             show: false,      
+
+            bucketData: []
         }
 
         this.detailShow = this.detailShow.bind(this);
@@ -28,6 +31,25 @@ class Solo extends Component {
         })
     }
 
+    bucketList = () => {
+        var url = "http://localhost:9000/controller/allselect";
+        Axios.get(url)
+        .then( (resData) => {
+            this.setState({
+                bucketData: resData.data
+            })
+        })
+        .catch( (error) => {
+            console.log("list 오류" + error)
+        })
+
+        
+    }
+
+    componentWillMount() {
+        this.bucketList();
+    }
+
     render() {
 
         let box;
@@ -38,7 +60,11 @@ class Solo extends Component {
 
         return (
             <div>
-                <SoloItem detailShow={this.detailShow} />
+                {
+                    this.state.bucketData.map( (idx) => (
+                        <SoloItem detailShow={this.detailShow} idx={idx} key={idx.num} />        
+                    ))
+                }
                 {box}
             </div>
         );
