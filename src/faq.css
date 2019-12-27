@@ -1,5 +1,14 @@
+/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+  
+.the-icons {
+  font-size: 12px;
+} */
+
+
+
 .faqwrap{
     width: 60%;
+    font-size:12pt;
 }
 
 .container{
@@ -14,21 +23,27 @@
     height: 60px;
     line-height: 60px;
     display: block;
+    
 }
+
 
 .answer:before{
     content:"A.  ";
 }
 
 .answer{
-    height: 100px;
+    /* height: 100px; */
     border: 1px solid lightgrey;
+    margin:0 auto;
+    padding-top:20px;
+    padding-bottom:20px;
     padding: 20px 30px;
     background-color: rgb(224, 223, 223);
     box-sizing: border-box;
     line-height: 24px;
     overflow: hidden;
     position: relative;
+   
 }
 
 
