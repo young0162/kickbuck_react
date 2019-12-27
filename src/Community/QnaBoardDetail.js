@@ -104,9 +104,9 @@ class QnaBoardDetail extends Component {
                             </tr>                            
                         </tbody>
                     </table>
-                <button className="btn btn-write" style={{width:'150px', height:'50px'}}
+                <button type="button" className="btn btn-write" style={{width:'150px', height:'50px'}}
                      onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</button>
-                <button className="btn btn-write" style={{width:'150px', height:'50px'}}
+                <button type="button" className="btn btn-write" style={{width:'150px', height:'50px'}}
                      onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
                      수    정</button>
                 <button type="button" className="btn btn-delete" style={{width:'150px', height:'50px'}}
