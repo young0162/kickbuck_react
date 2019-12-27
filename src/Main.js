@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import MyPage from './mypage/MyPage';
 import SignUp from './sign/SignUp';
-import Enroll from './enrollment/Enroll';
 import Home from './Home';
 import Menu from './Menu';
+import FAQ from './FAQ';
 import { Route } from 'react-router-dom';
 
 export default class Main extends Component {
@@ -14,7 +14,7 @@ export default class Main extends Component {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/mypage' component={MyPage} />
                 <Route exact path='/signup' component={SignUp} />
-                <Route exact path='/enroll' component={Enroll} />
+                <Route exact path='/FAQ' component={FAQ}/>
             </div>
         )
     }
