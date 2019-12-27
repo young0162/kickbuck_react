@@ -12,7 +12,7 @@ export default class FAQ extends Component {
         <div className="container">
           <div>
           </div>
-          <span>FAQ</span>
+          <span>FAQ (yarn add react-collapsible 설치 필요. 마우스 클릭할 때마다 바뀜.)</span>
           <ul>
               <li>
                   <Collapsible trigger="Q. kickbuck이란 무슨뜻인가요?" className="question">
@@ -28,6 +28,20 @@ export default class FAQ extends Component {
                           <p className="answer">
                           회원가입 후 로그인을하고 자신이 원하는 버킷리스트를 작성or참여하기를 눌러 시작하면됩니다.<br />
                           작성시 같이하고 싶으면 공개를 선택 혼자하고 싶다면 비공개를 선택할 수 있습니다.
+                          </p>
+                    </Collapsible>
+              </li>
+              <li>
+                  <Collapsible trigger="Q. 나이 제한은 없나요?" className="question">
+                          <p className="answer">
+                          나이와 관계없이 누구나 참여할 수 있습니다.
+                          </p>
+                    </Collapsible>
+              </li>
+              <li>
+                  <Collapsible trigger="Q. 나이 제한은 없나요?" className="question">
+                          <p className="answer">
+                          나이와 관계없이 누구나 참여할 수 있습니다.
                           </p>
                     </Collapsible>
               </li>
