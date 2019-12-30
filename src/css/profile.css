@@ -1,21 +1,44 @@
 .profile{
-    text-align: center;
+    padding-left: 500px;
+    width: 500px;
+}
+
+.my_img{
+    width: 200px;
+    height: 200px;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.tel1,.tel2{
+    width: 60px;
+    height: 20px;
+}
+
+select{
+    width: 63px;
+    height: 25px;
+}
+
+.mail1,.mail2{
+    width: 120px;
+    height: 20px;
 }
 
 .text{
     width: 200px;
     height: 20px;
 }
-.my_img{
-    width: 200px;
-    height: 200px;
-}
 
-p{
-    padding: 10px;
+.pass1,.pass2{
+    width: 200px;
+    height: 20px;
 }
 
 .save{
-    width: 100px;
-    height: 30px;
+    padding-left: 100px;
 }
