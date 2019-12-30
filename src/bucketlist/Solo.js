@@ -56,7 +56,7 @@ class Solo extends Component {
         let box;
 
         if(this.state.show) {
-            box = <CardDetail detailHide={this.detailHide} />
+            box = <CardDetail detailHide={this.detailHide} bucketData={this.state.bucketData} />
         }
 
         return (

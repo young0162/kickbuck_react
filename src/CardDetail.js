@@ -27,12 +27,17 @@ class CardDetail extends Component {
             arrows: true,
         }
 
+        const url = "http://localhost:9000/controller/save/";
+
         return (
             <div className="card_popup_box">
                 <div className="card_popup_bg"></div>
                 <div className="card_popup">
                     <div className="slide-container">
                         <Slide {...properties}>
+                        {
+                            this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
+                        }
                         <div className="each-slide">
                             <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
                             </div>
