@@ -16,6 +16,7 @@ class Solo extends Component {
 
         this.detailShow = this.detailShow.bind(this);
         this.detailHide = this.detailHide.bind(this);
+        this.bucketList = this.bucketList.bind(this);
     }
     
 
@@ -40,7 +41,7 @@ class Solo extends Component {
             })
         })
         .catch( (error) => {
-            console.log("list 오류" + error)
+            console.log("list 오류 " + error)
         })
 
         

@@ -27,7 +27,10 @@
     padding-left: 10px;
     background-color: #f9f9f9;
 }
-
+.add_box .input_box .img_box img{
+    width: 250px;
+    height: 250px;
+}
 .add_box .input_box .pull{
     width: 100%;
 }

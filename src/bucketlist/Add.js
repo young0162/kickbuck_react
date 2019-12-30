@@ -10,8 +10,12 @@ class Add extends Component {
     constructor(props) {
         super(props);
 
+        this.displayData = [];
+        this.imageName = [];
+
         this.state = {
-            image: ''
+            image: '',
+            showdata: this.displayData,
         }
     }
 
@@ -25,7 +29,7 @@ class Add extends Component {
                 area: area.value,
                 content: content.value,
                 user_name: localStorage.state,
-                image: this.state.image
+                image: this.imageName
             })
             .then( (resData) => {
 
@@ -62,9 +66,28 @@ class Add extends Component {
         .catch( (error) => {
             console.log("이미지 업로드 오류" + error.data);
         })
+
+        this.imageName.push(image);
+        console.log("this.imageName : " + this.imageName);
+        console.log(JSON.stringify(this.imageName));
+    }
+
+    onImageAdd = () => {
+        const url = "http://localhost:9000/controller/save/";
+        const imgsrc = this.state.image;
+
+        this.displayData.push( <img src={url + imgsrc} alt='' />);
+
+        this.setState({
+            showdata: this.displayData
+        })
+        
+        console.log(this.displayData);
     }
 
     render() {
+
+
         return (
             <div className="add_box">
                 <p className="title">버킷리스트 등록하기</p>
@@ -73,9 +96,9 @@ class Add extends Component {
                         <input type="text" placeholder="타이틀을 입력해주세요" className="pull" ref="subject" />
                     </div>
                     <div className="mb">
-                        최대 10장까지 등록 가능합니다<input type="file" onChange={this.onImageUpload.bind(this)} />
+                        최대 10장까지 등록 가능합니다<input type="file" onChange={this.onImageUpload.bind(this)} /> <p onClick={this.onImageAdd.bind(this)}>이미지 추가</p>
                         <div className="img_box">
-                            이미지 등록되는곳
+                            {this.displayData}
                         </div>
                     </div>
                     <div className="mb">

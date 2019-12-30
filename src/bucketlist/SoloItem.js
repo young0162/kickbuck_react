@@ -35,6 +35,9 @@ class SoloItem extends Component {
     }
 
     render() {
+
+        const url = "http://localhost:9000/controller/save/";
+
         return (
             <div className="buket_form_box">
                 <div className="buket_form"  num={this.props.idx.num}>
