@@ -11,20 +11,28 @@ class QnaBoardWrite extends Component {
 
         this.history=history;
 
-        this.onDataSave=this.onDataSave.bind(this);
+  
 
-        const local_user_name = localStorage.state; 
+         
     }
 
+
+    onSubmit=(e)=>{
+        e.preventDefault();
+
+        let title = this.refs.title;
+        let content = this.refs.content;
     
-
- 
-
-    // 저장하는 함수
-    onDataSave=(data)=>{
+        console.log(title.value,content.value);
+        
         var url="http://localhost:9000/controller/qnaboard/write";
-        axios.post(url,{user_name:data.user_name.value,title:data.title.value,
-            content:data.content.value})
+        axios.post(
+            url,
+            {
+                user_name:localStorage.state,
+                title:title.value,
+                content:content.value
+            })
             .then((responseData)=>{
                 // 추가를 한 후에 필요한 코드
                 // 작성한 글(qnaboarddetail)로 이동
@@ -34,16 +42,7 @@ class QnaBoardWrite extends Component {
             .catch((error)=>{
                 console.log("add error");
             })
-    }
-
-    onSubmit=(e)=>{
-        e.preventDefault();
-
-        let {user_name,title,content}=this.refs;
-        console.log(user_name.value,title.value,content.value);
-
-        
-        this.onDataSave({...this.refs});
+    
  
     }
 
@@ -61,9 +60,7 @@ class QnaBoardWrite extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>사용자이름</th>
                                 <td>
-                                    <input type="text" ref="user_name" className="input qnainput user_nameinput"
-                                    style={{width:'800px', height: '50px'}} 
-                                    required="required" value={this.local_user_name}/>
+                                    {localStorage.state}
                                 </td>
                             </tr>
                             <tr>

@@ -23,7 +23,8 @@ class QnaComment extends Component {
     onKeyChange=(e)=>{
         this.setState({
             [e.target.name]:e.target.value,
-            num: this.props.qnanum
+            num: this.props.qnanum,
+            user_name: localStorage.state
         });        
         console.log(this.state);
     }
@@ -48,7 +49,6 @@ class QnaComment extends Component {
 
                 // 코멘트 입력란 지우기
                 this.setState({
-                    user_name:'',
                     comment:''
                 });                
                 
@@ -105,18 +105,16 @@ class QnaComment extends Component {
                     <table className="board qnaboard write qnaboardwrite">
                         <tbody>
                             <tr>
-                                <th>
-                                    <input type="text" name="user_name" className="input qnacommnet_input usernameinput"
-                                        style={{width:'150px', height: '100px'}} placeholder="사용자이름" value={this.state.user_name}
-                                        required="required" onChange={this.onKeyChange}/>
+                                <th style={{width:'150px', height: '60px'}}>
+                                    {localStorage.state}
                                 </th>
                                 <td>
                                     <input type="text" name="comment" className="input qnacomment_input contentinput" 
-                                    style={{width:'700px', height:'100px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
+                                    style={{width:'700px', height:'60px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
                                     required="required" onChange={this.onKeyChange}/>
                                 </td>
                                 <td>                                
-                                    <button type="submit" className="btn btn-md btn-success" style={{width:'150px', height:'100px'}}>댓글 등록</button>                                    
+                                    <button type="submit" className="btn btn-md btn-success" style={{width:'150px', height:'60px'}}>댓글 등록</button>                                    
                                 </td>
                             </tr>
                         </tbody>

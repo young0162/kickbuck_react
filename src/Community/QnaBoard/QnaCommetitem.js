@@ -12,7 +12,6 @@ class QnaCommentItem extends Component {
             qnaCommentData: [],
             group_num:'',
             num:'',
-            reuser_name: '',
             recomment: '',
             display: "none",
             isvisible: "visible"
@@ -53,7 +52,7 @@ class QnaCommentItem extends Component {
             {
                 group_num: this.state.group_num,
                 num: this.state.num,
-                user_name: this.state.reuser_name,
+                user_name: localStorage.state,
                 comment: this.state.recomment
             }
         )
@@ -64,8 +63,7 @@ class QnaCommentItem extends Component {
                 this.props.onList();
 
                 // 코멘트 입력란 지우기
-                this.setState({
-                    reuser_name:'',
+                this.setState({            
                     recomment:''
                 });
 
@@ -139,10 +137,8 @@ class QnaCommentItem extends Component {
                     <td style={{textAlign: 'center'}}>
                         RE:
                     </td>
-                    <td >
-                        <input type="text" name="reuser_name" className="input qnainput titleinput"
-                            style={{width:'120px', height: '40px'}} placeholder="사용자이름" value={this.state.reuser_name}
-                            required="required" onChange={this.onKeyChange}/>
+                    <td style={{width:'120px', height: '40px', textAlign: 'center'}}>
+                        {localStorage.state}
                     </td>
                     <td colSpan="2">
                         <input type="text" name="recomment" className="input qnainput contentinput" 
