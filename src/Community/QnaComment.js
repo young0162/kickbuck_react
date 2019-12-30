@@ -16,16 +16,15 @@ class QnaComment extends Component {
             comment: ''
         }
 
+        this.onKeyChange =  this.onKeyChange.bind(this);
+
     }
 
     onKeyChange=(e)=>{
         this.setState({
             [e.target.name]:e.target.value,
             num: this.props.qnanum
-        });
-
-        
-        
+        });        
         console.log(this.state);
     }
         
@@ -43,17 +42,15 @@ class QnaComment extends Component {
             }
         )
             .then((responseData)=>{
-                // 추가를 한 후에 필요한 코드
-                
+                // 추가를 한 후에 필요한 코드    
+                // 코멘트 리스트 다시 호출
+                this.qnaCommentList();
+
                 // 코멘트 입력란 지우기
                 this.setState({
                     nickname:'',
                     comment:''
-                });
-                
-                // 코멘트 리스트 다시 호출
-                this.qnaCommentList();
-                
+                });                
                 
             })
             .catch((error)=>{
@@ -64,13 +61,14 @@ class QnaComment extends Component {
 
     // 목록을 가져올 함수
     qnaCommentList=()=>{
-        var url="http://localhost:9000/controller//qnacomment/list?num="+this.props.qnanum;
+        var url="http://localhost:9000/controller/qnacomment/list?num="+this.props.qnanum;
         axios.get(url)
         .then((resData)=>{
             // 스프링 서버로부터 받은 데이타로 qnaData로 수정
             this.setState({
                 qnaCommentData: resData.data
             })
+
         })
         .catch((error)=>{
             console.log("qnaboard list 오류!");
@@ -92,14 +90,14 @@ class QnaComment extends Component {
                 </div>
                 <br/>
                 <hr/>
-                <table className="qnaboard board" style={{width: '1000px'}}>
-                    <tbody>
+                <table className="qnaboard board" style={{width: '1150px'}}>
+                    
                         {
                             this.state.qnaCommentData.map((row,idx)=>(
-                                <QnaCommentItem row={row} idx={idx} key={row.comment_num}/>
+                                <QnaCommentItem row={row} idx={idx} key={row.comment_num} onList={this.qnaCommentList}/>                                
                             ))
                         }
-                    </tbody>
+                    
                 </table>
                 <hr/>
                 <br/><br/>
@@ -109,12 +107,12 @@ class QnaComment extends Component {
                             <tr>
                                 <th>
                                     <input type="text" name="nickname" className="input qnainput titleinput"
-                                        style={{width:'150px', height: '100px'}} placeholder="닉네임을 입력하세요."
+                                        style={{width:'150px', height: '100px'}} placeholder="닉네임" value={this.state.nickname}
                                         required="required" onChange={this.onKeyChange}/>
                                 </th>
                                 <td>
                                     <input type="text" name="comment" className="input qnainput contentinput" 
-                                    style={{width:'700px', height:'100px'}} placeholder="댓글을 입력하세요."
+                                    style={{width:'700px', height:'100px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
                                     required="required" onChange={this.onKeyChange}/>
                                 </td>
                                 <td>                                

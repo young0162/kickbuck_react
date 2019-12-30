@@ -7,7 +7,7 @@ class QnaBoardItem extends Component {
     render() {
         return (
             
-            <tr>
+            <tr height="70px;">
                 <td style={{textAlign: 'center', width: '100px'}}>
                     {this.props.row.num}
                 </td>
