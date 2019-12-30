@@ -12,6 +12,8 @@ class QnaBoardWrite extends Component {
         this.history=history;
 
         this.onDataSave=this.onDataSave.bind(this);
+
+        const local_user_name = localStorage.state; 
     }
 
     
@@ -60,8 +62,8 @@ class QnaBoardWrite extends Component {
                                 <th style={{width:'200px', height:'50px'}}>사용자이름</th>
                                 <td>
                                     <input type="text" ref="user_name" className="input qnainput user_nameinput"
-                                    style={{width:'800px', height: '50px'}} placeholder="사용자이름을 입력하세요."
-                                    required="required"/>
+                                    style={{width:'800px', height: '50px'}} 
+                                    required="required" value={this.local_user_name}/>
                                 </td>
                             </tr>
                             <tr>

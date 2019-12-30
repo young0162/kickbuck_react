@@ -22,6 +22,7 @@ class QnaBoard extends Component {
         this.history=history;
     }
 
+    
    
 
     // 목록을 가져올 함수
