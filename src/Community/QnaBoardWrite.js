@@ -21,7 +21,7 @@ class QnaBoardWrite extends Component {
     // 저장하는 함수
     onDataSave=(data)=>{
         var url="http://localhost:9000/controller/qnaboard/write";
-        axios.post(url,{nickname:data.nickname.value,title:data.title.value,
+        axios.post(url,{user_name:data.user_name.value,title:data.title.value,
             content:data.content.value})
             .then((responseData)=>{
                 // 추가를 한 후에 필요한 코드
@@ -37,8 +37,8 @@ class QnaBoardWrite extends Component {
     onSubmit=(e)=>{
         e.preventDefault();
 
-        let {nickname,title,content}=this.refs;
-        console.log(nickname.value,title.value,content.value);
+        let {user_name,title,content}=this.refs;
+        console.log(user_name.value,title.value,content.value);
 
         
         this.onDataSave({...this.refs});
@@ -57,10 +57,10 @@ class QnaBoardWrite extends Component {
                     <table className="board qnaboard write qnaboardwrite">
                         <tbody>
                             <tr>
-                                <th style={{width:'200px', height:'50px'}}>닉 네 임</th>
+                                <th style={{width:'200px', height:'50px'}}>사용자이름</th>
                                 <td>
-                                    <input type="text" ref="nickname" className="input qnainput titleinput"
-                                    style={{width:'800px', height: '50px'}} placeholder="닉네임을 입력하세요."
+                                    <input type="text" ref="user_name" className="input qnainput user_nameinput"
+                                    style={{width:'800px', height: '50px'}} placeholder="사용자이름을 입력하세요."
                                     required="required"/>
                                 </td>
                             </tr>

@@ -19,7 +19,7 @@ class QnaBoardItem extends Component {
                 </td>
 
                 <td style={{textAlign: 'center', width: '180px'}}>
-                    {this.props.row.nickname}
+                    {this.props.row.user_name}
                 </td>
 
                 <td style={{textAlign: 'center', width: '100px'}}>

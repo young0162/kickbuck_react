@@ -12,7 +12,7 @@ class QnaComment extends Component {
         this.state={
             qnaCommentData: [],
             num:'',
-            nickname: '',
+            user_name: '',
             comment: ''
         }
 
@@ -37,7 +37,7 @@ class QnaComment extends Component {
             "http://localhost:9000/controller/qnacomment/commentwrite",
             {
                 num: this.state.num,
-                nickname: this.state.nickname,
+                user_name: this.state.user_name,
                 comment: this.state.comment
             }
         )
@@ -48,7 +48,7 @@ class QnaComment extends Component {
 
                 // 코멘트 입력란 지우기
                 this.setState({
-                    nickname:'',
+                    user_name:'',
                     comment:''
                 });                
                 
@@ -106,12 +106,12 @@ class QnaComment extends Component {
                         <tbody>
                             <tr>
                                 <th>
-                                    <input type="text" name="nickname" className="input qnainput titleinput"
-                                        style={{width:'150px', height: '100px'}} placeholder="닉네임" value={this.state.nickname}
+                                    <input type="text" name="user_name" className="input qnacommnet_input usernameinput"
+                                        style={{width:'150px', height: '100px'}} placeholder="사용자이름" value={this.state.user_name}
                                         required="required" onChange={this.onKeyChange}/>
                                 </th>
                                 <td>
-                                    <input type="text" name="comment" className="input qnainput contentinput" 
+                                    <input type="text" name="comment" className="input qnacomment_input contentinput" 
                                     style={{width:'700px', height:'100px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
                                     required="required" onChange={this.onKeyChange}/>
                                 </td>

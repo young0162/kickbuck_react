@@ -105,7 +105,7 @@ class QnaBoardUpdate extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>닉 네 임</th>
                                 <td>
-                                     {this.state.selectData.nickname}
+                                     {this.state.selectData.user_name}
                                 </td>
                             </tr>
                             <tr>

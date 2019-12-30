@@ -19,7 +19,7 @@ class Login extends Component {
 
         const {email1,password} = this.refs;
 
-        var url = "http://localhost:9000/react/login";
+        var url = "http://localhost:9000/controller/login";
         Axios.post(url, 
         {
             email1: email1.value,

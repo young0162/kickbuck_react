@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import QnaComment from './QnaComment';
 
 
@@ -29,7 +29,7 @@ class QnaBoardDetail extends Component {
     onSelect=()=>{
         var url="http://localhost:9000/controller/qnaboard/select?num="+this.num;
 
-        Axios.get(url)
+        axios.get(url)
         .then((responseData)=>{
             console.log(responseData.data)
 
@@ -56,7 +56,7 @@ class QnaBoardDetail extends Component {
         console.log("list num="+this.state.selectData.num);
         var url="http://localhost:9000/controller/qnaboard/delete?num="+this.state.selectData.num;
 
-        Axios.get(url)
+        axios.get(url)
         .then((responseData)=>{
             // QnaBoard로 이동
             this.history.push("/community/qnaboard");
@@ -86,7 +86,7 @@ class QnaBoardDetail extends Component {
                             </tr>
                             <tr>
                                 <td width="900px">
-                                    {this.state.selectData.nickname}
+                                    {this.state.selectData.user_name}
                                 </td>
                                 <td width="100px">
                                     {this.state.selectData.readcnt}

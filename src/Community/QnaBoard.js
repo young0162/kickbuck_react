@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import QnaBoardItem from './QnaBoardItem';
 
 
@@ -27,7 +27,7 @@ class QnaBoard extends Component {
     // 목록을 가져올 함수
     qnaList=()=>{
         var url="http://localhost:9000/controller/qnaboard/list"
-        Axios.get(url)
+        axios.get(url)
         .then((resData)=>{
             // 스프링 서버로부터 받은 데이타로 qnaData로 수정
             this.setState({
@@ -60,7 +60,7 @@ class QnaBoard extends Component {
                         <tr>
                             <td style={{textAlign: 'center'}}>번호</td>
                             <td style={{textAlign: 'center'}}>제목</td>
-                            <td style={{textAlign: 'center'}}>닉네임</td>
+                            <td style={{textAlign: 'center'}}>사용자이름</td>
                             <td style={{textAlign: 'center'}}>조회수</td>
                             <td style={{textAlign: 'center'}}>작성일</td>
                         </tr>
