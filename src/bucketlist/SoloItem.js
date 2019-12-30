@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import orora from '../image/main/orora.png';
-import { FavoriteBorder, Archive} from '@material-ui/icons';
+import { FavoriteBorder, ThumbUp} from '@material-ui/icons';
+import Axios from 'axios';
 
 class SoloItem extends Component {
 
@@ -8,22 +9,49 @@ class SoloItem extends Component {
         this.props.detailShow();
     }
 
+    withCountUp = () => {
+
+        var url = "http://localhost:9000/controller/bucketwithup?num=" + this.props.idx.num;
+        Axios.get(url)
+        .then( (resData) => {
+
+        })
+        .catch( (error) => {
+            console.log("update error" + error)
+        })
+
+    }
+
+    likeCountUp = () => {
+        var url = "http://localhost:9000/controller/bucketlikeup?num=" + this.props.idx.num;
+        Axios.get(url)
+        .then( (resData) => {
+
+        })
+        .catch( (error) => {
+            console.log("update error" + error)
+        })
+
+    }
+
     render() {
+
+        const url = "http://localhost:9000/controller/save/";
+
         return (
             <div className="buket_form_box">
-                <div className="buket_form" onClick={this.detailShow}>
-                    <img src={orora} alt="" />     
+                <div className="buket_form"  num={this.props.idx.num}>
+                    <img src={orora} alt=""  onClick={this.detailShow} />     
                     <div className="buket_content">
-                        <p>환상적인 오로라 보러가기</p>
+                        <p>{this.props.idx.subject}</p>
                         <div className="bottom_but">
-                            <p>
+                            <p onClick={this.withCountUp.bind(this)}>
                                 <FavoriteBorder/>
-                                <span>함께하기 </span>
+                                <span>함께 </span>
                             </p>
-                            
-                            <p>
-                                <Archive/>
-                                <span>공유하기</span>
+                            <p onClick={this.likeCountUp.bind(this)}>
+                                <ThumbUp/>
+                                <span>공감</span>
                             </p>
                         </div>                        
                     </div>           
