@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 
 class QnaBoardWrite extends Component {
@@ -82,9 +83,13 @@ class QnaBoardWrite extends Component {
                             <tr>
                                 <td colSpan="2" align="right">
                                 
-                                    <button type="submit" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}>질문 등록</button>
-                                    <button type="button" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}
-                                    onClick={()=>{this.history.push("/community/qnaboard");}}>취 소</button>
+                                    <Button type="submit" variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}>
+                                        질문 등록
+                                    </Button>
+                                    <Button variant="contained" style={{width:'150px', height:'50px', margin: '5px'}}
+                                     onClick={()=>{this.history.push("/community/qnaboard");}}>
+                                        취 소
+                                    </Button>
                                     
                                 </td>
                             </tr>

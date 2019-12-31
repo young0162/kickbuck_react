@@ -115,7 +115,8 @@ class QnaComment extends Component {
                                     required="required" onChange={this.onKeyChange}/>
                                 </td>
                                 <td>                                
-                                    <Button type="submit" variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}>
+                                    <Button type="submit" variant="contained" color="primary"
+                                     style={{width:'150px', height:'50px', margin: '5px'}}>
                                         댓글 등록
                                     </Button>                                    
                                 </td>
