@@ -22,7 +22,7 @@ export default class FreeBoardDetail extends Component {
   //글선택 함수
   onSelect = () => {
     var url =
-      "http://localhost:8080/controller/community/freeboarddetail?num=" +
+      "http://localhost:9000/controller/community/freeboarddetail?num=" +
       this.num;
 
     axios
@@ -54,7 +54,7 @@ export default class FreeBoardDetail extends Component {
     stufile.append("uploadFile", uploadFile);
     axios({
       method: "post",
-      url: "http://localhost:8080/controller/community/freeboardinsert/save",
+      url: "http://localhost:9000/controller/community/freeboardinsert/save",
       data: stufile,
       headers: { "Content-Type": "multipart/form-data" }
     })
@@ -79,7 +79,7 @@ export default class FreeBoardDetail extends Component {
 
     console.log(this.num);
     var url =
-      "http://localhost:8080/controller/community/freeboarddetail/update";
+      "http://localhost:9000/controller/community/freeboarddetail/update";
     axios
       .post(url, uploadFile)
       .then(res => {
