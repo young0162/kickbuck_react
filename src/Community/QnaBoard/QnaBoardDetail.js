@@ -112,12 +112,12 @@ class QnaBoardDetail extends Component {
                     <div >
                     <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
                      onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</Button>
-                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                    <Button variant="contained" style={{width:'150px', height:'50px', margin: '5px'}} 
                         onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
                         수    정</Button>
                     <Button variant="contained" color="secondary" style={{width:'150px', height:'50px', margin: '5px'}} 
                                     onClick={this.onDataDelete}>삭    제</Button>
-                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                    <Button variant="contained" style={{width:'150px', height:'50px', margin: '5px'}} 
                                     onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</Button>
 
                     </div>

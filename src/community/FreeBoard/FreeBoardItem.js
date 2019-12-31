@@ -4,7 +4,7 @@ export default class FreeBoardItem extends Component {
   render() {
     return (
       <tr>
-        <td>{this.props.idx + 1}</td>
+        <td>{this.props.row.num}</td>
         <td>
           <a href={"/community/freeboarddetail/" + this.props.row.num}>
             {this.props.row.title}

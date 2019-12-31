@@ -15,9 +15,14 @@ class QnaBoard extends Component {
         this.state = {
 
             // 스프링에서 게시판 목록을 받아서 저장할 변수
-            qnaData: []
+            qnaData: [],
 
-        }
+            // 페이징 관련 
+            start: 0,
+            flag: false,
+            flag2: false
+
+        };
 
         this.history=history;
     }
@@ -27,7 +32,8 @@ class QnaBoard extends Component {
 
     // 목록을 가져올 함수
     qnaList=()=>{
-        var url="http://localhost:9000/controller/qnaboard/list"
+        var url="http://localhost:9000/controller/qnaboard/list?start=" + 
+        this.state.start;
         axios.get(url)
         .then((resData)=>{
             // 스프링 서버로부터 받은 데이타로 qnaData로 수정
@@ -41,10 +47,50 @@ class QnaBoard extends Component {
     }
 
 
+    // 다음 페이지 함수
+    onClickNext = () => {
+        console.log(this.state.qnaData.length);
+        if (this.state.qnaData.length !== 0)
+        {
+            this.setState((prevState, props) => ({
+                start: prevState.start + 15,
+                flag: true
+            }));
+        }
+    }
+
+    // 이전 페이지 함수
+    onClickPre = () => {
+        console.log(this.state.qnaData.length);
+        if (this.state.start > 0)
+        {
+            this.setState((prevState, props) => ({
+                start: prevState.start - 15,
+                flag2: true
+            }));
+        }
+    }
 
     componentDidMount(){
         // 랜더링 직전 스프링으로 목록을 받아온다
         this.qnaList();
+    }
+
+    componentDidUpdate = (p, s) => {
+        if (this.state.flag)
+        {
+            this.qnaList();
+            this.setState({
+                flag: false
+            });
+        }
+        else if (this.state.flag2)
+        {
+            this.qnaList();
+            this.setState({
+                flag2: false
+            })
+        }
     }
 
     render() {
@@ -76,7 +122,16 @@ class QnaBoard extends Component {
                     </tbody>
                 </table>
 
-                <br/><br/><br/>
+                <br/>
+                <div>
+                    <Button variant="contained" onClick={this.onClickPre} style={{margin: '5px'}}>
+                         ＜ Pre
+                    </Button>
+                    <Button variant="contained" onClick={this.onClickNext} style={{margin: '5px'}}>
+                         Next ＞
+                    </Button>
+                </div>
+                <br/><br/>
 
                 <div>                    
                     <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}
