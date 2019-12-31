@@ -1,13 +1,50 @@
 import React, { Component, Fragment } from 'react';
 import './faq.css';
 import Collapsible from 'react-collapsible';
+import {NavLink} from 'react-router-dom';
 //import 'bootstrap/dist/css/bootstrap.css';
 
-export default class FAQ extends Component {
+export default class FAQ_main extends Component {
 
   render() {
+    
     return (
       <Fragment>
+
+            <div style={{textAlign:'center', paddingLeft:'420px'}}>
+                <form className="form-group">
+                    <table  className="table table-bordered">
+                        
+                        <tbody>
+                            <tr>
+                                
+                                <td width="250">
+                                    {/* 마우스 갖다대면 메뉴 글씨색이 파랗게 변하는 설정 필요 */}
+                                    
+                                    <NavLink exact to="/FAQ_signup" className="xmenu">
+                                            가입/로그인
+                                    </NavLink>
+                                </td>
+                                <td width="250">
+                                    <NavLink exact to="/FAQ_contents" className="xmenu">
+                                            서비스/컨텐츠
+                                    </NavLink>  
+                                </td>
+                                <td width="250">
+                                    <NavLink exact to="/FAQ_etc" className="xmenu">
+                                            기타
+                                    </NavLink>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+ 
+                    </table>
+                </form>
+            </div>
+
+      <br></br>
+
       <div className="faqwrap">
         <div className="container">
           <div>
@@ -17,7 +54,7 @@ export default class FAQ extends Component {
               <li>
                   <Collapsible trigger="Q. kickbuck이란 무슨뜻인가요?" className="question">
                         <p className="answer">
-                          영어 속어 중에 kick the bucket이라는 있는데 속어는 죽다라는 의미를 가지고 있습니다.<br />
+                          영어 속어 중에 kick the bucket이라는 속어가 있는데 죽다라는 의미를 가지고 있습니다.<br />
                           이 속어에서 버킷리스트라는 말이 유래해서 쓰게되었습니다.
                           누구나 죽기전에 해보고싶은것들이 있는데 혼자서는 도전하기가 힘든분들을 위해 만들었습니다.
                         </p>

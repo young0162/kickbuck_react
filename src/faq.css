@@ -1,48 +1,61 @@
-/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
-  
-.the-icons {
-  font-size: 12px;
-} */
 
+#xmenu{
+    color:black; font-size:'22px'; text-decoration: none;
+}
 
+#xmenu:hover{
+    color:rgb(137, 184, 238); font-size:'22px'; font-weight: bold; text-decoration: none;
+   } 
 
 .faqwrap{
-    width: 60%;
+    position: relative;
+    width: 100%;
     font-size:12pt;
+    display: inline-block;
+    
+
 }
 
 .container{
-    width: 800px;
-}
-
-
-.question{    
-    border: 1px solid lightgrey;
-    padding-left: 70px;
-    padding-right: 70px;
-    height: 60px;
-    line-height: 60px;
-    display: block;
+    position: relative;
+    width: 100%;
+    display: inline-block;
     
 }
 
 
+.question{   
+    position: relative;
+    display: inline-block;
+    width:93.3%;
+    
+    border: 1px solid lightgrey;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding: 10px 10px;
+    height: 50px;
+    line-height: 50px;
+}
+
+
 .answer:before{
-    content:"A.  ";
+    content:"A. ";
 }
 
 .answer{
-    /* height: 100px; */
+    
+    position: relative;
+    display: inline-block; 
+    width:95%;
     border: 1px solid lightgrey;
-    margin:0 auto;
+    
     padding-top:20px;
     padding-bottom:20px;
-    padding: 20px 30px;
+    padding: 10px 10px;
     background-color: rgb(224, 223, 223);
     box-sizing: border-box;
     line-height: 24px;
     overflow: hidden;
-    position: relative;
    
 }
 

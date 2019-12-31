@@ -23,7 +23,7 @@ export default class Menu extends Component {
                   </NavLink>
               </li>
               <li>
-                  <NavLink exact to='/Faq_copy'>
+                  <NavLink exact to='/FAQ_signup'>
                     FAQ
                   </NavLink>
               </li>
