@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
+import { Button, Table } from "reactstrap";
+import FreeBoardCommentInsert from "./FreeBoardCommentInsert";
 
 export default class FreeBoardDetail extends Component {
   constructor({ history, match }) {
@@ -8,7 +10,8 @@ export default class FreeBoardDetail extends Component {
     this.history = history;
     this.num = match.params.num;
     this.state = {
-      selectData: "" //스프링으로부터 dto 데이타를 받을변수
+      selectData: "", //스프링으로부터 dto 데이타를 받을변수
+      freeboardcommentListData: ""
     };
 
     this.onSelect = this.onSelect.bind(this);
@@ -48,7 +51,7 @@ export default class FreeBoardDetail extends Component {
       });
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.onSelect();
   };
 
@@ -56,7 +59,7 @@ export default class FreeBoardDetail extends Component {
     const url = "http://localhost:9000/controller/save/";
     return (
       <Fragment>
-        <table>
+        <Table borderless>
           <tbody>
             <tr>
               <th>제목</th>
@@ -88,7 +91,7 @@ export default class FreeBoardDetail extends Component {
               <td>{this.state.selectData.day}</td>
             </tr>
           </tbody>
-        </table>
+        </Table>
         <button
           type="button"
           onClick={() => {
@@ -97,9 +100,9 @@ export default class FreeBoardDetail extends Component {
         >
           목록
         </button>
-        <button type="button" onClick={this.onDelete.bind(this)}>
+        <Button type="button" onClick={this.onDelete.bind(this)} color="danger">
           삭제
-        </button>
+        </Button>
         <button
           type="button"
           onClick={() => {
@@ -110,6 +113,9 @@ export default class FreeBoardDetail extends Component {
         >
           수정
         </button>
+        <div>
+          <FreeBoardCommentInsert num={this.num} />
+        </div>
       </Fragment>
     );
   }

@@ -10,12 +10,11 @@ class Add extends Component {
     constructor(props) {
         super(props);
 
-        this.displayData = [];
-        this.imageName = [];
+        
 
         this.state = {
             image: '',
-            showdata: this.displayData,
+            imageArray: '',
         }
     }
 
@@ -29,7 +28,7 @@ class Add extends Component {
                 area: area.value,
                 content: content.value,
                 user_name: localStorage.state,
-                image: this.imageName
+                image: this.state.imageArray
             })
             .then( (resData) => {
 
@@ -67,9 +66,10 @@ class Add extends Component {
             console.log("이미지 업로드 오류" + error.data);
         })
 
-        this.imageName.push(image);
-        console.log("this.imageName : " + this.imageName);
-        console.log(JSON.stringify(this.imageName));
+        this.setState({
+            imageArray : this.state.imageArray.concat(image)
+        })
+        console.log("this.imageArray : " + this.state.imageArray);
     }
 
     onImageAdd = () => {
@@ -77,12 +77,6 @@ class Add extends Component {
         const imgsrc = this.state.image;
 
         this.displayData.push( <img src={url + imgsrc} alt='' />);
-
-        this.setState({
-            showdata: this.displayData
-        })
-        
-        console.log(this.displayData);
     }
 
     render() {

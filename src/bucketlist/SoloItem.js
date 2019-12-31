@@ -38,10 +38,14 @@ class SoloItem extends Component {
 
         const url = "http://localhost:9000/controller/save/";
 
+
+
+    
+
         return (
             <div className="buket_form_box">
                 <div className="buket_form"  num={this.props.idx.num}>
-                    <img src={orora} alt=""  onClick={this.detailShow} />     
+                    <img src={url + this.props.idx.image} alt=""  onClick={this.detailShow} />     
                     <div className="buket_content">
                         <p>{this.props.idx.subject}</p>
                         <div className="bottom_but">
