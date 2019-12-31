@@ -68,7 +68,7 @@ class FreeBoardList extends Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.list(); //랜더링 직전 스프링으로부터 목록을 받아온다
   }
 

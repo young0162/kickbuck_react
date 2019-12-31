@@ -51,7 +51,7 @@ export default class FreeBoardDetail extends Component {
       });
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.onSelect();
   };
 
@@ -114,7 +114,7 @@ export default class FreeBoardDetail extends Component {
           수정
         </button>
         <div>
-          <FreeBoardCommentInsert />
+          <FreeBoardCommentInsert num={this.num} />
         </div>
       </Fragment>
     );
