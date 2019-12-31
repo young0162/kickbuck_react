@@ -67,7 +67,7 @@ class Add extends Component {
         })
 
         this.setState({
-            imageArray : this.state.imageArray.concat(image)
+            imageArray : this.state.imageArray.concat(image) + ","
         })
         console.log("this.imageArray : " + this.state.imageArray);
     }

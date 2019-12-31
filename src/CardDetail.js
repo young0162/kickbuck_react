@@ -7,6 +7,10 @@ import { Slide } from 'react-slideshow-image';
 
 class CardDetail extends Component {
 
+    bucketSelect = (num) => {
+        this.props.bucketSelect(num);
+    }
+
     detailHide = () => {
         this.props.detailHide();
     }
@@ -35,9 +39,9 @@ class CardDetail extends Component {
                 <div className="card_popup">
                     <div className="slide-container">
                         <Slide {...properties}>
-                        {
+                        {/* {
                             this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
-                        }
+                        } */}
                         <div className="each-slide">
                             <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
                             </div>

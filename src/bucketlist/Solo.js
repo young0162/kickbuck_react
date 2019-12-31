@@ -10,8 +10,9 @@ class Solo extends Component {
 
         this.state = {
             show: false,      
-
-            bucketData: []
+            bucketData: [],
+            bucketOneData: [],
+            num : ''
         }
 
         this.detailShow = this.detailShow.bind(this);
@@ -24,6 +25,8 @@ class Solo extends Component {
         this.setState({
             show : true
         })
+
+        console.log("solo num" + this.state.num);
     }
 
     detailHide = () => {
@@ -43,8 +46,19 @@ class Solo extends Component {
         .catch( (error) => {
             console.log("list 오류 " + error)
         })
+    }
 
-        
+    bucketSelect = (num) => {
+        var url = "http://localhost:9000/controller/oneselect?num=" + num ;
+        Axios.get(url)
+        .then( (resData) => {
+            this.setState({
+                bucketOneData: resData.data
+            })
+        })
+        .catch( (error) => {
+            console.log("select 오류 : " + error);
+        })
     }
 
     componentWillMount() {
@@ -56,14 +70,14 @@ class Solo extends Component {
         let box;
 
         if(this.state.show) {
-            box = <CardDetail detailHide={this.detailHide} bucketData={this.state.bucketData} />
+            box = <CardDetail detailHide={this.detailHide} bucketData={this.state.bucketData} num={this.state.num} bucketSelect={this.bucketSelect} />
         }
 
         return (
-            <div>
+            <div className="buket_form_box">
                 {
                     this.state.bucketData.map( (idx) => (
-                        <SoloItem detailShow={this.detailShow} idx={idx} key={idx.num} />        
+                        <SoloItem detailShow={this.detailShow} idx={idx} key={idx.num} num={this.state.num} />        
                     ))
                 }
                 {box}

@@ -6,8 +6,17 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            num : this.props.idx.num
+        }
+    }
+
     detailShow = () => {
         this.props.detailShow();
+        console.log("soloitem num : " + this.state.num);
     }
 
     withCountUp = () => {
@@ -32,7 +41,6 @@ class SoloItem extends Component {
         .catch( (error) => {
             console.log("update error" + error)
         })
-
     }
 
     render() {
@@ -43,7 +51,6 @@ class SoloItem extends Component {
     
 
         return (
-            <div className="buket_form_box">
                 <div className="buket_form"  num={this.props.idx.num}>
                     {/* {
                         this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
@@ -64,7 +71,6 @@ class SoloItem extends Component {
                         </div>                        
                     </div>           
                 </div>
-            </div> 
         );
     }
 }
