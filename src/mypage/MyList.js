@@ -37,7 +37,7 @@ export default class MyList extends Component {
   render() {
     return (
       <div className="list_my">
-        <MyPage/>
+        <MyPage />
         <table className="list_table">
           <thead>
             <tr className="list_tr">
@@ -51,8 +51,8 @@ export default class MyList extends Component {
           </thead>
           <tbody>
             {
-              this.state.enrollData.map((row,idx)=>(
-                <EnrollItem idx={idx} key={row.num} row={row}/>))
+              this.state.enrollData.map((row, idx) => (
+                <EnrollItem idx={idx} key={row.num} row={row} />))
             }
           </tbody>
         </table>

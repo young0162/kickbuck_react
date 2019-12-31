@@ -5,7 +5,7 @@ import './style.css';
 export default class Detail extends Component{
     constructor({match}){
         super();
-        this.num=match.params.num;
+        this.num=match.params.num
         this.state={
             selectData:''
         }        
@@ -14,6 +14,7 @@ export default class Detail extends Component{
     componentWillMount=()=>{
         this.onSelect();
     }
+    
     onSelect=()=>{
        var url = "http://localhost:9000/controller/enroll/select?num="+this.num;
        axios.get(url)
@@ -29,12 +30,9 @@ export default class Detail extends Component{
     }
 
     render(){
-        const url="http://localhost:9000/controller/enroll/list";
-        let d=this.state.selectData;
-
         return (
             <div className="hello">
-                
+                {this.num}
             </div>
         )
     }

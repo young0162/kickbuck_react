@@ -14,19 +14,9 @@ button{
     border-radius: 20px;
 }
 
-.tel1,.tel2{
-    width: 60px;
-    height: 20px;
-}
-
 select{
     width: 63px;
     height: 25px;
-}
-
-.mail1,.mail2{
-    width: 120px;
-    height: 20px;
 }
 
 .text{
@@ -34,7 +24,7 @@ select{
     height: 20px;
 }
 
-.pass1,.pass2{
+.pass1,.pass2,.mail,.tel{
     width: 200px;
     height: 20px;
 }
