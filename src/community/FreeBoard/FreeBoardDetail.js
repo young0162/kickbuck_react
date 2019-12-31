@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { Button, Table } from "reactstrap";
 import FreeBoardCommentInsert from "./FreeBoardCommentInsert";
 
 export default class FreeBoardDetail extends Component {
@@ -59,7 +58,7 @@ export default class FreeBoardDetail extends Component {
     const url = "http://localhost:9000/controller/save/";
     return (
       <Fragment>
-        <Table borderless>
+        <table borderless>
           <tbody>
             <tr>
               <th>제목</th>
@@ -91,7 +90,7 @@ export default class FreeBoardDetail extends Component {
               <td>{this.state.selectData.day}</td>
             </tr>
           </tbody>
-        </Table>
+        </table>
         <button
           type="button"
           onClick={() => {
@@ -100,9 +99,9 @@ export default class FreeBoardDetail extends Component {
         >
           목록
         </button>
-        <Button type="button" onClick={this.onDelete.bind(this)} color="danger">
+        <button type="button" onClick={this.onDelete.bind(this)}>
           삭제
-        </Button>
+        </button>
         <button
           type="button"
           onClick={() => {

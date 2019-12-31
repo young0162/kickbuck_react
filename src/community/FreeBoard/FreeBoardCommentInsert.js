@@ -1,15 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { Button, Table } from "reactstrap";
 
 class FreeBoardCommentInsert extends Component {
-  state={
-    
-  }
+  state = {};
   render() {
     return (
       <Fragment>
         <form onSubmit={this.onSubmit}>
-          <Table>
+          <table>
             <tbody>
               <tr>
                 <th>내용</th>
@@ -28,11 +25,11 @@ class FreeBoardCommentInsert extends Component {
               </tr>
               <tr>
                 <td colSpan="2">
-                  <Button type="submit">저장</Button>
+                  <button type="submit">저장</button>
                 </td>
               </tr>
             </tbody>
-          </Table>
+          </table>
         </form>
       </Fragment>
     );
