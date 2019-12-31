@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 class QnaCommentItem extends Component {
 
@@ -125,12 +126,14 @@ class QnaCommentItem extends Component {
                     </td>   
 
                     <td>
-                        <button type="text" className="btn btn-md btn-success" style={{width:'90px', height:'40px',
-                        visibility:this.state.isvisible}}
-                        onClick={this.visibleEvent.bind(this)}>대댓글</button>  
-                        <button type="text" className="btn btn-md btn-success" style={{width:'30px', height:'40px',
-                        visibility:this.state.isvisible}}
-                        onClick={this.onDataDelete}>X</button>  
+                        <Button variant="contained" style={{width:'90px', height:'40px', margin: '5px',
+                         visibility:this.state.isvisible}} onClick={this.visibleEvent.bind(this)}>
+                            대댓글
+                        </Button>  
+                        <Button variant="contained" color="secondary" style={{width:'20px', height:'40px', margin: '5px',
+                         visibility:this.state.isvisible}} onClick={this.onDataDelete}>
+                            X
+                        </Button>  
                     </td>             
                 </tr>
                 <tr style={{display:this.state.display}}>
@@ -142,16 +145,20 @@ class QnaCommentItem extends Component {
                     </td>
                     <td colSpan="2">
                         <input type="text" name="recomment" className="input qnainput contentinput" 
-                        style={{width:'820px', height:'40px'}} placeholder="대댓글을 입력하세요." value={this.state.recomment}
-                        required="required" onChange={this.onKeyChange}/>
+                         style={{width:'820px', height:'40px'}} placeholder="대댓글을 입력하세요." value={this.state.recomment}
+                         required="required" onChange={this.onKeyChange}/>
                     </td>
                     
                     <td>   
                         <form onSubmit={this.onSubmit}>                             
-                            <button type="submit" className="btn btn-md btn-success" style={{width:'60px', height:'40px'}}
-                          onClick={this.unvisibleEvent.bind(this)}>등록</button>
-                            <button type="button" className="btn btn-md btn-success" style={{width:'60px', height:'40px'}}
-                            onClick={this.unvisibleEvent.bind(this)}>취소</button> 
+                            <Button variant="contained" style={{width:'60px', height:'40px', margin: '5px'}}
+                             onClick={this.unvisibleEvent.bind(this)}>
+                                등록
+                            </Button>
+                            <Button variant="contained" style={{width:'60px', height:'40px', margin: '5px'}}
+                             onClick={this.unvisibleEvent.bind(this)}>
+                                취소
+                            </Button> 
                         </form>                                   
                     </td>
                     

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QnaComment from './QnaComment';
+import Button from '@material-ui/core/Button';
 
+
+  
 
 class QnaBoardDetail extends Component {
 
@@ -22,7 +25,7 @@ class QnaBoardDetail extends Component {
 
         this.onDataDelete=this.onDataDelete.bind(this);
 
-       
+        
     }
 
     // 글 선택 시 호출되는 함수
@@ -69,6 +72,8 @@ class QnaBoardDetail extends Component {
 
     render() {
 
+       
+
         return (
             <div>
                 <hr/>
@@ -104,17 +109,21 @@ class QnaBoardDetail extends Component {
                             </tr>                            
                         </tbody>
                     </table>
-                <button type="button" className="btn btn-write" style={{width:'150px', height:'50px'}}
-                     onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</button>
-                <button type="button" className="btn btn-write" style={{width:'150px', height:'50px'}}
-                     onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
-                     수    정</button>
-                <button type="button" className="btn btn-delete" style={{width:'150px', height:'50px'}}
-                                 onClick={this.onDataDelete}>삭    제</button>
-                <button type="button" className="btn btn-list" style={{width:'150px', height:'50px'}}
-                                 onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</button>
+                    <div >
+                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                     onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글 쓰 기</Button>
+                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                        onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
+                        수    정</Button>
+                    <Button variant="contained" color="secondary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                                    onClick={this.onDataDelete}>삭    제</Button>
+                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}} 
+                                    onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</Button>
 
+                    </div>
                 
+
+                    <br/><br/><br/>
                 <QnaComment qnanum={this.num}/>
             </div>
            

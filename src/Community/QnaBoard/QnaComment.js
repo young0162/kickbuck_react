@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QnaCommentItem from './QnaCommetitem';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 class QnaComment extends Component {
 
@@ -90,7 +91,7 @@ class QnaComment extends Component {
                 </div>
                 <br/>
                 <hr/>
-                <table className="qnaboard board" style={{width: '1150px'}}>
+                <table className="qnaboard board" style={{width: '1200px'}}>
                     
                         {
                             this.state.qnaCommentData.map((row,idx)=>(
@@ -110,11 +111,13 @@ class QnaComment extends Component {
                                 </th>
                                 <td>
                                     <input type="text" name="comment" className="input qnacomment_input contentinput" 
-                                    style={{width:'700px', height:'60px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
+                                    style={{width:'700px', height:'50px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
                                     required="required" onChange={this.onKeyChange}/>
                                 </td>
                                 <td>                                
-                                    <button type="submit" className="btn btn-md btn-success" style={{width:'150px', height:'60px'}}>댓글 등록</button>                                    
+                                    <Button type="submit" variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}>
+                                        댓글 등록
+                                    </Button>                                    
                                 </td>
                             </tr>
                         </tbody>

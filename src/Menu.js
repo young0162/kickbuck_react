@@ -164,6 +164,9 @@ export default class Menu extends Component {
             <NavLink exact to='/community/qnaboard'>
               Q&A 게시판
             </NavLink>
+            <NavLink exact to='/bucketlist/togetherboatd'>
+              함께하기
+            </NavLink>
           </div>
         </div>
       </div>

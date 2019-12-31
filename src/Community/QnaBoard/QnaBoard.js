@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QnaBoardItem from './QnaBoardItem';
-
+import Button from '@material-ui/core/Button';
 
 
 
@@ -79,8 +79,8 @@ class QnaBoard extends Component {
                 <br/><br/><br/>
 
                 <div>                    
-                    <button className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}
-                        onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글쓰기</button>                  
+                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}
+                        onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글쓰기</Button>                  
                 </div>
             </div>
         );

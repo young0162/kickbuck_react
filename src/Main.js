@@ -20,9 +20,11 @@ import {
 } from './community/FreeBoard/Export';
 import QnaBoardDetail from './community/QnaBoard/QnaBoardDetail';
 import QnaBoardUpdate from './community/QnaBoard/QnaBoardUpdate';
-import QnaCommet from './community/QnaBoard/QnaComment';
+import QnaComment from './community/QnaBoard/QnaComment';
 import QnaBoard from './community/QnaBoard/QnaBoard';
 import QnaBoardWrite from './community/QnaBoard/QnaBoardWrite';
+
+import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
 
 export default class Main extends Component {
 
@@ -57,11 +59,15 @@ export default class Main extends Component {
                       path="/community/freeboardupdate/:num"
                       component={FreeBoardUpdate}
                     />
+
+                    {/* QNA 게시판 컴포넌트 */}
                     <Route exact path='/community/qnaboard' component={QnaBoard} />
                     <Route exact path='/community/qnaboardwrite' component={QnaBoardWrite} />
                     <Route exact path='/community/qnaboarddetail/:num' component={QnaBoardDetail} />
                     <Route exact path='/community/qnaboardupdate/:num' component={QnaBoardUpdate} />
-                    <Route exact path='/community/qnacomment/:num' component={QnaCommet} />
+                    <Route exact path='/community/qnacomment/:num' component={QnaComment} />
+
+                    <Route exact path='/bucketlist/togetherboatd' component={TogetherBoard} />
                 </div>
             </BrowserRouter>
         )
