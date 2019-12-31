@@ -6,19 +6,20 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            num : this.props.idx.num
-        }
+    onClick = (event) => {
+        this.detailShow();
+        this.bucketSelect();
     }
 
     detailShow = () => {
         this.props.detailShow();
-        console.log("soloitem num : " + this.state.num);
     }
 
+    bucketSelect = () => {
+        this.props.bucketSelect(this.props.idx.num);
+    }
+
+    
     withCountUp = () => {
 
         var url = "http://localhost:9000/controller/bucketwithup?num=" + this.props.idx.num;
@@ -51,14 +52,16 @@ class SoloItem extends Component {
     
 
         return (
-                <div className="buket_form"  num={this.props.idx.num}>
+                <div className="buket_form"  num={this.props.idx.num} >
                     {/* {
                         this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
                     } */}
-                    <img className="bgimg" src={boxbg} alt=""/>
-                    <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""  onClick={this.detailShow} />     
+                    <img className="bgimg" src={boxbg} alt=""  />
+                    <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""  onClick={this.onClick}  />     
+                    
                     <div className="buket_content">
-                        <p>{this.props.idx.subject}</p>
+                        <p>{this.props.idx.subject}
+                        </p>
                         <div className="bottom_but">
                             <p onClick={this.withCountUp.bind(this)}>
                                 <FavoriteBorder/>
