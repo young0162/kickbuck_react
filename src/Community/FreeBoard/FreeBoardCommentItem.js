@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class QnaCommentItem extends Component {
+class FreeBoardCommentItem extends Component {
   constructor(history) {
     super();
 
     this.history = history;
 
     this.state = {
-      qnaCommentData: [],
+      freeBoardCommentData: [],
       group_num: "",
       num: "",
       reuser_name: "",
@@ -47,12 +47,15 @@ class QnaCommentItem extends Component {
     e.preventDefault();
 
     axios
-      .post("http://localhost:9000/controller/qnacomment/recommentwrite", {
-        group_num: this.state.group_num,
-        num: this.state.num,
-        user_name: this.state.reuser_name,
-        comment: this.state.recomment
-      })
+      .post(
+        "http://localhost:9000/controller/freeboardcomment/recommentwrite",
+        {
+          group_num: this.state.group_num,
+          num: this.state.num,
+          user_name: localStorage.state,
+          comment: this.state.recomment
+        }
+      )
       .then(responseData => {
         // 추가를 한 후에 필요한 코드
 
@@ -73,7 +76,7 @@ class QnaCommentItem extends Component {
   // 삭제하는 함수
   onDataDelete = num => {
     var url =
-      "http://localhost:9000/controller/qnacomment/commentdelete?comment_num=" +
+      "http://localhost:9000/controller/freeboardcomment/commentdelete?comment_num=" +
       this.props.row.comment_num;
 
     axios
@@ -140,18 +143,7 @@ class QnaCommentItem extends Component {
         </tr>
         <tr style={{ display: this.state.display }}>
           <td style={{ textAlign: "center" }}>RE:</td>
-          <td>
-            <input
-              type="text"
-              name="reuser_name"
-              className="input qnainput titleinput"
-              style={{ width: "120px", height: "40px" }}
-              placeholder="닉네임"
-              value={this.state.reuser_name}
-              required="required"
-              onChange={this.onKeyChange}
-            />
-          </td>
+          <td>{localStorage.state}</td>
           <td colSpan="2">
             <input
               type="text"
@@ -190,5 +182,4 @@ class QnaCommentItem extends Component {
     );
   }
 }
-
-export default QnaCommentItem;
+export default FreeBoardCommentItem;

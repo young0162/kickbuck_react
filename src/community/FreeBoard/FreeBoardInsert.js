@@ -8,7 +8,7 @@ class FreeBoardInsert extends Component {
       title: "",
       imagename: "",
       content: "",
-      writer: "",
+      user_name: "",
       msg: "test"
     };
   }
@@ -59,7 +59,7 @@ class FreeBoardInsert extends Component {
           title: "",
           imagename: "",
           content: "",
-          writer: ""
+          user_name: ""
         });
         this.props.history.push("/community/freeboardlist");
       })
@@ -111,8 +111,8 @@ class FreeBoardInsert extends Component {
                 <td>
                   <input
                     type="text"
-                    name="writer"
-                    value={this.state.writer}
+                    name="user_name"
+                    value={this.state.user_name}
                     onChange={this.onKeyChange}
                   ></input>
                 </td>

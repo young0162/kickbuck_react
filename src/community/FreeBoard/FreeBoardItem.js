@@ -11,7 +11,7 @@ export default class FreeBoardItem extends Component {
             {this.props.row.title}
           </a>
         </td>
-        <td>{this.props.row.writer}</td>
+        <td>{this.props.row.user_name}</td>
         <td>{this.props.row.readcnt}</td>
         <td>{this.props.row.today}</td>
       </tr>

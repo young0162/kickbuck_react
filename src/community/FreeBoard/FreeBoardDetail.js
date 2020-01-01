@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import FreeBoardCommentInsert from "./FreeBoardCommentInsert";
+import FreeBoardComment from "./FreeBoardComment";
 
 export default class FreeBoardDetail extends Component {
   constructor({ history, match }) {
@@ -77,7 +77,7 @@ export default class FreeBoardDetail extends Component {
 
             <tr>
               <th>작성자</th>
-              <td>{this.state.selectData.writer}</td>
+              <td>{this.state.selectData.user_name}</td>
             </tr>
 
             <tr>
@@ -113,7 +113,7 @@ export default class FreeBoardDetail extends Component {
           수정
         </button>
         <div>
-          <FreeBoardCommentInsert num={this.num} />
+          <FreeBoardComment freeboardnum={this.num} />
         </div>
       </Fragment>
     );

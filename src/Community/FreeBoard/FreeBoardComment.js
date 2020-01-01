@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import QnaCommentItem from "./QnaCommetitem";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
+import FreeBoardCommentItem from "./FreeBoardCommentItem";
 
-class QnaComment extends Component {
+class FreeBoardComment extends Component {
   constructor(history) {
     super();
 
     this.history = history;
 
     this.state = {
-      qnaCommentData: [],
+      freeBoardCommentData: [],
       num: "",
       user_name: "",
       comment: ""
@@ -21,16 +21,18 @@ class QnaComment extends Component {
   onKeyChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
-      num: this.props.qnanum
+      num: this.props.freeboardnum,
+      user_name: localStorage.state
     });
     console.log(this.state);
+    console.log("his.props.freeboardnum" + this.state.num);
   };
 
   onSubmit = e => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:9000/controller/qnacomment/commentwrite", {
+      .post("http://localhost:9000/controller/freeboardcomment/commentwrite", {
         num: this.state.num,
         user_name: this.state.user_name,
         comment: this.state.comment
@@ -38,11 +40,10 @@ class QnaComment extends Component {
       .then(responseData => {
         // 추가를 한 후에 필요한 코드
         // 코멘트 리스트 다시 호출
-        this.qnaCommentList();
+        this.freeBoardCommentList();
 
         // 코멘트 입력란 지우기
         this.setState({
-          user_name: "",
           comment: ""
         });
       })
@@ -52,44 +53,48 @@ class QnaComment extends Component {
   };
 
   // 목록을 가져올 함수
-  qnaCommentList = () => {
+  freeBoardCommentList = () => {
+    console.log("commentlistnum=" + this.props.freeboardnum);
     var url =
-      "http://localhost:9000/controller/qnacomment/list?num=" +
-      this.props.qnanum;
+      "http://localhost:9000/controller/freeboardcomment/list?num=" +
+      this.props.freeboardnum;
     axios
       .get(url)
       .then(resData => {
         // 스프링 서버로부터 받은 데이타로 qnaData로 수정
         this.setState({
-          qnaCommentData: resData.data
+          freeBoardCommentData: resData.data
         });
+        console.log("freeBoardCommentData" + this.freeBoardCommentData);
       })
       .catch(error => {
-        console.log("qnaboard list 오류!");
+        console.log(
+          "freeBoardComment list 오류!" + this.state.freeBoardCommentData
+        );
       });
   };
 
   componentDidMount() {
     // 랜더링 직전 스프링으로 목록을 받아온다
-    this.qnaCommentList();
+    this.freeBoardCommentList();
   }
 
   render() {
     return (
-      <div>
+      <Fragment>
         <hr />
         <div>
-          <h2> Q&A 댓글 </h2>
+          <h2> freeBoard 댓글 </h2>
         </div>
         <br />
         <hr />
-        <table className="qnaboard board" style={{ width: "1150px" }}>
-          {this.state.qnaCommentData.map((row, idx) => (
-            <QnaCommentItem
+        <table className="freeBoard board" style={{ width: "1150px" }}>
+          {this.state.freeBoardCommentData.map((row, idx) => (
+            <FreeBoardCommentItem
               row={row}
               idx={idx}
               key={row.comment_num}
-              onList={this.qnaCommentList}
+              onList={this.freeBoardCommentList}
             />
           ))}
         </table>
@@ -97,26 +102,17 @@ class QnaComment extends Component {
         <br />
         <br />
         <form onSubmit={this.onSubmit}>
-          <table className="board qnaboard write qnaboardwrite">
+          <table className="board freeBoard write freeBoardWrite">
             <tbody>
               <tr>
-                <th>
-                  <input
-                    type="text"
-                    name="user_name"
-                    className="input qnainput titleinput"
-                    style={{ width: "150px", height: "100px" }}
-                    placeholder="닉네임"
-                    value={this.state.user_name}
-                    required="required"
-                    onChange={this.onKeyChange}
-                  />
+                <th style={{ width: "150px", height: "60px" }}>
+                  {localStorage.state}
                 </th>
                 <td>
                   <input
                     type="text"
                     name="comment"
-                    className="input qnainput contentinput"
+                    className="input freeBoardinput contentinput"
                     style={{ width: "700px", height: "100px" }}
                     placeholder="댓글을 입력하세요."
                     value={this.state.comment}
@@ -140,9 +136,9 @@ class QnaComment extends Component {
           <br />
           <br />
         </form>
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default QnaComment;
+export default FreeBoardComment;
