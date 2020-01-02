@@ -19,11 +19,11 @@ import {
   FreeBoardUpdate,
   FreeBoardComment
 } from "./community/FreeBoard/Export";
-import QnaBoardDetail from "./community/QnaBoardDetail";
-import QnaBoardUpdate from "./community/QnaBoardUpdate";
-import QnaComment from "./community/QnaComment";
-import QnaBoard from "./community/QnaBoard";
-import QnaBoardWrite from "./community/QnaBoardWrite";
+import QnaBoardDetail from "./community/QnA/QnaBoardDetail";
+import QnaBoardUpdate from "./community/QnA/QnaBoardUpdate";
+import QnaComment from "./community/QnA/QnaComment";
+import QnaBoard from "./community/QnA/QnaBoard";
+import QnaBoardWrite from "./community/QnA/QnaBoardWrite";
 
 export default class Main extends Component {
   render() {
@@ -48,18 +48,22 @@ export default class Main extends Component {
           <Route exact path="/add" component={Add} />
           <Route exact path="/community/freeboardlist" component={FreeBoard} />
           <Route
+            exact
             path="/community/freeboarddetail/:num"
             component={FreeBoardDetail}
           />
           <Route
+            exact
             path="/community/freeboardinsert"
             component={FreeBoardInsert}
           />
           <Route
+            exact
             path="/community/freeboardupdate/:num"
             component={FreeBoardUpdate}
           />
           <Route
+            exact
             path="/community/freeboardcomment/:num"
             component={FreeBoardComment}
           />

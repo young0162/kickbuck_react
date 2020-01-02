@@ -8,9 +8,10 @@ class FreeBoardInsert extends Component {
       title: "",
       imagename: "",
       content: "",
-      user_name: "",
-      msg: "test"
+      user_name: localStorage.state,
+      open: false
     };
+    console.log(this.state.user_name);
   }
 
   //입력시 state 값 변경
@@ -59,7 +60,7 @@ class FreeBoardInsert extends Component {
           title: "",
           imagename: "",
           content: "",
-          user_name: ""
+          user_name: localStorage.state
         });
         this.props.history.push("/community/freeboardlist");
       })
@@ -112,8 +113,8 @@ class FreeBoardInsert extends Component {
                   <input
                     type="text"
                     name="user_name"
-                    value={this.state.user_name}
-                    onChange={this.onKeyChange}
+                    value={localStorage.state}
+                    readOnly
                   ></input>
                 </td>
               </tr>

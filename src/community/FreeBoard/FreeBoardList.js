@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Kickbuckmain from "./kickbuck.jpg";
 import "./FreeBoardList.css";
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 class FreeBoardList extends Component {
   constructor() {
@@ -53,9 +55,10 @@ class FreeBoardList extends Component {
 
   componentDidMount() {
     this.list(); //랜더링 직전 스프링으로부터 목록을 받아온다
+    console.log(localStorage);
   }
 
-  componentDidUpdate = (p, s) => {
+  componentDidUpdate = () => {
     if (this.state.flag) {
       this.list();
       this.setState({
@@ -69,9 +72,15 @@ class FreeBoardList extends Component {
     }
   };
 
+  handleClickOpen() {
+    this.setState({
+      open: true
+    });
+  }
+
   render() {
     return (
-      <Fragment>
+      <Paper>
         <div className="header">
           <div className="mainimg">
             <img src={Kickbuckmain} alt="" className="kickimg"></img>
@@ -79,14 +88,18 @@ class FreeBoardList extends Component {
         </div>
         <h3>FreeBoard</h3>
         <div className="table-box">
-          <button
+          <Button
             type="button"
             onClick={() => {
-              this.props.history.push("/community/freeboardinsert");
+              if (localStorage.length === 1) {
+                this.props.history.push("/community/freeboardinsert");
+              } else {
+                alert("로그인을 해주세요");
+              }
             }}
           >
             추가
-          </button>
+          </Button>
           <table>
             <thead>
               <tr>
@@ -116,7 +129,7 @@ class FreeBoardList extends Component {
             </button>
           </div>
         </div>
-      </Fragment>
+      </Paper>
     );
   }
 }
