@@ -22,10 +22,15 @@ class SoloItem extends Component {
     
     withCountUp = () => {
 
-        var url = "http://localhost:9000/controller/bucketwithup?num=" + this.props.idx.num;
-        Axios.get(url)
+        var url = "http://localhost:9000/controller/bucketwithup";
+        Axios.post(url,
+            {
+                user_name: localStorage.state.toString(), 
+                num: this.props.idx.num
+            }
+        )
         .then( (resData) => {
-
+            
         })
         .catch( (error) => {
             console.log("update error" + error)

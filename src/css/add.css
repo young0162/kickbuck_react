@@ -103,3 +103,37 @@
     color: #fff;
     background: #639ACC;
 }
+.add_box .input_box .hashtagbox {
+    margin-top: 5px;
+}
+.add_box .input_box .hashstyle {
+    padding: 5px 8px;
+    background: #639ACC;    
+    color: #fff;
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.add_box .input_box .hashstyle .del_but {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    right: -5px;
+    top: -2px;
+}
+.add_box .input_box .hashstyle .del_but span {
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    position: absolute;
+    top: 43%;
+    left: 10%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    transform: rotate(-45deg);
+}
+.add_box .input_box .hashstyle .del_but span:nth-of-type(2) {
+    transform: rotate(45deg);
+}

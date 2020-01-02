@@ -44,6 +44,13 @@ class Login extends Component {
         console.log(user_name.value, password.value);
     }
 
+    enterLogin = (e) => {
+        if (e.key === 'Enter')
+        {
+            this.loginCheck();
+        }
+    }
+
 
     render() {
 
@@ -67,8 +74,8 @@ class Login extends Component {
                     <div className="login_form">
                         <p className="title">이메일 로그인</p>
                         <input type="text" placeholder="아이디" ref="user_name" />
-                        <input type="password" placeholder="비밀번호" ref="password" />
-                        <p onClick={this.loginCheck.bind(this)}>
+                        <input type="password" placeholder="비밀번호" ref="password" onKeyPress={this.enterLogin.bind(this)} />
+                        <p onClick={this.loginCheck.bind(this)} >
                             로그인
                         </p>
                         <div className="login_menu">

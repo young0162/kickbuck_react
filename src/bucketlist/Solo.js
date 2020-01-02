@@ -69,6 +69,8 @@ class Solo extends Component {
 
     
 
+    
+
     render() {
 
         let box;
