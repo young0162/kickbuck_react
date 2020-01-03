@@ -24,6 +24,7 @@ import QnaBoardUpdate from "./community/QnA/QnaBoardUpdate";
 import QnaComment from "./community/QnA/QnaComment";
 import QnaBoard from "./community/QnA/QnaBoard";
 import QnaBoardWrite from "./community/QnA/QnaBoardWrite";
+import bucketdetail from "./offbucket/bucketdetail";
 
 export default class Main extends Component {
   render() {
@@ -46,6 +47,8 @@ export default class Main extends Component {
           <Route exact path="/with" component={With} />
           <Route exact path="/all" component={All} />
           <Route exact path="/add" component={Add} />
+
+          {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />
           <Route
             exact
@@ -62,12 +65,15 @@ export default class Main extends Component {
             path="/community/freeboardupdate/:num"
             component={FreeBoardUpdate}
           />
+
+          {/* 자유게시판 댓글 */}
           <Route
             exact
             path="/community/freeboardcomment/:num"
             component={FreeBoardComment}
           />
 
+          {/* QnA게시판 */}
           <Route exact path="/community/qnaboard" component={QnaBoard} />
           <Route
             exact
@@ -89,6 +95,13 @@ export default class Main extends Component {
             path="/community/qnacomment/:num"
             component={QnaComment}
           />
+
+          {/* 오프후기 */}
+          <Route
+            exact
+            path="/bucket/bucketdetail"
+            component={bucketdetail}
+          ></Route>
         </div>
       </BrowserRouter>
     );

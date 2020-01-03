@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import axios from "axios";
 
 class Off extends Component {
-    render() {
-        return (
-            <div>
-                Off 버킷
-            </div>
-        );
-    }
+  render() {
+    return <div>off버킷</div>;
+  }
 }
 
 export default Off;
