@@ -1,10 +1,17 @@
+.form-group{
+    padding: 10px;
+    text-align: center;
+}
+
+
 
 #xmenu{
-    color:black; font-size:'22px'; text-decoration: none;
+   display:inline-block; width:'100px'; color:black; font-size:'22px'; text-decoration: none;
+
 }
 
 #xmenu:hover{
-    color:rgb(137, 184, 238); font-size:'22px'; font-weight: bold; text-decoration: none;
+    display:inline-block; width:'100px'; color:rgb(137, 184, 238); font-size:'22px'; font-weight: bold; text-decoration: none;
    } 
 
 .faqwrap{
@@ -62,4 +69,5 @@
 
 ul{
     list-style:none;
+    width: 700px;
     }

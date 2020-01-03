@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './faq.css';
-import Collapsible from 'react-collapsible';
+//import Collapsible from 'react-collapsible';
 import {NavLink} from 'react-router-dom';
 //import 'bootstrap/dist/css/bootstrap.css';
 
@@ -12,43 +12,29 @@ export default class FAQ_signup extends Component {
     return (
       <Fragment>
 
-            <div style={{textAlign:'center',  paddingLeft:'30px', paddingRight:'100px', position:"relative"}}>
+            <div>
                 <form className="form-group">
-                    <table  className="table table-bordered">
-                        
-                        <tbody>
-                            <tr>
-                                
-                                <td width="250">
-                                    {/* style={{ textDecoration: 'none' }}은 NavLink 밑줄 제거하기 위해 적용
+                    {/* style={{ textDecoration: 'none' }}은 NavLink 밑줄 제거하기 위해 적용
                                         xmenu는 hover
                                     */}
                                     
-                                    <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">가입/로그인</p>
+                                    <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none'}}>
+                                        <div id="xmenu" >가입/로그인</div>
                                     </NavLink>
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="/FAQ_contents" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">서비스/컨텐츠</p> 
+
+                                    <NavLink exact to="/FAQ_contents" style={{ textDecoration: 'none'}}>
+                                        <div id="xmenu">서비스/컨텐츠</div> 
                                     </NavLink>  
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="./FAQ_etc" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">기타</p> 
+                                    &nbsp;&nbsp;
+                                    <NavLink exact to="./FAQ_etc" style={{ textDecoration: 'none'}}>
+                                        <div id="xmenu">기타</div> 
                                     </NavLink>
-                                </td>
-                            </tr>
-                            
-                        </tbody>
- 
-                    </table>
                 </form>
 
             </div>
 
       <br></br>
-
+{/* 
       <div className="faqwrap">
         <div className="container">
           <div>
@@ -89,7 +75,7 @@ export default class FAQ_signup extends Component {
     
           </ul>
       </div>
-      </div>
+      </div> */}
       </Fragment>
     );
   }

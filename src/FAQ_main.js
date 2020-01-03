@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './faq.css';
-import Collapsible from 'react-collapsible';
+//import Collapsible from 'react-collapsible';
 import {NavLink} from 'react-router-dom';
 //import 'bootstrap/dist/css/bootstrap.css';
 
@@ -44,7 +44,7 @@ export default class FAQ_main extends Component {
             </div>
 
       <br></br>
-
+{/* 
       <div className="faqwrap">
         <div className="container">
           <div>
@@ -145,7 +145,7 @@ export default class FAQ_main extends Component {
               </li>
           </ul>
       </div>
-      </div>
+      </div> */}
       </Fragment>
     );
   }

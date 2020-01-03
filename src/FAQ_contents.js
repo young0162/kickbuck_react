@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import './faq.css';
-import Collapsible from 'react-collapsible';
 import {NavLink} from 'react-router-dom';
 //import 'bootstrap/dist/css/bootstrap.css';
+//import Collapsible from 'react-collapsible';
 
 export default class FAQ_contents extends Component {
 
@@ -44,7 +44,7 @@ export default class FAQ_contents extends Component {
             </div>
 
       <br></br>
-
+{/* 
       <div className="faqwrap">
         <div className="container">
 
@@ -53,11 +53,11 @@ export default class FAQ_contents extends Component {
               <li>
                   <Collapsible trigger="Q. kickbuck이란 무슨뜻인가요?" className="question">
                         <p className="answer">
-                          영어 속어 중에 kick the bucket이라는 속어가 있는데 죽다라는 의미를 가지고 있습니다.<br />
+                      영어 속어 중에 kick the bucket이라는 속어가 있는데 죽다라는 의미를 가지고 있습니다.<br />
                           이 속어에서 버킷리스트라는 말이 유래해서 쓰게되었습니다.
                           누구나 죽기전에 해보고싶은것들이 있는데 혼자서는 도전하기가 힘든분들을 위해 만들었습니다.
                         </p>
-                  </Collapsible>
+                  //</Collapsible>
               </li>
 
               <li>
@@ -101,7 +101,7 @@ export default class FAQ_contents extends Component {
               </li>
           </ul>
       </div>
-      </div> 
+      </div>  */}
       </Fragment>
     );
   }
