@@ -151,7 +151,7 @@ class QnaCommentItem extends Component {
                     
                     <td>   
                         <form onSubmit={this.onSubmit}>                             
-                            <Button variant="contained" color="primary" style={{width:'60px', height:'40px', margin: '5px'}}
+                            <Button type="submit" variant="contained" color="primary" style={{width:'60px', height:'40px', margin: '5px'}}
                              onClick={this.unvisibleEvent.bind(this)}>
                                 등록
                             </Button>

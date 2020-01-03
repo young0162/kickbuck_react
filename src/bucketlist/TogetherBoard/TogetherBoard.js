@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Image } from "semantic-ui-react";
+import axios from 'axios';
+import TogetherBoardItem from './TogetherBoardItem';
 
 
 const responsive = {
@@ -35,14 +37,152 @@ const responsive = {
     "https://images.unsplash.com/photo-1550064824-8f993041ffd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
   ];
 
+  
+
+  
 
 class TogetherBoard extends Component {
+
+  constructor(history){
+      super();
+
+      this.history=history;
+
+      this.state={
+          withBoardData: [],
+          image_name: "",
+          num:'',
+          user_name: '',
+          comment: '',
+          display_none: "none",
+          display: "table-row"
+      }
+
+      this.onKeyChange =  this.onKeyChange.bind(this);
+
+  }
+
+  // 목록을 가져올 함수
+  withBoardList=()=>{
+    var url="http://localhost:9000/controller/bucket/withboardlist";
+    axios.get(url)
+    .then((resData)=>{
+        // 스프링 서버로부터 받은 데이타로 qnaData로 수정
+        this.setState({
+            withBoardData: resData.data
+        })
+        console.log(this.state.withBoardData);
+
+    })
+    .catch((error)=>{
+        console.log("withBoard list 오류!");
+    })
+  }
+
+  componentDidMount(){
+    // 랜더링 직전 스프링으로 목록을 받아온다
+    this.withBoardList();
+  }
+
+
+  visibleEvent=()=>{
+    this.setState({
+        display: 'none',
+        display_none: 'table-row'
+    })
+  }
+
+  unvisibleEvent=()=>{
+    this.setState({
+      display: 'table-row',
+      display_none: 'none',
+      comment: ''
+    })
+  }
+
+  
+
+  //취소시 state 값 제거
+  cencleEvent=()=>{
+    this.setState({
+      comment: ''
+    });        
+    console.log(this.state);
+  }
+
+  onImageUpload = e => {
+    const uploadFile = e.target.files[0];
+    const image_name = e.target.files[0].name; //이미지파일명
+    console.log("이미지 파일명:" + image_name);
+    this.setState({
+      image_name
+    });
+
+    //서버로  사진 업로드
+    const stufile = new FormData();
+    stufile.append("uploadFile", uploadFile);
+    axios({
+      method: "post",
+      url: "http://localhost:9000/controller/bucket/withboard/save",
+      data: stufile,
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.log("업로드 오류:" + error.data);
+      });
+  };
+
+  //입력시 state 값 변경
+  onKeyChange=(e)=>{
+    this.setState({
+        comment: this.refs.comment.value,
+        num: 23,  // 나중에 버킷 DB 에서 num 값을 받아서 넣어줘야함!!!
+        user_name: localStorage.state
+    });        
+    console.log(this.state);
+  }
+
+  // 스프링으로 데이타 전송
+  onSubmit=(e)=>{
+    e.preventDefault();
+
+    axios.post(
+        "http://localhost:9000/controller/bucket/withboardinsert",
+        {
+            num: this.state.num,
+            user_name: this.state.user_name,
+            comment: this.refs.comment.value,
+            image_name: this.state.image_name
+        }
+    )
+        .then((responseData)=>{
+            // 추가를 한 후에 필요한 코드    
+            // 코멘트 리스트 다시 호출
+            this.withBoardList();
+
+            // 코멘트 입력란 지우기
+            this.setState({
+                comment:''
+            });                
+            
+        })
+        .catch((error)=>{
+            console.log("add error");
+        });
+           
+}
+
+
+
     render() {
         return (
             <div>
                 <Carousel responsive={responsive}
                 ssr
-                partialVisbile
+                // partialVisbile
                 // deviceType={deviceType}
                 itemClass="image-item">
                     {images.slice(0, 5).map(image => {
@@ -55,6 +195,88 @@ class TogetherBoard extends Component {
                         );
                     })}
                 </Carousel>
+                <br/><br/>
+                <hr/>
+                <div >
+                    <h2> Bucket List 함께하기 게시판 </h2>
+                    <br/>
+                    <button style={{width:'120px', height:'40px', margin: '5px', display:this.state.display}}
+                      onClick={this.visibleEvent.bind(this)}>
+                            글쓰기
+                    </button>
+                    
+                    <table>
+                      <tbody>
+                        <tr style={{display:this.state.display_none}}>
+                      
+                          <td style={{width:'120px', height: '50px', textAlign: 'center'}}>
+                              {localStorage.state}
+                          </td>
+
+                          <td>
+                              <textarea ref="comment" style={{width:'700px', height:'50px', margin: '10px'}} 
+                              placeholder="내용을 입력하세요." required="required" onChange={this.onKeyChange}/>
+                          </td>
+
+                          <td>
+                            <input style={{width:'150px', height: '50px', textAlign: 'center'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
+                          </td>
+
+                          <td>   
+                              <form onSubmit={this.onSubmit}>                             
+                                  <button type="submit" style={{width:'120px', height:'40px'}}
+                                  onClick={this.unvisibleEvent.bind(this)}>
+                                      등록
+                                  </button>                            
+                              </form>                                                                
+                          </td>
+                         </tr> 
+                      </tbody>
+                    </table>
+
+                    <button  style={{width:'120px', height:'40px', margin: '5px', display:this.state.display_none}}
+                      onClick={this.unvisibleEvent.bind(this)}>
+                        취소
+                    </button>
+                </div>
+                <hr/>
+                <table className="qnaboard board" style={{width: '1200px'}}>
+                    <thead>
+                        <tr>
+                          <th colSpan="5" style={{padding: '10px'}}>
+                              <b style={{fontSize: '2em'}}>함께하는 사람들</b>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td colSpan="5" style={{textAlign:'center'}}>
+                              <b style={{fontSize: '1.8em'}}>{localStorage.state}, {localStorage.state}, {localStorage.state},
+                               {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, 
+                               {localStorage.state}, {localStorage.state}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan="5"><br/></td>
+                        </tr>
+                        <tr style={{height: '60px', textAlign:'center'}}>
+                            <th width="100px">번호</th>
+                            <th width="150px">사용자 이름</th>
+                            <th width="600px">내용</th>
+                            <th width="150px">작성일</th>
+                            <th width="100px">이미지</th>
+                            <th width="100px"></th>
+                            
+                        </tr>
+                    </thead> 
+                    
+                        {
+                          this.state.withBoardData.map((row,idx)=>(
+                            <TogetherBoardItem row={row} idx={idx} key={row.with_num}/>
+                          ))                        
+                        }
+                    
+                </table>
+                <hr/>
+                <br/><br/>
             </div>
         );
     }
