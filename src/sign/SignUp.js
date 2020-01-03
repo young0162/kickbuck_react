@@ -5,17 +5,24 @@ import Axios from 'axios';
 
 class SignUp extends Component {
 
+  constructor() {
+    super();
+    
+    this.state = {
+      emailState: false
+    }
+
+  }
+
   MemberInsert = (data) => {
-    const {user_name, email1, email2, password, hp1, hp2, hp3,} = this.refs;
+    const { user_name, email1, email2, password } = this.refs;
 
     var url = "http://localhost:9000/controller/signup";
     Axios.post( url, 
       {
         user_name: user_name.value,
-        email1: email1.value + '@' + email2.value,
-        email2: email2.value,
+        email: email1.value + '@' + email2.value,
         password: password.value,
-        phone : hp1.value + hp2.value + hp3.value
       })
       .then( (resData) => {
         
@@ -24,10 +31,50 @@ class SignUp extends Component {
         console.log("insert error");
       })
 
-      console.log(user_name.value, email1.value, email2.value, password.value, hp1.value, hp2.value, hp3.value);
+  }
+
+  emailCheck = () => {
+    const { email1, email2 } = this.refs;
+    const email = email1.value + '@' + email2.value;
+
+    var url = "http://localhost:9000/controller/emailcheck?email=" + email;
+    Axios.get(url)
+      .then( (resData) => {
+        if(resData.data === 0)
+        {
+          this.setState({
+            emailState: true
+          })
+        }
+        else
+        {
+          this.setState({
+            emailState: false
+          })
+        }
+        
+        console.log(resData.data);
+      })
+      .catch( (error) => {
+        console.log("check error : " + error);
+      })
+
+      console.log(email);
+    
   }
 
   render() {
+
+    let stateP;
+
+    if(this.state.emailState) {
+      stateP = <p>사용가능한 이메일 입니다.</p>
+    }
+    else 
+    {
+      stateP = <p>중복된 이메일 입니다.</p>
+    }
+
     return (
       <div>
         <div className="sign_box"> 
@@ -45,22 +92,14 @@ class SignUp extends Component {
                 <option>daum.net</option>
                 <option>gmail.com</option>
               </select>
-              <span className="email_check">
+              <span className="email_check" onClick={this.emailCheck.bind(this)}>
                 중복확인
               </span>
+              {stateP}
             </div>
             <div className="mb">
               <input className="pull mb5" placeholder="비밀번호" type="password" ref="password" /> 
               <input className="pull" placeholder="비밀번호 확인" type="password" /> 
-            </div>
-            <div className="mb hp_box">
-              <select className="pull hp1" ref="hp1">
-                <option value="010">010</option>
-                <option value="011">011</option>
-                <option value="016">016</option>
-              </select>
-              <input type="text" className="pull hp2" ref="hp2" />
-              <input type="text" className="pull hp3" ref="hp3" />
             </div>
             <div>
               <p>이용약관 동의</p>

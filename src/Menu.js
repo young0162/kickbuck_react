@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
-import { HighlightOff , Add} from '@material-ui/icons';
+import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
+import SearchBar from './SearchBar';
 import './css/login.css';
 
 
@@ -149,10 +150,7 @@ export default class Menu extends Component {
           </ul>
 
           <div className="searchbox" style={searchBg}>
-            <p>검색리스트</p>
-            <div className="close_but" onClick={this.goSearch}>
-              <HighlightOff/>
-            </div>
+            <SearchBar goSearch={this.goSearch}/>
           </div>
 
 

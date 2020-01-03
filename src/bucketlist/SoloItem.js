@@ -21,11 +21,10 @@ class SoloItem extends Component {
 
     
     withCountUp = () => {
-
         var url = "http://localhost:9000/controller/bucketwithup";
         Axios.post(url,
             {
-                user_name: localStorage.state.toString(), 
+                user_name: localStorage.state, 
                 num: this.props.idx.num
             }
         )
@@ -39,8 +38,13 @@ class SoloItem extends Component {
     }
 
     likeCountUp = () => {
-        var url = "http://localhost:9000/controller/bucketlikeup?num=" + this.props.idx.num;
-        Axios.get(url)
+        var url = "http://localhost:9000/controller/bucketlikeup";
+        Axios.post(url, 
+            {
+                user_name: localStorage.state, 
+                num: this.props.idx.num
+            }
+        )
         .then( (resData) => {
 
         })
