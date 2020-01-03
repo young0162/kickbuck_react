@@ -67,7 +67,7 @@ export default class Main extends Component {
                     <Route exact path='/community/qnaboardupdate/:num' component={QnaBoardUpdate} />
                     <Route exact path='/community/qnacomment/:num' component={QnaComment} />
 
-                    <Route exact path='/bucketlist/togetherboatd' component={TogetherBoard} />
+                    <Route exact path='/bucketlist/togetherboard' component={TogetherBoard} />
                 </div>
             </BrowserRouter>
         )

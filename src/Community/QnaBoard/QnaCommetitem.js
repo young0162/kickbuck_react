@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import { Dialog, DialogTitle, DialogContentText, DialogActions } from '@material-ui/core';
 
 class QnaCommentItem extends Component {
 
@@ -15,7 +16,8 @@ class QnaCommentItem extends Component {
             num:'',
             recomment: '',
             display: "none",
-            isvisible: "visible"
+            isvisible: "visible",
+            opendelete:false
         }
 
         this.onKeyChange =  this.onKeyChange.bind(this);
@@ -90,6 +92,18 @@ class QnaCommentItem extends Component {
         });
     }
 
+     // 모달 팝업 관련 이벤트
+     handleClickOpen = () =>{
+        this.setState({
+        opendelete: true
+        });
+    }
+    
+    handleClickClose = () =>{
+        this.setState({
+        opendelete: false
+        });
+    }
     
 
     render() {
@@ -131,9 +145,19 @@ class QnaCommentItem extends Component {
                             대댓글
                         </Button>  
                         <Button variant="contained" color="secondary" style={{width:'20px', height:'40px', margin: '5px',
-                         visibility:this.state.isvisible}} onClick={this.onDataDelete}>
+                         visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
                             X
-                        </Button>  
+                        </Button>
+                        <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
+                            <DialogTitle>댓글 삭제</DialogTitle>
+                            <DialogContentText>
+                                댓글을 삭제하시겠습니까?
+                            </DialogContentText>
+                            <DialogActions>
+                                <Button variant="contained" onClick={this.onDataDelete}>삭제</Button>
+                                <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
+                            </DialogActions>
+                        </Dialog>  
                     </td>             
                 </tr>
                 <tr style={{display:this.state.display}}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import QnaComment from './QnaComment';
 import Button from '@material-ui/core/Button';
+import { Dialog, DialogTitle, DialogContentText, DialogActions } from '@material-ui/core';
 
 
   
@@ -18,7 +19,8 @@ class QnaBoardDetail extends Component {
 
         this.state={
             // 스프링으로부터 dto 데이타를 받을 변수
-            selectData:''
+            selectData:'',
+            opendelete:false
         }
 
         this.onSelect=this.onSelect.bind(this);
@@ -70,6 +72,19 @@ class QnaBoardDetail extends Component {
     }
 
 
+     // 모달 팝업 관련 이벤트
+    handleClickOpen = () =>{
+        this.setState({
+        opendelete: true
+        });
+    }
+    
+    handleClickClose = () =>{
+        this.setState({
+        opendelete: false
+        });
+    }
+
     render() {
 
        
@@ -116,7 +131,17 @@ class QnaBoardDetail extends Component {
                         onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
                         수    정</Button>
                     <Button variant="contained" color="secondary" style={{width:'150px', height:'50px', margin: '5px'}} 
-                                    onClick={this.onDataDelete}>삭    제</Button>
+                                    onClick={this.handleClickOpen}>삭    제</Button>
+                    <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
+                            <DialogTitle>댓글 삭제</DialogTitle>
+                            <DialogContentText>
+                                댓글을 삭제하시겠습니까?
+                            </DialogContentText>
+                            <DialogActions>
+                                <Button variant="contained" onClick={this.onDataDelete}>삭제</Button>
+                                <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
+                            </DialogActions>
+                    </Dialog>
                     <Button variant="contained" style={{width:'150px', height:'50px', margin: '5px'}} 
                                     onClick={()=>{this.history.push("/community/qnaboard");}}>목    록</Button>
 

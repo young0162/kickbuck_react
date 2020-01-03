@@ -50,16 +50,13 @@ class TogetherBoard extends Component {
 
       this.state={
           withBoardData: [],
-          image_name: "",
+          imageNameList: [],
           num:'',
           user_name: '',
           comment: '',
           display_none: "none",
           display: "table-row"
       }
-
-      this.onKeyChange =  this.onKeyChange.bind(this);
-
   }
 
   // 목록을 가져올 함수
@@ -82,6 +79,7 @@ class TogetherBoard extends Component {
   componentDidMount(){
     // 랜더링 직전 스프링으로 목록을 받아온다
     this.withBoardList();
+    this.withImageNameList();
   }
 
 
@@ -93,23 +91,19 @@ class TogetherBoard extends Component {
   }
 
   unvisibleEvent=()=>{
-    this.setState({
+    
+
+    this.setState({      
       display: 'table-row',
-      display_none: 'none',
-      comment: ''
+      display_none: 'none'      
     })
+
+    this.refs.comment.value = '';
   }
 
   
 
-  //취소시 state 값 제거
-  cencleEvent=()=>{
-    this.setState({
-      comment: ''
-    });        
-    console.log(this.state);
-  }
-
+ 
   onImageUpload = e => {
     const uploadFile = e.target.files[0];
     const image_name = e.target.files[0].name; //이미지파일명
@@ -135,16 +129,6 @@ class TogetherBoard extends Component {
       });
   };
 
-  //입력시 state 값 변경
-  onKeyChange=(e)=>{
-    this.setState({
-        comment: this.refs.comment.value,
-        num: 23,  // 나중에 버킷 DB 에서 num 값을 받아서 넣어줘야함!!!
-        user_name: localStorage.state
-    });        
-    console.log(this.state);
-  }
-
   // 스프링으로 데이타 전송
   onSubmit=(e)=>{
     e.preventDefault();
@@ -152,8 +136,8 @@ class TogetherBoard extends Component {
     axios.post(
         "http://localhost:9000/controller/bucket/withboardinsert",
         {
-            num: this.state.num,
-            user_name: this.state.user_name,
+            num: 23,
+            user_name: localStorage.state,
             comment: this.refs.comment.value,
             image_name: this.state.image_name
         }
@@ -162,22 +146,43 @@ class TogetherBoard extends Component {
             // 추가를 한 후에 필요한 코드    
             // 코멘트 리스트 다시 호출
             this.withBoardList();
-
+            this.setState({      
+                  display: 'table-row',
+                  display_none: 'none'      
+                })
             // 코멘트 입력란 지우기
-            this.setState({
-                comment:''
-            });                
+            this.refs.comment.value = '';            
             
         })
         .catch((error)=>{
             console.log("add error");
         });
            
-}
+  }
 
+  // 이미지 네임 목록을 가져올 함수
+  withImageNameList=()=>{
+    var url="http://localhost:9000/controller/bucket/withimagenames";
+    axios.get(url)
+    .then((resData)=>{
+        // 스프링 서버로부터 받은 데이타로 qnaData로 수정
+        this.setState({
+          imageNameList: resData.data
+        })
+        console.log(this.state.imageNameList);
 
+    })
+    .catch((error)=>{
+        console.log("imageNameList 오류!"+error);
+    })
+  }
+
+ 
 
     render() {
+
+        var imgurl = "http://localhost:9000/controller/save/";
+
         return (
             <div>
                 <Carousel responsive={responsive}
@@ -185,15 +190,17 @@ class TogetherBoard extends Component {
                 // partialVisbile
                 // deviceType={deviceType}
                 itemClass="image-item">
-                    {images.slice(0, 5).map(image => {
-                        return (
+                   {
+                     this.state.imageNameList.map((item,idx)=>(
                         <Image
                             draggable={false}
-                            style={{ width: "100%", height: "100%" }}
-                            src={image}
+                            style={{ width: "640px", height: "460px" }}
+                            src={imgurl+item}
                         />
-                        );
-                    })}
+                        ))
+                   }
+                        
+                
                 </Carousel>
                 <br/><br/>
                 <hr/>
@@ -215,7 +222,7 @@ class TogetherBoard extends Component {
 
                           <td>
                               <textarea ref="comment" style={{width:'700px', height:'50px', margin: '10px'}} 
-                              placeholder="내용을 입력하세요." required="required" onChange={this.onKeyChange}/>
+                              placeholder="내용을 입력하세요." required="required"/>
                           </td>
 
                           <td>
@@ -224,8 +231,7 @@ class TogetherBoard extends Component {
 
                           <td>   
                               <form onSubmit={this.onSubmit}>                             
-                                  <button type="submit" style={{width:'120px', height:'40px'}}
-                                  onClick={this.unvisibleEvent.bind(this)}>
+                                  <button type="submit" style={{width:'120px', height:'40px'}}>
                                       등록
                                   </button>                            
                               </form>                                                                
@@ -270,7 +276,7 @@ class TogetherBoard extends Component {
                     
                         {
                           this.state.withBoardData.map((row,idx)=>(
-                            <TogetherBoardItem row={row} idx={idx} key={row.with_num}/>
+                            <TogetherBoardItem row={row} idx={idx} key={row.with_num} onList={this.withBoardList}/>
                           ))                        
                         }
                     
