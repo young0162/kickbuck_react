@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
 
 class bucketdetail extends Component {
   constructor({ history, match }) {
@@ -32,11 +33,35 @@ class bucketdetail extends Component {
       });
   };
 
+  comment = () => {
+    var url = "";
+  };
+
   componentDidMount = () => {
     this.bucket();
   };
   render() {
-    return <div>{this.state.bucketData}</div>;
+    return (
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>{this.state.bucketData.user_name}</td>
+            </tr>
+            <tr>
+              <td>{this.state.bucketData.subject}</td>
+            </tr>
+            <tr>
+              <td>{this.state.bucketData.content}</td>
+            </tr>
+            <tr>
+              <td>{this.state.bucketData.image}</td>
+            </tr>
+          </tbody>
+        </table>
+        <Button color="info">후기 입력</Button>
+      </div>
+    );
   }
 }
 
