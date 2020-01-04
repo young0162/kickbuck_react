@@ -6,6 +6,8 @@ import Menu from './Menu';
 import FAQ_signup from './FAQ_signup';
 import FAQ_contents from './FAQ_contents';
 import FAQ_etc from './FAQ_etc';
+import Bmrlist from './Bmrlist';
+import Bmrwrite from './Bmrwrite';
 import { Route } from 'react-router-dom';
 
 export default class Main extends Component {
@@ -19,6 +21,8 @@ export default class Main extends Component {
                 <Route exact path='/FAQ_signup' component={FAQ_signup}/>
                 <Route exact path='/FAQ_contents' component={FAQ_contents}/>
                 <Route exact path='/FAQ_etc' component={FAQ_etc}/>
+                <Route exact path='/bmrlist' component={Bmrlist}/>
+                <Route exact path='/bmrwrite' component={Bmrwrite}/>
             </div>
         )
     }
