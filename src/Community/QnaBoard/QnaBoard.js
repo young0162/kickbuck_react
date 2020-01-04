@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import QnaBoardItem from './QnaBoardItem';
 import Button from '@material-ui/core/Button';
-
+import '../Board.css';
 
 
 
@@ -96,10 +96,7 @@ class QnaBoard extends Component {
     render() {
         return (
             <div>
-                <hr/>
-                <div>
-                    <h2> Q&A 게시판 </h2>
-                </div>
+                
                 <br/><br/>
 
                 <table className="qnaboard board" style={{width: '1000px'}}>

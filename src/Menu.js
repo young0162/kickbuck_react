@@ -158,6 +158,9 @@ export default class Menu extends Component {
 
           <div className="bgon" style={sideBg}></div>
           <div className="sidebox" style={sideActive}>
+            <NavLink exact to = '/community'>
+              커뮤니티
+            </NavLink>
             <NavLink exact to="/community/freeboardlist">
               자유게시판
             </NavLink>
