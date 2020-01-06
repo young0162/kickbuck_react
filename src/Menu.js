@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
 import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
-import SearchBar from './SearchBar';
 import './css/login.css';
 import logoimg from './image/main/tick_off_logo.png';
 
@@ -17,7 +16,6 @@ export default class Menu extends Component {
           active: '-300px',
           opacSide: 0,
           visibiSide: 'hidden',
-          opac: 0,
           visibi: 'hidden',
           classSide: '',
           loginShow: 'none'
@@ -26,7 +24,6 @@ export default class Menu extends Component {
       this.onLogin = this.onLogin.bind(this);
       this.onLogOut = this.onLogOut.bind(this);
       this.addActive = this.addActive.bind(this);
-      this.goSearch = this.goSearch.bind(this);
   }
 
   addActive() {
@@ -49,20 +46,7 @@ export default class Menu extends Component {
 
   }
 
-  goSearch() {
-    if(this.state.visibi === 'hidden') {
-      this.setState({
-        opac: 1,
-        visibi: 'inherit'
-      })
-    }
-    else {
-      this.setState({
-        opac: 0,
-        visibi: 'hidden'
-      })
-    }
-  }
+  
 
   onLogin() {
     if (this.state.loginShow === 'none'){
@@ -95,10 +79,7 @@ export default class Menu extends Component {
       visibility: this.state.visibiSide
     }
 
-    const searchBg = {
-      opacity: this.state.opac,
-      visibility: this.state.visibi
-    }
+    
 
     const loginShow = {
       display: this.state.loginShow
@@ -127,12 +108,6 @@ export default class Menu extends Component {
                 </p>
               </li>
               <li>
-                <div className="search_box" onClick={this.goSearch}>
-                  <input type="text" readOnly={true}/>
-                  <img src={search_icon} alt=""  />
-                </div>
-              </li>
-              <li>
                   <NavLink exact to='/add'>
                     <p className="plus"><Add/></p>
                   </NavLink>
@@ -150,9 +125,7 @@ export default class Menu extends Component {
               </li>
           </ul>
 
-          <div className="searchbox" style={searchBg}>
-            <SearchBar goSearch={this.goSearch}/>
-          </div>
+          
 
 
           <div className="bgon" style={sideBg} onClick={this.addActive}></div>

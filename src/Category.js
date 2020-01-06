@@ -1,9 +1,38 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import search_icon from './image/main/search_icon.png';
+import SearchBar from './SearchBar';
 
 class Category extends Component {
+
+        state = {
+            opac: 0,
+        }
+
+
+    goSearch() {
+        if(this.state.visibi === 'hidden') {
+          this.setState({
+            opac: 1,
+            visibi: 'inherit'
+          })
+        }
+        else {
+          this.setState({
+            opac: 0,
+            visibi: 'hidden'
+          })
+        }
+      }
+
+
     render() {
+
+        const searchBg = {
+            opacity: this.state.opac,
+            visibility: this.state.visibi
+        }
+
         return (
             <div className="category_bar">
                 <ul>
@@ -28,6 +57,13 @@ class Category extends Component {
                         </li>
                     </NavLink>
                 </ul>
+                <div className="search_box" onClick={this.goSearch.bind(this)}>
+                  SEARCH <img src={search_icon} alt=""  />
+                </div>
+
+                <div className="searchbox" style={searchBg}>
+                    <SearchBar goSearch={this.goSearch.bind(this)}/>
+                </div>
             </div>
         );
     }
