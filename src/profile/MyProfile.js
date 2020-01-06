@@ -13,8 +13,7 @@ export default class MyProfile extends Component {
       user_name: '',
       email1: '',
       email2: '',
-      password: '',
-      password2: '',
+      passwordState: '',
       phone: '',
       image: '',
       showdata: this.displayData
@@ -25,7 +24,7 @@ export default class MyProfile extends Component {
   //마이메이지 호출되는 함수
   onSelect = () => {
     console.log("num=" + this.state.num)
-    var url = "http://localhost:9000/controller/select?num=" + this.state.num;
+    var url = "http://localhost:9000/controller/profile/select?num=" + this.state.num;
 
     axios.get(url)
       .then((responseData) => {
@@ -35,7 +34,7 @@ export default class MyProfile extends Component {
           user_name: responseData.data.user_name,
           email1: responseData.data.email1,
           email2: responseData.data.email2,
-          password: responseData.data.password,
+          // password: responseData.data.password,
           phone: responseData.data.phone,
           image: responseData.data.image
         });
@@ -46,7 +45,8 @@ export default class MyProfile extends Component {
   }
   componentWillMount() {
     //렌더링 직전 스프링으로부터 목록을 받아온다
-    this.onSelect();
+    this.onSelect();//누르기전에 실행해주기위해 필요함
+    //버튼이 없으면 무조건 필요함
   }
 
   //입력시 state 값 변경
@@ -71,7 +71,7 @@ export default class MyProfile extends Component {
     imgfile.append("uploadFile", uploadFile);
     axios({
       method: 'post',
-      url: 'http://localhost:9000/controller/upload',
+      url: 'http://localhost:9000/controller/profile/upload',
       data: imgfile,
       headers: { 'Content-Type': 'multipart/form-data' }
     })
@@ -87,15 +87,11 @@ export default class MyProfile extends Component {
   onImageAdd = () => {
     const url = "http://localhost:9000/controller/save/";
     const imgsrc = this.state.image;
-
     this.displayData.push(<img src={url + imgsrc} alt='' />);
-
     this.setState({
       showdata: this.displayData
     })
-
     console.log(imgsrc)
-
   }
 
   onSubmit = (e) => {
@@ -103,14 +99,15 @@ export default class MyProfile extends Component {
 
     const uploadFile = this.state;
     var url =
-      "http://localhost:9000/controller/profile/update";
+      "http://localhost:9000/controller/update";
     axios
       .post(url, uploadFile)
       .then(res => {
         this.setState({
           email1: this.state.email1,
           password: this.state.password,
-          phone: this.state.phone
+          phone: this.state.phone,
+          image: this.state.showdata
         })
         console.log(res.data);
       })
@@ -118,13 +115,37 @@ export default class MyProfile extends Component {
         console.log("submit 오류:" + err.data);
       });
     alert("회원정보가수정되었습니다.");
-
+    window.location.reload();//새로고침
   };
 
-
+  passwordCheck = () => {
+    const password = this.state.password;
+    const password2=this.state.password2;
+    if(password.value === password2.value)
+    {
+      this.setState({
+        passwordState: true
+      });
+    }
+    else if (password.value !== password2.value)
+    {
+      this.setState({
+        passwordState: false
+      });
+    }
+  }
 
   render() {
+    let stateP;
 
+    if (this.state.passwordState) {
+      stateP = <p>비밀번호가 일치합니다.</p>
+    }
+    else if (this.state.passwordState === false) {
+      stateP = <p>비밀번호가 일치하지 않습니다.</p>
+    }
+
+    const url = "http://localhost:9000/controller/save/";
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -133,14 +154,12 @@ export default class MyProfile extends Component {
               <tr className="profile_tr">
                 <td className="profile_td">프로필사진</td>
                 <td className="profile_td">
-                  {this.state.image}
-                  <div style={{width:'200px',height:'200px'}}>
+                  <div>
                     {this.state.showdata}
                   </div>
-                  <p onClick={this.onImageAdd.bind(this)}>이미지보기</p>
+                  <img style={{ width: '200px', height: '200px' }} src={url + this.state.image} alt="" />
                   <input type="file" onChange={this.onImageUpload.bind(this)}
                     name="image" />
-                  
                 </td>
               </tr>
               <tr className="profile_tr">
@@ -151,18 +170,19 @@ export default class MyProfile extends Component {
                 <td className="profile_td">비밀번호</td>
                 <td className="profile_td">
                   <input type="password" className="pass1"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onKeyChange} /></td>
+                    name="password" placeholder="비밀번호"
+                    onChange={this.passwordCheck.bind(this)}
+                    value={this.state.password} /></td>
               </tr>
               <tr className="profile_tr">
                 <td className="profile_td">비밀번호확인</td>
                 <td className="profile_td">
                   <input type="password" className="pass2"
-                    name="password2"
-                    value={this.state.password2}
-                    onChange={this.onKeyChange} />
-                  </td>
+                    name="password2" placeholder="비밀번호 확인"
+                    onChange={this.passwordCheck.bind(this)} 
+                    value={this.state.password2}/>
+                  {stateP}
+                </td>
               </tr>
               <tr className="profile_tr">
                 <td className="profile_td">연락처</td>
