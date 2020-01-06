@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import orora from '../image/main/orora.png';
 import boxbg from '../image/main/box_bg.png';
 import { FavoriteBorder, ThumbUp} from '@material-ui/icons';
 import Axios from 'axios';
