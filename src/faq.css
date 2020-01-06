@@ -1,11 +1,12 @@
 .ydiv{
     text-align:left;
+    padding: 20px;
 }
 
 
-.form-group{
-    padding: 10px;
-    text-align: left;
+.yform{
+    padding: 20px;
+    text-align: center;
 }
 
 

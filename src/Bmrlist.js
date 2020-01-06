@@ -6,9 +6,9 @@ export default class Bmrlist extends Component {
     render(){
         return (
             <div align="left">
-                <hr />
+                
                 <Bmrwrite />
-                <hr />
+                <br></br>
                 <Bmr />
             </div>
         );

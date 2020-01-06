@@ -32,7 +32,6 @@ export default class Menu extends Component {
                     방명록
                 </NavLink>
               </li>
-
           </ul>
       </div>
     );

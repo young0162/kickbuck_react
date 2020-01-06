@@ -11,14 +11,13 @@ export default class FAQ_etc extends Component {
     return (
       <Fragment>
 
-            <div style={{textAlign:'center', paddingLeft:'30px', paddingRight:'100px', position:"relative"}}>
-                <form className="form-group">
-                    <table  className="table table-bordered">
-                        
+        <div style={{textAlign:'center', paddingLeft:'300px',  position:"relative"}}>
+                <form className="yform">
+                    <table  className="table table-bordered">                        
                         <tbody>
-                        <tr>
+                            <tr>
                                 
-                                <td width="250">
+                                <td width="250" >
                                     {/* style={{ textDecoration: 'none' }}은 NavLink 밑줄 제거하기 위해 적용
                                         xmenu는 hover
                                     */}
@@ -37,14 +36,13 @@ export default class FAQ_etc extends Component {
                                         <p id="xmenu">기타</p> 
                                     </NavLink>
                                 </td>
-                            </tr>
-                            
-                        </tbody>
- 
+                            </tr>                            
+                        </tbody> 
                     </table>
                 </form>
-            </div>
+        </div>
 
+      
       <br></br>
 {/* 
       <div className="faqwrap">
