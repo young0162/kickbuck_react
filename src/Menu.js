@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
-import { HighlightOff , Add} from '@material-ui/icons';
+import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
+import SearchBar from './SearchBar';
 import './css/login.css';
+import logoimg from './image/main/tick_off_logo.png';
 
 
 export default class Menu extends Component {
@@ -120,14 +122,14 @@ export default class Menu extends Component {
               <li>
                 <p className="logo">
                  <NavLink exact to='/'>
-                    홈
+                    <img src={logoimg} alt=""/>
                   </NavLink>
                 </p>
               </li>
               <li>
-                <div className="search_box">
-                  <input type="text" />
-                  <img src={search_icon} alt="" onClick={this.goSearch} />
+                <div className="search_box" onClick={this.goSearch}>
+                  <input type="text" readOnly={true}/>
+                  <img src={search_icon} alt=""  />
                 </div>
               </li>
               <li>
@@ -149,20 +151,26 @@ export default class Menu extends Component {
           </ul>
 
           <div className="searchbox" style={searchBg}>
-            <p>검색리스트</p>
-            <div className="close_but" onClick={this.goSearch}>
-              <HighlightOff/>
-            </div>
+            <SearchBar goSearch={this.goSearch}/>
           </div>
 
 
-          <div className="bgon" style={sideBg}></div>
+          <div className="bgon" style={sideBg} onClick={this.addActive}></div>
           <div className="sidebox" style={sideActive}>
-            <NavLink exact to="/community/freeboardlist">
-              자유게시판
+            <NavLink exact to="/community/freeboardlist" onClick={this.addActive}>
+              <span>
+                자유게시판
+              </span>
             </NavLink>
-            <NavLink exact to='/community/qnaboard'>
-              Q&A 게시판
+            <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
+              <span>
+                Q&A 게시판
+              </span>
+            </NavLink>
+            <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
+              <span>
+                FAQ
+              </span>
             </NavLink>
           </div>
         </div>

@@ -32,6 +32,7 @@ class Login extends Component {
                 this.onLoginClick();
                 localStorage.state = user_name.value;
                 console.log("localStorage"  + localStorage.state);
+                window.location.reload();
             }
             else{
                 alert("아이디와 비밀번호가 일치하지 않습니다");
@@ -40,8 +41,14 @@ class Login extends Component {
         .catch( (error) => {
             console.log("login error" + error);
         })
+        
+    }
 
-        console.log(user_name.value, password.value);
+    enterLogin = (e) => {
+        if (e.key === 'Enter')
+        {
+            this.loginCheck();
+        }
     }
 
 
@@ -53,7 +60,7 @@ class Login extends Component {
             <div className="login_container" style={this.props.loginShow}>
                 <div className="login_bg"></div>
                 <div className="login_content">
-                    <div className="social_sign">
+                    {/* <div className="social_sign">
                         <p className="title">SNS 로그인</p>
                         <p className="sns_bar sns_barkakao">
                             <span className="kakao"><img src={kakao} alt="" /></span>
@@ -63,12 +70,12 @@ class Login extends Component {
                             <span className="naver"><img src={naver} alt="" /></span>
                             <span className="naver_text">네이버로 회원가입/로그인</span>
                         </p>
-                    </div>
+                    </div> */}
                     <div className="login_form">
                         <p className="title">이메일 로그인</p>
                         <input type="text" placeholder="아이디" ref="user_name" />
-                        <input type="password" placeholder="비밀번호" ref="password" />
-                        <p onClick={this.loginCheck.bind(this)}>
+                        <input type="password" placeholder="비밀번호" ref="password" onKeyPress={this.enterLogin.bind(this)} />
+                        <p className="login_but" onClick={this.loginCheck.bind(this)} >
                             로그인
                         </p>
                         <div className="login_menu">

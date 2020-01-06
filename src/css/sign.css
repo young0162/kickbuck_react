@@ -1,7 +1,7 @@
 .sign_box {
     width: 800px;
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 90px;
     box-sizing: border-box;
     padding-bottom: 100px;
 }
@@ -35,27 +35,16 @@
     width: 100%;
 }
 .sign_box .input_box input.email{
-    width: 182px;
+    width: 239px;
     margin-right: 10px;
 }
 .sign_box .input_box input.email2{
-    width: 126px;
+    width: 140px;
     margin-left: 10px;
     margin-right: 5px;
 }
 .sign_box .input_box .sel{
-    width: 110px;
-}
-.sign_box .input_box .hp1{
-    width: 128px;
-}
-.sign_box .input_box .hp2,
-.sign_box .input_box .hp3{
-    width: 205px;
-}
-.sign_box .input_box .hp2{
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 140px;
 }
 .sign_box .input_box .agree{
     border: 1px solid #ddd;
@@ -64,23 +53,6 @@
     padding: 15px;
     box-sizing: border-box;
     margin-bottom: 10px;
-}
-.sign_box .input_box .email_check{
-    width: 88px;
-    height: 38px;
-    line-height: 38px;
-    display: inline-block;
-    border-radius: 54px;
-    background: #999;
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: .3s;
-}
-.sign_box .input_box .email_check:hover{
-    background: #3886CE;
 }
 .sign_box .input_box .but_box{
     width: 270px;
@@ -132,3 +104,12 @@
     border-bottom: 1px solid #ddd;
     margin-top: 30px;
 }
+.sign_box .input_box .check_text {
+    color: #3886CE;
+    font-size: 12px;
+}
+.sign_box .input_box .check_text_red {
+    color: red;
+    font-size: 12px;
+}
+

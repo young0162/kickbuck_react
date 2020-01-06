@@ -23,7 +23,6 @@ import QnaBoardUpdate from './community/QnaBoardUpdate';
 import QnaCommet from './community/QnaComment';
 import QnaBoard from './community/QnaBoard';
 import QnaBoardWrite from './community/QnaBoardWrite';
-
 export default class Main extends Component {
 
     render() {
@@ -32,7 +31,14 @@ export default class Main extends Component {
                 <div>
                     {/* 메인페이지 로딩 되는 컴포넌트 */}
                     <Menu/>
-                    <Category/>
+
+
+                    <Route exact path='/' component={Category} />
+                    <Route exact path='/all' component={Category} />
+                    <Route exact path='/solo' component={Category} />
+                    <Route exact path='/with' component={Category} />
+                    <Route exact path='/off' component={Category} />
+                    <Route exact path='/together' component={Category} />
                     
                     
                     {/* 페이지 이동 로딩 컴포넌트 */}
@@ -47,7 +53,7 @@ export default class Main extends Component {
                     <Route exact path='/with' component={With} />
                     <Route exact path='/all' component={All} />
                     <Route exact path='/add' component={Add} />
-                    <Route exact path="/community/freeboardlist" component={FreeBoard} />
+                    <Route exact path='/community/freeboardlist' component={FreeBoard} />
                     <Route
                       path="/community/freeboarddetail/:num"
                       component={FreeBoardDetail}

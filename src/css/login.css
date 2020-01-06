@@ -15,8 +15,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 754px;
-    height: 368px;
+    width: 410px;
+    height: 330px;
     background: #fff;
     border: 1px solid #ddd;
     z-index: 106;
@@ -35,29 +35,38 @@
     width: 346px;
     height: 300px;
     box-sizing: border-box;
-    padding: 35px;
 }
 .login_content .login_form .title,
 .login_content .social_sign .title{
     font-size: 30px;
     text-align: center;
-    margin-bottom: 10px;
 }
 .login_content .login_form input{
     width: 278px;
     height: 43px;
     border: 1px solid #ddd;
-    display: inline-block;
+    display: block;
     margin: 0 auto;
     box-sizing: border-box;
     padding-left: 10px;
+    margin-top: -1px;
 }
-.login_content .login_form input:nth-of-type(1) {
-    margin-bottom: 10px;
+.login_content .login_form .login_but{
+    width: 278px;
+    height: 43px;
+    margin: 0 auto;
+    background: #639ACC;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 43px;
+    color: #fff;
+    cursor: pointer;
 }
 .login_content .login_form .login_menu{
     display: flex;
     font-size: 12px;
+    width: 278px;
+    margin: 0 auto;
 }
 .login_content .login_form .login_menu p{
     width: 33%;
