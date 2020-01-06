@@ -33,14 +33,12 @@ class Toggle extends Component {
         });
     }
 
-
-
     render() {
         return (
             <div>
                     <ul>
                         <li className="question" onClick={()=>this.ytoggle()} name="aa" >
-                              Q. 이메일 인증이 안 되어서 회원 가입에 실패했어요                                
+                              Q. 이메일 인증이 안 되어서 회원 가입에 실패했어요                             
                            
                             {  this.state.yshow?
                                  <p> 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>

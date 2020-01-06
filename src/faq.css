@@ -36,6 +36,9 @@
     
 }
 
+.question:before{
+    content:"Q.  ";
+}
 
 .question{   
     position: relative;
@@ -52,7 +55,7 @@
 
 
 .answer:before{
-    content:"A. ";
+    content:"A.  ";
 }
 
 .answer{
@@ -67,7 +70,8 @@
     padding: 10px 10px;
     background-color: rgb(224, 223, 223);
     box-sizing: border-box;
-    line-height: 24px;
+    line-height: 26px;
+    height: 50px;
     overflow: hidden;
    
 }

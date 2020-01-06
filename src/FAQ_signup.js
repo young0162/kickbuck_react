@@ -3,13 +3,15 @@ import './faq.css';
 import {NavLink} from 'react-router-dom';
 
 export default class FAQ_signup extends Component {
-    constructor(){
-        super()
-        this.state={
-            yshow:true
-        }
-    }
+    // constructor(){
+    //     super()
+    //     this.state={
+    //         yshow:true
+    //     }
+    // }
 
+
+    state={ yshow:true}
 
     ytoggle()
     {
@@ -64,18 +66,18 @@ export default class FAQ_signup extends Component {
             <div>
             <ul>
                         <li className="question" onClick={()=>this.ytoggle()} name="aa" >
-                              Q. 이메일 인증이 안 되어서 회원 가입에 실패했어요                                
+                            이메일 인증이 안 되어서 회원 가입에 실패했어요                                
                            
                             {  this.state.yshow?
-                                 <p> 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
+                                 <p className="answer"> 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
                             :null
                             }                           
                         </li>
                         <li className="question" onClick={()=>this.ytoggle()} name="ab">
-                              Q. 로그인에 실패했어요                                
+                              로그인에 실패했어요                                
                            
                             {  this.state.yshow?
-                                 <p> 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
+                                 <p className="answer"> 비밀번호 찾기 진행해보세요 </p>
                             :null
                             }                           
                         </li>
