@@ -23,7 +23,7 @@ export default class Bmrwrite extends Component {
 
         const uploadFile= JSON.stringify(this.state);
         console.log(uploadFile)
-        var url="http://localhost:8080/bmr/save";
+        var url="http://localhost:9005/bmr/save";
         axios.post(url, uploadFile, { headers: {'Content-Type': 'application/json'}})
             .then((res)=>{
                 console.log(res.data, res.status);
