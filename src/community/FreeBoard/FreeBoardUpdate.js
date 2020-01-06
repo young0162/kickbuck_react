@@ -13,7 +13,7 @@ export default class FreeBoardDetail extends Component {
       title: "",
       content: "",
       imagename: "",
-      writer: "",
+      writer: localStorage.state,
       num: this.num
     };
 
@@ -136,7 +136,7 @@ export default class FreeBoardDetail extends Component {
               <tr>
                 <th>작성자</th>
                 <td>
-                  <input value={this.state.writer} readOnly></input>
+                  <input value={localStorage.state} readOnly></input>
                 </td>
               </tr>
               <tr>

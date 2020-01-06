@@ -156,9 +156,13 @@ export default class FreeBoardDetail extends Component {
         <button
           type="button"
           onClick={() => {
-            this.history.push(
-              "/community/freeboardupdate/" + this.state.selectData.num
-            );
+            if (localStorage.state === this.state.selectData.user_name) {
+              this.history.push(
+                "/community/freeboardupdate/" + this.state.selectData.num
+              );
+            } else {
+              alert("로그인정보가 일치하지않습니다");
+            }
           }}
         >
           수정
