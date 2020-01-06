@@ -8,7 +8,6 @@ import logoimg from './image/main/tick_off_logo2.png';
 
 
 export default class Menu extends Component {
-
   constructor() {
       super();
 
@@ -27,37 +26,34 @@ export default class Menu extends Component {
   }
 
   addActive() {
-    if(this.state.active === '-300px') {
+    if (this.state.active === "-300px") {
       this.setState({
-        active: '0px',
+        active: "0px",
         opacSide: 1,
-        visibiSide: 'inherit',
-        classSide: 'classSide'
-      })
-    }
-    else {
+        visibiSide: "inherit",
+        classSide: "classSide"
+      });
+    } else {
       this.setState({
-        active: '-300px',
+        active: "-300px",
         opacSide: 0,
-        visibiSide: 'hidden',
-        classSide: ''
-      })
+        visibiSide: "hidden",
+        classSide: ""
+      });
     }
-
   }
 
   
 
   onLogin() {
-    if (this.state.loginShow === 'none'){
+    if (this.state.loginShow === "none") {
       this.setState({
-        loginShow: 'block'
-      })
-    }
-    else {
+        loginShow: "block"
+      });
+    } else {
       this.setState({
-        loginShow: 'none'
-      })
+        loginShow: "none"
+      });
     }
   }
 
@@ -66,24 +62,21 @@ export default class Menu extends Component {
     window.location.reload();
   }
 
-
-
   render() {
-
     const sideActive = {
       right: this.state.active
-    }
+    };
 
     const sideBg = {
       opacity: this.state.opacSide,
       visibility: this.state.visibiSide
-    }
+    };
 
     
 
     const loginShow = {
       display: this.state.loginShow
-    }
+    };
 
     let loginState = null;
 
@@ -132,7 +125,7 @@ export default class Menu extends Component {
 
           <div className="bgon" style={sideBg} onClick={this.addActive}></div>
           <div className="sidebox" style={sideActive}>
-            <NavLink exact to="/community/freeboardlist" onClick={this.addActive}>
+            <NavLink exact to='/community/freeboardlist' onClick={this.addActive}>
               <span>
                 자유게시판
               </span>
@@ -146,6 +139,12 @@ export default class Menu extends Component {
               <span>
                 FAQ
               </span>
+            </NavLink>
+            <NavLink exact to="/bucket/offbucketdetail">
+              offcomment
+            </NavLink>
+            <NavLink exact to='/bucketlist/togetherboard'>
+              함께하기
             </NavLink>
           </div>
         </div>
