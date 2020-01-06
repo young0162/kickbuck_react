@@ -12,6 +12,7 @@ import Category from "./Category";
 import { Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./css/main.css";
+import Board from './community/Board';
 import {
   FreeBoard,
   FreeBoardDetail,
@@ -19,14 +20,15 @@ import {
   FreeBoardUpdate,
   FreeBoardComment
 } from "./community/FreeBoard/Export";
-import QnaBoardDetail from "./community/QnA/QnaBoardDetail";
-import QnaBoardUpdate from "./community/QnA/QnaBoardUpdate";
-import QnaComment from "./community/QnA/QnaComment";
-import QnaBoard from "./community/QnA/QnaBoard";
-import QnaBoardWrite from "./community/QnA/QnaBoardWrite";
+import QnaBoardDetail from './community/QnaBoard/QnaBoardDetail';
+import QnaBoardUpdate from './community/QnaBoard/QnaBoardUpdate';
+import QnaComment from './community/QnaBoard/QnaComment';
+import QnaBoard from './community/QnaBoard/QnaBoard';
+import QnaBoardWrite from './community/QnaBoard/QnaBoardWrite';
 import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
+import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
 
 export default class Main extends Component {
   render() {
@@ -35,8 +37,7 @@ export default class Main extends Component {
         <div>
           {/* 메인페이지 로딩 되는 컴포넌트 */}
           <Menu/>
-
-
+          
           <Route exact path='/' component={Category} />
           <Route exact path='/all' component={Category} />
           <Route exact path='/solo' component={Category} />
@@ -57,6 +58,9 @@ export default class Main extends Component {
           <Route exact path='/with' component={With} />
           <Route exact path='/all' component={All} />
           <Route exact path='/add' component={Add} />
+
+          {/* 게시판 메인 컴포넌트 */}
+          <Route exact path = '/community' component={Board}/>
 
 
           {/* 자유게시판 */}
@@ -118,13 +122,16 @@ export default class Main extends Component {
             exact
             path="/bucket/offbucketdetail/CommentInsert"
             component={OffbucketCommentInsert}
-          ></Route>
+          />
 
           <Route
             exact
             path="/bucket/OffBucketCommentUpdate"
             component={OffBucketCommentUpdate}
-          ></Route>
+          />
+
+          <Route exact path='/bucketlist/togetherboard' component={TogetherBoard} />
+
         </div>
       </BrowserRouter>
     );

@@ -78,6 +78,20 @@ class FreeBoardList extends Component {
     });
   }
 
+  componentDidUpdate = (p, s) => {
+    if (this.state.flag) {
+      this.list();
+      this.setState({
+        flag: false
+      });
+    } else if (this.state.flag2) {
+      this.list();
+      this.setState({
+        flag2: false
+      });
+    }
+  };
+
   render() {
     return (
       <Paper>
@@ -88,7 +102,7 @@ class FreeBoardList extends Component {
         </div>
         <h3>FreeBoard</h3>
         <div className="table-box">
-          <Button
+          <button
             type="button"
             onClick={() => {
               if (localStorage.length === 1) {
@@ -99,7 +113,7 @@ class FreeBoardList extends Component {
             }}
           >
             추가
-          </Button>
+          </button>
           <table>
             <thead>
               <tr>
