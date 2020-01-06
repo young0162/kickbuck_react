@@ -24,7 +24,8 @@ import QnaBoardUpdate from "./community/QnA/QnaBoardUpdate";
 import QnaComment from "./community/QnA/QnaComment";
 import QnaBoard from "./community/QnA/QnaBoard";
 import QnaBoardWrite from "./community/QnA/QnaBoardWrite";
-import bucketdetail from "./offbucket/bucketdetail";
+import Bucketdetail from "./offbucket/Bucketdetail";
+import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 
 export default class Main extends Component {
   render() {
@@ -99,8 +100,14 @@ export default class Main extends Component {
           {/* 오프후기 */}
           <Route
             exact
-            path="/bucket/bucketdetail"
-            component={bucketdetail}
+            path="/bucket/offbucketdetail"
+            component={Bucketdetail}
+          ></Route>
+
+          <Route
+            exact
+            path="/bucket/offbucketdetail/CommentInsert"
+            component={OffbucketCommentInsert}
           ></Route>
         </div>
       </BrowserRouter>

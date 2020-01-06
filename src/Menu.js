@@ -164,7 +164,7 @@ export default class Menu extends Component {
             <NavLink exact to="/community/qnaboard">
               Q&A 게시판
             </NavLink>
-            <NavLink exact to="/bucket/bucketdetail">
+            <NavLink exact to="/bucket/offbucketdetail">
               offcomment
             </NavLink>
           </div>
