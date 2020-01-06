@@ -116,7 +116,7 @@ export default class Menu extends Component {
     }
 
     return (
-      <div>
+      <div style={{marginBottom:'80px'}}>
         <div className="menubar">
           <ul>
               <li>
