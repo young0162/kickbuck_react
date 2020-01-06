@@ -13,7 +13,7 @@ export default class FreeBoardDetail extends Component {
       title: "",
       content: "",
       imagename: "",
-      writer: localStorage.state,
+      user_name: "",
       num: this.num
     };
 
@@ -33,7 +33,7 @@ export default class FreeBoardDetail extends Component {
           title: responseData.data.title,
           content: responseData.data.content,
           imagename: responseData.data.imagename,
-          writer: responseData.data.writer
+          user_name: responseData.data.user_name
         });
       })
       .catch(error => {
@@ -136,7 +136,11 @@ export default class FreeBoardDetail extends Component {
               <tr>
                 <th>작성자</th>
                 <td>
-                  <input value={localStorage.state} readOnly></input>
+                  <input
+                    value={this.state.user_name}
+                    onChange={this.onKeyChange}
+                    name="user_name"
+                  ></input>
                 </td>
               </tr>
               <tr>
