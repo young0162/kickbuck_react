@@ -4,7 +4,7 @@ import search_icon from './image/main/search_icon.png';
 import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
 import './css/login.css';
-import logoimg from './image/main/tick_off_logo.png';
+import logoimg from './image/main/tick_off_logo2.png';
 
 
 export default class Menu extends Component {
@@ -93,12 +93,18 @@ export default class Menu extends Component {
     }
     else
     {
-        loginState = <p className="plus" onClick={this.onLogin}>로그인</p>
+        loginState = <p className="plus" onClick={this.onLogin}>로그인ㆍ회원가입</p>
     }
 
     return (
-      <div style={{marginBottom:'80px'}}>
+      <div style={{marginBottom:'100px'}}>
         <div className="menubar">
+          <div className="login_bar">
+            <p className="login_text">
+              {loginState}
+              <Login loginShow={loginShow} onLogin={this.onLogin} />
+            </p>
+          </div>
           <ul>
               <li>
                 <p className="logo">
@@ -107,14 +113,10 @@ export default class Menu extends Component {
                   </NavLink>
                 </p>
               </li>
-              <li>
+              <li className="plus_li">
                   <NavLink exact to='/add'>
                     <p className="plus"><Add/></p>
                   </NavLink>
-              </li>
-              <li>
-                  {loginState}
-                  <Login loginShow={loginShow} onLogin={this.onLogin} />
               </li>
               <li>
                 <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>

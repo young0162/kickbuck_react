@@ -7,6 +7,7 @@ class Category extends Component {
 
         state = {
             opac: 0,
+            visibi: 'hidden',
         }
 
 

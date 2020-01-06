@@ -72,7 +72,7 @@ class Login extends Component {
                         </p>
                     </div> */}
                     <div className="login_form">
-                        <p className="title">이메일 로그인</p>
+                        <p className="title">로그인</p>
                         <input type="text" placeholder="아이디" ref="user_name" />
                         <input type="password" placeholder="비밀번호" ref="password" onKeyPress={this.enterLogin.bind(this)} />
                         <p className="login_but" onClick={this.loginCheck.bind(this)} >
