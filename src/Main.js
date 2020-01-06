@@ -3,7 +3,6 @@ import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
 import Solo from './bucketlist/Solo';
-import Together from './bucketlist/Together';
 import Off from './bucketlist/Off';
 import With from './bucketlist/With';
 import All from './bucketlist/All';
@@ -38,7 +37,6 @@ export default class Main extends Component {
                     <Route exact path='/solo' component={Category} />
                     <Route exact path='/with' component={Category} />
                     <Route exact path='/off' component={Category} />
-                    <Route exact path='/together' component={Category} />
                     
                     
                     {/* 페이지 이동 로딩 컴포넌트 */}
@@ -48,7 +46,6 @@ export default class Main extends Component {
 
                     {/* 메인 버킷리스트 카테고리 변경시 출력 컴포넌트 */}
                     <Route exact path='/solo' component={Solo} />
-                    <Route exact path='/together' component={Together} />
                     <Route exact path='/off' component={Off} />
                     <Route exact path='/with' component={With} />
                     <Route exact path='/all' component={All} />
@@ -58,7 +55,7 @@ export default class Main extends Component {
                       path="/community/freeboarddetail/:num"
                       component={FreeBoardDetail}
                     />
-                    <Route path="/community/freeboardinsert" component={FreeBoardInsert} />
+                    <Route path='/community/freeboardinsert' component={FreeBoardInsert} />
                     <Route
                       path="/community/freeboardupdate/:num"
                       component={FreeBoardUpdate}

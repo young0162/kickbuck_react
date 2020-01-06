@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import boxbg from '../image/main/box_bg.png';
 
-class OffItem extends Component {
+class WithItem extends Component {
 
     onClick = () => {
         this.detailShow();
-        this.bucketOffSelect();
+        this.bucketWithSelect();
     }
 
     detailShow = () => {
         this.props.detailShow();
     }
 
-    bucketOffSelect = () => {
-        this.props.bucketOffSelect(this.props.idx.num);
+    bucketWithSelect = () => {
+        this.props.bucketWithSelect(this.props.idx.num);
     }
-    
+
 
     render() {
 
@@ -35,4 +35,4 @@ class OffItem extends Component {
     }
 }
 
-export default OffItem;
+export default WithItem;

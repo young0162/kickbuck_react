@@ -35,7 +35,7 @@ class Solo extends Component {
     }
 
     bucketList = () => {
-        var url = "http://localhost:9000/controller/allselect";
+        var url = "http://localhost:9000/controller/soloselect";
         Axios.get(url)
         .then( (resData) => {
             this.setState({
