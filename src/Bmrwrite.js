@@ -6,8 +6,10 @@ export default class Bmrwrite extends Component {
         super(props);
 
         this.state={
+            
             nickname:'',
-            content:'',
+            content:''
+            
         }
     }
 
@@ -21,27 +23,28 @@ export default class Bmrwrite extends Component {
     onSubmit=(e)=>{
         e.preventDefault();
 
-        const uploadFile= JSON.stringify(this.state);
-        console.log(uploadFile)
+        const uploadFile= this.state;        
         var url="http://localhost:9000/controller/bmr/save";
-        axios.post(url, uploadFile, { headers: {'Content-Type': 'application/json'}})
+        axios.post(url, uploadFile)
             .then((res)=>{
-                console.log(res.data, res.status);
-
-                this.setState({
-                    nickname:'',
-                    content:''
+                    this.setState({
+                        
+                        nickname:'',
+                        content:''
+                        
                 })
             })
             .catch((err)=>{
-                console.log("submit 오류:" + err);
+                console.log("submit 오류:" + err.data);
             });
+            window.location.reload(); //새로고침할 필요없이 방명록이 바로 목록에 출력된다
     }
 
     render(){
         return (
             <div>
-                <div align="left">
+                <p style={{textAlign:'left', marginLeft:'15px'}}> 방명록 작성 </p>
+                <div align="left">                    
                         <form className="form-group" onSubmit={this.onSubmit}>
                             <table  className="table table-bordered">
                                 <tbody>

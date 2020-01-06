@@ -30,15 +30,14 @@ export default class Bmr extends Component {
 
     render(){
         return (
-            <div style={{textAlign:'center'}}>
+            <div style={{textAlign:'center', marginLeft:'15px'}}>
                 <table className="table table bordered">
-                    <caption><b>방명록</b></caption>
                     <thead>
-                        <tr style={{background:'orange'}}>
-                            {/* <th width="50">번호</th> */}
-                            <th width="50">닉네임</th>
-                            <th width="100">내용</th>
-                            <th width="50">시간</th>
+                        <tr style={{background:'lightgray'}}>
+                            <th width="50">번호</th>
+                            <th width="100">닉네임</th>
+                            <th width="500">내용</th>
+                            <th width="220">시간</th>
                         </tr>
                     </thead>
                     <tbody>
