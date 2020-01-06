@@ -10,13 +10,14 @@ class Solo extends Component {
 
         this.state = {
             show: false,      
-
-            bucketData: []
+            bucketData: [],
+            bucketOneData: [],
         }
 
         this.detailShow = this.detailShow.bind(this);
         this.detailHide = this.detailHide.bind(this);
         this.bucketList = this.bucketList.bind(this);
+        this.bucketSelect = this.bucketSelect.bind(this);
     }
     
 
@@ -24,6 +25,7 @@ class Solo extends Component {
         this.setState({
             show : true
         })
+
     }
 
     detailHide = () => {
@@ -43,27 +45,45 @@ class Solo extends Component {
         .catch( (error) => {
             console.log("list 오류 " + error)
         })
-
-        
     }
+
+    bucketSelect = (num) => {
+        var url = "http://localhost:9000/controller/oneselect?num=" + num ;
+
+        Axios.get(url)
+        .then( (resData) => {
+            
+            this.setState({
+                bucketOneData: resData.data
+            })
+        })
+        .catch( (error) => {
+            console.log("select 오류 : " + error);
+        })
+    }
+
 
     componentWillMount() {
         this.bucketList();
     }
+
+    
+
+    
 
     render() {
 
         let box;
 
         if(this.state.show) {
-            box = <CardDetail detailHide={this.detailHide} />
+            box = <CardDetail detailHide={this.detailHide} bucketOneData={this.state.bucketOneData} />
         }
 
         return (
-            <div>
+            <div className="buket_form_box">
                 {
                     this.state.bucketData.map( (idx) => (
-                        <SoloItem detailShow={this.detailShow} idx={idx} key={idx.num} />        
+                        <SoloItem detailShow={this.detailShow} bucketSelect={this.bucketSelect} idx={idx} key={idx.num}  />        
                     ))
                 }
                 {box}

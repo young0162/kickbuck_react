@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 class QnaBoardUpdate extends Component {
 
@@ -94,49 +95,61 @@ class QnaBoardUpdate extends Component {
 
         return (
             <div>
-                <hr/>
-                <div>
-                    <h2> Q&A 글수정 </h2>
+                <div className='section-top'>
+                    <div className='community_title'>
+                        <span>COMMUNITY</span>
+                    </div>
                 </div>
-                <br/><br/>
-                <form onSubmit={this.onSubmit}>
-                    <table className="board qnaboard update qnaboardupdate">
-                        <tbody>
-                            <tr>
-                                <th style={{width:'200px', height:'50px'}}>닉 네 임</th>
+                
+                <div className='board_container'>
+                    <ul className='board_tab'>
+                        <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                        <li className='tab_on'>Q & A Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                    </ul>
+                </div>
+
+                <div className='board_container'>
+                    <table className="board">
+                        <thead className='board_head'>
+                            <tr height= '80px'>
+                                <th style={{width:'200px', height:'50px'}}>사용자 이름</th>
                                 <td>
-                                     {this.state.selectData.nickname}
+                                     {this.state.selectData.user_name}
                                 </td>
                             </tr>
+                        </thead>
+                        <tbody className='board_body'>                            
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>제    목</th>
                                 <td>
-                                    <input type="text" ref="title" className="input qnainput titleinput"
-                                    style={{width:'800px', height: '50px'}} value={this.state.title}
+                                    <input type="text" ref="title" className="input_area"
+                                    style={{width:'1000px', height: '50px'}} value={this.state.title}
                                     onChange={this.titleChange} required="required"></input>
                                 </td>
                             </tr>
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>질문내용</th>
                                 <td>
-                                    <textarea ref="content" className="input qnainput contentinput" 
-                                    style={{width:'800px', height:'400px'}} value={this.state.content}
+                                    <textarea ref="content" className="input_area" 
+                                    style={{width:'1000px', height:'400px'}} value={this.state.content}
                                     onChange={this.contentChange} required="required">                                        
                                     </textarea>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colSpan="2" align="right">
-                                
-                                    <button type="submit" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}>수   정</button>
-                                    <button type="button" className="btn btn-md btn-success" style={{width:'150px', height:'50px'}}
-                                    onClick={()=>{this.history.push("/community/qnaboarddetail/"+this.state.selectData.num);}}>취   소</button>
-                                    
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                </form>
+                    <form onSubmit={this.onSubmit} style={{float:'right'}}>
+                        <Button className='btn_function' type="submit" variant="contained" color="primary" >
+                            수 정
+                        </Button>
+                    
+                        <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/qnaboarddetail/"+this.state.selectData.num);}}>
+                            취 소
+                        </Button>
+                    </form>
+                </div>
             </div>
         );
     }
