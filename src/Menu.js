@@ -125,10 +125,7 @@ export default class Menu extends Component {
 
           <div className="bgon" style={sideBg} onClick={this.addActive}></div>
           <div className="sidebox" style={sideActive}>
-            <NavLink exact to = '/community'>
-              커뮤니티
-            </NavLink>
-            <NavLink exact to="/community/freeboardlist" onClick={this.addActive}>
+            <NavLink exact to='/community/freeboardlist' onClick={this.addActive}>
               <span>
                 자유게시판
               </span>
@@ -142,6 +139,7 @@ export default class Menu extends Component {
               <span>
                 FAQ
               </span>
+            </NavLink>
             <NavLink exact to="/bucket/offbucketdetail">
               offcomment
             </NavLink>
