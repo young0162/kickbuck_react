@@ -66,8 +66,8 @@ class SoloItem extends Component {
                         this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
                     } */}
                     <img className="bgimg" src={boxbg} alt=""  />
-                    <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""  onClick={this.onClick}  />     
-                    <div className="black_bg"></div>
+                    <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""    />     
+                    <div className="black_bg" onClick={this.onClick}></div>
                     <div className="buket_content">
                         <p>{this.props.idx.subject}
                         </p>
