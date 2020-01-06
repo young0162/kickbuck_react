@@ -1,22 +1,24 @@
-import React,{Component} from 'react';
- 
-export default class Rowitem_bmr extends Component
-{
+import React, { Component } from 'react';
+
+export default class Rowitem_bmr extends Component {
+    date = new Date(this.props.row.timestamp);
+
     render(){
-        const url="http://localhost:9002/controller/save/";
         return (
-            <div>
             <tr>
-                <td><b>{this.props.idx+1}</b></td>
-                
+                <td>
+                    {this.props.row.num}
+                </td>
                 <td>
                     {this.props.row.nickname}
                 </td>
                 <td>
-                    {this.props.row.contents}
+                    {this.props.row.content}
+                </td>
+                <td>
+                    {this.date.toLocaleString()}
                 </td>
             </tr>
-            </div>
         )
     }
 }

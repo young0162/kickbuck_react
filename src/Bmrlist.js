@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import Bmr from './Bmr';
-//import Rowitem_bmr from './Rowitem_bmr';
 import Bmrwrite from './Bmrwrite';
 
 export default class Bmrlist extends Component {
-
- 
     render(){
         return (
-            <div align="left">              
+            <div align="left">
+                <hr />
                 <Bmrwrite />
-                <hr></hr>
-                
-                
-                <br></br>
-
-                <hr></hr>
+                <hr />
                 <Bmr />
             </div>
         );

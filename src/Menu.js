@@ -28,7 +28,7 @@ export default class Menu extends Component {
                   </NavLink>
               </li>
               <li>
-                <NavLink exact to='/Bmrlist'>
+                <NavLink exact to='/bmrlist'>
                     방명록
                 </NavLink>
               </li>
