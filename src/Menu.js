@@ -9,71 +9,66 @@ import logoimg from './image/main/tick_off_logo.png';
 
 
 export default class Menu extends Component {
-
   constructor() {
-      super();
+    super();
 
-      this.state = {
-          active: '-300px',
-          opacSide: 0,
-          visibiSide: 'hidden',
-          opac: 0,
-          visibi: 'hidden',
-          classSide: '',
-          loginShow: 'none'
-      }
+    this.state = {
+      active: "-300px",
+      opacSide: 0,
+      visibiSide: "hidden",
+      opac: 0,
+      visibi: "hidden",
+      classSide: "",
+      loginShow: "none"
+    };
 
-      this.onLogin = this.onLogin.bind(this);
-      this.onLogOut = this.onLogOut.bind(this);
-      this.addActive = this.addActive.bind(this);
-      this.goSearch = this.goSearch.bind(this);
+    this.onLogin = this.onLogin.bind(this);
+    this.onLogOut = this.onLogOut.bind(this);
+    this.addActive = this.addActive.bind(this);
+    this.goSearch = this.goSearch.bind(this);
   }
 
   addActive() {
-    if(this.state.active === '-300px') {
+    if (this.state.active === "-300px") {
       this.setState({
-        active: '0px',
+        active: "0px",
         opacSide: 1,
-        visibiSide: 'inherit',
-        classSide: 'classSide'
-      })
-    }
-    else {
+        visibiSide: "inherit",
+        classSide: "classSide"
+      });
+    } else {
       this.setState({
-        active: '-300px',
+        active: "-300px",
         opacSide: 0,
-        visibiSide: 'hidden',
-        classSide: ''
-      })
+        visibiSide: "hidden",
+        classSide: ""
+      });
     }
-
   }
 
   goSearch() {
-    if(this.state.visibi === 'hidden') {
+    if (this.state.visibi === "hidden") {
       this.setState({
         opac: 1,
-        visibi: 'inherit'
-      })
-    }
-    else {
+        visibi: "inherit"
+      });
+    } else {
       this.setState({
         opac: 0,
-        visibi: 'hidden'
-      })
+        visibi: "hidden"
+      });
     }
   }
 
   onLogin() {
-    if (this.state.loginShow === 'none'){
+    if (this.state.loginShow === "none") {
       this.setState({
-        loginShow: 'block'
-      })
-    }
-    else {
+        loginShow: "block"
+      });
+    } else {
       this.setState({
-        loginShow: 'none'
-      })
+        loginShow: "none"
+      });
     }
   }
 
@@ -82,37 +77,39 @@ export default class Menu extends Component {
     window.location.reload();
   }
 
-
-
   render() {
-
     const sideActive = {
       right: this.state.active
-    }
+    };
 
     const sideBg = {
       opacity: this.state.opacSide,
       visibility: this.state.visibiSide
-    }
+    };
 
     const searchBg = {
       opacity: this.state.opac,
       visibility: this.state.visibi
-    }
+    };
 
     const loginShow = {
       display: this.state.loginShow
-    }
+    };
 
     let loginState = null;
 
-    if(localStorage.state)
-    {
-        loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
-    }
-    else
-    {
-        loginState = <p className="plus" onClick={this.onLogin}>로그인</p>
+    if (localStorage.state) {
+      loginState = (
+        <p className="plus" onClick={this.onLogOut}>
+          로그아웃
+        </p>
+      );
+    } else {
+      loginState = (
+        <p className="plus" onClick={this.onLogin}>
+          로그인
+        </p>
+      );
     }
 
     return (
@@ -171,6 +168,9 @@ export default class Menu extends Component {
               <span>
                 FAQ
               </span>
+            </NavLink>
+            <NavLink exact to="/bucket/offbucketdetail">
+              offcomment
             </NavLink>
           </div>
         </div>
