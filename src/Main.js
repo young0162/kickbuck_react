@@ -31,7 +31,14 @@ export default class Main extends Component {
                 <div>
                     {/* 메인페이지 로딩 되는 컴포넌트 */}
                     <Menu/>
-                    <Category/>
+
+
+                    <Route exact path='/' component={Category} />
+                    <Route exact path='/all' component={Category} />
+                    <Route exact path='/solo' component={Category} />
+                    <Route exact path='/with' component={Category} />
+                    <Route exact path='/off' component={Category} />
+                    <Route exact path='/together' component={Category} />
                     
                     
                     {/* 페이지 이동 로딩 컴포넌트 */}

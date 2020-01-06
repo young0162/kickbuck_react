@@ -67,7 +67,7 @@ class SoloItem extends Component {
                     } */}
                     <img className="bgimg" src={boxbg} alt=""  />
                     <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""  onClick={this.onClick}  />     
-                    
+                    <div className="black_bg"></div>
                     <div className="buket_content">
                         <p>{this.props.idx.subject}
                         </p>
