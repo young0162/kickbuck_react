@@ -26,6 +26,7 @@ import QnaBoard from "./community/QnA/QnaBoard";
 import QnaBoardWrite from "./community/QnA/QnaBoardWrite";
 import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
+import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 
 export default class Main extends Component {
   render() {
@@ -117,10 +118,16 @@ export default class Main extends Component {
             exact
             path="/bucket/offbucketdetail/CommentInsert"
             component={OffbucketCommentInsert}
-          />
-                </div>
-          </BrowserRouter>
-        )
-    }
+          ></Route>
+
+          <Route
+            exact
+            path="/bucket/OffBucketCommentUpdate"
+            component={OffBucketCommentUpdate}
+          ></Route>
+        </div>
+      </BrowserRouter>
+    );
   }
+}
 
