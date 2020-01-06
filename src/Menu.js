@@ -3,29 +3,26 @@ import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
 import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
-import SearchBar from './SearchBar';
 import './css/login.css';
-import logoimg from './image/main/tick_off_logo.png';
+import logoimg from './image/main/tick_off_logo2.png';
 
 
 export default class Menu extends Component {
   constructor() {
-    super();
+      super();
 
-    this.state = {
-      active: "-300px",
-      opacSide: 0,
-      visibiSide: "hidden",
-      opac: 0,
-      visibi: "hidden",
-      classSide: "",
-      loginShow: "none"
-    };
+      this.state = {
+          active: '-300px',
+          opacSide: 0,
+          visibiSide: 'hidden',
+          visibi: 'hidden',
+          classSide: '',
+          loginShow: 'none'
+      }
 
-    this.onLogin = this.onLogin.bind(this);
-    this.onLogOut = this.onLogOut.bind(this);
-    this.addActive = this.addActive.bind(this);
-    this.goSearch = this.goSearch.bind(this);
+      this.onLogin = this.onLogin.bind(this);
+      this.onLogOut = this.onLogOut.bind(this);
+      this.addActive = this.addActive.bind(this);
   }
 
   addActive() {
@@ -46,19 +43,7 @@ export default class Menu extends Component {
     }
   }
 
-  goSearch() {
-    if (this.state.visibi === "hidden") {
-      this.setState({
-        opac: 1,
-        visibi: "inherit"
-      });
-    } else {
-      this.setState({
-        opac: 0,
-        visibi: "hidden"
-      });
-    }
-  }
+  
 
   onLogin() {
     if (this.state.loginShow === "none") {
@@ -87,10 +72,7 @@ export default class Menu extends Component {
       visibility: this.state.visibiSide
     };
 
-    const searchBg = {
-      opacity: this.state.opac,
-      visibility: this.state.visibi
-    };
+    
 
     const loginShow = {
       display: this.state.loginShow
@@ -98,23 +80,24 @@ export default class Menu extends Component {
 
     let loginState = null;
 
-    if (localStorage.state) {
-      loginState = (
-        <p className="plus" onClick={this.onLogOut}>
-          로그아웃
-        </p>
-      );
-    } else {
-      loginState = (
-        <p className="plus" onClick={this.onLogin}>
-          로그인
-        </p>
-      );
+    if(localStorage.state)
+    {
+        loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
+    }
+    else
+    {
+        loginState = <p className="plus" onClick={this.onLogin}>로그인ㆍ회원가입</p>
     }
 
     return (
-      <div style={{marginBottom:'80px'}}>
+      <div style={{marginBottom:'100px'}}>
         <div className="menubar">
+          <div className="login_bar">
+            <p className="login_text">
+              {loginState}
+              <Login loginShow={loginShow} onLogin={this.onLogin} />
+            </p>
+          </div>
           <ul>
               <li>
                 <p className="logo">
@@ -123,20 +106,10 @@ export default class Menu extends Component {
                   </NavLink>
                 </p>
               </li>
-              <li>
-                <div className="search_box" onClick={this.goSearch}>
-                  <input type="text" readOnly={true}/>
-                  <img src={search_icon} alt=""  />
-                </div>
-              </li>
-              <li>
+              <li className="plus_li">
                   <NavLink exact to='/add'>
                     <p className="plus"><Add/></p>
                   </NavLink>
-              </li>
-              <li>
-                  {loginState}
-                  <Login loginShow={loginShow} onLogin={this.onLogin} />
               </li>
               <li>
                 <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
@@ -147,9 +120,7 @@ export default class Menu extends Component {
               </li>
           </ul>
 
-          <div className="searchbox" style={searchBg}>
-            <SearchBar goSearch={this.goSearch}/>
-          </div>
+          
 
 
           <div className="bgon" style={sideBg} onClick={this.addActive}></div>

@@ -43,7 +43,7 @@ class Add extends Component {
                 open: this.state.openSet,
             })
             .then( (resData) => {
-
+                window.location.reload();
             })
             .catch( (error) => {
                 console.log("insert error" + error.data);
@@ -87,7 +87,7 @@ class Add extends Component {
         const url = "http://localhost:9000/controller/save/";
         const imgsrc = this.state.image;
 
-        this.displayData.push( <img src={url + imgsrc} alt='' />);
+        this.displayData.push( <span className="imgtag"><img src={url + imgsrc} alt='' /></span>);
 
         this.setState({
             showdata: this.displayData
@@ -174,27 +174,37 @@ class Add extends Component {
                 <p className="title">버킷리스트 등록하기</p>
                 <div className="input_box">
                     <div className="mb">
-                        <input type="text" placeholder="타이틀을 입력해주세요" className="pull" ref="subject" />
+                        <input  type="text" placeholder="타이틀을 입력해주세요 20자 까지 입력 가능합니다" className="pull" ref="subject" maxLength="20" />
                     </div>
                     <div className="mb">
-                        최대 10장까지 등록 가능합니다<input type="file" onChange={this.onImageUpload.bind(this)} /> <p onClick={this.onImageAdd.bind(this)}>이미지 추가</p>
+                        <span>버킷리스트와 관련된 사진을 올려주세요</span>
+                        <label for="fileupload" className="fileupload">
+                            <span>파일 업로드</span>
+                            <input id="fileupload" type="file" onChange={this.onImageUpload.bind(this)} /> 
+                        </label>
+                        <span className="imgadd_but" onClick={this.onImageAdd.bind(this)}>이미지 추가</span><br/>
+                        <span className="imgtext"> - 첫번째 올린사진이 메인 이미지로 등록되고, 최대 10장까지 등록 가능합니다</span>
                         <div className="img_box">
                             {this.state.showdata}
                         </div>
                     </div>
                     <div className="mb">
-                        <input type="text" placeholder="위치를 입력하세요" ref="area" />
-                        <p className="but">위치 추가</p>
+                        <input type="text" placeholder="위치를 입력해주세요" ref="area" /><br/>
+                        <span className="imgtext"> - 버킷리스트를 하기위해 가는 장소를 적어주세요</span>
                     </div>
                     <div className="mb">
                         <input type="date" ref="calendar" onChange={this.onChangeDay.bind(this)} />
-                        D-Day<input ref="dday" type="text" readOnly="readonly" value={ this.state.dday}/>
+                        <span className="ddaytext">D-Day</span>
+                        <input ref="dday" type="text" readOnly="readonly" value={ this.state.dday}/><br/>
+                        <span className="imgtext"> - 자신만의 D-Day를 지정해보세요</span>
                     </div>
                     <div className="mb">
-                        <textarea placeholder="내용을 입력해주세요" ref="content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요" ref="content" maxLength="200"></textarea>
                     </div>
                     <div className="mb">
-                        <input type="text" placeholder="해시태그를 입력 해주세요" className="pull mb5" ref="hashtag" onChange={this.onHashTagWords.bind(this)}  onKeyPress={this.onHashTagAdd.bind(this)} />
+                        <input type="text" placeholder="해시태그를 설정해 검색 키워드로 이용해보세요." className="pull mb5" ref="hashtag" onChange={this.onHashTagWords.bind(this)}  onKeyPress={this.onHashTagAdd.bind(this)} />
+                        <br/>
+                        <span className="imgtext"> - 단어를 입력하고 'Enter' 키를 입력하면 자동으로 생성됩니다</span>
                         <div className="hashtagbox">
                             {
                                 this.state.hashtagShow.map( (item,idx) => (
@@ -210,12 +220,15 @@ class Add extends Component {
                         </div>
                     </div>
                     <div className="mb">
-                        <label for="on">
-                            <input type="radio" id="on"  name="onoff" value="on"  checked={this.state.openSet === 'on'} onChange={this.onOpenSet.bind(this)} /> 공개
-                        </label>
-                        <label for="off">
-                            <input type="radio" id="off"  name="onoff" value="off"  checked={this.state.openSet === 'off'} onChange={this.onOpenSet.bind(this)} /> 비공개
-                        </label>
+                        <div className="checks">                            
+                            <input type="radio" id="on"  name="onoff" value="on"  checked={this.state.openSet === 'on'} onChange={this.onOpenSet.bind(this)} />
+                            <label for="on">공개</label>
+                        </div>
+                        <div className="checks">
+                            <input type="radio" id="off"  name="onoff" value="off"  checked={this.state.openSet === 'off'} onChange={this.onOpenSet.bind(this)} /> 
+                            <label for="off">비공개</label>
+                        </div><br/>
+                        <span className="imgtext"> - 비공개를 선택하면 마이페이지 안에서만 확인 할수있습니다</span>
                     </div>
                     <div className="but_box">
                         <NavLink className="ok" exact to='/' onClick={this.BucketInsert.bind(this)}>
