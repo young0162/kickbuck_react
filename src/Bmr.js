@@ -16,7 +16,7 @@ export default class Bmr extends Component {
     }
 
     list=()=>{
-        const url="http://localhost:9005/controller/bmr/list";
+        const url="http://localhost:9000/controller/bmr/list";
         axios.get(url)
             .then((res)=>{
                 this.setState({
