@@ -8,7 +8,7 @@ export default class Menu extends Component {
       <div>
           <ul>
               <li>
-                 <NavLink exact to='/'>
+                <NavLink exact to='/'>
                     홈11
                   </NavLink>
               </li>
@@ -26,6 +26,11 @@ export default class Menu extends Component {
                   <NavLink exact to='/FAQ_signup'>
                     FAQ
                   </NavLink>
+              </li>
+              <li>
+                <NavLink exact to='/Bmrlist'>
+                    방명록
+                </NavLink>
               </li>
 
           </ul>
