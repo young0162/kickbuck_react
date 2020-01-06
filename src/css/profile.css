@@ -1,14 +1,9 @@
-.profile{
-    padding-left: 500px;
-    width: 500px;
-}
-
 .my_img{
     width: 200px;
     height: 200px;
 }
 
-button{
+.profile_btn{
     width: 200px;
     height: 40px;
     border-radius: 20px;
@@ -31,4 +26,8 @@ select{
 
 .save{
     padding-left: 100px;
+}
+
+.profile_tr{
+    width: 300px;
 }

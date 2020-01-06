@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import Kickbuckmain from "./kickbuck.jpg";
-import "./FreeBoardList.css";
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
 import { Button, Table } from "reactstrap";

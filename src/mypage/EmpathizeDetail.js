@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import './style.css';
 
-export default class Detail extends Component{
+export default class EmpathizeDetail extends Component{
     constructor({match}){
         super();
         this.num=match.params.num
@@ -16,7 +16,7 @@ export default class Detail extends Component{
     }
     
     onSelect=()=>{
-       var url = "http://localhost:9000/controller/enroll/select?num="+this.num;
+       var url = "http://localhost:9000/controller/mypage/select?num="+this.num;
        axios.get(url)
        .then((responseData)=>{
            console.log(responseData.data);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./FreeBoardList.css";
 export default class FreeBoardItem extends Component {
   render() {
     return (

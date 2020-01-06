@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import EnrollItem from './EnrollItem';
+import MyListItem from './MyListItem';
 import MyPage from './MyPage';
 import '../css/table.css';
 
@@ -9,23 +9,23 @@ export default class MyList extends Component {
     super();
     this.state = {
       //스프링에서 게시물 목록을 받아서 저장할 변수
-      enrollData: []
+      mypageData: []
     }
   }
 
   //목록을 가져올 함수
   list = () => {
-    var url = "http://localhost:9000/controller/enroll/list";
+    var url = "http://localhost:9000/controller/mypage/list";
     axios.get(url)
       .then((responseData) => {
         console.log(responseData.data);
-        //스프링 서버로부터 받은 데이타로 enrollData 수정
+        //스프링 서버로부터 받은 데이타로 mypageData 수정
         this.setState({
-          enrollData: responseData.data
+          mypageData: responseData.data
         });
       })
       .catch((error) => {
-        console.log("enroll list error" + error.data);
+        console.log("mypage list error" + error.data);
       });
   }
 
@@ -51,8 +51,8 @@ export default class MyList extends Component {
           </thead>
           <tbody>
             {
-              this.state.enrollData.map((row, idx) => (
-                <EnrollItem idx={idx} key={row.num} row={row} />))
+              this.state.mypageData.map((row, idx) => (
+                <MyListItem idx={idx} key={row.num} row={row} />))
             }
           </tbody>
         </table>
