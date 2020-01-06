@@ -12,6 +12,7 @@ class Off extends Component {
             bucketOffData: [],
             show: false,  
             bucketOneData: [],
+            off: 'off'
         }
 
         this.bucketOffList = this.bucketOffList.bind(this);
@@ -69,7 +70,7 @@ class Off extends Component {
         let box;
 
         if(this.state.show) {
-            box = <CardDetail detailHide={this.detailHide} bucketOneData={this.state.bucketOneData} />
+            box = <CardDetail detailHide={this.detailHide} bucketOneData={this.state.bucketOneData} off={this.state.off} />
         }
 
         return (
