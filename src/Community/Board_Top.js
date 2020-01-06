@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Board.css';
-import QnaBoard from './QnaBoard/QnaBoard';
-import FreeBoard from './FreeBoard/FreeBoardList';
 
 
-class Board extends Component {
+
+class Board_Top extends Component {
 
     constructor({history}){
         
@@ -64,18 +63,11 @@ class Board extends Component {
                         <li>Guest Board</li>
                         <li>FAQ</li>
                     </ul>
-                </div>
-                <div className='freeboard' style={{display: this.state.freedisplay_none}}>
-                    <FreeBoard/>
-                </div>
-                <div className='qnaboard' style={{display: this.state.qnadisplay}}>
-                    <QnaBoard history = {this.props.history}/>
-                </div>
-
+                </div>            
 
             </div>
         );
     }
 }
 
-export default Board;
+export default Board_Top;

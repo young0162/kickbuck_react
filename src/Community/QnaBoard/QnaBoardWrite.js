@@ -11,9 +11,6 @@ class QnaBoardWrite extends Component {
         super();
 
         this.history=history;
-
-  
-
          
     }
 
@@ -50,14 +47,32 @@ class QnaBoardWrite extends Component {
     render() {
         return (
             <div>
-                <hr/>
-                <div>
-                    <h2> Q&A 글쓰기 </h2>
+                <div className='section-top'>
+                    <div className='community_title'>
+                        <span>COMMUNITY</span>
+                    </div>
                 </div>
-                <br/><br/>
-                <form onSubmit={this.onSubmit}>
-                    <table className="board qnaboard write qnaboardwrite">
-                        <tbody>
+                
+                <div className='board_container'>
+                    <ul className='board_tab'>
+                        <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                        <li className='tab_on'>Q & A Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                    </ul>
+                </div>
+                
+                
+                <div className='board_container'>
+                    <table className="board">
+                        <thead className='board_head'>
+                            <tr height= '80px'>
+                                <td colSpan="2">
+                                    Q & A 글쓰기
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody className='board_body'>
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>사용자이름</th>
                                 <td>
@@ -67,35 +82,32 @@ class QnaBoardWrite extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>제    목</th>
                                 <td>
-                                    <input type="text" ref="title" className="input qnainput titleinput"
-                                    style={{width:'800px', height: '50px'}} placeholder="제목을 입력하세요."
+                                    <input type="text" ref="title" className="qna_input input_area"
+                                    style={{width:'1000px', height: '50px'}} placeholder="제목을 입력하세요."
                                     required="required"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>질문내용</th>
                                 <td>
-                                    <textarea ref="content" className="input qnainput contentinput" 
-                                    style={{width:'800px', height:'400px'}} placeholder="질문을 입력하세요."
+                                    <textarea ref="content" className="qna_input input_area" 
+                                    style={{width:'1000px', height:'400px'}} placeholder="질문을 입력하세요."
                                     required="required"/>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2" align="right">
-                                
-                                    <Button type="submit" variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}>
-                                        질문 등록
-                                    </Button>
-                                    <Button variant="contained" style={{width:'150px', height:'50px', margin: '5px'}}
-                                     onClick={()=>{this.history.push("/community/qnaboard");}}>
-                                        취 소
-                                    </Button>
-                                    
-                                </td>
-                            </tr>
+                            </tr>                            
                         </tbody>
                     </table>
-                </form>
+                    <br/>
+                    <form onSubmit={this.onSubmit} style={{float:'right'}}>
+                        <Button className='btn_function' type="submit" variant="contained" color="primary" >
+                            질문 등록
+                        </Button>
+                    
+                        <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/qnaboard");}}>
+                            취 소
+                        </Button>
+                    </form>
+                </div>
             </div>
         );
     }

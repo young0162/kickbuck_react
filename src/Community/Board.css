@@ -14,17 +14,17 @@
 }
 
 
-.title_community
+.community_title
 {
     color: #040000;
     margin: 60px auto 0;
     padding: 0 0 50px;
-    font-weight: 800;
-    letter-spacing: 6px;
-    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    font-size: 44px;
     line-height: initial;
     position: relative;
-    height: 40px;
+    height: 50px;
     text-align: center;
 }
 
@@ -36,9 +36,8 @@
     background-color: #fff;
     margin: 0 auto;
     top: 50px;
-    font-weight: 400;
     color: #999;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 
 }
 
@@ -47,7 +46,6 @@ ul
     list-style: none;
     display: block;
     list-style-type: disc;
-    padding-inline-start: 40px;
     
 }
 
@@ -58,7 +56,7 @@ ul
     height: 60px;
     line-height: 60px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 900;
     height: auto;
     float: none;
@@ -80,4 +78,61 @@ ul
     color: #222;
     border: none;
     background: #f6f6f6;
+}
+
+
+.board thead.board_head
+{
+    font-weight: bolder;
+    text-decoration: none;
+    color:  #222;
+    font-size: 17px;
+    
+}
+
+.board tbody.board_body
+{
+    font-weight: 600;
+    text-decoration: none;
+    color:  #333;
+    font-size: 16px;
+}
+
+table
+{
+    width: 100%;
+    border-top: 1px solid #ddd;
+    border-collapse: collapse;
+
+}
+th, td
+{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.board_body a
+{
+    color:  #333;
+}
+
+.board_body a:hover
+{
+    color:  #333;
+    text-decoration: none;
+}
+
+Button.btn_function
+{
+    width: 120px;
+    height: 50px;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.input_area
+{
+    background-color: #f6f6f6;
+    padding: 10px 20px;
 }

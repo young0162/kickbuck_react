@@ -12,7 +12,7 @@ class QnaBoard extends Component {
         
         super();
 
-        this.state = {
+        this.state = {            
 
             // 스프링에서 게시판 목록을 받아서 저장할 변수
             qnaData: [],
@@ -53,7 +53,7 @@ class QnaBoard extends Component {
         if (this.state.qnaData.length !== 0)
         {
             this.setState((prevState, props) => ({
-                start: prevState.start + 15,
+                start: prevState.start + 10,
                 flag: true
             }));
         }
@@ -65,7 +65,7 @@ class QnaBoard extends Component {
         if (this.state.start > 0)
         {
             this.setState((prevState, props) => ({
-                start: prevState.start - 15,
+                start: prevState.start - 10,
                 flag2: true
             }));
         }
@@ -96,43 +96,59 @@ class QnaBoard extends Component {
     render() {
         return (
             <div>
-                
-                <br/><br/>
-
-                <table className="qnaboard board" style={{width: '1000px'}}>
-                    <thead>
-                        <tr>
-                            <td style={{textAlign: 'center'}}>번호</td>
-                            <td style={{textAlign: 'center'}}>제목</td>
-                            <td style={{textAlign: 'center'}}>사용자이름</td>
-                            <td style={{textAlign: 'center'}}>조회수</td>
-                            <td style={{textAlign: 'center'}}>작성일</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.qnaData.map((row,idx)=>(
-                                <QnaBoardItem row={row} idx={idx} key={row.num}
-                                onSelect={this.onSelect}/>
-                            ))
-                        }
-                    </tbody>
-                </table>
-
-                <br/>
-                <div>
-                    <Button variant="contained" onClick={this.onClickPre} style={{margin: '5px'}}>
-                         ＜ Pre
-                    </Button>
-                    <Button variant="contained" onClick={this.onClickNext} style={{margin: '5px'}}>
-                         Next ＞
-                    </Button>
+                <div className='section-top'>
+                    <div className='community_title'>
+                        <span>COMMUNITY</span>
+                    </div>
                 </div>
-                <br/><br/>
+                
+                <div className='board_container'>
+                    <ul className='board_tab'>
+                        <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                        <li className='tab_on'>Q & A Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
+                        <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                    </ul>
+                </div>            
 
-                <div>                    
-                    <Button variant="contained" color="primary" style={{width:'150px', height:'50px', margin: '5px'}}
-                        onClick={()=>{this.history.push("/community/qnaboardwrite");}}>글쓰기</Button>                  
+                <div className='board_container'>
+                    <table className="board">
+                        <thead className='board_head'>
+                            <tr height= '80px'>
+                                <td style={{textAlign: 'center'}}>번호</td>
+                                <td style={{textAlign: 'center'}}>제목</td>
+                                <td style={{textAlign: 'center'}}>사용자이름</td>
+                                <td style={{textAlign: 'center'}}>조회수</td>
+                                <td style={{textAlign: 'center'}}>작성일</td>
+                            </tr>
+                        </thead>
+                        <tbody className='board_body'>
+                            {
+                                this.state.qnaData.map((row,idx)=>(
+                                    <QnaBoardItem row={row} idx={idx} key={row.num}
+                                    onSelect={this.onSelect}/>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    <div>
+                        <Button variant="contained" onClick={this.onClickPre} style={{margin: '5px', marginLeft: '50px'}}>
+                            ＜ Pre
+                        </Button>
+                        <Button variant="contained" onClick={this.onClickNext} style={{margin: '5px', marginLeft: '940px'}}>
+                            Next ＞
+                        </Button>
+                    </div>            
+                    <br/>
+                    <div style={{float:'right'}}>                    
+                        <Button className='btn_function' variant="contained" color="primary" onClick={()=>{this.props.history.push("/community/qnaboardwrite");}}>
+                            글쓰기
+                        </Button>                  
+                    </div>
+
+                    <br/><br/>
                 </div>
             </div>
         );

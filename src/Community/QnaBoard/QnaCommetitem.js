@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { Dialog, DialogTitle, DialogContentText, DialogActions } from '@material-ui/core';
+import '../Board.css';
 
 class QnaCommentItem extends Component {
 
@@ -23,6 +24,8 @@ class QnaCommentItem extends Component {
         this.onKeyChange =  this.onKeyChange.bind(this);
 
     }
+
+    
 
     onKeyChange=(e)=>{
         this.setState({
@@ -61,7 +64,7 @@ class QnaCommentItem extends Component {
         )
             .then((responseData)=>{
                 // 추가를 한 후에 필요한 코드    
-
+                
                 // 코멘트 리스트 다시 호출
                 this.props.onList();
 
@@ -69,6 +72,8 @@ class QnaCommentItem extends Component {
                 this.setState({            
                     recomment:''
                 });
+
+                this.qnaCommentCount();
 
             })
             .catch((error)=>{
@@ -111,40 +116,40 @@ class QnaCommentItem extends Component {
         let step = this.props.row.step_num;
 
         return (
-            <tbody >
+            <tbody className='board_body'>
                 <tr height="60px;" >
 
-                    <td style={{textAlign: 'center', width: '60px'}}>
+                    {/* <td style={{textAlign: 'center', width: '60px'}}>
                         {
                             step === 1
                             ? this.props.row.comment_num
                             : ""
                         }
-                    </td>
+                    </td> */}
 
-                    <td style={{textAlign: 'center', width: '120px'}}>
+                    <td colSpan='2' style={{textAlign: 'center', width: '150px'}}>
                         {this.props.row.user_name}
                     </td>
 
-                    <td style={{textAlign: 'left', width: '680px'}}>
+                    <td style={{textAlign: 'left', width: '710px'}}>
                         {
                             step === 1
                             ? this.props.row.comment
-                            :"RE:  "+this.props.row.comment
+                            :'RE:  '+this.props.row.comment
                         
                         }
                     </td>
 
-                    <td style={{textAlign: 'center', width: '140px'}}>
+                    <td style={{textAlign: 'center', width: '150px'}}>
                         {this.props.row.daytime}
                     </td>   
 
                     <td>
-                        <Button variant="contained" style={{width:'90px', height:'40px', margin: '5px',
+                        <Button variant="outlined" style={{width:'80px', height:'40px', margin: '5px',
                          visibility:this.state.isvisible}} onClick={this.visibleEvent.bind(this)}>
                             대댓글
                         </Button>  
-                        <Button variant="contained" color="secondary" style={{width:'20px', height:'40px', margin: '5px',
+                        <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '5px',
                          visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
                             X
                         </Button>
@@ -161,25 +166,25 @@ class QnaCommentItem extends Component {
                     </td>             
                 </tr>
                 <tr style={{display:this.state.display}}>
-                    <td style={{textAlign: 'center'}}>
+                    <td colSpan='2' style={{textAlign: 'center'}}>
                         RE:
                     </td>
-                    <td style={{width:'120px', height: '40px', textAlign: 'center'}}>
+                    {/* <td style={{width:'130px', height: '40px', textAlign: 'center'}}>
                         {localStorage.state}
-                    </td>
+                    </td> */}
                     <td colSpan="2">
-                        <input type="text" name="recomment" className="input qnainput contentinput" 
-                         style={{width:'820px', height:'40px'}} placeholder="대댓글을 입력하세요." value={this.state.recomment}
+                        <input type="text" name="recomment" className="input_area" 
+                         style={{width:'750px', height:'40px'}} placeholder="대댓글을 입력하세요." value={this.state.recomment}
                          required="required" onChange={this.onKeyChange}/>
                     </td>
                     
-                    <td>   
+                    <td width='190px'>   
                         <form onSubmit={this.onSubmit}>                             
-                            <Button type="submit" variant="contained" color="primary" style={{width:'60px', height:'40px', margin: '5px'}}
+                            <Button type="submit" variant="outlined" color="primary" style={{width:'60px', height:'40px', margin: '5px'}}
                              onClick={this.unvisibleEvent.bind(this)}>
                                 등록
                             </Button>
-                            <Button variant="contained" style={{width:'60px', height:'40px', margin: '5px'}}
+                            <Button variant="outlined" style={{width:'55px', height:'40px', margin: '5px'}}
                              onClick={this.unvisibleEvent.bind(this)}>
                                 취소
                             </Button> 
