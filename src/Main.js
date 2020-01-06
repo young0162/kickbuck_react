@@ -111,13 +111,13 @@ export default class Main extends Component {
             exact
             path="/bucket/offbucketdetail"
             component={Bucketdetail}
-          ></Route>
+          />
 
           <Route
             exact
             path="/bucket/offbucketdetail/CommentInsert"
             component={OffbucketCommentInsert}
-          ></Route>
+          />
                 </div>
           </BrowserRouter>
         )
