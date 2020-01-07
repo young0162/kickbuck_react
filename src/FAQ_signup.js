@@ -46,7 +46,7 @@ export default class FAQ_signup extends Component {
     
     return (
       <Fragment>
-        <div style={{textAlign:'center', paddingLeft:'300px',  position:"relative"}}>
+        <div style={{textAlign:'center', paddingLeft:'500px',  position:"relative"}}>
                 <form className="yform">
                     <table  className="table table-bordered">                        
                         <tbody>
@@ -77,10 +77,10 @@ export default class FAQ_signup extends Component {
             <div>
             <ul>
                         <li className="question" onClick={()=>this.yatoggle()} name="aa" >
-                            이메일 인증이 안 되어서 회원 가입에 실패했어요                                
+                                   이메일 인증이 안 되어서 회원 가입에 실패했어요                                
                            
                             {  this.state.yashow?
-                                 <p className="answer"> 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
+                                 <p className="answer"> A. 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
                             :null
                             }                           
                         </li>
@@ -88,7 +88,7 @@ export default class FAQ_signup extends Component {
                             이메일말고 다른 본인 인증 수단은 없나요?                                
                            
                             {  this.state.ybshow?
-                                 <p className="answer"> ~ </p>
+                                 <p className="answer"> A. ~ </p>
                             :null
                             }                           
                         </li>
@@ -96,7 +96,7 @@ export default class FAQ_signup extends Component {
                                 로그인이 되지 않아요                           
                            
                             {  this.state.ycshow?
-                                 <p className="answer"> 비밀번호 찾기 진행해보시고 안 되면 관리자에게 문의주세요 </p>
+                                 <p className="answer"> A. 비밀번호 찾기 진행해보시고 안 되면 관리자에게 문의주세요 </p>
                             :null
                             }                           
                         </li>
@@ -104,7 +104,7 @@ export default class FAQ_signup extends Component {
                                     ~                          
                            
                             {  this.state.ydshow?
-                                 <p className="answer"> ~ </p>
+                                 <p className="answer"> A. ~ </p>
                             :null
                             }                           
                         </li>

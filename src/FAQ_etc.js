@@ -38,7 +38,7 @@ export default class FAQ_etc extends Component {
     return (
       <Fragment>
 
-        <div style={{textAlign:'center', paddingLeft:'300px',  position:"relative"}}>
+        <div style={{textAlign:'center', paddingLeft:'500px',  position:"relative"}}>
                 <form className="yform">
                     <table  className="table table-bordered">                        
                         <tbody>
@@ -78,16 +78,15 @@ export default class FAQ_etc extends Component {
                            
                             {  this.state.yashow?
                                  <p className="answer"> 
-                                    가까운 경찰서 또는 사이버 안전국, KISA(인터넷침해대응센터)으로 신고해 주세요.
-                                    <br/>경찰청 사이버 안전 지킴이 바로가기  http://www.police.go.kr/www/security/cyber.jsp
-                                    <br/>KISA(인터넷침해대응센터) 바로가기 https://www.krcert.or.kr/consult/phishing.do
-                                    <br/>
-                                    <br/>사기당한 방법 및 수법을 카페에 알려, 제2의 피해자가 나오지 않도록 합니다.  
-                                    <br/>사기꾼에게서 온 문자나 연락처, 주소 등 인적 사항을 알아낼 수 있는 정보는 보존하고, 많은 사람과 공유합니다.
-                                    </p>
+                                    A. 가까운 경찰서 또는 사이버 안전국, KISA(인터넷침해대응센터)으로 신고해 주세요.<br/>
+                                    <br/> 경찰청 사이버 안전 지킴이 바로가기->  http://www.police.go.kr/www/security/cyber.jsp
+                                    <br/>KISA(인터넷침해대응센터) 바로가기-> https://www.krcert.or.kr/consult/phishing.do
+                                    <br/> <br/>사기당한 방법 및 수법을 카페에 알려, 제2의 피해자가 나오지 않도록 합니다.  
+                                    &nbsp;사기꾼에게서 온 문자나 연락처, 주소 등 인적 사항을 알아낼 수 있는 정보는 보존하고, 많은 사람과 공유합니다.
+                                </p>
                             :null
                             }    
-                                                   
+
                 </li>
             </ul>
       </Fragment>
