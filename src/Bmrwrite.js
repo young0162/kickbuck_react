@@ -44,7 +44,7 @@ export default class Bmrwrite extends Component {
         return (
             <div>
                 <br></br>
-                <span style={{textAlign:'left', marginLeft:'15px'}}> 방명록 작성 </span>
+                <span style={{textAlign:'left', marginLeft:'820px'}}> 방명록 작성 </span>
                                    
                         <form className="ydiv" onSubmit={this.onSubmit}>
                             <table  className="table table-bordered">
@@ -52,7 +52,7 @@ export default class Bmrwrite extends Component {
                                     <tr>
                                         <td>
                                             <input type="text" placeholder="닉네임"
-                                            style={{width: "50px"}}
+                                            style={{width: "150px"}}
                                             value={this.state.nickname}
                                             onChange={this.onKeyChange}
                                             name="nickname"/>
@@ -61,7 +61,7 @@ export default class Bmrwrite extends Component {
                                     <tr>   
                                         <td>
                                             <input type="text" placeholder="내용" className="form-control"
-                                            style={{width: "500px", height:"100px"}}
+                                            style={{width: "700px", height:"100px"}}
                                             value={this.state.content}
                                             onChange={this.onKeyChange}
                                             name="content"/>

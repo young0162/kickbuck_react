@@ -10,6 +10,7 @@ export default class Bmrlist extends Component {
                 <Bmrwrite />
                 <br></br>
                 <Bmr />
+                <br></br> 
             </div>
         );
     }

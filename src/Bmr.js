@@ -30,7 +30,7 @@ export default class Bmr extends Component {
 
     render(){
         return (
-            <div style={{textAlign:'center', marginLeft:'15px'}}>
+            <div style={{textAlign:'center', marginLeft:'400px'}}>
                 <table className="table table bordered">
                     <thead>
                         <tr style={{background:'lightgray'}}>
