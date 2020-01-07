@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from 'axios';
+
 export default class FreeBoardItem extends Component {
 
   constructor(){
