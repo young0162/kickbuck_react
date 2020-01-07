@@ -48,7 +48,7 @@ class FreeBoardComment extends Component {
         });
       })
       .catch(error => {
-        console.log("add error");
+        console.log("프리보드댓글 error");
       });
   };
 

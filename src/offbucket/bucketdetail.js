@@ -85,14 +85,6 @@ class Bucketdetail extends Component {
           </tbody>
         </table>
         <OffbucketCommentInsert />
-        {/* <Button
-          type="button"
-          onClick={() => {
-            this.props.history.push("/bucket/offbucketdetail/CommentInsert");
-          }}
-        >
-          후기
-        </Button> */}
         <hr></hr>
 
         {this.state.offBucketCommentData.map((row, idx) => (
