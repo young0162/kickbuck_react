@@ -5,16 +5,24 @@ export default class LikeListItem extends Component {
     console.log(this.props.row)
     const url = "http://localhost:9000/controller/save/"
     return (
-      <tr>
-        <td>
-            <img src={url+this.props.row.imgarr} alt="" style={{width:'200px'}} />
-        </td>
-        <td><a href={"select/" + this.props.row.num}>{this.props.row.subject}</a></td>
-        <td>{this.props.row.content}</td>
-        <td>{this.props.row.user_name}</td>
-        <td>{this.props.row.dday}</td>
-        <td>{this.props.row.day}</td>
-      </tr>
+      <div className="mybucket_form">
+        <div className="list_img">
+          <img src={url+this.props.row.imgarr} alt=""/>
+        </div>
+        <div className="list_content">
+          <p className="day">
+            <span>
+              D-Day <span className="red">{this.props.row.dday}</span>
+            </span>
+            <span>
+              {this.props.row.day}
+            </span>
+          </p>
+          <p className="title">
+            {this.props.row.subject}
+          </p>
+        </div>
+      </div>
     );
   }
 }

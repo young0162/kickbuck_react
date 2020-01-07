@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LikeListItem from './LikeListItem';
 import MyPage from './MyPage';
-import '../css/table.css';
 
 export default class LikeList extends Component {
   constructor() {
@@ -14,7 +13,7 @@ export default class LikeList extends Component {
 
   //리스트를 가져올 함수
   list = () => {
-    var url = "http://localhost:9000/controller/mypage/likelist?user_name=" +
+    var url = "http://localhost:9000/controller/mylikeupbucket?user_name=" +
     localStorage.state;
     axios.get(url)
       .then((responseData) => {
@@ -39,24 +38,13 @@ export default class LikeList extends Component {
     return (
       <div className="list_my">
         <MyPage />
-        <table className="list_table">
-          <thead>
-            <tr className="list_tr">
-              <th className="list_image">이미지</th>
-              <th className="list_subject">제목</th>
-              <th className="list_content">내용</th>
-              <th className="list_nickname">작성자</th>
-              <th className="list_dday">디데이</th>
-              <th className="list_writeday">작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
+        <div className="mybucket_box">
+           {
               this.state.mypageData.map((row, idx) => (
-                <LikeListItem idx={idx} key={row.num} row={row} />))
+              <LikeListItem idx={idx} key={row.num} row={row} />))
             }
-          </tbody>
-        </table>
+        </div>
+            
       </div>
     )
   }

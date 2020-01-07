@@ -164,7 +164,7 @@ export default class Menu extends Component {
             <NavLink exact to='/bucketlist/togetherboard'>
               함께하기
             </NavLink>
-            <NavLink exact to='/MyPage'>
+            <NavLink exact to='/mypage/mylist'>
               mypage
             </NavLink>
             <NavLink exact to='/profile'>

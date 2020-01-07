@@ -71,8 +71,7 @@ export default class Main extends Component {
 
           {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />
-          <Route
-            exact
+          <Route exact
             path="/community/freeboarddetail/:num"
             component={FreeBoardDetail}
           />

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import OffListItem from './OffListItem';
 import MyPage from './MyPage';
-import '../css/table.css';
 
 export default class OffList extends Component {
   constructor() {
@@ -39,24 +38,13 @@ export default class OffList extends Component {
     return (
       <div className="list_my">
         <MyPage />
-        <table className="list_table">
-          <thead>
-            <tr className="list_tr">
-              <th className="list_image">이미지</th>
-              <th className="list_subject">제목</th>
-              <th className="list_content">내용</th>
-              <th className="list_nickname">작성자</th>
-              <th className="list_dday">디데이</th>
-              <th className="list_writeday">작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.state.mypageData.map((row, idx) => (
-                <OffListItem idx={idx} key={row.num} row={row} />))
-            }
-          </tbody>
-        </table>
+        <div className="mybucket_box">
+        {
+          this.state.mypageData.map((row, idx) => (
+          <OffListItem idx={idx} key={row.num} row={row} />))
+        }
+        </div>
+        
       </div>
     )
   }
