@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import FAQ from './faq/FAQ';
-import MyProfile from './profile/MyProfile';
 import Mylist from './mypage/MyList';
-import Our from './mypage/OurList';
+import OurList from './mypage/OurList';
 import OffList from './mypage/OffList';
-import Empathize from './mypage/Empathize';
+import LikeList from './mypage/LikeList';
 import Standby from './mypage/Standby';
-import MyList from './mypage/MyList';
 import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
@@ -36,6 +33,7 @@ import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
+import MyListDetail from "./mypage/MyListDetail";
 
 export default class Main extends Component {
   render() {
@@ -68,13 +66,11 @@ export default class Main extends Component {
 
           {/* 마이페이지 카테고리 변경시 이동 로딩 컴포넌트 */}
           <Route exact path='/mypage/mylist' component={Mylist} />
-          <Route exact path='/mypage/ourlist' component={Our} />
+          <Route exact path='/mypage/ourlist' component={OurList} />
           <Route exact path='/mypage/offlist' component={OffList} />
-          <Route exact path='/mypage/Empathize' component={Empathize} />
+          <Route exact path='/mypage/likelist' component={LikeList} />
           <Route exact path='/mypage/Standby' component={Standby} />
-          <Route path="/select/:num" Component={MyList}/>
-
-
+          <Route exact path="/select/:num" Component={MyListDetail}/>
 
           {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />

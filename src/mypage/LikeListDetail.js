@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import './style.css';
 
-export default class EmpathizeDetail extends Component{
+export default class LikeListDetail extends Component{
     constructor({match}){
         super();
         this.num=match.params.num

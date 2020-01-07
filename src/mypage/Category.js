@@ -18,7 +18,7 @@ export default class Category extends Component {
               <NavLink exact to='/mypage/offlist'>
                   <li>오프 버킷리스트</li>
               </NavLink>
-              <NavLink exact to='/mypage/empathize'>
+              <NavLink exact to='/mypage/likelist'>
                   <li>공감한 버킷리스트</li>
               </NavLink>
           </ul>

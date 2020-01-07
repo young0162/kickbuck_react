@@ -9,20 +9,20 @@ import logoimg from './image/main/tick_off_logo2.png';
 
 export default class Menu extends Component {
   constructor() {
-      super();
+    super();
 
-      this.state = {
-          active: '-300px',
-          opacSide: 0,
-          visibiSide: 'hidden',
-          visibi: 'hidden',
-          classSide: '',
-          loginShow: 'none'
-      }
+    this.state = {
+      active: '-300px',
+      opacSide: 0,
+      visibiSide: 'hidden',
+      visibi: 'hidden',
+      classSide: '',
+      loginShow: 'none'
+    }
 
-      this.onLogin = this.onLogin.bind(this);
-      this.onLogOut = this.onLogOut.bind(this);
-      this.addActive = this.addActive.bind(this);
+    this.onLogin = this.onLogin.bind(this);
+    this.onLogOut = this.onLogOut.bind(this);
+    this.addActive = this.addActive.bind(this);
   }
 
   addActive() {
@@ -43,7 +43,7 @@ export default class Menu extends Component {
     }
   }
 
-  
+
 
   onLogin() {
     if (this.state.loginShow === "none") {
@@ -72,7 +72,7 @@ export default class Menu extends Component {
       visibility: this.state.visibiSide
     };
 
-    
+
 
     const loginShow = {
       display: this.state.loginShow
@@ -80,17 +80,15 @@ export default class Menu extends Component {
 
     let loginState = null;
 
-    if(localStorage.state)
-    {
-        loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
+    if (localStorage.state) {
+      loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
     }
-    else
-    {
-        loginState = <p className="plus" onClick={this.onLogin}>로그인ㆍ회원가입</p>
+    else {
+      loginState = <p className="plus" onClick={this.onLogin}>로그인ㆍ회원가입</p>
     }
 
     return (
-      <div style={{marginBottom:'100px'}}>
+      <div style={{ marginBottom: '100px' }}>
         <div className="menubar">
           <div className="login_bar">
             <p className="login_text">
@@ -99,52 +97,52 @@ export default class Menu extends Component {
             </p>
           </div>
           <ul>
-              <li>
-                <p className="logo">
-                 <NavLink exact to='/'>
-                    <img src={logoimg} alt=""/>
+            <li>
+              <p className="logo">
+                <NavLink exact to='/'>
+                  <img src={logoimg} alt="" />
+                </NavLink>
+              </p>
+            </li>
+            <li>
+              <NavLink exact to='/MyPage'>
+                mypage
                   </NavLink>
-                </p>
-              </li>
-              <li>
-                  <NavLink exact to='/MyPage'>
-                    mypage
+            </li>
+            <li>
+              <NavLink exact to='/SignUp'>
+                sign
                   </NavLink>
-              </li>
-              <li>
-                  <NavLink exact to='/SignUp'>
-                    sign
+            </li>
+            <li>
+              <NavLink exact to='/FAQ'>
+                FAQ
                   </NavLink>
-              </li>
-              <li>
-                  <NavLink exact to='/FAQ'>
-                    FAQ
-                  </NavLink>
-              </li>
-              <li>
-                  <NavLink exact to='/profile'>
-                    profile
+            </li>
+            <li>
+              <NavLink exact to='/profile'>
+                profile
                     </NavLink>
-                <div className="search_box">
-                  <input type="text" />
-                  <img src={search_icon} alt="" onClick={this.goSearch} />
-                </div>
-              </li>
-              <li className="plus_li">
-                  <NavLink exact to='/add'>
-                    <p className="plus"><Add/></p>
-                  </NavLink>
-              </li>
-              <li>
-                <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
-                  <span className="one"></span>
-                  <span className="two"></span>
-                  <span className="thr"></span>
-                </div>
-              </li>
+              <div className="search_box">
+                <input type="text" />
+                <img src={search_icon} alt="" onClick={this.goSearch} />
+              </div>
+            </li>
+            <li className="plus_li">
+              <NavLink exact to='/add'>
+                <p className="plus"><Add /></p>
+              </NavLink>
+            </li>
+            <li>
+              <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
+                <span className="one"></span>
+                <span className="two"></span>
+                <span className="thr"></span>
+              </div>
+            </li>
           </ul>
 
-          
+
 
 
           <div className="bgon" style={sideBg} onClick={this.addActive}></div>
@@ -169,6 +167,12 @@ export default class Menu extends Component {
             </NavLink>
             <NavLink exact to='/bucketlist/togetherboard'>
               함께하기
+            </NavLink>
+            <NavLink exact to='/MyPage'>
+              mypage
+            </NavLink>
+            <NavLink exact to='/profile'>
+              profile
             </NavLink>
           </div>
         </div>

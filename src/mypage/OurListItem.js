@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 export default class OurListItem extends Component {
   render() {
     console.log(this.props.row)
-    const url = "http://localhost:9000/controller/Mypage/"
+    const url = "http://localhost:9000/controller/save/"
     return (
       <tr>
         <td>
-            <img src={this.props.row.imagename} alt="" className="image" />
+            <img src={url+this.props.row.imgarr} alt="" style={{width:'200px'}} />
         </td>
-        <td><a href={"select/" + this.props.row.num}>{this.props.row.title}</a></td>
+        <td><a href={"select/" + this.props.row.num}>{this.props.row.subject}</a></td>
         <td>{this.props.row.content}</td>
         <td>{this.props.row.user_name}</td>
-        <td>{this.props.row.readcnt}</td>
-        <td>{this.props.row.gaipday}</td>
+        <td>{this.props.row.dday}</td>
+        <td>{this.props.row.day}</td>
       </tr>
     );
   }

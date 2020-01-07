@@ -9,12 +9,9 @@ export default class MyProfile extends Component {
     this.state = {
       //스프링으로부터 dto 데이타를 받을 변수
       selectData: '',
-      num: 1,
       user_name: '',
-      email1: '',
-      email2: '',
+      email: '',
       passwordState: '',
-      phone: '',
       image: '',
       showdata: this.displayData
     }
@@ -22,9 +19,9 @@ export default class MyProfile extends Component {
   }
 
   //마이메이지 호출되는 함수
-  onSelect = () => {
-    console.log("num=" + this.state.num)
-    var url = "http://localhost:9000/controller/profile/select?num=" + this.state.num;
+  onSelect = (num) => {
+    console.log("num="+num)
+    var url = "http://localhost:9000/controller/profile/select?num="+num;
 
     axios.get(url)
       .then((responseData) => {
@@ -32,10 +29,8 @@ export default class MyProfile extends Component {
         this.setState({
           selectData: responseData.data,
           user_name: responseData.data.user_name,
-          email1: responseData.data.email1,
-          email2: responseData.data.email2,
+          email: responseData.data.email,
           // password: responseData.data.password,
-          phone: responseData.data.phone,
           image: responseData.data.image
         });
       })
@@ -104,9 +99,8 @@ export default class MyProfile extends Component {
       .post(url, uploadFile)
       .then(res => {
         this.setState({
-          email1: this.state.email1,
+          email: this.state.email,
           password: this.state.password,
-          phone: this.state.phone,
           image: this.state.showdata
         })
         console.log(res.data);
@@ -185,18 +179,10 @@ export default class MyProfile extends Component {
                 </td>
               </tr>
               <tr className="profile_tr">
-                <td className="profile_td">연락처</td>
-                <td className="profile_td">
-                  <input className="tel" type="tel" name="phone"
-                    value={this.state.phone}
-                    onChange={this.onKeyChange} />
-                </td>
-              </tr>
-              <tr className="profile_tr">
                 <td className="profile_td">이메일</td>
                 <td className="profile_td">
-                  <input className="mail" type="text" name="email1"
-                    value={this.state.email1}
+                  <input className="mail" type="text" name="email"
+                    value={this.state.email}
                     onChange={this.onKeyChange} />
                 </td>
               </tr>

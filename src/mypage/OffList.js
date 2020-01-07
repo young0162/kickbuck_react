@@ -9,16 +9,13 @@ export default class OffList extends Component {
     super();
     this.state = {
       mypageData: [],//스프링에서 게시물 목록을 받아서 저장할 변수
-      start:0,
-      flag:false,
-      flag2:false
     };
   }
 
   //리스트를 가져올 함수
   list = () => {
-    var url = "http://localhost:9000/controller/mypage/list?start=" +
-    this.state.start;
+    var url = "http://localhost:9000/controller/mypage/offlist?user_name=" +
+    localStorage.state;
     axios.get(url)
       .then((responseData) => {
         console.log(responseData.data);
@@ -26,52 +23,14 @@ export default class OffList extends Component {
         this.setState({
           mypageData: responseData.data
         });
+        console.log("mypagedata"+this.state.mypageData);
       })
       .catch((error) => {
         console.log("mypage list error" + error.data);
       });
   };
-  onClickNext=()=>{
-    console.log(this.state.mypageData.length);
-    if(this.state.mypageData.length!==0){
-      this.setState((prevState, props) => ({
-        start: prevState.start + 5,
-        flag: true
-      }));
-    }
-  };
 
-  onClickPre = () => {
-    if (this.state.start > 0) {
-      this.setState((prevState, props) => ({
-        start: prevState.start - 5,
-        flag2: true
-      }));
-    }
-  };
-
-  handleClickOpen() {
-    this.setState({
-      open: true
-    });
-  }
-
-  componentDidUpdate = () => {
-    if (this.state.flag) {
-      this.list();
-      this.setState({
-        flag: false
-      });
-    } else if (this.state.flag2) {
-      this.list();
-      this.setState({
-        flag2: false
-      });
-    }
-  };
-
-
-  componentWillMount() {
+  componentDidMount() {
     //랜더링 직전 스프링으로부터 목록을 받아온다
     this.list();
   }
@@ -98,14 +57,6 @@ export default class OffList extends Component {
             }
           </tbody>
         </table>
-        <div>
-        <button type="button" onClick={this.onClickPre}>
-              pre
-            </button>
-            <button type="button" onClick={this.onClickNext}>
-              next
-            </button>
-        </div>
       </div>
     )
   }

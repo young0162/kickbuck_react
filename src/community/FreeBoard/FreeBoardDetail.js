@@ -121,11 +121,6 @@ export default class FreeBoardDetail extends Component {
         >
           목록
         </button>
-<<<<<<< HEAD
-        <button type="button" onClick={this.onDelete.bind(this)} color="danger">
-          삭제
-        </button>
-=======
         <div>
           <Button
             variant="contained"
@@ -158,7 +153,6 @@ export default class FreeBoardDetail extends Component {
             </DialogActions>
           </Dialog>
         </div>
->>>>>>> master
         <button
           type="button"
           onClick={() => {

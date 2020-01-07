@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class MyListItem extends Component {
+export default class LikeListItem extends Component {
   render() {
     console.log(this.props.row)
     const url = "http://localhost:9000/controller/save/"
