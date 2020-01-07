@@ -5,9 +5,18 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            withUserArr:[]
+        }
+    }
+
     onClick = (event) => {
         this.detailShow();
         this.bucketSelect();
+        this.withCheck();
     }
 
     detailShow = () => {
@@ -28,7 +37,8 @@ class SoloItem extends Component {
             }
         )
         .then( (resData) => {
-            
+            alert("성공")
+            console.log(resData.data)
         })
         .catch( (error) => {
             console.log("update error" + error)
@@ -50,6 +60,17 @@ class SoloItem extends Component {
         .catch( (error) => {
             console.log("update error" + error)
         })
+    }
+
+    
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state.withUserArr !== nextProps.withUserArr.witharr)
+        {
+            this.setState({
+                withUserArr: nextProps.withUserArr.witharr
+            })
+        }
     }
 
     render() {
