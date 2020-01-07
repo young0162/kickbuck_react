@@ -12,9 +12,10 @@
 }
 
 #xmenu:hover{
-    display:inline-block; width:'100px'; color:rgb(137, 184, 238); font-size:'22px'; font-weight: bold; text-decoration: none;
+    display:inline-block; width:'100px'; color:#3886CE; font-size:'22px'; font-weight: bold; text-decoration: none;
    } 
 
+   
 .faqwrap{
     position: relative;
     width: 100%;
@@ -39,7 +40,7 @@
     position: relative;
     display: inline-block;
     width:97%;    
-    border: 1px solid lightgrey;
+    border: 1px solid #f6f6f6;
     padding-top:20px;
     padding-bottom:20px;
     padding: 10px 10px;

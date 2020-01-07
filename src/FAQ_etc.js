@@ -38,36 +38,22 @@ export default class FAQ_etc extends Component {
     return (
       <Fragment>
 
-        <div style={{textAlign:'center', paddingLeft:'500px',  position:"relative"}}>
-                <form className="yform">
-                    <table  className="table table-bordered">                        
-                        <tbody>
-                            <tr>
-                                
-                                <td width="250" >
-                                    {/* style={{ textDecoration: 'none' }}은 NavLink 밑줄 제거하기 위해 적용
-                                        xmenu는 hover
-                                    */}
-                                    
-                                    <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none' }}>
+       
+                <div className="menubar">
+                    <ul>
+                        <li>
+                            <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none' }}>
                                         <p id="xmenu">가입/로그인</p>
                                     </NavLink>
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="/FAQ_contents" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">서비스/컨텐츠</p> 
-                                    </NavLink>  
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="./FAQ_etc" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">기타</p> 
+                        </li>
+                        <li>
+                            <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none' }}>
+                                        <p id="xmenu">가입/로그인</p>
                                     </NavLink>
-                                </td>
-                            </tr>                            
-                        </tbody> 
-                    </table>
-                </form>
-        </div>
+                        </li>
+                    </ul>
+                </div>
+   
 
       
       <br></br>
