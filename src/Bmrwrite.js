@@ -23,21 +23,21 @@ export default class Bmrwrite extends Component {
     onSubmit=(e)=>{
         e.preventDefault();
 
-        const uploadFile= this.state;        
-        var url="http://localhost:9000/controller/bmr/save";
-        axios.post(url, uploadFile)
-            .then((res)=>{
-                    this.setState({
-                        
-                        nickname:'',
-                        content:''
-                        
-                })
+        var url="http://localhost:9000/controller/guestsave";
+        axios.post(url, {
+            nickname: this.state.nickname,
+            contents: this.state.content
+        })
+        .then((res)=>{
+            this.setState({
+                nickname:'',
+                contents:''
             })
-            .catch((err)=>{
-                console.log("submit 오류:" + err.data);
-            });
-            window.location.reload(); //새로고침할 필요없이 방명록이 바로 목록에 출력된다
+        })
+        .catch((error)=>{
+            console.log("submit 오류:" + error.data);
+        });
+        window.location.reload(); //새로고침할 필요없이 방명록이 바로 목록에 출력된다
     }
 
     render(){

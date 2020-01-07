@@ -13,7 +13,7 @@ export default class Rowitem_bmr extends Component {
                     {this.props.row.nickname}
                 </td>
                 <td>
-                    {this.props.row.content}
+                    {this.props.row.contents}
                 </td>
                 <td>
                     {this.date.toLocaleString()}
