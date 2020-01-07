@@ -88,7 +88,7 @@ export default class Menu extends Component {
     }
 
     return (
-      <div style={{ marginBottom: '100px' }}>
+      <div style={{marginBottom:'120px'}}>
         <div className="menubar">
           <div className="login_bar">
             <p className="login_text">
@@ -123,10 +123,6 @@ export default class Menu extends Component {
               <NavLink exact to='/profile'>
                 profile
                     </NavLink>
-              <div className="search_box">
-                <input type="text" />
-                <img src={search_icon} alt="" onClick={this.goSearch} />
-              </div>
             </li>
             <li className="plus_li">
               <NavLink exact to='/add'>

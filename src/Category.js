@@ -34,25 +34,31 @@ class Category extends Component {
             visibility: this.state.visibi
         }
 
+        const activeStyle = {
+            borderBottom: '2px solid #3886CE',
+            height: '50px',
+            boxSizing: 'border-box'
+        };
+
         return (
             <div className="category_bar">
                 <ul>
-                    <NavLink exact to='/all'>
-                        <li className="active">
-                                모두보기    
+                    <NavLink exact to='/' activeStyle={activeStyle}>
+                        <li >
+                            모두보기    
                         </li>
                     </NavLink>
-                    <NavLink exact to='/solo' style={{borderLeft:'1px solid #ddd'}}>
+                    <NavLink exact to='/solo' activeStyle={activeStyle} style={{borderLeft:'1px solid #ddd'}}>
                         <li>
                             개인  
                         </li>
                     </NavLink>
-                    <NavLink exact to='/with' style={{borderLeft:'1px solid #ddd'}}>
+                    <NavLink exact to='/with' activeStyle={activeStyle} style={{borderLeft:'1px solid #ddd'}}>
                         <li>
                             함께하는
                         </li>
                     </NavLink>
-                    <NavLink exact to='/off' style={{borderLeft:'1px solid #ddd'}}>
+                    <NavLink exact to='/off' activeStyle={activeStyle} style={{borderLeft:'1px solid #ddd'}}>
                         <li>
                             OFF
                         </li>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { FavoriteBorder, Archive, HighlightOff, TimerSharp} from '@material-ui/icons';
+import { FavoriteBorder, Archive, HighlightOff, TimerSharp, NoteOutlined} from '@material-ui/icons';
 import { Slide } from 'react-slideshow-image';
+import Bucketdetail from './offbucket/Bucketdetail';
+import './css/off.css';
 
 class CardDetail extends Component {
 
@@ -9,7 +11,8 @@ class CardDetail extends Component {
         
         this.state = {
             bucketArrImg: this.props.bucketOneData,
-            imgarr: []
+            imgarr: [],
+            off: this.props.off
         }
         
     }
@@ -28,11 +31,11 @@ class CardDetail extends Component {
             })
         }
         return true;
-      }
+    }
+
 
     render() {
         
-
         const properties = {
             duration: 5000,
             transitionDuration: 500,
@@ -40,6 +43,17 @@ class CardDetail extends Component {
             indicators: true,
             arrows: true,
         }
+        
+        let offshow;
+
+        
+        if(this.state.off === 'off')
+        {
+            offshow = <div className="offcomment" style={{'display' : 'block'}}>
+                            <Bucketdetail/>
+                        </div>
+        }
+        
 
         const url = "http://localhost:9000/controller/save/";
         const bucketData = this.props.bucketOneData;
@@ -53,7 +67,7 @@ class CardDetail extends Component {
                         { 
                             this.state.imgarr.map((item,idx) => (
                                     // <img style={{width:'100px'}} src={url + item} alt="" /> 
-                                    <div className="each-slide" key={idx}>
+                                    <div className="each-slide" key={idx} style={{height: '80vh'}}>
                                         <div style={{'backgroundImage': `url(${url + item})`}}></div>
                                     </div>
                                 )
@@ -92,6 +106,7 @@ class CardDetail extends Component {
                     <p className="close_but" onClick={this.detailHide}>
                         <HighlightOff/>
                     </p>
+                    {offshow}
                 </div>
             </div>
         );
