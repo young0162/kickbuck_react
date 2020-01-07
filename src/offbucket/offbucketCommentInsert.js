@@ -32,9 +32,13 @@ class OffbucketCommentInsert extends Component {
   }
 
   modalClickOpen = () => {
-    this.setState({
-      open: true
-    });
+    if (localStorage.length === 1) {
+      this.setState({
+        open: true
+      });
+    } else {
+      alert("로그인을 해주세요");
+    }
   };
 
   modalClickClose = () => {
@@ -191,74 +195,6 @@ class OffbucketCommentInsert extends Component {
           </DialogActions>
         </Dialog>
       </div>
-      //  <form onSubmit={this.onSubmit}>
-      //   <table>
-      //     <tbody>
-      //       <tr>
-      //         <th>제목</th>
-      //         <input
-      //           type="text"
-      //           name="subject"
-      //           onChange={this.onKeyChange}
-      //         ></input>
-      //       </tr>
-      //       <tr>
-      //         <th>사진</th>
-      //         <td>
-      //           <input
-      //             type="file"
-      //             name="image"
-      //             onChange={this.onImageUpload}
-      //           ></input>
-      //         </td>
-      //       </tr>
-      //       <tr>
-      //         <th>작성자</th>
-      //         <td>
-      //           <input
-      //             type="text"
-      //             value={localStorage.state}
-      //             readOnly
-      //             name="user_name"
-      //           ></input>
-      //         </td>
-      //       </tr>
-      //       <tr>
-      //         <th>내용</th>
-      //         <td>
-      //           <textarea
-      //             name="content"
-      //             value={this.state.content}
-      //             onChange={this.onKeyChange}
-      //           ></textarea>
-      //         </td>
-      //       </tr>
-      //       <tr>
-      //         <th>endday</th>
-      //         <td>
-      //           <input
-      //             type="text"
-      //             name="endday"
-      //             onChange={this.onKeyChange}
-      //           ></input>
-      //         </td>
-      //       </tr>
-      //       <tr>
-      //         <th colSpan="2">
-      //           <button type="submit">등록</button>
-      //           <button
-      //             type="button"
-      //             onClick={() => {
-      //               this.props.history.push("/bucket/offbucketdetail");
-      //             }}
-      //           >
-      //             취소
-      //           </button>
-      //         </th>
-      //       </tr>
-      //     </tbody>
-      //   </table>
-      // </form>
     );
   }
 }

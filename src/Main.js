@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Mylist from './mypage/MyList';
-import OurList from './mypage/OurList';
-import OffList from './mypage/OffList';
-import LikeList from './mypage/LikeList';
-import Standby from './mypage/Standby';
+import Mylist from "./mypage/MyList";
+import OurList from "./mypage/OurList";
+import OffList from "./mypage/OffList";
+import LikeList from "./mypage/LikeList";
+import Standby from "./mypage/Standby";
 import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
@@ -24,15 +24,15 @@ import {
   FreeBoardUpdate,
   FreeBoardComment
 } from "./community/FreeBoard/Export";
-import QnaBoardDetail from './community/QnaBoard/QnaBoardDetail';
-import QnaBoardUpdate from './community/QnaBoard/QnaBoardUpdate';
-import QnaComment from './community/QnaBoard/QnaComment';
-import QnaBoard from './community/QnaBoard/QnaBoard';
-import QnaBoardWrite from './community/QnaBoard/QnaBoardWrite';
+import QnaBoardDetail from "./community/QnaBoard/QnaBoardDetail";
+import QnaBoardUpdate from "./community/QnaBoard/QnaBoardUpdate";
+import QnaComment from "./community/QnaBoard/QnaComment";
+import QnaBoard from "./community/QnaBoard/QnaBoard";
+import QnaBoardWrite from "./community/QnaBoard/QnaBoardWrite";
 import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
-import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
+import TogetherBoard from "./bucketlist/TogetherBoard/TogetherBoard";
 import MyListDetail from "./mypage/MyListDetail";
 
 export default class Main extends Component {
@@ -41,36 +41,35 @@ export default class Main extends Component {
       <BrowserRouter>
         <div>
           {/* 메인페이지 로딩 되는 컴포넌트 */}
-          <Menu/>
-          
-          <Route exact path='/' component={Category} />
-          <Route exact path='/all' component={Category} />
-          <Route exact path='/solo' component={Category} />
-          <Route exact path='/with' component={Category} />
-          <Route exact path='/off' component={Category} />
-          <Route exact path='/together' component={Category} />
-          
-          
+          <Menu />
+
+          <Route exact path="/" component={Category} />
+          <Route exact path="/all" component={Category} />
+          <Route exact path="/solo" component={Category} />
+          <Route exact path="/with" component={Category} />
+          <Route exact path="/off" component={Category} />
+          <Route exact path="/together" component={Category} />
+
           {/* 페이지 이동 로딩 컴포넌트 */}
-          <Route exact path='/' component={All} />
-          <Route exact path='/mypage' component={MyPage} />
-          <Route exact path='/signup' component={SignUp} />
+          <Route exact path="/" component={All} />
+          <Route exact path="/mypage" component={MyPage} />
+          <Route exact path="/signup" component={SignUp} />
 
           {/* 메인 버킷리스트 카테고리 변경시 출력 컴포넌트 */}
-          <Route exact path='/solo' component={Solo} />
-          <Route exact path='/together' component={Together} />
-          <Route exact path='/off' component={Off} />
-          <Route exact path='/with' component={With} />
-          <Route exact path='/all' component={All} />
-          <Route exact path='/add' component={Add} />
+          <Route exact path="/solo" component={Solo} />
+          <Route exact path="/together" component={Together} />
+          <Route exact path="/off" component={Off} />
+          <Route exact path="/with" component={With} />
+          <Route exact path="/all" component={All} />
+          <Route exact path="/add" component={Add} />
 
           {/* 마이페이지 카테고리 변경시 이동 로딩 컴포넌트 */}
-          <Route exact path='/mypage/mylist' component={Mylist} />
-          <Route exact path='/mypage/ourlist' component={OurList} />
-          <Route exact path='/mypage/offlist' component={OffList} />
-          <Route exact path='/mypage/likelist' component={LikeList} />
-          <Route exact path='/mypage/Standby' component={Standby} />
-          <Route exact path="/select/:num" Component={MyListDetail}/>
+          <Route exact path="/mypage/mylist" component={Mylist} />
+          <Route exact path="/mypage/ourlist" component={OurList} />
+          <Route exact path="/mypage/offlist" component={OffList} />
+          <Route exact path="/mypage/likelist" component={LikeList} />
+          <Route exact path="/mypage/Standby" component={Standby} />
+          <Route exact path="/select/:num" Component={MyListDetail} />
 
           {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />
@@ -135,15 +134,11 @@ export default class Main extends Component {
 
           <Route
             exact
-            path="/bucket/OffBucketCommentUpdate"
-            component={OffBucketCommentUpdate}
+            path="/bucketlist/togetherboard"
+            component={TogetherBoard}
           />
-
-          <Route exact path='/bucketlist/togetherboard' component={TogetherBoard} />
-
         </div>
       </BrowserRouter>
     );
   }
 }
-

@@ -61,7 +61,6 @@ class Bucketdetail extends Component {
     this.offBucketCommentList();
   };
   render() {
-    console.log(this.state.offBucketCommentData);
     return (
       <Fragment>
         <table>
