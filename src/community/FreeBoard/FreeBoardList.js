@@ -15,6 +15,7 @@ class FreeBoardList extends Component {
       flag: false,
       flag2: false
     };
+    console.log("freeboardlistData=" + this.state.freeBoardListData);
   }
 
   //리스트 함수

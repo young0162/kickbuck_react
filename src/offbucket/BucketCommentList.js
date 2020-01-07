@@ -6,10 +6,17 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
+import OffBucketCommentUpdate from "./OffBucketCommentUpdate";
 
 class BucketCommentList extends Component {
   state = {
-    open: false
+    open: false,
+    subject: "",
+    image: "",
+    content: "",
+    user_Name: "",
+    endday: "",
+    commentData: []
   };
 
   handleClickOpen = () => {
@@ -24,16 +31,16 @@ class BucketCommentList extends Component {
   };
 
   onDelete = () => {
-    if (localStorage.state === this.state.selectData.user_name) {
+    if (localStorage.state === this.props.row.user_name) {
       var url =
-        "http://localhost:9000/controller/community/freeboarddetail/delete?num=" +
-        this.num;
+        "http://localhost:9000/controller/bucket/offbucketcomment/delete?pk=" +
+        this.props.row.pk;
 
       axios
         .get(url)
         .then(responseData => {
           //삭제후 돌아가기
-          this.history.push("/community/freeboardlist");
+          window.location.reload();
         })
         .catch(error => {
           console.log("delte error");
@@ -42,8 +49,38 @@ class BucketCommentList extends Component {
       alert("로그인 정보가 일치하지않습니다");
     }
   };
+
+  onSelect = () => {
+    var url =
+      "http://localhost:9000/controller/bucket/offbucketcommentData?pk=" +
+      this.props.row.pk;
+
+    axios
+      .get(url)
+      .then(responseData => {
+        console.log(responseData.data);
+        this.setState({
+          commentData: responseData.data,
+          subject: responseData.data.subject,
+          image: responseData.data.image,
+          content: responseData.data.content,
+          endday: responseData.data.endday,
+          user_Name: responseData.data.user_name
+        });
+        console.log("commentData=" + this.state.commentData);
+      })
+      .catch(error => {
+        console.log("commentData error");
+      });
+  };
+
+  componentWillMount = () => {
+    this.onSelect();
+  };
+
   render() {
     const url = "http://localhost:9000/controller/save/";
+    console.log("pk=" + this.props.row.pk);
     return (
       <Fragment>
         <h3>{this.props.row.subject}</h3> <br></br>
@@ -87,16 +124,8 @@ class BucketCommentList extends Component {
               </Button>
             </DialogActions>
           </Dialog>
-          <button
-            type="button"
-            onClick={() => {
-              this.history.push(
-                "/community/freeboardupdate/" + this.state.selectData.num
-              );
-            }}
-          >
-            수정
-          </button>
+
+          <OffBucketCommentUpdate commentData={this.state.commentData} />
         </div>
         <hr></hr>
       </Fragment>
