@@ -86,10 +86,10 @@ export default class FAQ_signup extends Component {
                             }                           
                         </li>
                         <li className="question" onClick={()=>this.ybtoggle()} name="ab">
-                            이메일말고 다른 본인 인증 수단은 없나요?                                
+                            이메일말고 다른 가입 방법은 없나요?                                
                            
                             {  this.state.ybshow?
-                                 <p className="answer"> A. ~ </p>
+                                 <p className="answer"> A. 회원의 개인정보 노출을 최소화하기 위해 이메일 가입만 현재 받고 있습니다 </p>
                             :null
                             }                           
                         </li>
@@ -97,19 +97,11 @@ export default class FAQ_signup extends Component {
                                 로그인이 되지 않아요                           
                            
                             {  this.state.ycshow?
-                                 <p className="answer"> A. 비밀번호 찾기 진행해보시고 안 되면 관리자에게 문의주세요 </p>
+                                 <p className="answer"> A. 로그인에 문제가 있으면 관리자에게 문의해주시기를 바랍니다 </p>
                             :null
                             }                           
                         </li>
-                        <li className="question" onClick={()=>this.ydtoggle()} name="ad">
-                                    ~                          
-                           
-                            {  this.state.ydshow?
-                                 <p className="answer"> A. ~ </p>
-                            :null
-                            }                           
-                        </li>
-
+                    
             </ul>
 
                 
