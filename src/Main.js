@@ -33,6 +33,10 @@ import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
 import MyListDetail from "./mypage/MyListDetail";
+import FAQ_signup from './FAQ/FAQ_signup';
+import FAQ_contents from './FAQ/FAQ_contents';
+import FAQ_etc from './FAQ/FAQ_etc';
+import Bmrlist from './FAQ/Bmrlist';
 
 export default class Main extends Component {
   render() {
@@ -137,6 +141,13 @@ export default class Main extends Component {
           />
 
           <Route exact path='/bucketlist/togetherboard' component={TogetherBoard} />
+
+          {/* FAQ  */}
+          <Route exact path='/FAQ_signup' component={FAQ_signup}/>
+          <Route exact path='/FAQ_contents' component={FAQ_contents}/>
+          <Route exact path='/FAQ_etc' component={FAQ_etc}/>
+          <Route exact path='/Bmrlist' component={Bmrlist}/>
+
 
         </div>
       </BrowserRouter>
