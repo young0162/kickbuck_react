@@ -50,14 +50,6 @@ class CardDetail extends Component {
         if(this.state.off === 'off')
         {
             offshow = <div className="offcomment" style={{'display' : 'block'}}>
-                            <p>11{this.state.off}</p>
-                            <Bucketdetail/>
-                        </div>
-        }
-        else if(this.state.off === '')
-        {
-            offshow = <div className="offcomment" style={{'display' : 'none'}}>
-                            <p>11{this.state.off}</p>
                             <Bucketdetail/>
                         </div>
         }

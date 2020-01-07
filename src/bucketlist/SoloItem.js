@@ -5,18 +5,18 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state = {
-            withUserArr:[]
-        }
-    }
+    //     this.state = {
+    //         withUserArr:[]
+    //     }
+    // }
 
     onClick = (event) => {
         this.detailShow();
         this.bucketSelect();
-        this.withCheck();
+        // this.withCheck();
     }
 
     detailShow = () => {
@@ -64,14 +64,14 @@ class SoloItem extends Component {
 
     
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if(this.state.withUserArr !== nextProps.withUserArr.witharr)
-        {
-            this.setState({
-                withUserArr: nextProps.withUserArr.witharr
-            })
-        }
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if(this.state.withUserArr !== nextProps.withUserArr.witharr)
+    //     {
+    //         this.setState({
+    //             withUserArr: nextProps.withUserArr.witharr
+    //         })
+    //     }
+    // }
 
     render() {
 

@@ -360,24 +360,24 @@ a {
     height: auto;
 }
 .card_popup .popup_content {
-    width: 1300px;
+    width: 100%;
     position: relative;
 }
 .card_popup .popup_content .content_title {
-    width: 1300px;
+    width: 100%;
     position: absolute;
     top: -80px;
     color: #fff;
     display: flex;
 }
 .card_popup .popup_content .content_title .title_left{
-    width: 50%;
+    width: 60%;
     padding-left: 60px;
     box-sizing: border-box;
     font-size: 38px;
 }
 .card_popup .popup_content .content_title .title_right{
-    width: 50%;
+    width: 40%;
     padding-right: 60px;
     box-sizing: border-box;
 }
