@@ -87,7 +87,7 @@ class QnaComment extends Component {
         
         axios.get(url)
         .then((resData)=>{
-            // 스프링 서버로부터 받은 데이타로 qnaData로 수정
+            // 스프링 서버로부터 받은 데이타로 qnaData로 수정 
             this.setState({
                 commentCount: resData.data
             })
@@ -112,7 +112,9 @@ class QnaComment extends Component {
         return (
             <div>
                 <div className='board_container'>
-                    <h3 style={{textAlign:'left', marginLeft: '30px', height: '30px'}}><b> 댓글 <span style={{color: '#E86D51'}}>{this.state.commentCount}</span> </b></h3>                
+                    <h3 style={{textAlign:'left', marginLeft: '30px', height: '30px'}}><b> 댓글 &nbsp;
+                        <span style={{color: '#E86D51'}}>{this.state.commentCount}</span></b>
+                    </h3>                
                     
                     <table className="board" style={{width: '1200px'}}>
                         
@@ -133,7 +135,7 @@ class QnaComment extends Component {
                                         {localStorage.state}
                                     </th>
                                     <td>
-                                        <input type="text" name="comment" className="input_area" 
+                                        <input type="text" name="comment" className="input_area input_comment" 
                                         style={{width:'710px', height:'50px'}} placeholder="댓글을 입력하세요." value={this.state.comment}
                                         required="required" onChange={this.onKeyChange}/>
                                     </td>
@@ -145,8 +147,8 @@ class QnaComment extends Component {
                                 </tr>
                             </tbody>
                         </table>
-                    <br/><br/>
                     </form>
+                    <br/><br/>
                 </div>
             </div>
         );

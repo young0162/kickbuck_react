@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import axios from "axios";
 import FreeBoardCommentItem from "./FreeBoardCommentItem";
+import Button from '@material-ui/core/Button';
+import '../Board.css';
 
 class FreeBoardComment extends Component {
   constructor(history) {
@@ -12,7 +14,8 @@ class FreeBoardComment extends Component {
       freeBoardCommentData: [],
       num: "",
       user_name: "",
-      comment: ""
+      comment: "",
+      commentCount: ''
     };
 
     this.onKeyChange = this.onKeyChange.bind(this);
@@ -74,21 +77,41 @@ class FreeBoardComment extends Component {
       });
   };
 
+  // 댓글 갯수를 가져올 함수
+  freeCommentCount=()=>{
+    var url="http://localhost:9000/controller/freeboardcomment/commentcount?num=" + this.props.freeboardnum;
+    
+    axios.get(url)
+    .then((resData)=>{
+        // 스프링 서버로부터 받은 데이타로 qnaData로 수정 
+        this.setState({
+            commentCount: resData.data
+        })
+
+        console.log(this.state.commentCount);
+    })
+    .catch((error)=>{
+        console.log("freeboard comment count 오류!");
+    })
+}
+
   componentDidMount() {
     // 랜더링 직전 스프링으로 목록을 받아온다
     this.freeBoardCommentList();
+    // 랜더링 직전 스프링으로 댓글 갯수를 받아온다
+    this.freeCommentCount();
   }
 
   render() {
     return (
-      <Fragment>
-        <hr />
-        <div>
-          <h2> freeBoard 댓글 </h2>
-        </div>
-        <br />
-        <hr />
-        <table className="freeBoard board" style={{ width: "1150px" }}>
+      <div>
+        
+        <div className='board_container'>
+          <h3 style={{textAlign:'left', marginLeft: '30px', height: '30px'}}><b> 댓글 &nbsp;
+            <span style={{color: '#E86D51'}}>{this.state.commentCount}</span> </b>
+          </h3>        
+        
+        <table className="board" style={{ width: "1200px" }}>
           {this.state.freeBoardCommentData.map((row, idx) => (
             <FreeBoardCommentItem
               row={row}
@@ -98,22 +121,22 @@ class FreeBoardComment extends Component {
             />
           ))}
         </table>
-        <hr />
+        
         <br />
         <br />
         <form onSubmit={this.onSubmit}>
-          <table className="board freeBoard write freeBoardWrite">
-            <tbody>
+          <table className="board">
+            <tbody className='board_body'>
               <tr>
-                <th style={{ width: "150px", height: "60px" }}>
+                <th style={{ width: "150px", height: "60px", textAlign:'center' }}>
                   {localStorage.state}
                 </th>
                 <td>
                   <input
                     type="text"
                     name="comment"
-                    className="input freeBoardinput contentinput"
-                    style={{ width: "700px", height: "100px" }}
+                    className="input_area input_comment"
+                    style={{ width: "710px", height: "50px" }}
                     placeholder="댓글을 입력하세요."
                     value={this.state.comment}
                     required="required"
@@ -121,22 +144,20 @@ class FreeBoardComment extends Component {
                   />
                 </td>
                 <td>
-                  <button
+                  <Button
                     type="submit"
-                    className="btn btn-md btn-success"
-                    style={{ width: "150px", height: "100px" }}
+                    className="btn_function" variant="outlined" color="primary"
                   >
                     댓글 등록
-                  </button>
+                  </Button>
                 </td>
               </tr>
             </tbody>
-          </table>
-          <br />
-          <br />
-          <br />
+          </table>          
         </form>
-      </Fragment>
+        <br /><br />
+        </div>
+      </div>
     );
   }
 }
