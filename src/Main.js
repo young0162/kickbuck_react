@@ -7,16 +7,15 @@ import Standby from './mypage/Standby';
 import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
-import Solo from "./bucketlist/Solo";
-import Together from "./bucketlist/Together";
-import Off from "./bucketlist/Off";
-import With from "./bucketlist/With";
-import All from "./bucketlist/All";
-import Add from "./bucketlist/Add";
-import Category from "./Category";
-import { Route } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-import "./css/main.css";
+import Solo from './bucketlist/Solo';
+import Off from './bucketlist/Off';
+import With from './bucketlist/With';
+import All from './bucketlist/All';
+import Add from './bucketlist/Add';
+import Category from './Category';
+import { Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import './css/main.css';
 import {
   FreeBoard,
   FreeBoardDetail,
@@ -48,7 +47,6 @@ export default class Main extends Component {
           <Route exact path='/solo' component={Category} />
           <Route exact path='/with' component={Category} />
           <Route exact path='/off' component={Category} />
-          <Route exact path='/together' component={Category} />
           
           
           {/* 페이지 이동 로딩 컴포넌트 */}
@@ -58,7 +56,6 @@ export default class Main extends Component {
 
           {/* 메인 버킷리스트 카테고리 변경시 출력 컴포넌트 */}
           <Route exact path='/solo' component={Solo} />
-          <Route exact path='/together' component={Together} />
           <Route exact path='/off' component={Off} />
           <Route exact path='/with' component={With} />
           <Route exact path='/all' component={All} />
