@@ -91,8 +91,6 @@ class QnaBoardUpdate extends Component {
 
     render() {
 
-        
-
         return (
             <div>
                 <div className='section-top'>
@@ -104,7 +102,7 @@ class QnaBoardUpdate extends Component {
                 <div className='board_container'>
                     <ul className='board_tab'>
                         <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                        <li className='tab_on'>Q & A Board</li>
+                        <li className='tab_on'onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
                     </ul>
@@ -124,7 +122,7 @@ class QnaBoardUpdate extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>제    목</th>
                                 <td>
-                                    <input type="text" ref="title" className="input_area"
+                                    <input type="text" ref="title" className="input_title input_area"
                                     style={{width:'1000px', height: '50px'}} value={this.state.title}
                                     onChange={this.titleChange} required="required"></input>
                                 </td>
@@ -132,7 +130,7 @@ class QnaBoardUpdate extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>질문내용</th>
                                 <td>
-                                    <textarea ref="content" className="input_area" 
+                                    <textarea ref="content" className="input_content input_area" 
                                     style={{width:'1000px', height:'400px'}} value={this.state.content}
                                     onChange={this.contentChange} required="required">                                        
                                     </textarea>
@@ -142,7 +140,7 @@ class QnaBoardUpdate extends Component {
                     </table>
                     <form onSubmit={this.onSubmit} style={{float:'right'}}>
                         <Button className='btn_function' type="submit" variant="contained" color="primary" >
-                            수 정
+                            저 장
                         </Button>
                     
                         <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/qnaboarddetail/"+this.state.selectData.num);}}>

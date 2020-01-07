@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import axios from "axios";
 import FreeBoardComment from "./FreeBoardComment";
 import Button from "@material-ui/core/Button";
@@ -78,99 +78,128 @@ export default class FreeBoardDetail extends Component {
 
   render() {
     const url = "http://localhost:9000/controller/save/";
+
+    let loginBtn1;
+    let loginBtn2;
+    
+    if (localStorage.state === this.state.selectData.user_name)
+    {
+        loginBtn1 = 
+        <Button variant="contained" style={{margin: '5px'}} 
+            onClick={()=>{this.history.push("/community/freeboardupdate/" + this.state.selectData.num);}}>
+            수    정
+        </Button>
+
+        loginBtn2 =
+        <Button variant="contained" style={{margin: '5px'}} color="secondary" onClick={this.handleClickOpen}>
+            삭    제
+        </Button>
+    }
+
+
     return (
-      <Fragment>
-        <table borderless>
-          <tbody>
-            <tr>
-              <th>제목</th>
-              <td>{this.state.selectData.title}</td>
-            </tr>
+      <div>
 
-            <tr>
-              <th>내용</th>
-              <td>
-                <div>
-                  <img src={url + this.state.selectData.imagename} alt="" />
-                </div>
-                {this.state.selectData.content}
-              </td>
-            </tr>
+        <div className='section-top'>
+          <div className='community_title'>
+              <span>COMMUNITY</span>
+          </div>
+        </div>  
 
-            <tr>
-              <th>작성자</th>
-              <td>{this.state.selectData.user_name}</td>
-            </tr>
-
-            <tr>
-              <th>조회수</th>
-              <td>{this.state.selectData.readcnt}</td>
-            </tr>
-
-            <tr>
-              <th>작성일</th>
-              <td>{this.state.selectData.day}</td>
-            </tr>
-          </tbody>
-        </table>
-        <button
-          type="button"
-          onClick={() => {
-            this.history.push("/community/freeboardlist");
-          }}
-        >
-          목록
-        </button>
-        <div>
-          <Button
-            variant="contained"
-            color="secondary"
-            type="button"
-            onClick={this.handleClickOpen}
-          >
-            삭제
-          </Button>
-          <Dialog open={this.state.open} onClose={this.handleClickClose}>
-            <DialogTitle onClose={this.handleClickClose}>삭제 경고</DialogTitle>
-            <DialogContent>
-              <Typography gutterBottom>선택한 게시물이 삭제됩니다</Typography>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.onDelete}
-              >
-                삭제
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleClickClose}
-              >
-                닫기
-              </Button>
-            </DialogActions>
-          </Dialog>
+        <div className='board_container'>
+            <ul className='board_tab'>
+                <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
+                <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
+                <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+            </ul>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            if (localStorage.state === this.state.selectData.user_name) {
-              this.history.push(
-                "/community/freeboardupdate/" + this.state.selectData.num
-              );
-            } else {
-              alert("로그인정보가 일치하지않습니다");
-            }
-          }}
-        >
-          수정
-        </button>
-        <div>
-          <FreeBoardComment freeboardnum={this.num} />
+
+        <div className='board_container'>
+          <table className="board">
+            <thead className='board_head'>
+                <tr height= '80px'>
+                    <td colSpan="2">
+                      {this.state.selectData.title}
+                    </td>
+                </tr>
+            </thead>
+            <tbody className='board_body'>
+
+              <tr height='66px'>
+                  <td width="1000px">
+                      작 성 자 &nbsp;&nbsp;:&nbsp;&nbsp; <b>{this.state.selectData.user_name}</b>
+                  </td>
+                  <td style={{textAlign: 'right'}}>
+                      조회수 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.readcnt}
+                  </td>
+              </tr>
+              
+              <tr >
+                  <td colSpan='2' style={{textAlign: 'right'}}>
+                      작성일 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.day} &nbsp;&nbsp;&nbsp;&nbsp;
+                      
+                      {loginBtn1}{loginBtn2}                                    
+                      
+                      <Dialog open={this.state.open} onClose={this.handleClickClose}>
+                        <DialogTitle onClose={this.handleClickClose}>삭제 경고</DialogTitle>
+                        <DialogContent>
+                          <Typography gutterBottom>선택한 게시물을 삭제하시겠습니까?</Typography>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={this.onDelete}
+                          >
+                            삭제
+                          </Button>
+                          <Button
+                            variant="contained"
+                            onClick={this.handleClickClose}
+                          >
+                            닫기
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
+                  </td>                               
+              </tr>
+              <tr>
+                <td colSpan="2" width="1000px" height="600px">
+                  <div style={{backgroundColor: '#f6f6f6'}}>               
+                    <img src={url + this.state.selectData.imagename} alt="" style={{maxWidth: '1000px'}}/>
+                    <textarea className="input_content input_area" style={{width:'1150px', height:'500px'}}
+                    value={this.state.selectData.content}/>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br/>
+          <div style={{float:'right'}}>
+
+              <Button className='btn_function' variant="contained" color="primary" onClick={() => {
+                  if (localStorage.length === 1) {
+                      this.props.history.push("/community/freeboardinsert");
+                  } else {
+                    alert("로그인을 해주세요");
+                  }
+                }}>
+                  글쓰기
+              </Button>                        
+
+              <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/freeboardlist");}}>
+                  목    록
+              </Button>
+
+          </div>
         </div>
-      </Fragment>
+        
+        <br/><br/><br/>
+        <FreeBoardComment freeboardnum={this.num} />
+        
+      </div>
     );
   }
 }

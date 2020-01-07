@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import QnaComment from './QnaComment';
 import Button from '@material-ui/core/Button';
-import { Dialog, DialogTitle, DialogContentText, DialogActions } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, DialogActions,Typography } from '@material-ui/core';
 
 
   
@@ -85,9 +85,25 @@ class QnaBoardDetail extends Component {
         });
     }
 
+
     render() {
 
-       
+        let loginBtn1;
+        let loginBtn2;
+        
+        if (localStorage.state === this.state.selectData.user_name)
+        {
+            loginBtn1 = 
+            <Button variant="contained" style={{margin: '5px'}} 
+                onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
+                수    정
+            </Button>
+
+            loginBtn2 =
+            <Button variant="contained" style={{margin: '5px'}} color="secondary" onClick={this.handleClickOpen}>
+                삭    제
+            </Button>
+        }
 
         return (
             <div>
@@ -100,14 +116,14 @@ class QnaBoardDetail extends Component {
                 <div className='board_container'>
                     <ul className='board_tab'>
                         <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                        <li className='tab_on'>Q & A Board</li>
+                        <li className='tab_on' onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
                     </ul>
                 </div>
 
                 <div className='board_container'>
-                    <table className="board qnaboard detail qnaboarddetail">
+                    <table className="board">
                         <thead className='board_head'>
                             <tr height= '80px'>
                                 <td colSpan="2">
@@ -116,7 +132,7 @@ class QnaBoardDetail extends Component {
                             </tr>
                         </thead>
                         <tbody className='board_body'>                            
-                            <tr>
+                            <tr height='66px'>
                                 <td width="1000px">
                                     작 성 자 &nbsp;&nbsp;:&nbsp;&nbsp; <b>{this.state.selectData.user_name}</b>
                                 </td>
@@ -127,34 +143,25 @@ class QnaBoardDetail extends Component {
                             <tr >
                                 <td colSpan='2' style={{textAlign: 'right'}}>
                                     작성일 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.daytime} &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <Button variant="contained" style={{margin: '5px'}} 
-                                     onClick={()=>{this.history.push("/community/qnaboardupdate/"+this.state.selectData.num);}}>
-                                        수    정
-                                    </Button>
-
-                                    <Button variant="contained" style={{margin: '5px'}} color="secondary" onClick={this.handleClickOpen}>
-                                        삭    제
-                                    </Button>
+                                    
+                                    {loginBtn1}{loginBtn2}                                    
                                     
                                     <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
-                                            <DialogTitle>댓글 삭제</DialogTitle>
-                                            <DialogContentText>
-                                                댓글을 삭제하시겠습니까?
-                                            </DialogContentText>
+                                            <DialogTitle onClose={this.handleClickClose}>삭제 경고</DialogTitle>
+                                            <DialogContent>
+                                                <Typography gutterBottom>글을 삭제하시려면 '확인'을 클릭하세요</Typography>
+                                            </DialogContent>
                                             <DialogActions>
-                                                <Button variant="contained" onClick={this.onDataDelete}>삭제</Button>
+                                                <Button variant="contained" color="secondary" onClick={this.onDataDelete}>확인</Button>
                                                 <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
                                             </DialogActions>
-                                    </Dialog>
-                                </td>
-                                <td>
-                                    
-                                </td>
+                                    </Dialog>     
+                                </td>                               
                             </tr>
                             
                             <tr>
                                 <td colSpan="2" width="1000px" height="600px">
-                                    <textarea className="input_area" style={{width:'1200px', height:'500px'}} value={this.state.selectData.content}/>
+                                    <textarea className="input_content input_area" style={{width:'1150px', height:'500px'}} value={this.state.selectData.content}/>
                                 </td>
                             </tr>                            
                         </tbody>
@@ -162,8 +169,14 @@ class QnaBoardDetail extends Component {
                     <br/>
                     <div style={{float:'right'}}>
 
-                        <Button className='btn_function' variant="contained" color="primary" onClick={()=>{this.history.push("/community/qnaboardwrite");}}>
-                            글 쓰 기
+                        <Button className='btn_function' variant="contained" color="primary" onClick={() => {
+                            if (localStorage.length === 1) {
+                                this.props.history.push("/community/qnaboardwrite");
+                            } else {
+                              alert("로그인을 해주세요");
+                            }
+                          }}>
+                            글쓰기
                         </Button>                        
 
                         <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/qnaboard");}}>
@@ -173,7 +186,7 @@ class QnaBoardDetail extends Component {
                     </div>
                 </div>
 
-                    <br/><br/><br/>
+                <br/><br/><br/>
                 <QnaComment qnanum={this.num}/>
             </div>
            
