@@ -1,0 +1,33 @@
+.my_img{
+    width: 200px;
+    height: 200px;
+}
+
+.profile_btn{
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+select{
+    width: 63px;
+    height: 25px;
+}
+
+.text{
+    width: 200px;
+    height: 20px;
+}
+
+.pass1,.pass2,.mail,.tel{
+    width: 200px;
+    height: 20px;
+}
+
+.save{
+    padding-left: 100px;
+}
+
+.profile_tr{
+    width: 300px;
+}

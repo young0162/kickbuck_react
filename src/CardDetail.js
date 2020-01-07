@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
-import orora from './image/main/orora5.jpg';
-import orora2 from './image/main/orora3.jpg';
-import orora3 from './image/main/orora4.jpg';
-import { FavoriteBorder, Archive, HighlightOff} from '@material-ui/icons';
+import { FavoriteBorder, Archive, HighlightOff, TimerSharp} from '@material-ui/icons';
 import { Slide } from 'react-slideshow-image';
 
 class CardDetail extends Component {
 
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            bucketArrImg: this.props.bucketOneData,
+            imgarr: []
+        }
+        
+    }
+
+  
     detailHide = () => {
         this.props.detailHide();
     }
 
-    render() {
 
-        const slideImages = [
-            orora,
-            orora2,
-            orora3,
-        ];
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.imgarr !== nextProps.bucketOneData.imgarr)
+        {
+            this.setState({
+                imgarr: nextProps.bucketOneData.imgarr
+            })
+        }
+        return true;
+      }
+
+    render() {
+        
 
         const properties = {
             duration: 5000,
@@ -27,30 +41,35 @@ class CardDetail extends Component {
             arrows: true,
         }
 
+        const url = "http://localhost:9000/controller/save/";
+        const bucketData = this.props.bucketOneData;
+
         return (
             <div className="card_popup_box">
                 <div className="card_popup_bg"></div>
                 <div className="card_popup">
                     <div className="slide-container">
                         <Slide {...properties}>
-                        <div className="each-slide">
+                        { 
+                            this.state.imgarr.map((item,idx) => (
+                                    // <img style={{width:'100px'}} src={url + item} alt="" /> 
+                                    <div className="each-slide" key={idx}>
+                                        <div style={{'backgroundImage': `url(${url + item})`}}></div>
+                                    </div>
+                                )
+                            ) 
+                        }
+                        {/* <div className="each-slide">
                             <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
                             </div>
                         </div>
-                        <div className="each-slide">
-                            <div style={{'backgroundImage': `url(${slideImages[1]})`}}>
-                            </div>
-                        </div>
-                        <div className="each-slide">
-                            <div style={{'backgroundImage': `url(${slideImages[2]})`}}>
-                            </div>
-                        </div>
+                        */}
                         </Slide>
                     </div>
                     <div className="popup_content">
                         <div className="content_title">
                             <div className="title_left">
-                                <p>환상적인 오로라 보러가기</p>
+                                <p>{bucketData.subject}</p>
                             </div>
                             <div className="title_right">
                                 <p>
@@ -61,10 +80,12 @@ class CardDetail extends Component {
                         </div>
                         <div className="content_info">
                             <div className="info_left">
-                                <p>내용 나오는곳</p>
+                                <p>{bucketData.content}</p>
                             </div>
                             <div className="info_right">
-                                <p>함께한 사람들</p>
+                                <p>
+                                    
+                                </p>
                             </div>
                         </div>
                     </div>
