@@ -31,7 +31,6 @@ export default class FreeBoardDetail extends Component {
     axios
       .get(url)
       .then(responseData => {
-        console.log(responseData.data);
         this.setState({
           selectData: responseData.data
         });

@@ -11,7 +11,6 @@ class FreeBoardInsert extends Component {
       user_name: localStorage.state,
       open: false
     };
-    console.log(this.state.user_name);
   }
 
   //입력시 state 값 변경
