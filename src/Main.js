@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import Mylist from './mypage/MyList';
+import OurList from './mypage/OurList';
+import OffList from './mypage/OffList';
+import LikeList from './mypage/LikeList';
+import Standby from './mypage/Standby';
 import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
@@ -27,6 +32,7 @@ import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 import TogetherBoard from './bucketlist/TogetherBoard/TogetherBoard';
+import MyListDetail from "./mypage/MyListDetail";
 
 export default class Main extends Component {
   render() {
@@ -55,7 +61,13 @@ export default class Main extends Component {
           <Route exact path='/all' component={All} />
           <Route exact path='/add' component={Add} />
 
-
+          {/* 마이페이지 카테고리 변경시 이동 로딩 컴포넌트 */}
+          <Route exact path='/mypage/mylist' component={Mylist} />
+          <Route exact path='/mypage/ourlist' component={OurList} />
+          <Route exact path='/mypage/offlist' component={OffList} />
+          <Route exact path='/mypage/likelist' component={LikeList} />
+          <Route exact path='/mypage/Standby' component={Standby} />
+          <Route exact path="/select/:num" Component={MyListDetail}/>
 
           {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />

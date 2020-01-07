@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Kickbuckmain from "./kickbuck.jpg";
-import "./FreeBoardList.css";
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
 import Paper from "@material-ui/core/Paper";
