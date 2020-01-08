@@ -117,7 +117,7 @@ class OffbucketCommentInsert extends Component {
     return (
       <div>
         <Button
-          variant="outlined"
+          variant="contained"
           color="primary"
           onClick={this.modalClickOpen}
         >
@@ -133,6 +133,7 @@ class OffbucketCommentInsert extends Component {
               onChange={this.onKeyChange}
               autoFocus
               margin="dense"
+              required
             ></TextField>
             <br></br>
             <TextField
@@ -150,10 +151,11 @@ class OffbucketCommentInsert extends Component {
               onChange={this.onKeyChange}
               placeholder="내용입력"
               margin="dense"
-              variant="outlined"
-              rows="5"
+              variant="contained"
+              rows="6"
+              required
             ></TextFieldAutosize>
-
+            <br></br>
             <input
               className={classes.hidden}
               id="raised-button-file"

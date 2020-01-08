@@ -105,7 +105,7 @@ class QnaBoard extends Component {
                 <div className='board_container'>
                     <ul className='board_tab'>
                         <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                        <li className='tab_on'>Q & A Board</li>
+                        <li className='tab_on' onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
                         <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
                     </ul>
@@ -115,11 +115,11 @@ class QnaBoard extends Component {
                     <table className="board">
                         <thead className='board_head'>
                             <tr height= '80px'>
-                                <td style={{textAlign: 'center'}}>번호</td>
-                                <td style={{textAlign: 'center'}}>제목</td>
-                                <td style={{textAlign: 'center'}}>사용자이름</td>
-                                <td style={{textAlign: 'center'}}>조회수</td>
-                                <td style={{textAlign: 'center'}}>작성일</td>
+                                <th style={{textAlign: 'center'}}>번호</th>
+                                <th style={{textAlign: 'center'}}>제목</th>
+                                <th style={{textAlign: 'center'}}>사용자이름</th>
+                                <th style={{textAlign: 'center'}}>조회수</th>
+                                <th style={{textAlign: 'center'}}>작성일</th>
                             </tr>
                         </thead>
                         <tbody className='board_body'>
@@ -143,7 +143,14 @@ class QnaBoard extends Component {
                     </div>            
                     <br/>
                     <div style={{float:'right'}}>                    
-                        <Button className='btn_function' variant="contained" color="primary" onClick={()=>{this.props.history.push("/community/qnaboardwrite");}}>
+                        <Button className='btn_function' variant="contained" color="primary"                         
+                         onClick={() => {
+                            if (localStorage.length === 1) {
+                                this.props.history.push("/community/qnaboardwrite");
+                            } else {
+                              alert("로그인을 해주세요");
+                            }
+                          }}>
                             글쓰기
                         </Button>                  
                     </div>

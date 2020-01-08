@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
 
 export default class FreeBoardDetail extends Component {
   constructor({ history, match }) {
@@ -103,69 +104,118 @@ export default class FreeBoardDetail extends Component {
 
   render() {
     return (
-      <Fragment>
-        <form onSubmit={this.onSubmit}>
-          <table>
-            <tbody>
+      <div>
+        <div className="section-top">
+          <div className="community_title">
+            <span>COMMUNITY</span>
+          </div>
+        </div>
+
+        <div className="board_container">
+          <ul className="board_tab">
+            <li
+              className="tab_on"
+              onClick={() => {
+                this.props.history.push("/community/freeboardlist");
+              }}
+            >
+              Free Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/qnaboard");
+              }}
+            >
+              Q & A Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community");
+              }}
+            >
+              Guest Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community");
+              }}
+            >
+              FAQ
+            </li>
+          </ul>
+        </div>
+
+        <div className="board_container">
+          <table className="board">
+            <thead className="board_head">
+              <tr height="80px">
+                <th style={{ width: "200px", height: "50px" }}>사용자 이름</th>
+                <td>{this.state.user_name}</td>
+              </tr>
+            </thead>
+
+            <tbody className="board_body">
               <tr>
-                <th>제목</th>
-                <input
-                  type="text"
-                  value={this.state.title}
-                  onChange={this.onKeyChange}
-                  name="title"
-                ></input>
+                <th style={{ width: "200px", height: "50px" }}>제목</th>
+                <td>
+                  <input
+                    type="text"
+                    className="input_title input_area"
+                    style={{ width: "1000px", height: "50px" }}
+                    value={this.state.title}
+                    onChange={this.onKeyChange}
+                    name="title"
+                    required
+                  ></input>
+                </td>
               </tr>
 
               <tr>
-                <th>내용</th>
+                <th style={{ width: "200px", height: "50px" }}>내용</th>
                 <td>
                   <textarea
                     value={this.state.content}
+                    className="input_content input_area"
+                    style={{ width: "1000px", height: "400px" }}
+                    required="required"
                     onChange={this.onKeyChange}
                     name="content"
+                    required
                   ></textarea>
                 </td>
               </tr>
               <tr>
-                <th>사진</th>
+                <th style={{ width: "200px", height: "50px" }}>사진</th>
                 <td>
                   <input type="file" onChange={this.onImageUpload}></input>
                 </td>
               </tr>
-              <tr>
-                <th>작성자</th>
-                <td>
-                  <input
-                    value={this.state.user_name}
-                    onChange={this.onKeyChange}
-                    name="user_name"
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="2">
-                  <button type="submit">저장</button>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.history.push(
-                        "/community/freeboarddetail/" + this.num
-                      );
-                    }}
-                  >
-                    취소
-                  </button>
-                </td>
-              </tr>
             </tbody>
           </table>
-        </form>
-      </Fragment>
+
+          <form onSubmit={this.onSubmit} style={{ float: "right" }}>
+            <Button
+              type="submit"
+              className="btn_function"
+              variant="contained"
+              color="primary"
+            >
+              저장
+            </Button>
+
+            <Button
+              className="btn_function"
+              variant="contained"
+              type="button"
+              onClick={() => {
+                this.history.push("/community/freeboarddetail/" + this.num);
+              }}
+            >
+              취소
+            </Button>
+          </form>
+        </div>
+      </div>
     );
   }
 }

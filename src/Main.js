@@ -8,7 +8,6 @@ import MyPage from "./mypage/MyPage";
 import SignUp from "./sign/SignUp";
 import Menu from "./Menu";
 import Solo from "./bucketlist/Solo";
-import Together from "./bucketlist/Together";
 import Off from "./bucketlist/Off";
 import With from "./bucketlist/With";
 import All from "./bucketlist/All";
@@ -34,6 +33,10 @@ import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 import TogetherBoard from "./bucketlist/TogetherBoard/TogetherBoard";
 import MyListDetail from "./mypage/MyListDetail";
+import FAQ_signup from "./community/FAQ/FAQ_signup";
+import FAQ_contents from "./community/FAQ/FAQ_contents";
+import FAQ_etc from "./community/FAQ/FAQ_etc";
+import Bmrlist from "./community/FAQ/Bmrlist";
 
 export default class Main extends Component {
   render() {
@@ -48,7 +51,6 @@ export default class Main extends Component {
           <Route exact path="/solo" component={Category} />
           <Route exact path="/with" component={Category} />
           <Route exact path="/off" component={Category} />
-          <Route exact path="/together" component={Category} />
 
           {/* 페이지 이동 로딩 컴포넌트 */}
           <Route exact path="/" component={All} />
@@ -57,7 +59,6 @@ export default class Main extends Component {
 
           {/* 메인 버킷리스트 카테고리 변경시 출력 컴포넌트 */}
           <Route exact path="/solo" component={Solo} />
-          <Route exact path="/together" component={Together} />
           <Route exact path="/off" component={Off} />
           <Route exact path="/with" component={With} />
           <Route exact path="/all" component={All} />
@@ -137,6 +138,18 @@ export default class Main extends Component {
             path="/bucketlist/togetherboard"
             component={TogetherBoard}
           />
+
+          <Route
+            exact
+            path="/bucketlist/togetherboard"
+            component={TogetherBoard}
+          />
+
+          {/* FAQ  */}
+          <Route exact path="/FAQ_signup" component={FAQ_signup} />
+          <Route exact path="/FAQ_contents" component={FAQ_contents} />
+          <Route exact path="/FAQ_etc" component={FAQ_etc} />
+          <Route exact path="/Bmrlist" component={Bmrlist} />
         </div>
       </BrowserRouter>
     );
