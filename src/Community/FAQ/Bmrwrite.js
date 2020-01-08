@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../Board.css';
+import Button from '@material-ui/core/Button';
 
 export default class Bmrwrite extends Component {
     constructor (props) {
@@ -42,42 +44,46 @@ export default class Bmrwrite extends Component {
 
     render(){
         return (
-            <div>
-                <br></br>
-                <span style={{textAlign:'left', marginLeft:'820px'}}> 방명록 작성 </span>
-                                   
-                        <form className="ydiv" onSubmit={this.onSubmit}>
-                            <table  className="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="text" placeholder="닉네임"
-                                            style={{width: "150px"}}
-                                            value={this.state.nickname}
-                                            onChange={this.onKeyChange}
-                                            name="nickname"/>
-                                        </td>
-                                    </tr>
-                                    <tr>   
-                                        <td>
-                                            <input type="text" placeholder="내용" className="form-control"
-                                            style={{width: "700px", height:"100px"}}
-                                            value={this.state.content}
-                                            onChange={this.onKeyChange}
-                                            name="content"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colSpan="2">
-                                            <button type="submit"
-                                            className="btn btn-md btn-success">전송</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    
-        </div>
+            <div className='board_container'>
+                <table  className="board">
+                    <thead className='board_head'>
+                        <tr height= '80px'>
+                            <td colSpan="2">
+                                방명록 글 남기기
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody className='board_body'>
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="방문자 이름"
+                                className="input_title input_area"
+                                style={{width:'1200px', height: '50px'}}
+                                value={this.state.nickname}
+                                onChange={this.onKeyChange}
+                                name="nickname"/>
+                            </td>
+                        </tr>
+                        <tr>   
+                            <td>
+                                <input type="text" placeholder="한마디 이야기를 남겨주세요"
+                                className="input_title input_area"
+                                style={{width: "1200px", height:"200px"}}
+                                value={this.state.content}
+                                onChange={this.onKeyChange}
+                                name="content"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <form onSubmit={this.onSubmit} style={{float:'right'}}>
+                    <Button className='btn_function' type="submit" variant="contained" color="primary" >
+                        남기기
+                    </Button>
+                </form>        
+            </div>
         )
     }
 }

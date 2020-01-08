@@ -117,8 +117,8 @@ class QnaBoardDetail extends Component {
                     <ul className='board_tab'>
                         <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
                         <li className='tab_on' onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                        <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
-                        <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                        <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                        <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
                     </ul>
                 </div>
 
@@ -169,7 +169,8 @@ class QnaBoardDetail extends Component {
                     <br/>
                     <div style={{float:'right'}}>
 
-                        <Button className='btn_function' variant="contained" color="primary" onClick={() => {
+                        <Button className='btn_function' variant="contained" color="primary" 
+                        onClick={() => {
                             if (localStorage.length === 1) {
                                 this.props.history.push("/community/qnaboardwrite");
                             } else {

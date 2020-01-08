@@ -138,16 +138,24 @@ a {
     opacity: 0.9;
 }
 .menubar .sidebox a:nth-of-type(1){
+    color: whitesmoke;
+    font-weight: bold;
     background: #639ACC;
 }
 .menubar .sidebox a:nth-of-type(2){
+    color: whitesmoke;
+    font-weight: bold;
     background: #3886CE;
 }
 .menubar .sidebox a:nth-of-type(3){
+    color: whitesmoke;
+    font-weight: bold;
     background: #1774C6;
 }
 .menubar .sidebox a:nth-of-type(4){
-    
+    color: whitesmoke;
+    font-weight: bold;
+    background: rgb(12, 96, 170);
 }
 .menubar .bgon{
     width: 100%;

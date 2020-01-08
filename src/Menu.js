@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import search_icon from './image/main/search_icon.png';
 import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
 import './css/login.css';
@@ -145,15 +144,20 @@ export default class Menu extends Component {
           <div className="sidebox" style={sideActive}>
             <NavLink exact to='/community/freeboardlist' onClick={this.addActive}>
               <span>
-                자유게시판
+                Free Board
               </span>
             </NavLink>
             <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
               <span>
-                Q&A 게시판
+                Q&A Board
               </span>
             </NavLink>
-            <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
+            <NavLink exact to='/community/guestboard' onClick={this.addActive}>
+              <span>
+                Guest Board
+              </span>
+            </NavLink>
+            <NavLink exact to='/community/FAQ_signup' onClick={this.addActive}>
               <span>
                 FAQ
               </span>
