@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import CardDetail from '../CardDetail';
+import Axios from 'axios';
 import OffListItem from './OffListItem';
 import MyPage from './MyPage';
 
@@ -9,13 +10,45 @@ export default class OffList extends Component {
     this.state = {
       mypageData: [],//스프링에서 게시물 목록을 받아서 저장할 변수
     };
+
+    this.detailShow = this.detailShow.bind(this);
+    this.detailHide = this.detailHide.bind(this);
+    this.bucketSelect = this.bucketSelect.bind(this);
+  }
+
+  detailShow = () => {
+    this.setState({
+        show : true
+    })
+
+  }
+
+  detailHide = () => {
+      this.setState({
+          show : false
+      })
+  }
+
+  bucketSelect = (num) => {
+    var url = "http://localhost:9000/controller/oneselect?num=" + num ;
+
+    Axios.get(url)
+    .then( (resData) => {
+        
+        this.setState({
+            bucketOneData: resData.data
+        })
+    })
+    .catch( (error) => {
+        console.log("select 오류 : " + error);
+    })
   }
 
   //리스트를 가져올 함수
   list = () => {
     var url = "http://localhost:9000/controller/mypage/offlist?user_name=" +
     localStorage.state;
-    axios.get(url)
+    Axios.get(url)
       .then((responseData) => {
         console.log(responseData.data);
         //스프링 서버로부터 받은 데이타로 mypageData 수정
@@ -35,16 +68,23 @@ export default class OffList extends Component {
   }
 
   render() {
+
+    let box;
+
+    if(this.state.show) {
+        box = <CardDetail detailHide={this.detailHide} bucketOneData={this.state.bucketOneData} />
+    }
+
     return (
       <div className="list_my">
         <MyPage />
         <div className="mybucket_box">
         {
           this.state.mypageData.map((row, idx) => (
-          <OffListItem idx={idx} key={row.num} row={row} />))
+          <OffListItem detailShow={this.detailShow} bucketSelect={this.bucketSelect} idx={idx} key={row.num} row={row} />))
         }
         </div>
-        
+        {box}
       </div>
     )
   }

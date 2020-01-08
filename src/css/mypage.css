@@ -66,6 +66,7 @@
     height: 270px;
     border-bottom: 1px solid #ddd;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .mybucket_form .list_img img{
     width: 100%;

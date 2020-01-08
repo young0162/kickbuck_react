@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckIcon from '@material-ui/icons/Check';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Axios from 'axios';
 
 export default class MyListItem extends Component {
@@ -8,12 +9,29 @@ export default class MyListItem extends Component {
     super(props);
 
     this.state = {
-
+      
     }
 
     this.TickOffBucket = this.TickOffBucket.bind(this);
     this.MyBucketDelete = this.MyBucketDelete.bind(this);
   }
+
+
+  onClick = () => {
+    this.detailShow();
+    this.bucketSelect();
+  }
+
+  detailShow = () => {
+    this.props.detailShow();
+  }
+
+  bucketSelect = () => {
+      this.props.bucketSelect(this.props.row.num);
+  }
+
+
+  
 
   TickOffBucket = () => {
     var url = "http://localhost:9000/controller/offupdate?num=" + this.props.row.num;
@@ -41,15 +59,19 @@ export default class MyListItem extends Component {
     })
   }
 
+  
+
 
   render() {
 
     const url = "http://localhost:9000/controller/save/"
 
+    
+
     return (
-      <div className="mybucket_form">
-        <div className="list_img">
-          <img src={url+this.props.row.imgarr} alt=""/>
+      <div className="mybucket_form" >
+        <div className="list_img" onClick={this.onClick}>
+          <img src={url+this.props.row.imgarr[0]} alt=""/>
         </div>
         <div className="list_content">
           <p className="day">
@@ -68,7 +90,9 @@ export default class MyListItem extends Component {
               <CheckIcon/>
               완료하기
             </p>
-            <p onClick={this.MyBucketDelete}>삭제하기</p>
+            <p onClick={this.MyBucketDelete}>
+              <DeleteIcon/>삭제하기
+            </p>
           </div>
         </div>
       </div>

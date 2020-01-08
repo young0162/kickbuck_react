@@ -3,6 +3,19 @@ import React, { Component } from 'react';
 export default class OurListItem extends Component {
 
 
+  onClick = () => {
+    this.detailShow();
+    this.bucketSelect();
+  }
+
+  detailShow = () => {
+    this.props.detailShow();
+  }
+
+  bucketSelect = () => {
+      this.props.bucketSelect(this.props.row.num);
+  }
+
   render() {
 
     console.log(this.props.row)
@@ -11,8 +24,8 @@ export default class OurListItem extends Component {
     
     return (
         <div className="mybucket_form">
-          <div className="list_img">
-            <img src={url+this.props.row.imgarr} alt=""/>
+          <div className="list_img" onClick={this.onClick}>
+            <img src={url+this.props.row.imgarr[0]} alt=""/>
           </div>
           <div className="list_content">
             <p className="day">

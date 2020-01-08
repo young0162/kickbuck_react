@@ -11,6 +11,19 @@ export default class StandbyItem extends Component {
 
   }
 
+  onClick = (event) => {
+    this.detailShow();
+    this.bucketSelect();
+  }
+
+  detailShow = () => {
+    this.props.detailShow();
+  }
+
+  bucketSelect = () => {
+    this.props.bucketSelect(this.props.row.num);
+  }
+
   waitComplete = () => {
     var url = "http://localhost:9000/controller/waitcomplete?num=" + this.props.row.num;
 
@@ -26,14 +39,13 @@ export default class StandbyItem extends Component {
 
 
   render() {
-
     
     const url = "http://localhost:9000/controller/save/";
 
     return (
       <div className="mybucket_form">
-        <div className="list_img">
-          <img src={url+this.props.row.imgarr} alt=""/>
+        <div className="list_img" onClick={this.onClick}>
+          <img src={url+this.props.row.imgarr[0]} alt=""/>
         </div>
         <div className="list_content">
           <p className="day">

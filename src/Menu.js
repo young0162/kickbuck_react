@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import search_icon from './image/main/search_icon.png';
 import { Add } from '@material-ui/icons';
 import Login from './sign/Login';
 import './css/login.css';
@@ -23,6 +22,7 @@ export default class Menu extends Component {
     this.onLogin = this.onLogin.bind(this);
     this.onLogOut = this.onLogOut.bind(this);
     this.addActive = this.addActive.bind(this);
+
   }
 
   addActive() {
@@ -62,6 +62,10 @@ export default class Menu extends Component {
     window.location.reload();
   }
 
+  onAlert() {
+    alert("로그인후 이용가능 합니다.");
+  }
+
   render() {
     const sideActive = {
       right: this.state.active
@@ -79,13 +83,23 @@ export default class Menu extends Component {
     };
 
     let loginState = null;
+    let bucketadd;
 
     if (localStorage.state) {
       loginState = <p className="plus" onClick={this.onLogOut}>로그아웃</p>
+      bucketadd = <NavLink exact to='/add'>
+                    <p className="plus">
+                      버킷리스트 <Add/>
+                    </p>
+                  </NavLink>
     }
     else {
       loginState = <p className="plus" onClick={this.onLogin}>로그인ㆍ회원가입</p>
+      bucketadd = <p className="plus" onClick={this.onAlert.bind(this)}>
+                    버킷리스트 <Add/>
+                  </p>
     }
+
 
     return (
       <div style={{marginBottom:'120px'}}>
@@ -105,29 +119,22 @@ export default class Menu extends Component {
               </p>
             </li>
             <li>
-              <NavLink exact to='/MyPage'>
-                mypage
-                  </NavLink>
-            </li>
-            <li>
               <NavLink exact to='/SignUp'>
                 sign
-                  </NavLink>
+              </NavLink>
             </li>
             <li>
               <NavLink exact to='/FAQ'>
                 FAQ
-                  </NavLink>
+              </NavLink>
             </li>
             <li>
               <NavLink exact to='/profile'>
                 profile
-                    </NavLink>
+              </NavLink>
             </li>
             <li className="plus_li">
-              <NavLink exact to='/add'>
-                <p className="plus"><Add /></p>
-              </NavLink>
+                {bucketadd}
             </li>
             <li>
               <div className={`menu_but ${this.state.classSide}`} onClick={this.addActive}>
@@ -145,33 +152,43 @@ export default class Menu extends Component {
           <div className="sidebox" style={sideActive}>
             <NavLink exact to='/community/freeboardlist' onClick={this.addActive}>
               <span>
-                자유게시판
+                Free Board. <br/>
+                자유롭게 글을 써보세요
               </span>
             </NavLink>
             <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
               <span>
-                Q&A 게시판
+                Q&A Board <br/>
+                궁금한게 있으면 질문 해보세요
               </span>
             </NavLink>
             <NavLink exact to='/community/qnaboard' onClick={this.addActive}>
               <span>
-                FAQ
+                FAQ Board <br/>
+                자주 묻는 질문 여기 있어요
               </span>
             </NavLink>
-            <NavLink exact to="/bucket/offbucketdetail">
-              offcomment
-            </NavLink>
-            <NavLink exact to='/bucketlist/togetherboard'>
-              함께하기
-            </NavLink>
-            <NavLink exact to='/mypage/mylist'>
-              mypage
-            </NavLink>
-            <NavLink exact to='/profile'>
-              profile
-            </NavLink>
+            
+            <div className="info_box">
+              <img src={logoimg} alt=""/>
+              <p>FACEBOOK</p>
+              <p>INSTAGRAM</p>
+              <p>KAKAO</p>
+            </div>
+            <div className="info_box2">
+              <p>이용약관</p>
+              <p>개인정보 처리방침</p>
+            </div>
+            <div className="info_box3">
+              <p>Tick OFF ㈜ My Life. All rights reserved.</p>
+            </div>
+            <div className="info_box4">
+              <p>DY생명보험 주식회사</p>
+              <p>사업자등록번호 19-94-0913</p>
+            </div>
           </div>
         </div>
+        
       </div>
     );
   }
