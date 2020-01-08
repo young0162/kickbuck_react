@@ -97,6 +97,19 @@ export default class FAQ_etc extends Component {
                             }    
 
                 </li>
+                <li className="question" onClick={()=>this.ybtoggle()} name="ab" >
+                    기타 문의를 원하시면                               
+                           
+                            {  this.state.ybshow?
+                                 <p className="answer"> 
+                                    A. 기타 문의를 원하시면 'tickoff_csmanager@gmail.com' 로 문의주시기 바랍니다.<br/>
+                                    또는 Q&A 게시판의 문의 주시면 빠른 시간 안에 답변드리도록 하겠습니다.
+                                    감사합니다.
+                                </p>
+                            :null
+                            }    
+
+                </li>
             </ul>
         </div>
       </Fragment>

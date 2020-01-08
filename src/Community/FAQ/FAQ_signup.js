@@ -95,37 +95,42 @@ export default class FAQ_signup extends Component {
 
             <ul>
                 <li className="question" onClick={()=>this.yatoggle()} name="aa" >
-                            이메일 인증이 안 되어서 회원 가입에 실패했어요                                
+                        가입시 이메일은 필수인가요?                              
                     
                     {  this.state.yashow?
-                            <p className="answer"> A. 인증메일이 스팸메일함에 들어있지 않은지 확인해주세요 </p>
+                            <p className="answer"> <b>A.</b> 이메일로 본인확인을 가능하여 이메일이 없을 시 가입이 불가능합니다.<br/>
+                            그리고 공지사항 및 이벤트를 이메일로 전달해 드리고 있어 이메일 주소가 필수사항입니다. 
+                            </p>
                     :null
                     }                           
                 </li>
                 <li className="question" onClick={()=>this.ybtoggle()} name="ab">
-                    이메일말고 다른 본인 인증 수단은 없나요?                                
-                    
-                    {  this.state.ybshow?
-                            <p className="answer"> A. ~ </p>
-                    :null
-                    }                           
+                    나이 제한은 없나요?                           
+                           
+                            {  this.state.ybshow?
+                                 <p className="answer"> <b>A.</b> 나이와 관계없이 누구나 참여할 수 있습니다. </p>
+                            :null
+                            }                           
                 </li>
                 <li className="question" onClick={()=>this.yctoggle()} name="ac">
                         로그인이 되지 않아요                           
                     
                     {  this.state.ycshow?
-                            <p className="answer"> A. 비밀번호 찾기 진행해보시고 안 되면 관리자에게 문의주세요 </p>
+                            <p className="answer"> <b>A.</b> 비밀번호 찾기 진행해보시고 안 되면 관리자 및 QNA 게시판에 문의주세요. </p>
                     :null
                     }                           
                 </li>
                 <li className="question" onClick={()=>this.ydtoggle()} name="ad">
-                            ~                          
+                    탈퇴를 하는 방법은 어떻게 되나요?                           
                     
                     {  this.state.ydshow?
-                            <p className="answer"> A. ~ </p>
+                            <p className="answer"> <b>A.</b> 탈퇴하는 기능이 따로 없습니다. 탈퇴를 원하실 경우
+                            Q&A 게시판에 작성해주시면 처리해드리고 있습니다. </p>
                     :null
                     }                           
                 </li>
+                
+                
 
             </ul>
 
