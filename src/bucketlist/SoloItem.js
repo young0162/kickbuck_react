@@ -29,37 +29,47 @@ class SoloItem extends Component {
 
     
     withCountUp = () => {
-        var url = "http://localhost:9000/controller/bucketwithup";
-        Axios.post(url,
-            {
-                user_name: localStorage.state, 
-                num: this.props.idx.num
-            }
-        )
-        .then( (resData) => {
-            alert("성공")
-            console.log(resData.data)
-        })
-        .catch( (error) => {
-            console.log("update error" + error)
-        })
-
+        if(localStorage.state) {
+            var url = "http://localhost:9000/controller/bucketwithup";
+            Axios.post(url,
+                {
+                    user_name: localStorage.state, 
+                    num: this.props.idx.num
+                }
+            )
+            .then( (resData) => {
+                alert("성공")
+                console.log(resData.data)
+            })
+            .catch( (error) => {
+                console.log("update error" + error)
+            })
+        }
+        else{
+            alert("로그인후 가능합니다");
+        }
     }
 
     likeCountUp = () => {
-        var url = "http://localhost:9000/controller/bucketlikeup";
-        Axios.post(url, 
-            {
-                user_name: localStorage.state, 
-                num: this.props.idx.num
-            }
-        )
-        .then( (resData) => {
+        if(localStorage.state)
+        {
+            var url = "http://localhost:9000/controller/bucketlikeup";
+            Axios.post(url, 
+                {
+                    user_name: localStorage.state, 
+                    num: this.props.idx.num
+                }
+            )
+            .then( (resData) => {
 
-        })
-        .catch( (error) => {
-            console.log("update error" + error)
-        })
+            })
+            .catch( (error) => {
+                console.log("update error" + error)
+            })
+        }
+        else{
+            alert("로그인후 가능합니다");
+        }
     }
 
     

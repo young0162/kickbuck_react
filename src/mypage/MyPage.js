@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Category from "./Category";
-import "../css/mypage.css";
-import Axios from "axios";
+import React, { Component } from 'react';
+import Category from './Category';
+import '../css/mypage.css'
+import Axios from 'axios';
 
 export default class MyPage extends Component {
   constructor() {
@@ -41,14 +41,9 @@ export default class MyPage extends Component {
       <div>
         <div className="top_logo"></div>
         <div className="profile_img">
-          <img
-            style={{ width: "200px", height: "200px" }}
-            src={url + this.state.image}
-            alt="logo"
-          />
         </div>
         <div className="profile_name">
-          <b>그나</b>님의 마이페이지
+          <b>{localStorage.state}</b> 님의 마이페이지
         </div>
         <Category />
       </div>

@@ -44,8 +44,16 @@ a {
 }
 .menubar .plus_li{
     position: absolute;
-    right: 67px;
-    top: 54px;
+    right: 80px;
+    top: 58px;
+}
+.menubar .plus_li p{
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    background: #0f4c81;
+    color: #fff;
+    line-height: 35px;
 }
 .search_box {
     box-sizing: border-box;
@@ -72,9 +80,8 @@ a {
 
 }
 .menubar .plus svg{
-    padding-top: 2px;
-    padding-left: 2px;
     font-size: 35px;
+    float: right;
 }
 .menubar .menu_but {
     position: absolute;
@@ -87,7 +94,7 @@ a {
 .menubar .menu_but span{
     width: 25px;
     height: 3px;
-    background: #639ACC;
+    background: #0f4c81;
     display: block;
     position: absolute;
     transition: .4s;
@@ -132,26 +139,44 @@ a {
     height: 120px;
     padding: 40px 20px;
     box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
 }
 .menubar .sidebox a:hover{
     transition: .4s;
     opacity: 0.9;
 }
 .menubar .sidebox a:nth-of-type(1){
-    color: whitesmoke;
-    font-weight: bold;
-    background: #639ACC;
+    background: #fff;
+    color: #2a7ac4;
+    border-left: 4px solid #2a7ac4;
 }
 .menubar .sidebox a:nth-of-type(2){
-    color: whitesmoke;
-    font-weight: bold;
-    background: #3886CE;
+    background: #fff;
+    color: #0b589f;
+    border-left: 4px solid #0b589f;
 }
 .menubar .sidebox a:nth-of-type(3){
-    color: whitesmoke;
-    font-weight: bold;
-    background: #1774C6;
+    background: #fff;
+    color: #0e385c;
+    border-left: 4px solid #0e385c;
 }
+.menubar .sidebox a:nth-of-type(1):hover{
+    background: #2a7ac4;
+    color: #fff;
+    border-left: 4px solid #0e385c;
+}
+.menubar .sidebox a:nth-of-type(2):hover{
+    background: #0b589f;
+    color: #fff;
+    border-left: 4px solid #2a7ac4;
+}
+.menubar .sidebox a:nth-of-type(3):hover{
+    background: #0e385c;
+    color: #fff;
+    border-left: 4px solid #2a7ac4;
+
+}
+
 .menubar .sidebox a:nth-of-type(4){
     color: whitesmoke;
     font-weight: bold;
@@ -211,7 +236,7 @@ a {
     outline: none;
     font-size: 30px;
     margin-left: 20px;
-    color: #639ACC;
+    color: #0f4c81;
 }
 .category_bar {
     width: 100%;
@@ -474,3 +499,77 @@ h3 {
     background: #3886CE ;
 }
 /* 슬라이드 컴포넌트 css 끝 */
+
+.mygo_but{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: #626262;
+    border-radius: 50%;
+    z-index: 500;
+    cursor: pointer;
+}
+.mygo_but img{
+    width: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.info_box{
+    width: 256px;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 130px;
+    overflow: hidden;
+}
+.info_box img{
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+}
+.info_box p{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    width: 33.33%;
+    text-align: center;
+    font-size: 13px;
+}
+.info_box p:nth-of-type(2){
+    float: left;
+}
+.info_box p:nth-of-type(3){
+    float: right;
+}
+.info_box2 {
+    display: flex;
+    justify-content: space-between;
+}
+.info_box2 p{
+    width: 50%;
+    text-align: center;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+}
+.info_box3{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    height: 60px;
+    line-height: 60px;
+}
+.info_box4{
+    display: flex;
+    justify-content: space-between;
+}
+.info_box4 p{
+    width: 50%;
+    font-size: 11px;
+    text-align: center;
+}

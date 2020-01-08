@@ -1,20 +1,45 @@
 import React, { Component } from 'react';
 
 export default class LikeListItem extends Component {
+
+  onClick = (event) => {
+    this.detailShow();
+    this.bucketSelect();
+  }
+
+  detailShow = () => {
+    this.props.detailShow();
+  }
+
+  bucketSelect = () => {
+      this.props.bucketSelect(this.props.row.num);
+  }
+
   render() {
+
     console.log(this.props.row)
+
     const url = "http://localhost:9000/controller/save/"
+
     return (
-      <tr>
-        <td>
-            <img src={url+this.props.row.imgarr} alt="" style={{width:'200px'}} />
-        </td>
-        <td><a href={"select/" + this.props.row.num}>{this.props.row.subject}</a></td>
-        <td>{this.props.row.content}</td>
-        <td>{this.props.row.user_name}</td>
-        <td>{this.props.row.dday}</td>
-        <td>{this.props.row.day}</td>
-      </tr>
+      <div className="mybucket_form">
+        <div className="list_img" onClick={this.onClick}>
+          <img src={url+this.props.row.imgarr[0]} alt=""/>
+        </div>
+        <div className="list_content">
+          <p className="day">
+            <span>
+              D-Day <span className="red">{this.props.row.dday}</span>
+            </span>
+            <span>
+              {this.props.row.day}
+            </span>
+          </p>
+          <p className="title">
+            {this.props.row.subject}
+          </p>
+        </div>
+      </div>
     );
   }
 }

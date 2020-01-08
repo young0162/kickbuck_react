@@ -9,6 +9,16 @@
     margin-right: 1.2%;
     margin-bottom: 1.2%;
 }
+.result_box .buket_form .buket_content{
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+.result_box .buket_form .bottom_but{
+    margin-top: 25px;
+}
+.result_box .buket_form .bottom_but p{
+    padding-left: 30px;
+}
 .result_box .buket_form:nth-of-type(5) {
     margin-right: 0px;
 }
@@ -17,7 +27,7 @@
 
 }
 .result_box .blue_color {
-    color: #1774C6;
+    color: #0f4c81;
 }
 .result_box .result_title {
     width: 80%;
