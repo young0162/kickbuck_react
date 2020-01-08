@@ -122,7 +122,17 @@ export default class FAQ_contents extends Component {
                             :null
                             }                           
                 </li>
-                
+                <li className="question" onClick={()=>this.ydtoggle()} name="ae">
+                    버킷리스트 내용을 수정하고 싶어요                         
+                           
+                            {  this.state.ydshow?
+                                 <p className="answer"> 
+                                    A. 이미 등록해서 공개된 글이라도 수정하는 것이 가능합니다. 디데이, 장소 등을 수정해서 회원님이
+                                    버킷리스트를 완전하게 성취하시기를 바랍니다.
+                                 </p>
+                            :null
+                            }                           
+                </li>
             </ul>
                   
       </Fragment>
