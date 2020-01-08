@@ -97,7 +97,7 @@ export default class FAQ_signup extends Component {
                                 로그인이 되지 않아요                           
                            
                             {  this.state.ycshow?
-                                 <p className="answer"> A. 로그인에 문제가 있으면 관리자에게 문의해주시기를 바랍니다 </p>
+                                 <p className="answer"> A. 로그인에 문제가 있으면 관리자에게 문의해주시기를 바랍니다4 </p>
                             :null
                             }                           
                         </li>
@@ -110,4 +110,4 @@ export default class FAQ_signup extends Component {
       </Fragment>
     );
   }
-}
+}      
