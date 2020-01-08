@@ -143,10 +143,13 @@ export default class Main extends Component {
           <Route exact path='/bucketlist/togetherboard' component={TogetherBoard} />
 
           {/* FAQ  */}
-          <Route exact path='/FAQ_signup' component={FAQ_signup}/>
-          <Route exact path='/FAQ_contents' component={FAQ_contents}/>
-          <Route exact path='/FAQ_etc' component={FAQ_etc}/>
-          <Route exact path='/Bmrlist' component={Bmrlist}/>
+          <Route exact path='/community/FAQ_signup' component={FAQ_signup}/>
+          <Route exact path='/community/FAQ_contents' component={FAQ_contents}/>
+          <Route exact path='/community/FAQ_etc' component={FAQ_etc}/>
+         
+
+          {/* GuestBook  */}
+          <Route export path='/community/guestboard' component={Bmrlist}/>
 
 
         </div>

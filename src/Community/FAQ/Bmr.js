@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Rowitem from './Rowitem_bmr';
+import '../Board.css';
 
 export default class Bmr extends Component {
     constructor(props) {
@@ -29,24 +30,28 @@ export default class Bmr extends Component {
     }
 
     render(){
-        return (
-            <div style={{textAlign:'center', marginLeft:'400px'}}>
-                <table className="table table bordered">
-                    <thead>
-                        <tr style={{background:'lightgray'}}>
-                            <th width="50">번호</th>
-                            <th width="100">닉네임</th>
-                            <th width="500">내용</th>
-                            <th width="220">시간</th>
+        return (            
+
+            <div className='board_container'>
+                <table className="board">
+                    <thead className='board_head'>
+                        <tr height= '80px'>
+                            
+                            <th style={{textAlign: 'center'}}>방문자</th>
+                            <th style={{textAlign: 'center'}}>내용</th>
+                            <th style={{textAlign: 'center'}}>작성일</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    {this.state.bmrList.map((row, idx)=>(
-                        <Rowitem idx={ idx } key={ idx } row={ row }/>  
-                        ))}
+                    <tbody className='board_body'>
+                        {
+                            this.state.bmrList.map((row, idx)=>(
+                            <Rowitem idx={ idx } key={ idx } row={ row }/>  
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>
+
         )
     }
 }

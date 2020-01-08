@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Kickbuckmain from "./kickbuck.jpg";
 import '../Board.css';
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
@@ -104,8 +103,8 @@ class FreeBoardList extends Component {
             <ul className='board_tab'>
                 <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
                 <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
-                <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
             </ul>
         </div>
          

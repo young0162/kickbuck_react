@@ -1,6 +1,6 @@
-.ydiv{
+/* .ydiv{
     padding:30px;
-    margin-left:450px;
+    
     text-align: left;
 }
 .yform{
@@ -67,9 +67,14 @@
     padding: 15px 15px;
     background-color: rgb(224, 223, 223);
     box-sizing: border-box;
-    /* line-height: 35px;
-    height: 70px; */
+    
     overflow: hidden;
  
 }
 
+ul{
+    list-style:none;
+    width: 700px;
+    } 
+    
+*/

@@ -37,9 +37,8 @@
     background-color: #fff;
     margin: 0 auto;
     top: 50px;
-    color: #999;
+    color: rgb(122, 122, 122);
     margin-bottom: 70px;
-
 }
 
 ul
@@ -148,4 +147,78 @@ Button.btn_function
     padding: 10px 20px;
 }
 
+/* faq css */
+
+.ydiv{
+    padding:30px;
+    
+    text-align: left;
+}
+.yform{
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+#xmenu{
+   display:inline-block; width:'100px'; color:black; font-size:'22px'; text-decoration: none;
+
+}
+
+#xmenu:hover{
+    display:inline-block; width:'100px'; color:#3886CE; font-size:'22px'; font-weight: bold; text-decoration: none;
+   } 
+
+   .faqwrap{
+    position: relative;
+    width: 100%;
+    font-size:12pt;
+    display: inline-block;
+    
+
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    
+}
+
+.question:before{
+    content:"Q.  ";
+}
+
+.question{   
+    position: relative;
+    display: inline-block;
+    width:97%;    
+    border: 1px solid #f6f6f6;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding: 10px 10px;
+    height: 50px;
+    line-height: 50px;  
+
+}
+
+
+.answer{
+    
+    position: relative;
+    display: inline-block; 
+    width:101.5%;
+    border: 1px solid lightgrey;
+    min-width: 300px;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding: 15px 15px;
+    background-color: rgb(224, 223, 223);
+    box-sizing: border-box;
+    /* line-height: 35px;
+    height: 70px; */
+    overflow: hidden;
+ 
+}
 

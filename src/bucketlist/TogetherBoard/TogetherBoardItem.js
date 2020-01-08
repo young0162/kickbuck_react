@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@material-ui/core';
 
 class TogetherBoardItem extends Component {
 
@@ -15,7 +15,7 @@ class TogetherBoardItem extends Component {
             user_name: '',
             comment: '',
             display_none: "none",
-            display: "table-row",
+            display: "table-cell",
             openimg:false,
             opendelete:false
         }
@@ -33,7 +33,7 @@ class TogetherBoardItem extends Component {
     
     unvisibleEvent=()=>{
         this.setState({
-            display: 'table-row',
+            display: 'table-cell',
             display_none: 'none',
         })
         this.refs.comment.value = '';
@@ -141,7 +141,7 @@ class TogetherBoardItem extends Component {
             // 코멘트 리스트 다시 호출
             this.props.onList();
             this.setState({      
-                display: 'table-row',
+                display: 'table-cell',
                 display_none: 'none'      
               });
         })
@@ -157,8 +157,8 @@ class TogetherBoardItem extends Component {
         let step = this.props.row.step_num;
 
         return (
-            <tbody>
-            <tr height="60px;">
+            <tbody className='board_body' style={{fontSize:'12px'}}>
+            <tr height="50px">
                 <td align="center">
                     {
                         step === 1
@@ -183,8 +183,8 @@ class TogetherBoardItem extends Component {
                 <td align="center">
                     {
                         imgbtn != null
-                        ? <button type="button" style={{width:'90px', height:'40px', margin: '5px'}} onClick={this.handleClickOpenImg} > 이미지보기</button>
-                        
+                        ? <Button variant="contained" type="button" style={{fontSize: '11px', width:'90px', height:'40px', margin: '5px'}}
+                         onClick={this.handleClickOpenImg} >이미지보기</Button>                        
                         : ''
                     }
                     <Dialog open={this.state.openimg} onClose={this.handleClickCloseImg}>
@@ -198,19 +198,19 @@ class TogetherBoardItem extends Component {
                     </Dialog>
                 </td>
                 <td style={{display:this.state.display}}>
-                    <button style={{width:'55px', height:'40px', margin: '5px'}} onClick={this.visibleEvent.bind(this)}>
+                    <Button  variant="outlined" size='small' style={{fontSize: '11px', height:'40px', margin: '1px'}} onClick={this.visibleEvent.bind(this)}>
                         댓글
-                    </button>  
-                    <button style={{width:'30px', height:'40px', margin: '2px'}} onClick={this.handleClickOpen}>
+                    </Button>  
+                    <Button  variant="outlined" size='small' style={{fontSize: '11px', height:'40px', margin: '1px'}} onClick={this.handleClickOpen}>
                         X
-                    </button>
+                    </Button>
                     <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
                             <DialogTitle>댓글 삭제</DialogTitle>
-                            <DialogContentText>
-                                댓글을 삭제하시겠습니까?
-                            </DialogContentText>
+                            <DialogContent>
+                                <Typography gutterBottom>댓글을 삭제하시겠습니까?</Typography>
+                            </DialogContent>
                             <DialogActions>
-                                <Button variant="contained" onClick={this.onDataDelete}>삭제</Button>
+                                <Button variant="contained" color='secondary'onClick={this.onDataDelete}>삭제</Button>
                                 <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
                             </DialogActions>
                     </Dialog>  
@@ -228,27 +228,27 @@ class TogetherBoardItem extends Component {
                     {localStorage.state}
                 </td>
 
-                <td>
-                    <textarea ref="comment" style={{width:'600px', height:'50px', margin: '5px'}} 
+                <td >
+                    <textarea ref="comment" className='input_content input_area' style={{fontSize: '11px', width:'550px', height:'40px', margin: '5px'}} 
                     placeholder="내용을 입력하세요." required="required" />
                 </td>
 
-                <td >
+                <td width="180px">
                     <input style={{width:'75px', margin:'5px'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
                 </td>
 
-                <td>   
+                
+                <td colSpan='2'>
                     <form onSubmit={this.onSubmit}>                             
-                        <button type="submit" style={{width:'90px', height:'40px', margin: '5px'}}>
+                        <Button variant="outlined" color='primary' size='small' type="submit" style={{fontSize: '11px', height:'40px', margin: '1px'}}>
                             등록
-                        </button>                            
-                    </form>                                                                
-                </td>
-                <td>
-                    <button  style={{width:'90px', height:'40px', margin: '5px'}} 
+                        </Button>                            
+                      
+                    <Button variant="outlined" size='small' style={{fontSize: '11px',  height:'40px', margin: '1px'}} 
                     onClick={this.unvisibleEvent.bind(this)}>
                         취소
-                    </button>
+                    </Button>
+                </form>
                 </td>
             </tr> 
             </tbody>

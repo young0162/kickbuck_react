@@ -109,8 +109,8 @@ export default class FreeBoardDetail extends Component {
             <ul className='board_tab'>
                 <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
                 <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
-                <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
             </ul>
         </div>
 
@@ -165,8 +165,10 @@ export default class FreeBoardDetail extends Component {
               </tr>
               <tr>
                 <td colSpan="2" width="1000px" height="600px">
-                  <div style={{backgroundColor: '#f6f6f6'}}>               
-                    <img src={url + this.state.selectData.imagename} alt="" style={{maxWidth: '1000px'}}/>
+                  <div style={{backgroundColor: '#f6f6f6'}}>   
+                    <p style={{textAlign:'center', margin: '5px 5px 5px 5px'}}>        
+                      <img src={url + this.state.selectData.imagename} alt="" style={{textAlign: 'center', maxWidth: '900px'}}/>
+                    </p>
                     <textarea className="input_content input_area" style={{width:'1150px', height:'500px'}}
                     value={this.state.selectData.content}/>
                   </div>

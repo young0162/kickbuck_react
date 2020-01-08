@@ -37,36 +37,50 @@ export default class FAQ_etc extends Component {
    
     return (
       <Fragment>
-
-        <div style={{textAlign:'center', paddingLeft:'500px',  position:"relative"}}>
-                <form className="yform">
-                    <table  className="table table-bordered">                        
-                        <tbody>
-                            <tr>                                
-                                <td width="250" >                                    
-                                    <NavLink exact to="/FAQ_signup" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">가입/로그인</p>
-                                    </NavLink>
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="/FAQ_contents" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">서비스/컨텐츠</p> 
-                                    </NavLink>  
-                                </td>
-                                <td width="250">
-                                    <NavLink exact to="./FAQ_etc" style={{ textDecoration: 'none' }}>
-                                        <p id="xmenu">기타</p> 
-                                    </NavLink>
-                                </td>
-                            </tr>                            
-                        </tbody> 
-                    </table>
-                </form>
+        <div className='section-top'>
+            <div className='community_title'>
+                <span>COMMUNITY</span>
             </div>
+        </div>
+        
+        <div className='board_container'>
+            <ul className='board_tab'>
+                <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
+                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                <li className='tab_on' onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
+            </ul>
+        </div>
 
-      
-      <br></br>
 
+        <div className='board_container'>
+                
+            <table className="board">                        
+                <tbody className='board_body' style={{textAlign: 'center'}}>
+                    <tr height= '80px'>                                
+                        <td width="250" >
+                            {/* style={{ textDecoration: 'none' }}은 NavLink 밑줄 제거하기 위해 적용
+                                xmenu는 hover     */}                                    
+                            <NavLink exact to="/community/FAQ_signup" style={{ textDecoration: 'none' }}>
+                                <p id="xmenu">가입/로그인</p>
+                            </NavLink>
+                        </td>
+                        <td width="250">
+                            <NavLink exact to="/community/FAQ_contents" style={{ textDecoration: 'none' }}>
+                                <p id="xmenu">서비스/컨텐츠</p> 
+                            </NavLink>  
+                        </td>
+                        <td width="250">
+                            <NavLink exact to="/community/FAQ_etc" style={{ textDecoration: 'none' }}>
+                                <p id="xmenu">기타</p> 
+                            </NavLink>
+                        </td>
+                    </tr>                            
+                </tbody> 
+            </table>             
+        </div>        
+
+        <div className='board_container'>
             <ul>
                 <li className="question" onClick={()=>this.yatoggle()} name="aa" >
                     사기를 당한 것 같아 걱정되어요                                
@@ -83,7 +97,21 @@ export default class FAQ_etc extends Component {
                             }    
 
                 </li>
+                <li className="question" onClick={()=>this.ybtoggle()} name="ab" >
+                    기타 문의를 원하시면                               
+                           
+                            {  this.state.ybshow?
+                                 <p className="answer"> 
+                                    A. 기타 문의를 원하시면 'tickoff_csmanager@gmail.com' 로 문의주시기 바랍니다.<br/>
+                                    또는 Q&A 게시판의 문의 주시면 빠른 시간 안에 답변드리도록 하겠습니다.
+                                    감사합니다.
+                                </p>
+                            :null
+                            }    
+
+                </li>
             </ul>
+        </div>
       </Fragment>
     );
   }
