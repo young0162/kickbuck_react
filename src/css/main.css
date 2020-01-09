@@ -178,9 +178,14 @@ a {
 }
 
 .menubar .sidebox a:nth-of-type(4){
-    color: whitesmoke;
-    font-weight: bold;
-    background: rgb(12, 96, 170);
+    background: #fff;
+    color: #0b589f;
+    border-left: 4px solid #0b589f;
+}
+.menubar .sidebox a:nth-of-type(4):hover{
+    background: #2a7ac4;
+    color: #fff;
+    border-left: 4px solid #0e385c;
 }
 .menubar .bgon{
     width: 100%;
@@ -366,7 +371,7 @@ a {
 }
 .card_popup{
     position: absolute;
-    width: 80%;
+    width: 1204px;
     height: 90vh;
     top: 50%;
     left: 50%;

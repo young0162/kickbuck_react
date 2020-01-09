@@ -164,7 +164,8 @@ export default class Menu extends Component {
             </NavLink>
             <NavLink exact to='/community/guestboard' onClick={this.addActive}>
               <span>
-                Guest Board
+                Guest Board <br/>
+                한줄로 방명록을 남겨보세요
               </span>
             </NavLink>
             <NavLink exact to='/community/FAQ_signup' onClick={this.addActive}>

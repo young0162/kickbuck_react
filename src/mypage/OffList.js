@@ -9,6 +9,7 @@ export default class OffList extends Component {
     super();
     this.state = {
       mypageData: [],//스프링에서 게시물 목록을 받아서 저장할 변수
+      bucketOneData:[]
     };
 
     this.detailShow = this.detailShow.bind(this);

@@ -144,6 +144,7 @@ class TogetherBoardItem extends Component {
                 display: 'table-cell',
                 display_none: 'none'      
               });
+              window.location.reload();
         })
         .catch((error)=>{
             console.log("delete error");

@@ -19,6 +19,11 @@ class SoloItem extends Component {
         // this.withCheck();
     }
 
+    onClick2 = () => {
+        this.withcomplete();
+        this.withCountUp();
+    }
+
     detailShow = () => {
         this.props.detailShow();
     }
@@ -27,6 +32,16 @@ class SoloItem extends Component {
         this.props.bucketSelect(this.props.idx.num);
     }
 
+    withcomplete = () => {
+        var url = "http://localhost:9000/controller/waitcomplete?num=" + this.props.idx.num;
+        Axios.get(url)
+        .then( (resData) => {
+            console.log(resData.data)
+        })
+        .catch( (error) => {
+            console.log("update error" + error)
+        })
+    }
     
     withCountUp = () => {
         if(localStorage.state) {
@@ -38,7 +53,7 @@ class SoloItem extends Component {
                 }
             )
             .then( (resData) => {
-                alert("성공")
+                alert("버킷리스트를 함께 합니다");
                 console.log(resData.data)
             })
             .catch( (error) => {
@@ -61,7 +76,7 @@ class SoloItem extends Component {
                 }
             )
             .then( (resData) => {
-
+                alert("공감 능력 + 1")
             })
             .catch( (error) => {
                 console.log("update error" + error)
@@ -102,7 +117,7 @@ class SoloItem extends Component {
                         <p>{this.props.idx.subject}
                         </p>
                         <div className="bottom_but">
-                            <p onClick={this.withCountUp.bind(this)}>
+                            <p onClick={this.onClick2.bind(this)}>
                                 <FavoriteBorder/>
                                 <span>함께 </span>
                             </p>

@@ -17,7 +17,7 @@ export default class Category extends Component {
                   <li>나의 버킷리스트</li>
               </NavLink>
               <NavLink exact to='/mypage/ourlist' activeStyle={activeStyle}>
-                  <li>우리의 버킷리스트</li>
+                  <li>함께하는 버킷리스트</li>
               </NavLink>
               <NavLink exact to='/mypage/standby' activeStyle={activeStyle}>
                   <li>대기중인 버킷리스트</li>

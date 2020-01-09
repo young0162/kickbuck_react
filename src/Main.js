@@ -138,11 +138,7 @@ export default class Main extends Component {
             component={TogetherBoard}
           />
 
-          <Route
-            exact
-            path="/bucketlist/togetherboard"
-            component={TogetherBoard}
-          />
+       
 
           {/* FAQ  */}
           <Route exact path='/community/FAQ_signup' component={FAQ_signup}/>

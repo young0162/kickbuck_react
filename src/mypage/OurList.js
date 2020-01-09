@@ -8,7 +8,7 @@ export default class OurList extends Component {
   constructor() {
     super();
     this.state = {
-      mypageData: [],//스프링에서 게시물 목록을 받아서 저장할 변수
+      ourPageData: [],//스프링에서 게시물 목록을 받아서 저장할 변수
       bucketOneData: [],
     };
 
@@ -31,7 +31,7 @@ export default class OurList extends Component {
   }
 
   //리스트를 가져올 함수
-  list = () => {
+  ourlist = () => {
     var url = "http://localhost:9000/controller/mypage/ourlist?user_name=" +
     localStorage.state;
     Axios.get(url)
@@ -40,6 +40,7 @@ export default class OurList extends Component {
         //스프링 서버로부터 받은 데이타로 mypageData 수정
         this.setState({
           ourPageData: responseData.data
+          
         });
       })
       .catch(error => {
@@ -80,7 +81,7 @@ export default class OurList extends Component {
         <MyPage />
         <div className="mybucket_box">
             {   
-              this.state.mypageData.map((row, idx) => (
+              this.state.ourPageData.map((row, idx) => (
               <OurListItem detailShow={this.detailShow} bucketSelect={this.bucketSelect} idx={idx} key={row.num} row={row} />))
             }
         </div>

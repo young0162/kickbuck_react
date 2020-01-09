@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from 'react-router-dom';
 
 export default class OurListItem extends Component {
 
@@ -40,9 +41,15 @@ export default class OurListItem extends Component {
               {this.props.row.subject}
             </p>
           </div>
+          <div className="but_box">
+            <p className="withgo" style={{fontSize:'12px',textAlign:'center'}}>
+            <NavLink exact to='/bucketlist/togetherboard'>
+              함께하기 게시판으로 이동하기
+            </NavLink>
+            </p>
+          </div>
         </div>
     );
   }
 }
 
-export default OurListItem;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FavoriteBorder, Archive, HighlightOff, TimerSharp, NoteOutlined} from '@material-ui/icons';
 import { Slide } from 'react-slideshow-image';
 import Bucketdetail from './offbucket/Bucketdetail';
+import BucketComment from './BucketComment';
 import './css/off.css';
 
 class CardDetail extends Component {
@@ -12,7 +13,8 @@ class CardDetail extends Component {
         this.state = {
             bucketArrImg: this.props.bucketOneData,
             imgarr: [],
-            off: this.props.off
+            off: this.props.off,
+            num: 28
         }
         
     }
@@ -27,11 +29,16 @@ class CardDetail extends Component {
         if(this.state.imgarr !== nextProps.bucketOneData.imgarr)
         {
             this.setState({
-                imgarr: nextProps.bucketOneData.imgarr
+                imgarr: nextProps.bucketOneData.imgarr,
+                num: nextProps.bucketOneData.num
             })
         }
+        console.log("111111" + this.state.num)
+
         return true;
+        
     }
+
 
 
     render() {
@@ -85,12 +92,12 @@ class CardDetail extends Component {
                             <div className="title_left">
                                 <p>{bucketData.subject}</p>
                             </div>
-                            <div className="title_right">
+                            {/* <div className="title_right">
                                 <p>
                                     <FavoriteBorder/>
                                     <Archive/>  
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="content_info">
                             <div className="info_left">
@@ -107,6 +114,7 @@ class CardDetail extends Component {
                         <HighlightOff/>
                     </p>
                     {offshow}
+                    <BucketComment qnanum={this.state.num}/>
                 </div>
             </div>
         );

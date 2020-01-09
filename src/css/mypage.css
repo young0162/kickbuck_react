@@ -112,3 +112,16 @@
 .mybucket_form .list_content .but_box svg{
     float: left;
 }
+
+.withgo {
+    background: #0f4c81;
+    width: 180px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.withgo a{
+    color: #fff;
+}
