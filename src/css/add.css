@@ -47,6 +47,13 @@
     margin-left: 15px;
     margin-right: 15px;
 }
+
+.imgtag{
+    display: inline-block;
+    border: 2px solid #ddd;
+    margin-right: 5px;
+    margin-top: 5px;
+}
 .add_box .input_box .fileupload span{
     width: 100px;
     height: 30px;
@@ -67,12 +74,6 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.imgtag{
-    display: inline-block;
-    border: 2px solid #ddd;
-    margin-right: 5px;
-    margin-top: 5px;
-}
 .add_box .input_box .fileupload input[type="file"]{
     position: absolute; 
     width: 1px; 
@@ -82,7 +83,6 @@
     overflow: hidden;
     clip:rect(0,0,0,0); 
     border: 0;
-
 }
 .add_box .input_box .img_box img{
     width: 100px;

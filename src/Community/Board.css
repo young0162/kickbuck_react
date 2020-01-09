@@ -222,3 +222,32 @@ Button.btn_function
  
 }
 
+
+.add_box .input_box .fileupload span{
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+}
+.imgadd_but {
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 13px;
+    background: #0f4c81;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.fileupload input[type="file"]{
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0); 
+    border: 0;
+}

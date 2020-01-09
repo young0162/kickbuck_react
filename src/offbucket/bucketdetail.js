@@ -61,32 +61,17 @@ class Bucketdetail extends Component {
     this.offBucketCommentList();
   };
   render() {
-    console.log(this.state.offBucketCommentData);
     return (
       <Fragment>
-        <table>
-          <tbody>
-            <tr>
-              <th>넘버</th>
-              <th>이름</th>
-              <th>제목</th>
-              <th>내용</th>
-              <th>이미지</th>
-              <th>타입</th>
-            </tr>
-            <tr>
-              <td>{this.state.bucketData.num}</td>
-              <td>{this.state.bucketData.user_name}</td>
-              <td>{this.state.bucketData.subject}</td>
-              <td>{this.state.bucketData.content}</td>
-              <td>{this.state.bucketData.image}</td>
-              <td>{this.state.bucketData.type}</td>
-            </tr>
-          </tbody>
-        </table>
-        <OffbucketCommentInsert />
-        <hr></hr>
-
+        <div className="board_container" style={{ marginBottom: "0px" }}>
+          <table className="board">
+            <thead className="board_head">
+              <th colSpan2 style={{ textAlign: "right" }}>
+                <OffbucketCommentInsert className="offbucketCommentInsert" />
+              </th>
+            </thead>
+          </table>
+        </div>
         {this.state.offBucketCommentData.map((row, idx) => (
           <BucketCommentList row={row} idx={idx} key={row.pk} />
         ))}

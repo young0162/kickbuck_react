@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import search_icon from './image/main/search_icon.png';
 import SearchBar from './SearchBar';
+import mygobut from './image/main/tick_my_logo.png';
+
 
 class Category extends Component {
 
@@ -40,11 +42,22 @@ class Category extends Component {
             boxSizing: 'border-box'
         };
 
+        let mypage_but;
+
+        if(localStorage.state)
+        {
+            mypage_but = <div className="mygo_but">
+                            <NavLink exact to='/mypage/mylist'>
+                            <img src={mygobut} alt=""/>
+                            </NavLink>
+                        </div>
+        }
+
         return (
             <div className="category_bar">
                 <ul>
                     <NavLink exact to='/' activeStyle={activeStyle}>
-                        <li >
+                        <li>
                             모두보기    
                         </li>
                     </NavLink>
@@ -71,6 +84,7 @@ class Category extends Component {
                 <div className="searchbox" style={searchBg}>
                     <SearchBar goSearch={this.goSearch.bind(this)}/>
                 </div>
+                {mypage_but}
             </div>
         );
     }

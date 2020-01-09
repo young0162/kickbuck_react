@@ -29,7 +29,6 @@ class FreeBoardCommentItem extends Component {
       num: this.props.row.num,
       group_num: this.props.row.group_num
     });
-    console.log(this.state);
   };
 
   visibleEvent = () => {

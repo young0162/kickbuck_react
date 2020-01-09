@@ -14,7 +14,6 @@ class FreeBoardList extends Component {
       flag: false,
       flag2: false
     };
-    console.log("freeboardlistData=" + this.state.freeBoardListData);
   }
 
   //리스트 함수
@@ -34,7 +33,6 @@ class FreeBoardList extends Component {
       });
   };
   onClickNext = () => {
-    console.log(this.state.freeBoardListData.length);
     if (this.state.freeBoardListData.length !== 0) {
       this.setState((prevState, props) => ({
         start: prevState.start + 10,

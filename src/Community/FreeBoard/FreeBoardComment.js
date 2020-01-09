@@ -27,8 +27,6 @@ class FreeBoardComment extends Component {
       num: this.props.freeboardnum,
       user_name: localStorage.state
     });
-    console.log(this.state);
-    console.log("his.props.freeboardnum" + this.state.num);
   };
 
   onSubmit = e => {
@@ -68,7 +66,6 @@ class FreeBoardComment extends Component {
         this.setState({
           freeBoardCommentData: resData.data
         });
-        console.log("freeBoardCommentData" + this.freeBoardCommentData);
       })
       .catch(error => {
         console.log(

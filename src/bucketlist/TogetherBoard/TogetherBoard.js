@@ -28,14 +28,17 @@ const responsive = {
 
 class TogetherBoard extends Component {
 
-  constructor(history){
+  constructor({history,match}){
       super();
 
       this.history=history;
 
+      this.num = match.params.num;
+
       this.state={
           withBoardData: [],
           imageNameList: [],
+          withuserselect: [],
           num:'',
           user_name: '',
           comment: '',
@@ -46,14 +49,13 @@ class TogetherBoard extends Component {
 
   // 목록을 가져올 함수
   withBoardList=()=>{
-    var url="http://localhost:9000/controller/bucket/withboardlist";
+    var url="http://localhost:9000/controller/bucket/withboardlist?num=" + this.num;
     axios.get(url)
     .then((resData)=>{
         // 스프링 서버로부터 받은 데이타로 qnaData로 수정
         this.setState({
             withBoardData: resData.data
         })
-        console.log(this.state.withBoardData);
 
     })
     .catch((error)=>{
@@ -65,6 +67,7 @@ class TogetherBoard extends Component {
     // 랜더링 직전 스프링으로 목록을 받아온다
     this.withBoardList();
     this.withImageNameList();
+    this.withuserselect();
   }
 
 
@@ -107,7 +110,6 @@ class TogetherBoard extends Component {
       headers: { "Content-Type": "multipart/form-data" }
     })
       .then(res => {
-        console.log(res.data);
       })
       .catch(error => {
         console.log("업로드 오류:" + error.data);
@@ -121,7 +123,7 @@ class TogetherBoard extends Component {
     axios.post(
         "http://localhost:9000/controller/bucket/withboardinsert",
         {
-            num: 23,
+            num: this.num,
             user_name: localStorage.state,
             comment: this.refs.comment.value,
             image_name: this.state.image_name
@@ -136,7 +138,8 @@ class TogetherBoard extends Component {
                   display_none: 'none'      
                 })
             // 코멘트 입력란 지우기
-            this.refs.comment.value = '';            
+            this.refs.comment.value = '';      
+            window.location.reload();      
             
         })
         .catch((error)=>{
@@ -147,18 +150,31 @@ class TogetherBoard extends Component {
 
   // 이미지 네임 목록을 가져올 함수
   withImageNameList=()=>{
-    var url="http://localhost:9000/controller/bucket/withimagenames";
+    var url="http://localhost:9000/controller/bucket/withimagenames?num=" + this.num;
     axios.get(url)
     .then((resData)=>{
         // 스프링 서버로부터 받은 데이타로 qnaData로 수정
         this.setState({
           imageNameList: resData.data
         })
-        console.log(this.state.imageNameList);
 
     })
     .catch((error)=>{
         console.log("imageNameList 오류!"+error);
+    })
+  }
+
+  withuserselect = () => {
+    var url = "http://localhost:9000/controller/with_user?num=" + this.num
+
+    axios.get(url)
+    .then( (resData) => {
+        this.setState({
+          withuserselect:resData.data
+        })
+    })
+    .catch( (error) => {
+      console.log(error.data)
     })
   }
 
@@ -203,7 +219,10 @@ class TogetherBoard extends Component {
                           </td>
 
                           <td>
-                            <input style={{width:'150px', height: '50px', textAlign: 'center'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
+                            <label for="fileupload" className="fileupload">
+                              <span className="imgadd_but">파일 업로드</span>
+                              <input id="fileupload" style={{width:'150px', height: '50px', textAlign: 'center'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
+                            </label>
                           </td>
 
                           <td>   
@@ -243,9 +262,7 @@ class TogetherBoard extends Component {
                           <tr>
                             <td colSpan="6" style={{textAlign:'center'}}>
                                 {/* 함께하기를 클릭한 사람들의 사용자 이름을 노출 */}
-                                <b>{localStorage.state}, {localStorage.state}, {localStorage.state},
-                                {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, 
-                                {localStorage.state}, {localStorage.state}</b>
+                                <b>{this.state.withuserselect}</b>
                             </td>
                           </tr>
                           <tr>
