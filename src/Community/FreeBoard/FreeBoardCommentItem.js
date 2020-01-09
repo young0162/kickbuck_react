@@ -112,6 +112,18 @@ class FreeBoardCommentItem extends Component {
 
     let step = this.props.row.step_num;
 
+    let loginBtn1;
+     
+        
+        if (localStorage.state === this.props.row.user_name)
+        {
+            loginBtn1 = 
+            <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '3px',
+                visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
+                X
+            </Button>
+        }
+
     return (
       <tbody className='board_body'>
         <tr height="60px;">
@@ -138,10 +150,7 @@ class FreeBoardCommentItem extends Component {
               visibility:this.state.isvisible}} onClick={this.visibleEvent.bind(this)}>
                 대댓글
             </Button>  
-            <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '3px',
-              visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
-                X
-            </Button>
+            {loginBtn1}
             <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
                 <DialogTitle>댓글 삭제</DialogTitle>
                     <DialogContent>

@@ -156,6 +156,19 @@ class TogetherBoardItem extends Component {
         let imgbtn = this.props.row.image_name;
         let step = this.props.row.step_num;
 
+        let loginBtn1;
+     
+        
+        if (localStorage.state === this.props.row.user_name)
+        {
+            loginBtn1 = 
+            <Button  variant="outlined" color='secondary' size='small' style={{fontSize: '11px', height:'40px', margin: '1px'}} onClick={this.handleClickOpen}>
+                        X
+            </Button>
+        }
+
+
+
         return (
             <tbody className='board_body' style={{fontSize:'12px'}}>
             <tr height="50px">
@@ -201,9 +214,7 @@ class TogetherBoardItem extends Component {
                     <Button  variant="outlined" size='small' style={{fontSize: '11px', height:'40px', margin: '1px'}} onClick={this.visibleEvent.bind(this)}>
                         댓글
                     </Button>  
-                    <Button  variant="outlined" size='small' style={{fontSize: '11px', height:'40px', margin: '1px'}} onClick={this.handleClickOpen}>
-                        X
-                    </Button>
+                    {loginBtn1}
                     <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
                             <DialogTitle>댓글 삭제</DialogTitle>
                             <DialogContent>

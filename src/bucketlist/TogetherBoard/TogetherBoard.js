@@ -187,7 +187,7 @@ class TogetherBoard extends Component {
               </Carousel>
                 
                 
-                <div className='board_container'> 
+                <div className='board_container' style={{marginBottom: '20px'}}> 
                     <table className="board">
                       <tbody className='board_body'>
                         <tr style={{display:this.state.display_none}}>
@@ -223,7 +223,7 @@ class TogetherBoard extends Component {
                         취소
                     </Button>
                 </div>
-                <div className='board_container'>                   
+                <div className='board_container' style={{marginBottom: '20px'}}>                   
                     <Button className='btn_function' variant="contained" color="primary" 
                     style={{width:'120px', height:'40px', display:this.state.display}}
                     onClick={this.visibleEvent.bind(this)}>
