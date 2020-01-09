@@ -122,6 +122,15 @@
     margin: 0 auto;
     cursor: pointer;
 }
+.unwithgo{
+    background: #ddd;
+    width: 180px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+    margin: 0 auto;
+    cursor: default;
+}
 .withgo a{
     color: #fff;
 }

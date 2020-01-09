@@ -16,20 +16,24 @@ class BucketComment extends Component {
             user_name: '',
             comment: '',
             commentCount: '',
+            qnum: props.qnanum
         }
         this.onKeyChange =  this.onKeyChange.bind(this);
 
     }
 
-    // shouldComponentUpdate(nextProps, nextState){
-    //     if(this.state.qnum !== nextProps.qnanum)
-    //     {
-    //         this.setState({
-    //             qnum: nextProps.qnanum
-    //         })
-    //     }
-    //     return true;
-    // }
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.qnum !== nextProps.qnanum)
+        {
+            this.setState({
+                qnum: nextProps.qnanum
+            })
+            this.qnaCommentList();
+            this.qnaCommentCount(); 
+        }
+
+        return true;
+    }
 
 
     onKeyChange=(e)=>{
@@ -38,7 +42,6 @@ class BucketComment extends Component {
             num: this.props.qnanum,
             user_name: localStorage.state
         });        
-        console.log(this.state);
     }
         
    
@@ -75,20 +78,18 @@ class BucketComment extends Component {
 
     // 목록을 가져올 함수
     qnaCommentList=()=>{
-        var url="http://localhost:9000/controller/bucketcomment/list?num="+this.props.qnanum;
+        var url="http://localhost:9000/controller/bucketcomment/list?num=" + this.props.qnanum;
         axios.get(url)
         .then((resData)=>{
             // 스프링 서버로부터 받은 데이타로 qnaData로 수정
             this.setState({
                 qnaCommentData: resData.data
             })
-            console.log("this.props.qnanum commentasdfadf" + this.props.qnanum)
             this.qnaCommentCount();
 
         })
         .catch((error)=>{
             console.log("qnaboard list 오류!");
-            console.log("this.props.qnanum commentasdfadf" + this.props.qnanum)
         })
     }
 
@@ -102,8 +103,6 @@ class BucketComment extends Component {
             this.setState({
                 commentCount: resData.data
             })
-            
-            console.log(this.state.commentCount);
         })
         .catch((error)=>{
             console.log("qnaboard comment count 오류!");
@@ -112,18 +111,11 @@ class BucketComment extends Component {
 
 
 
-    componentDidMount(){
-        // 랜더링 직전 스프링으로 목록을 받아온다
-        this.qnaCommentList();
-        // 랜더링 직전 스프링으로 댓글 갯수를 받아온다
-        this.qnaCommentCount();
-    }
-    
     render() {
         
         return (
             <div>
-                <div className='board_container' style={{paddingTop:'50px',paddingTop:'50px',marginTop:'-66px'}}>
+                <div className='board_container' style={{paddingTop:'50px'}}>
                     <h3 style={{textAlign:'left', marginLeft: '30px', height: '30px'}}><b> 댓글 &nbsp;
                         <span style={{color: '#E86D51'}}>{this.state.commentCount}</span></b>
                     </h3>                

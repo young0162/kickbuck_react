@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
+import Axios from "axios";
 
 export default class OurListItem extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      withCount: ''
+    }
+  }
 
 
   onClick = () => {
@@ -17,11 +26,45 @@ export default class OurListItem extends Component {
       this.props.bucketSelect(this.props.row.num);
   }
 
+  withCountCheck = () => {
+
+    var url = "http://localhost:9000/controller/withcountcheck?num=" + this.props.row.num;
+
+    Axios.get(url)
+    .then((resData) => {
+      this.setState({
+        withCount: resData.data
+      })
+    })
+    .catch(error => {
+      console.log("error" + error.data);
+    });
+  }
+
+  componentDidMount() {
+    this.withCountCheck();
+  }
+
   render() {
 
-    console.log(this.props.row)
 
-    const url = "http://localhost:9000/controller/save/"
+    const url = "http://localhost:9000/controller/save/";
+
+    let withgo;
+
+    if(this.state.withCount === 1) {
+      withgo = <p className="withgo" style={{fontSize:'12px',textAlign:'center'}}>
+                  <NavLink exact to='/bucketlist/togetherboard'>
+                    함께하기 게시판으로 이동하기
+                  </NavLink>
+                </p>
+    }
+    else{
+      withgo = <p className="unwithgo" style={{fontSize:'12px',textAlign:'center'}}>
+                  함께하기 게시판으로 이동하기
+                </p>
+    }
+    
     
     return (
         <div className="mybucket_form">
@@ -42,11 +85,7 @@ export default class OurListItem extends Component {
             </p>
           </div>
           <div className="but_box">
-            <p className="withgo" style={{fontSize:'12px',textAlign:'center'}}>
-            <NavLink exact to='/bucketlist/togetherboard'>
-              함께하기 게시판으로 이동하기
-            </NavLink>
-            </p>
+            {withgo}
           </div>
         </div>
     );

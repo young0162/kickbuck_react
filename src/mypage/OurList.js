@@ -36,8 +36,6 @@ export default class OurList extends Component {
     localStorage.state;
     Axios.get(url)
       .then((responseData) => {
-        console.log(responseData.data);
-        //스프링 서버로부터 받은 데이타로 mypageData 수정
         this.setState({
           ourPageData: responseData.data
           

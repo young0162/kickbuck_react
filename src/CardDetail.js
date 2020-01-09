@@ -14,7 +14,7 @@ class CardDetail extends Component {
             bucketArrImg: this.props.bucketOneData,
             imgarr: [],
             off: this.props.off,
-            num: 28
+            num: ''
         }
         
     }
@@ -33,15 +33,17 @@ class CardDetail extends Component {
                 num: nextProps.bucketOneData.num
             })
         }
-        console.log("111111" + this.state.num)
+
+        console.log("this.props.bucketOneData :" + this.props.bucketOneData.num)
+
 
         return true;
-        
     }
 
 
 
     render() {
+
         
         const properties = {
             duration: 5000,
@@ -80,11 +82,6 @@ class CardDetail extends Component {
                                 )
                             ) 
                         }
-                        {/* <div className="each-slide">
-                            <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
-                            </div>
-                        </div>
-                        */}
                         </Slide>
                     </div>
                     <div className="popup_content">
@@ -92,12 +89,6 @@ class CardDetail extends Component {
                             <div className="title_left">
                                 <p>{bucketData.subject}</p>
                             </div>
-                            {/* <div className="title_right">
-                                <p>
-                                    <FavoriteBorder/>
-                                    <Archive/>  
-                                </p>
-                            </div> */}
                         </div>
                         <div className="content_info">
                             <div className="info_left">
@@ -114,7 +105,7 @@ class CardDetail extends Component {
                         <HighlightOff/>
                     </p>
                     {offshow}
-                    <BucketComment qnanum={this.state.num}/>
+                    <BucketComment qnanum={this.props.bucketOneData.num}/>
                 </div>
             </div>
         );

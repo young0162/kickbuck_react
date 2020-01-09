@@ -54,7 +54,6 @@ class TogetherBoard extends Component {
         this.setState({
             withBoardData: resData.data
         })
-        console.log(this.state.withBoardData);
 
     })
     .catch((error)=>{
@@ -109,7 +108,6 @@ class TogetherBoard extends Component {
       headers: { "Content-Type": "multipart/form-data" }
     })
       .then(res => {
-        console.log(res.data);
       })
       .catch(error => {
         console.log("업로드 오류:" + error.data);
@@ -157,7 +155,6 @@ class TogetherBoard extends Component {
         this.setState({
           imageNameList: resData.data
         })
-        console.log(this.state.imageNameList);
 
     })
     .catch((error)=>{

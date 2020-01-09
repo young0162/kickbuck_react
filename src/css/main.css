@@ -370,14 +370,13 @@ a {
     left: 0;
 }
 .card_popup{
-    position: absolute;
+    position: relative;
     width: 1204px;
-    height: 90vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    min-height: 90vh;
     background: #fff;
     z-index: 101;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 
 .card_popup .close_but{

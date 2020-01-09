@@ -32,7 +32,6 @@ import Bucketdetail from "./offbucket/Bucketdetail";
 import OffbucketCommentInsert from "./offbucket/OffbucketCommentInsert";
 import OffBucketCommentUpdate from "./offbucket/OffBucketCommentUpdate";
 import TogetherBoard from "./bucketlist/TogetherBoard/TogetherBoard";
-import MyListDetail from "./mypage/MyListDetail";
 import FAQ_signup from "./community/FAQ/FAQ_signup";
 import FAQ_contents from "./community/FAQ/FAQ_contents";
 import FAQ_etc from "./community/FAQ/FAQ_etc";
@@ -70,7 +69,6 @@ export default class Main extends Component {
           <Route exact path="/mypage/offlist" component={OffList} />
           <Route exact path="/mypage/likelist" component={LikeList} />
           <Route exact path="/mypage/Standby" component={Standby} />
-          <Route exact path="/select/:num" Component={MyListDetail} />
 
           {/* 자유게시판 */}
           <Route exact path="/community/freeboardlist" component={FreeBoard} />

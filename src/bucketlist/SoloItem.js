@@ -5,24 +5,12 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         withUserArr:[]
-    //     }
-    // }
 
     onClick = (event) => {
         this.detailShow();
         this.bucketSelect();
-        // this.withCheck();
     }
 
-    onClick2 = () => {
-        this.withcomplete();
-        this.withCountUp();
-    }
 
     detailShow = () => {
         this.props.detailShow();
@@ -32,16 +20,7 @@ class SoloItem extends Component {
         this.props.bucketSelect(this.props.idx.num);
     }
 
-    withcomplete = () => {
-        var url = "http://localhost:9000/controller/waitcomplete?num=" + this.props.idx.num;
-        Axios.get(url)
-        .then( (resData) => {
-            console.log(resData.data)
-        })
-        .catch( (error) => {
-            console.log("update error" + error)
-        })
-    }
+
     
     withCountUp = () => {
         if(localStorage.state) {
@@ -57,7 +36,7 @@ class SoloItem extends Component {
                 console.log(resData.data)
             })
             .catch( (error) => {
-                console.log("update error" + error)
+                console.log("update error" + error.data)
             })
         }
         else{
@@ -89,14 +68,6 @@ class SoloItem extends Component {
 
     
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if(this.state.withUserArr !== nextProps.withUserArr.witharr)
-    //     {
-    //         this.setState({
-    //             withUserArr: nextProps.withUserArr.witharr
-    //         })
-    //     }
-    // }
 
     render() {
 
@@ -107,9 +78,6 @@ class SoloItem extends Component {
 
         return (
                 <div className="buket_form"  num={this.props.idx.num} >
-                    {/* {
-                        this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
-                    } */}
                     <img className="bgimg" src={boxbg} alt=""  />
                     <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""    />     
                     <div className="black_bg" onClick={this.onClick}></div>
@@ -117,7 +85,7 @@ class SoloItem extends Component {
                         <p>{this.props.idx.subject}
                         </p>
                         <div className="bottom_but">
-                            <p onClick={this.onClick2.bind(this)}>
+                            <p onClick={this.withCountUp.bind(this)}>
                                 <FavoriteBorder/>
                                 <span>함께 </span>
                             </p>

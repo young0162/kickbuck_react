@@ -25,11 +25,11 @@ export default class StandbyItem extends Component {
   }
 
   waitComplete = () => {
-    var url = "http://localhost:9000/controller/waitcomplete?num=" + this.props.row.num;
+    var url = "http://localhost:9000/controller/withopenupdate?num=" + this.props.row.num;
 
     Axios.get(url)
     .then( (resData) => {
-      alert("우리의 버킷으로 이동 되었습니다.");
+      alert("함께하는 버킷 게시판이 승인 되었습니다.");
       window.location.reload();
     })
     .catch( (error) => {

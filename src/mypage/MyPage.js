@@ -14,17 +14,14 @@ export default class MyPage extends Component {
   }
   //마이메이지 호출되는 함수
   onSelect = () => {
-    console.log("num=" + this.state.num);
     var url =
       "http://localhost:9000/controller/profile/image?num=" + this.state.num;
 
     Axios.get(url)
       .then(responseData => {
-        console.log(responseData.data);
         this.setState({
           image: responseData.data.image
         });
-        console.log("image:" + this.state.image);
       })
       .catch(error => {
         console.log("select one error");
