@@ -54,9 +54,9 @@ export default class OurListItem extends Component {
 
     if(this.state.withCount === 1) {
       withgo = <p className="withgo" style={{fontSize:'12px',textAlign:'center'}}>
-                  <NavLink exact to='/bucketlist/togetherboard'>
+                    <a href={"/bucketlist/togetherboard/" + this.props.row.num} >
                     함께하기 게시판으로 이동하기
-                  </NavLink>
+                    </a>
                 </p>
     }
     else{

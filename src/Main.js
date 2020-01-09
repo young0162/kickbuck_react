@@ -132,7 +132,7 @@ export default class Main extends Component {
 
           <Route
             exact
-            path="/bucketlist/togetherboard"
+            path="/bucketlist/togetherboard/:num"
             component={TogetherBoard}
           />
 

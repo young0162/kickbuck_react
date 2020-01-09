@@ -28,10 +28,12 @@ const responsive = {
 
 class TogetherBoard extends Component {
 
-  constructor(history){
+  constructor({history,match}){
       super();
 
       this.history=history;
+
+      this.num = match.params.num;
 
       this.state={
           withBoardData: [],
@@ -47,7 +49,7 @@ class TogetherBoard extends Component {
 
   // 목록을 가져올 함수
   withBoardList=()=>{
-    var url="http://localhost:9000/controller/bucket/withboardlist";
+    var url="http://localhost:9000/controller/bucket/withboardlist?num=" + this.num;
     axios.get(url)
     .then((resData)=>{
         // 스프링 서버로부터 받은 데이타로 qnaData로 수정
@@ -121,7 +123,7 @@ class TogetherBoard extends Component {
     axios.post(
         "http://localhost:9000/controller/bucket/withboardinsert",
         {
-            num: 58,
+            num: this.num,
             user_name: localStorage.state,
             comment: this.refs.comment.value,
             image_name: this.state.image_name
@@ -148,7 +150,7 @@ class TogetherBoard extends Component {
 
   // 이미지 네임 목록을 가져올 함수
   withImageNameList=()=>{
-    var url="http://localhost:9000/controller/bucket/withimagenames";
+    var url="http://localhost:9000/controller/bucket/withimagenames?num=" + this.num;
     axios.get(url)
     .then((resData)=>{
         // 스프링 서버로부터 받은 데이타로 qnaData로 수정
@@ -163,7 +165,7 @@ class TogetherBoard extends Component {
   }
 
   withuserselect = () => {
-    var url = "http://localhost:9000/controller/with_user?num=" + 58
+    var url = "http://localhost:9000/controller/with_user?num=" + this.num
 
     axios.get(url)
     .then( (resData) => {
