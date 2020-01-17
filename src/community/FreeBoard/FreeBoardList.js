@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Kickbuckmain from "./kickbuck.jpg";
-import "./FreeBoardList.css";
+import '../Board.css';
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
-import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
 class FreeBoardList extends Component {
@@ -35,10 +33,9 @@ class FreeBoardList extends Component {
       });
   };
   onClickNext = () => {
-    console.log(this.state.freeBoardListData.length);
     if (this.state.freeBoardListData.length !== 0) {
       this.setState((prevState, props) => ({
-        start: prevState.start + 15,
+        start: prevState.start + 10,
         flag: true
       }));
     }
@@ -47,7 +44,7 @@ class FreeBoardList extends Component {
   onClickPre = () => {
     if (this.state.start > 0) {
       this.setState((prevState, props) => ({
-        start: prevState.start - 15,
+        start: prevState.start - 10,
         flag2: true
       }));
     }
@@ -94,29 +91,27 @@ class FreeBoardList extends Component {
 
   render() {
     return (
-      <Paper>
-        <div className="header">
-          <div className="mainimg">
-            <img src={Kickbuckmain} alt="" className="kickimg"></img>
+      <div>
+      
+        <div className='section-top'>
+          <div className='community_title'>
+              <span>COMMUNITY</span>
           </div>
+        </div>  
+
+        <div className='board_container'>
+            <ul className='board_tab'>
+                <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
+                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
+                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
+            </ul>
         </div>
-        <h3>FreeBoard</h3>
-        <div className="table-box">
-          <button
-            type="button"
-            onClick={() => {
-              if (localStorage.length === 1) {
-                this.props.history.push("/community/freeboardinsert");
-              } else {
-                alert("로그인을 해주세요");
-              }
-            }}
-          >
-            추가
-          </button>
-          <table>
-            <thead>
-              <tr>
+         
+        <div className="board_container">          
+          <table className="board">
+            <thead className='board_head'>
+              <tr height= '80px'>
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -124,7 +119,7 @@ class FreeBoardList extends Component {
                 <th>작성일</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className='board_body'>
               {this.state.freeBoardListData.map((row, idx) => (
                 <FreeBoardItem
                   row={row}
@@ -134,16 +129,35 @@ class FreeBoardList extends Component {
               ))}
             </tbody>
           </table>
+
+          <br/>
           <div>
-            <button type="button" onClick={this.onClickPre}>
-              pre
-            </button>
-            <button type="button" onClick={this.onClickNext}>
-              next
-            </button>
+              <Button variant="contained" onClick={this.onClickPre} style={{margin: '5px', marginLeft: '50px'}}>
+                  ＜ Pre
+              </Button>
+              
+              <Button variant="contained" onClick={this.onClickNext} style={{margin: '5px', marginLeft: '940px'}}>
+                  Next ＞
+              </Button>
+          </div>            
+          <br/>
+
+          <div style={{float:'right'}}>
+            <Button className='btn_function' variant="contained" color="primary"
+              onClick={() => {
+                if (localStorage.length === 1) {
+                  this.props.history.push("/community/freeboardinsert");
+                } else {
+                  alert("로그인을 해주세요");
+                }
+              }}>
+              글쓰기
+            </Button>
           </div>
         </div>
-      </Paper>
+
+      </div>
+      
     );
   }
 }

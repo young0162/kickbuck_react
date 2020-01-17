@@ -217,7 +217,7 @@ class SignUp extends Component {
               <input className="pull" placeholder="비밀번호 확인" type="password" ref="password2" onChange={this.passwordCheck.bind(this)} /> 
               {stateP3}
             </div>
-            <div>
+            {/* <div>
               <p>이용약관 동의</p>
               <div className="agree">
                 이용약관
@@ -229,7 +229,7 @@ class SignUp extends Component {
                 개인정보 수집 약관
               </div>
             </div>
-            <p className="all_agree">위 약관에 전체 동의</p>
+            <p className="all_agree">위 약관에 전체 동의</p> */}
             <div className="but_box">
               {/* <NavLink className="ok" exact to='/' onClick={this.MemberInsert.bind(this)}>
                 회 원 가 입

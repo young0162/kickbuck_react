@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import SoloItem from './SoloItem';
 import CardDetail from '../CardDetail';
 import Axios from 'axios';
+import '../css/solo.css';
 
 class Solo extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             show: false,      
             bucketData: [],
             bucketOneData: [],
+            withUserArr: [],
         }
 
         this.detailShow = this.detailShow.bind(this);
         this.detailHide = this.detailHide.bind(this);
         this.bucketList = this.bucketList.bind(this);
         this.bucketSelect = this.bucketSelect.bind(this);
+        this.withCheck = this.withCheck.bind(this);
     }
     
 
@@ -62,10 +65,27 @@ class Solo extends Component {
         })
     }
 
+  
+
+    withCheck = () => {
+        var url = "http://localhost:9000/controller/bucketwithcheck?num=" + this.props.idx.num;
+
+        Axios.get(url)
+        .then( (resData) => {
+            this.setState({
+                withUserArr: resData.data
+            })
+        })
+        .catch( (error) => {
+            console.log("withcheck error" + error.data);
+        })
+    }
+
 
     componentWillMount() {
         this.bucketList();
     }
+
 
     
 
@@ -83,7 +103,7 @@ class Solo extends Component {
             <div className="buket_form_box">
                 {
                     this.state.bucketData.map( (idx) => (
-                        <SoloItem detailShow={this.detailShow} bucketSelect={this.bucketSelect} idx={idx} key={idx.num}  />        
+                        <SoloItem detailShow={this.detailShow} withUserArr={this.state.withUserArr} bucketSelect={this.bucketSelect} idx={idx} key={idx.num}  />        
                     ))
                 }
                 {box}

@@ -49,7 +49,8 @@ class QnaBoardItem extends Component {
 
                 <td style={{width: '680px'}}>
                     <a href={"/community/qnaboarddetail/"+this.props.row.num}>
-                        {this.props.row.title} <sup style={{color: '#E86D51'}}>{this.state.commentCount}</sup>
+                        {this.props.row.title} &nbsp;
+                        <sup style={{color: '#E86D51'}}>{this.state.commentCount}</sup>
                     </a>
                 </td>
 

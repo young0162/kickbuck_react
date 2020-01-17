@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { Dialog, DialogTitle, DialogContentText, DialogActions } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@material-ui/core';
 import '../Board.css';
 
 class QnaCommentItem extends Component {
@@ -144,22 +144,22 @@ class QnaCommentItem extends Component {
                         {this.props.row.daytime}
                     </td>   
 
-                    <td>
-                        <Button variant="outlined" style={{width:'80px', height:'40px', margin: '5px',
+                    <td width='190px'>
+                        <Button variant="outlined" style={{width:'80px', height:'40px', margin: '3px',
                          visibility:this.state.isvisible}} onClick={this.visibleEvent.bind(this)}>
                             대댓글
                         </Button>  
-                        <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '5px',
+                        <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '3px',
                          visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
                             X
                         </Button>
                         <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
                             <DialogTitle>댓글 삭제</DialogTitle>
-                            <DialogContentText>
-                                댓글을 삭제하시겠습니까?
-                            </DialogContentText>
+                                <DialogContent>
+                                    <Typography gutterBottom>댓글을 삭제하시려면 '확인'을 클릭하세요</Typography>
+                                </DialogContent>
                             <DialogActions>
-                                <Button variant="contained" onClick={this.onDataDelete}>삭제</Button>
+                                <Button variant="contained" color="secondary" onClick={this.onDataDelete}>확인</Button>
                                 <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
                             </DialogActions>
                         </Dialog>  
@@ -173,7 +173,7 @@ class QnaCommentItem extends Component {
                         {localStorage.state}
                     </td> */}
                     <td colSpan="2">
-                        <input type="text" name="recomment" className="input_area" 
+                        <input type="text" name="recomment" className="input_area input_comment" 
                          style={{width:'750px', height:'40px'}} placeholder="대댓글을 입력하세요." value={this.state.recomment}
                          required="required" onChange={this.onKeyChange}/>
                     </td>

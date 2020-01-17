@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from '@material-ui/core/Button';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Typography } from '@material-ui/core';
+import '../Board.css';
 
 class FreeBoardCommentItem extends Component {
   constructor(history) {
@@ -26,7 +29,6 @@ class FreeBoardCommentItem extends Component {
       num: this.props.row.num,
       group_num: this.props.row.group_num
     });
-    console.log(this.state);
   };
 
   visibleEvent = () => {
@@ -90,55 +92,65 @@ class FreeBoardCommentItem extends Component {
       });
   };
 
+  // 모달 팝업 관련 이벤트
+  handleClickOpen = () =>{
+    this.setState({
+    opendelete: true
+    });
+  }
+
+  handleClickClose = () =>{
+      this.setState({
+      opendelete: false
+      });
+  }
+
+
+
   render() {
+
     let step = this.props.row.step_num;
 
     return (
-      <tbody>
+      <tbody className='board_body'>
         <tr height="60px;">
-          <td style={{ textAlign: "center", width: "60px" }}>
+          {/* <td style={{ textAlign: "center", width: "60px" }}>
             {step === 1 ? this.props.row.comment_num : ""}
-          </td>
+          </td> */}
 
-          <td style={{ textAlign: "center", width: "120px" }}>
+          <td colSpan='2' style={{textAlign: 'center', width: '150px'}}>
             {this.props.row.user_name}
           </td>
 
-          <td style={{ textAlign: "left", width: "680px" }}>
+          <td style={{ textAlign: "left", width: "710px" }}>
             {step === 1
               ? this.props.row.comment
               : "RE:  " + this.props.row.comment}
           </td>
 
-          <td style={{ textAlign: "center", width: "140px" }}>
+          <td style={{ textAlign: "center", width: "150px" }}>
             {this.props.row.daytime}
           </td>
 
-          <td>
-            <button
-              type="text"
-              className="btn btn-md btn-success"
-              style={{
-                width: "90px",
-                height: "40px",
-                visibility: this.state.isvisible
-              }}
-              onClick={this.visibleEvent.bind(this)}
-            >
-              대댓글
-            </button>
-            <button
-              type="text"
-              className="btn btn-md btn-success"
-              style={{
-                width: "30px",
-                height: "40px",
-                visibility: this.state.isvisible
-              }}
-              onClick={this.onDataDelete}
-            >
-              X
-            </button>
+          <td width='190px'>
+            <Button variant="outlined" style={{width:'80px', height:'40px', margin: '3px',
+              visibility:this.state.isvisible}} onClick={this.visibleEvent.bind(this)}>
+                대댓글
+            </Button>  
+            <Button variant="outlined" color="secondary" style={{width:'20px', height:'40px', margin: '3px',
+              visibility:this.state.isvisible}} onClick={this.handleClickOpen}>
+                X
+            </Button>
+            <Dialog open={this.state.opendelete} onClose={this.handleClickClose}>
+                <DialogTitle>댓글 삭제</DialogTitle>
+                    <DialogContent>
+                        <Typography gutterBottom>댓글을 삭제하시려면 '확인'을 클릭하세요</Typography>
+                    </DialogContent>
+                <DialogActions>
+                    <Button variant="contained" color="secondary" onClick={this.onDataDelete}>확인</Button>
+                    <Button variant="contained" onClick={this.handleClickClose}>닫기</Button>
+                </DialogActions>
+            </Dialog>
           </td>
         </tr>
         <tr style={{ display: this.state.display }}>
@@ -148,8 +160,8 @@ class FreeBoardCommentItem extends Component {
             <input
               type="text"
               name="recomment"
-              className="input qnainput contentinput"
-              style={{ width: "820px", height: "40px" }}
+              className="input_area input_comment"
+              style={{ width: "750px", height: "40px" }}
               placeholder="대댓글을 입력하세요."
               value={this.state.recomment}
               required="required"
@@ -157,24 +169,23 @@ class FreeBoardCommentItem extends Component {
             />
           </td>
 
-          <td>
+          <td width='190px'>
             <form onSubmit={this.onSubmit}>
-              <button
-                type="submit"
+              <Button
+                type="submit" variant="outlined" color="primary"
                 className="btn btn-md btn-success"
-                style={{ width: "60px", height: "40px" }}
+                style={{ width: "60px", height: "40px", margin: '5px' }}
                 onClick={this.unvisibleEvent.bind(this)}
               >
                 등록
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className="btn btn-md btn-success"
-                style={{ width: "60px", height: "40px" }}
+                variant="outlined" style={{width:'55px', height:'40px', margin: '5px'}}
                 onClick={this.unvisibleEvent.bind(this)}
               >
                 취소
-              </button>
+              </Button>
             </form>
           </td>
         </tr>

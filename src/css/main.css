@@ -14,7 +14,7 @@ a {
 }
 .menubar {
     width: 100%;
-    height: 100px;
+    height: 120px;
     border-bottom: 1px solid #e9e9e9;
     box-sizing: border-box;
     position: fixed;
@@ -25,7 +25,7 @@ a {
 }
 .menubar ul {
     width: 220px;
-    height: 70px;
+    height: 90px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -37,14 +37,23 @@ a {
 .menubar .logo {
     width: 220px;
     overflow: hidden;
+    padding-top: 10px;
 }
 .menubar .logo img{
     width: 100%;
 }
 .menubar .plus_li{
     position: absolute;
-    right: 67px;
-    top: 44px;
+    right: 80px;
+    top: 58px;
+}
+.menubar .plus_li p{
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    background: #0f4c81;
+    color: #fff;
+    line-height: 35px;
 }
 .search_box {
     box-sizing: border-box;
@@ -71,22 +80,21 @@ a {
 
 }
 .menubar .plus svg{
-    padding-top: 2px;
-    padding-left: 2px;
     font-size: 35px;
+    float: right;
 }
 .menubar .menu_but {
     position: absolute;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    top: 54px;
+    top: 64px;
     right: 34px;
 }
 .menubar .menu_but span{
     width: 25px;
     height: 3px;
-    background: #639ACC;
+    background: #0f4c81;
     display: block;
     position: absolute;
     transition: .4s;
@@ -113,7 +121,7 @@ a {
 }
 .menubar .sidebox{
     position: fixed;
-    top: 100px;
+    top: 120px;
     right: -300px;
     width: 300px;
     height: 867px;
@@ -131,28 +139,59 @@ a {
     height: 120px;
     padding: 40px 20px;
     box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
 }
 .menubar .sidebox a:hover{
     transition: .4s;
     opacity: 0.9;
 }
 .menubar .sidebox a:nth-of-type(1){
-    background: #639ACC;
+    background: #fff;
+    color: #2a7ac4;
+    border-left: 4px solid #2a7ac4;
 }
 .menubar .sidebox a:nth-of-type(2){
-    background: #3886CE;
+    background: #fff;
+    color: #0b589f;
+    border-left: 4px solid #0b589f;
 }
 .menubar .sidebox a:nth-of-type(3){
-    background: #1774C6;
+    background: #fff;
+    color: #0e385c;
+    border-left: 4px solid #0e385c;
 }
+.menubar .sidebox a:nth-of-type(1):hover{
+    background: #2a7ac4;
+    color: #fff;
+    border-left: 4px solid #0e385c;
+}
+.menubar .sidebox a:nth-of-type(2):hover{
+    background: #0b589f;
+    color: #fff;
+    border-left: 4px solid #2a7ac4;
+}
+.menubar .sidebox a:nth-of-type(3):hover{
+    background: #0e385c;
+    color: #fff;
+    border-left: 4px solid #2a7ac4;
+
+}
+
 .menubar .sidebox a:nth-of-type(4){
-    
+    background: #fff;
+    color: #0b589f;
+    border-left: 4px solid #0b589f;
+}
+.menubar .sidebox a:nth-of-type(4):hover{
+    background: #2a7ac4;
+    color: #fff;
+    border-left: 4px solid #0e385c;
 }
 .menubar .bgon{
     width: 100%;
     height: 867px;
     position: fixed;
-    top: 100px;
+    top: 120px;
     left: 0px;
     background: rgba(0,0,0,.5);
     z-index: 500;
@@ -176,7 +215,7 @@ a {
     background: #fff;
     z-index: 100;
     position: absolute;
-    top: 56px;
+    top: 0px;
     left: 0px;
     transition: .4s;
 }
@@ -202,7 +241,7 @@ a {
     outline: none;
     font-size: 30px;
     margin-left: 20px;
-    color: #639ACC;
+    color: #0f4c81;
 }
 .category_bar {
     width: 100%;
@@ -211,7 +250,7 @@ a {
     position: relative;
 }
 .category_bar ul {
-    width: 700px;
+    width: 684px;
     margin: 0 auto;
     display: flex;
     border-left: 1px solid #ddd;
@@ -331,14 +370,13 @@ a {
     left: 0;
 }
 .card_popup{
-    position: absolute;
-    width: 80%;
-    height: 90vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: relative;
+    width: 1204px;
+    min-height: 90vh;
     background: #fff;
     z-index: 101;
+    margin: 0 auto;
+    margin-top: 40px;
 }
 
 .card_popup .close_but{
@@ -359,24 +397,24 @@ a {
     height: auto;
 }
 .card_popup .popup_content {
-    width: 1300px;
+    width: 100%;
     position: relative;
 }
 .card_popup .popup_content .content_title {
-    width: 1300px;
+    width: 100%;
     position: absolute;
     top: -80px;
     color: #fff;
     display: flex;
 }
 .card_popup .popup_content .content_title .title_left{
-    width: 50%;
+    width: 60%;
     padding-left: 60px;
     box-sizing: border-box;
     font-size: 38px;
 }
 .card_popup .popup_content .content_title .title_right{
-    width: 50%;
+    width: 40%;
     padding-right: 60px;
     box-sizing: border-box;
 }
@@ -465,3 +503,77 @@ h3 {
     background: #3886CE ;
 }
 /* 슬라이드 컴포넌트 css 끝 */
+
+.mygo_but{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: #626262;
+    border-radius: 50%;
+    z-index: 500;
+    cursor: pointer;
+}
+.mygo_but img{
+    width: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.info_box{
+    width: 256px;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 130px;
+    overflow: hidden;
+}
+.info_box img{
+    width: 100%;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+}
+.info_box p{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    width: 33.33%;
+    text-align: center;
+    font-size: 13px;
+}
+.info_box p:nth-of-type(2){
+    float: left;
+}
+.info_box p:nth-of-type(3){
+    float: right;
+}
+.info_box2 {
+    display: flex;
+    justify-content: space-between;
+}
+.info_box2 p{
+    width: 50%;
+    text-align: center;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+}
+.info_box3{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    height: 60px;
+    line-height: 60px;
+}
+.info_box4{
+    display: flex;
+    justify-content: space-between;
+}
+.info_box4 p{
+    width: 50%;
+    font-size: 11px;
+    text-align: center;
+}

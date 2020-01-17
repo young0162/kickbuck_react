@@ -4,6 +4,9 @@ import "react-multi-carousel/lib/styles.css";
 import { Image } from "semantic-ui-react";
 import axios from 'axios';
 import TogetherBoardItem from './TogetherBoardItem';
+import '../../community/Board.css';
+import Button from '@material-ui/core/Button';
+
 
 
 const responsive = {
@@ -33,6 +36,7 @@ class TogetherBoard extends Component {
       this.state={
           withBoardData: [],
           imageNameList: [],
+          withuserselect: [],
           num:'',
           user_name: '',
           comment: '',
@@ -50,7 +54,6 @@ class TogetherBoard extends Component {
         this.setState({
             withBoardData: resData.data
         })
-        console.log(this.state.withBoardData);
 
     })
     .catch((error)=>{
@@ -62,6 +65,7 @@ class TogetherBoard extends Component {
     // 랜더링 직전 스프링으로 목록을 받아온다
     this.withBoardList();
     this.withImageNameList();
+    this.withuserselect();
   }
 
 
@@ -104,7 +108,6 @@ class TogetherBoard extends Component {
       headers: { "Content-Type": "multipart/form-data" }
     })
       .then(res => {
-        console.log(res.data);
       })
       .catch(error => {
         console.log("업로드 오류:" + error.data);
@@ -118,7 +121,7 @@ class TogetherBoard extends Component {
     axios.post(
         "http://localhost:9000/controller/bucket/withboardinsert",
         {
-            num: 23,
+            num: 58,
             user_name: localStorage.state,
             comment: this.refs.comment.value,
             image_name: this.state.image_name
@@ -133,7 +136,8 @@ class TogetherBoard extends Component {
                   display_none: 'none'      
                 })
             // 코멘트 입력란 지우기
-            this.refs.comment.value = '';            
+            this.refs.comment.value = '';      
+            window.location.reload();      
             
         })
         .catch((error)=>{
@@ -151,11 +155,24 @@ class TogetherBoard extends Component {
         this.setState({
           imageNameList: resData.data
         })
-        console.log(this.state.imageNameList);
 
     })
     .catch((error)=>{
         console.log("imageNameList 오류!"+error);
+    })
+  }
+
+  withuserselect = () => {
+    var url = "http://localhost:9000/controller/with_user?num=" + 58
+
+    axios.get(url)
+    .then( (resData) => {
+        this.setState({
+          withuserselect:resData.data
+        })
+    })
+    .catch( (error) => {
+      console.log(error.data)
     })
   }
 
@@ -167,7 +184,7 @@ class TogetherBoard extends Component {
 
         return (
             <div>
-                <Carousel responsive={responsive}
+              <Carousel responsive={responsive} 
                 ssr
                 // partialVisbile
                 // deviceType={deviceType}
@@ -176,93 +193,97 @@ class TogetherBoard extends Component {
                      this.state.imageNameList.map((item,idx)=>(
                         <Image
                             draggable={false}
-                            style={{ width: "640px", height: "460px" }}
+                            style={{ width: "640px", height: "360px" }}
                             src={imgurl+item}
                         />
                         ))
-                   }
-                        
+                   }                
+              </Carousel>
                 
-                </Carousel>
-                <br/><br/>
-                <hr/>
-                <div >
-                    <h2> Bucket List 함께하기 게시판 </h2>
-                    <br/>
-                    <button style={{width:'120px', height:'40px', margin: '5px', display:this.state.display}}
-                      onClick={this.visibleEvent.bind(this)}>
-                            글쓰기
-                    </button>
-                    
-                    <table>
-                      <tbody>
+                
+                <div className='board_container'> 
+                    <table className="board">
+                      <tbody className='board_body'>
                         <tr style={{display:this.state.display_none}}>
                       
-                          <td style={{width:'120px', height: '50px', textAlign: 'center'}}>
+                          <td style={{width:'120px', height: '30px', textAlign: 'center'}}>
                               {localStorage.state}
                           </td>
 
                           <td>
-                              <textarea ref="comment" style={{width:'700px', height:'50px', margin: '10px'}} 
+                              <textarea className='input_content input_area'ref="comment"
+                              style={{width:'700px', height:'30px', margin: '10px'}} 
                               placeholder="내용을 입력하세요." required="required"/>
                           </td>
 
                           <td>
-                            <input style={{width:'150px', height: '50px', textAlign: 'center'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
+                            <label for="fileupload" className="fileupload">
+                              <span className="imgadd_but">파일 업로드</span>
+                              <input id="fileupload" style={{width:'150px', height: '50px', textAlign: 'center'}} type="file" name="image_name" onChange={this.onImageUpload}/>                            
+                            </label>
                           </td>
 
                           <td>   
                               <form onSubmit={this.onSubmit}>                             
-                                  <button type="submit" style={{width:'120px', height:'40px'}}>
+                                  <Button className='btn_function' variant="contained" color="primary" 
+                                  type="submit" style={{width:'120px', height:'40px'}}>
                                       등록
-                                  </button>                            
+                                  </Button>                            
                               </form>                                                                
                           </td>
                          </tr> 
                       </tbody>
                     </table>
-
-                    <button  style={{width:'120px', height:'40px', margin: '5px', display:this.state.display_none}}
+                    <Button className='btn_function' variant="contained"
+                    style={{width:'120px', height:'40px', display:this.state.display_none}}
                       onClick={this.unvisibleEvent.bind(this)}>
                         취소
-                    </button>
+                    </Button>
+                </div>
+                <div className='board_container'>                   
+                    <Button className='btn_function' variant="contained" color="primary" 
+                    style={{width:'120px', height:'40px', display:this.state.display}}
+                    onClick={this.visibleEvent.bind(this)}>
+                            글쓰기
+                    </Button>
+                    
                 </div>
                 <hr/>
-                <table className="qnaboard board" style={{width: '1200px'}}>
-                    <thead>
-                        <tr>
-                          <th colSpan="5" style={{padding: '10px'}}>
-                              <b style={{fontSize: '2em'}}>함께하는 사람들</b>
-                          </th>
-                        </tr>
-                        <tr>
-                          <td colSpan="5" style={{textAlign:'center'}}>
-                              <b style={{fontSize: '1.8em'}}>{localStorage.state}, {localStorage.state}, {localStorage.state},
-                               {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, {localStorage.state}, 
-                               {localStorage.state}, {localStorage.state}</b>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colSpan="5"><br/></td>
-                        </tr>
-                        <tr style={{height: '60px', textAlign:'center'}}>
-                            <th width="100px">번호</th>
-                            <th width="150px">사용자 이름</th>
-                            <th width="600px">내용</th>
-                            <th width="150px">작성일</th>
-                            <th width="100px">이미지</th>
-                            <th width="100px"></th>
-                            
-                        </tr>
-                    </thead> 
-                    
-                        {
-                          this.state.withBoardData.map((row,idx)=>(
-                            <TogetherBoardItem row={row} idx={idx} key={row.with_num} onList={this.withBoardList}/>
-                          ))                        
-                        }
-                    
-                </table>
+                <div className='board_container'>
+                  <table className="board">
+                      <thead className='board_head'>
+                          <tr>
+                            <th colSpan="6" style={{padding: '10px'}}>
+                                <b>함께하는 사람들</b>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td colSpan="6" style={{textAlign:'center'}}>
+                                {/* 함께하기를 클릭한 사람들의 사용자 이름을 노출 */}
+                                <b>{this.state.withuserselect}</b>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan="6"><br/></td>
+                          </tr>
+                          <tr style={{height: '50px', textAlign:'center',fontSize:'13px'}}>
+                              <th width="70px">번호</th>
+                              <th width="150px">사용자 이름</th>
+                              <th width="550px">내용</th>
+                              <th width="180px">작성일</th>
+                              <th width="90px">이미지</th>
+                              <th width="206px"></th>
+                              
+                          </tr>
+                      </thead> 
+                      
+                          {
+                            this.state.withBoardData.map((row,idx)=>(
+                              <TogetherBoardItem row={row} idx={idx} key={row.with_num} onList={this.withBoardList}/>
+                            ))                        
+                          }                    
+                  </table>
+                </div>
                 <hr/>
                 <br/><br/>
             </div>

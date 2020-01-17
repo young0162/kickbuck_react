@@ -56,9 +56,9 @@ class QnaBoardWrite extends Component {
                 <div className='board_container'>
                     <ul className='board_tab'>
                         <li onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                        <li className='tab_on'>Q & A Board</li>
-                        <li onClick={()=>{this.props.history.push("/community");}}>Guest Board</li>
-                        <li onClick={()=>{this.props.history.push("/community");}}>FAQ</li>
+                        <li className='tab_on' onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
+                        <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
+                        <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
                     </ul>
                 </div>
                 
@@ -82,7 +82,7 @@ class QnaBoardWrite extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>제    목</th>
                                 <td>
-                                    <input type="text" ref="title" className="qna_input input_area"
+                                    <input type="text" ref="title" className="input_title input_area"
                                     style={{width:'1000px', height: '50px'}} placeholder="제목을 입력하세요."
                                     required="required"/>
                                 </td>
@@ -90,7 +90,7 @@ class QnaBoardWrite extends Component {
                             <tr>
                                 <th style={{width:'200px', height:'50px'}}>질문내용</th>
                                 <td>
-                                    <textarea ref="content" className="qna_input input_area" 
+                                    <textarea ref="content" className="input_content input_area" 
                                     style={{width:'1000px', height:'400px'}} placeholder="질문을 입력하세요."
                                     required="required"/>
                                 </td>

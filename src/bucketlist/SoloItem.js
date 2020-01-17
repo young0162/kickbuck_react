@@ -5,10 +5,12 @@ import Axios from 'axios';
 
 class SoloItem extends Component {
 
+
     onClick = (event) => {
         this.detailShow();
         this.bucketSelect();
     }
+
 
     detailShow = () => {
         this.props.detailShow();
@@ -18,39 +20,54 @@ class SoloItem extends Component {
         this.props.bucketSelect(this.props.idx.num);
     }
 
+
     
     withCountUp = () => {
-        var url = "http://localhost:9000/controller/bucketwithup";
-        Axios.post(url,
-            {
-                user_name: localStorage.state, 
-                num: this.props.idx.num
-            }
-        )
-        .then( (resData) => {
-            
-        })
-        .catch( (error) => {
-            console.log("update error" + error)
-        })
-
+        if(localStorage.state) {
+            var url = "http://localhost:9000/controller/bucketwithup";
+            Axios.post(url,
+                {
+                    user_name: localStorage.state, 
+                    num: this.props.idx.num
+                }
+            )
+            .then( (resData) => {
+                alert("버킷리스트를 함께 합니다");
+                console.log(resData.data)
+            })
+            .catch( (error) => {
+                console.log("update error" + error.data)
+            })
+        }
+        else{
+            alert("로그인후 가능합니다");
+        }
     }
 
     likeCountUp = () => {
-        var url = "http://localhost:9000/controller/bucketlikeup";
-        Axios.post(url, 
-            {
-                user_name: localStorage.state, 
-                num: this.props.idx.num
-            }
-        )
-        .then( (resData) => {
-
-        })
-        .catch( (error) => {
-            console.log("update error" + error)
-        })
+        if(localStorage.state)
+        {
+            var url = "http://localhost:9000/controller/bucketlikeup";
+            Axios.post(url, 
+                {
+                    user_name: localStorage.state, 
+                    num: this.props.idx.num
+                }
+            )
+            .then( (resData) => {
+                alert("공감 능력 + 1")
+            })
+            .catch( (error) => {
+                console.log("update error" + error)
+            })
+        }
+        else{
+            alert("로그인후 가능합니다");
+        }
     }
+
+    
+
 
     render() {
 
@@ -61,9 +78,6 @@ class SoloItem extends Component {
 
         return (
                 <div className="buket_form"  num={this.props.idx.num} >
-                    {/* {
-                        this.props.idx.imgarr.map((item,idx) => (<img src={url + item} alt="" /> ) )                
-                    } */}
                     <img className="bgimg" src={boxbg} alt=""  />
                     <img className="mimg" src={url + this.props.idx.imgarr[0]} alt=""    />     
                     <div className="black_bg" onClick={this.onClick}></div>

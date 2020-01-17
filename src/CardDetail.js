@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FavoriteBorder, Archive, HighlightOff, TimerSharp, NoteOutlined} from '@material-ui/icons';
 import { Slide } from 'react-slideshow-image';
 import Bucketdetail from './offbucket/Bucketdetail';
+import BucketComment from './BucketComment';
 import './css/off.css';
 
 class CardDetail extends Component {
@@ -12,7 +13,8 @@ class CardDetail extends Component {
         this.state = {
             bucketArrImg: this.props.bucketOneData,
             imgarr: [],
-            off: this.props.off
+            off: this.props.off,
+            num: ''
         }
         
     }
@@ -27,14 +29,21 @@ class CardDetail extends Component {
         if(this.state.imgarr !== nextProps.bucketOneData.imgarr)
         {
             this.setState({
-                imgarr: nextProps.bucketOneData.imgarr
+                imgarr: nextProps.bucketOneData.imgarr,
+                num: nextProps.bucketOneData.num
             })
         }
+
+        console.log("this.props.bucketOneData :" + this.props.bucketOneData.num)
+
+
         return true;
     }
 
 
+
     render() {
+
         
         const properties = {
             duration: 5000,
@@ -50,14 +59,6 @@ class CardDetail extends Component {
         if(this.state.off === 'off')
         {
             offshow = <div className="offcomment" style={{'display' : 'block'}}>
-                            <p>11{this.state.off}</p>
-                            <Bucketdetail/>
-                        </div>
-        }
-        else if(this.state.off === '')
-        {
-            offshow = <div className="offcomment" style={{'display' : 'none'}}>
-                            <p>11{this.state.off}</p>
                             <Bucketdetail/>
                         </div>
         }
@@ -81,23 +82,12 @@ class CardDetail extends Component {
                                 )
                             ) 
                         }
-                        {/* <div className="each-slide">
-                            <div style={{'backgroundImage': `url(${slideImages[0]})`}}>
-                            </div>
-                        </div>
-                        */}
                         </Slide>
                     </div>
                     <div className="popup_content">
                         <div className="content_title">
                             <div className="title_left">
                                 <p>{bucketData.subject}</p>
-                            </div>
-                            <div className="title_right">
-                                <p>
-                                    <FavoriteBorder/>
-                                    <Archive/>  
-                                </p>
                             </div>
                         </div>
                         <div className="content_info">
@@ -115,6 +105,7 @@ class CardDetail extends Component {
                         <HighlightOff/>
                     </p>
                     {offshow}
+                    <BucketComment qnanum={this.props.bucketOneData.num}/>
                 </div>
             </div>
         );
