@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-![main.jpg](./image/main/main.jpg)
+![main.jpg](src/image/main/main.jpg)
 
 ### `yarn start`
 
