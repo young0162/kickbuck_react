@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import '../css/profile.css'
 import axios from 'axios';
@@ -11,18 +13,19 @@ export default class MyProfile extends Component {
       selectData: '',
       user_name: '',
       email: '',
-      passwordState: '',
-      image: '',
+      password: '',
+      profileimg: '',
       showdata: this.displayData
     }
+    console.log("displayData"+this.displayData)
     this.onSelect = this.onSelect.bind(this);
   }
 
   //마이메이지 호출되는 함수
   onSelect = (num) => {
-    console.log("num="+num)
-    var url = "http://localhost:9000/controller/profile/select?num="+num;
-
+    console.log("num="+this.state.num)
+    var url = "http://localhost:9000/controller/profile/select?user_name=" +
+    localStorage.state;
     axios.get(url)
       .then((responseData) => {
         console.log(responseData.data);
@@ -30,8 +33,9 @@ export default class MyProfile extends Component {
           selectData: responseData.data,
           user_name: responseData.data.user_name,
           email: responseData.data.email,
-          // password: responseData.data.password,
-          image: responseData.data.image
+          password: responseData.data.password,
+          password2: responseData.data.password,
+          profileimg: responseData.data.profileimg
         });
       })
       .catch((error) => {
@@ -54,11 +58,11 @@ export default class MyProfile extends Component {
   //버튼클릭시 사진업로드
   onImageUpload = (e) => {
     const uploadFile = e.target.files[0];
-    const image = e.target.files[0].name; //이미지파일명
+    const profileimg = e.target.files[0].name; //이미지파일명
     console.log("uploadFile:" + uploadFile);
-    console.log("image:" + image);
+    console.log("profileimg:" + profileimg);
     this.setState({
-      image
+      profileimg
     });
 
     //서버로 이미지 업로드
@@ -81,7 +85,7 @@ export default class MyProfile extends Component {
   //이미지 보기
   onImageAdd = () => {
     const url = "http://localhost:9000/controller/save/";
-    const imgsrc = this.state.image;
+    const imgsrc = this.state.profileimg;
     this.displayData.push(<img src={url + imgsrc} alt='' />);
     this.setState({
       showdata: this.displayData
@@ -93,102 +97,94 @@ export default class MyProfile extends Component {
     e.preventDefault();//기본적인 서브밋행동 취소
 
     const uploadFile = this.state;
+    const password=this.state.password;
+    const password2=this.state.password2;
+    const passwordError=[password!==password2];
+
     var url =
-      "http://localhost:9000/controller/update";
+      "http://localhost:9000/controller/profile/update";
     axios
       .post(url, uploadFile)
       .then(res => {
         this.setState({
           email: this.state.email,
           password: this.state.password,
-          image: this.state.showdata
+          profileimg: this.state.showdata
         })
         console.log(res.data);
       })
       .catch(err => {
         console.log("submit 오류:" + err.data);
       });
-    alert("회원정보가수정되었습니다.");
+      if(password===password2){
+        alert("회원정보가 수정되었습니다.");
+      }else{
+    alert("비밀번호가 일치하지 않습니다. 확인 바랍니다.");
+    return passwordError
+  }
     window.location.reload();//새로고침
   };
 
-  passwordCheck = () => {
-    const password = this.state.password;
-    const password2=this.state.password2;
-    if(password.value === password2.value)
-    {
-      this.setState({
-        passwordState: true
-      });
-    }
-    else if (password.value !== password2.value)
-    {
-      this.setState({
-        passwordState: false
-      });
-    }
-  }
-
   render() {
     let stateP;
-
-    if (this.state.passwordState) {
-      stateP = <p>비밀번호가 일치합니다.</p>
+    if(this.state.password===this.state.password2) {
+      stateP = <p>비밀번호가 일치 합니다.</p>
     }
-    else if (this.state.passwordState === false) {
+    else if(this.state.password!==this.state.password2) {
       stateP = <p>비밀번호가 일치하지 않습니다.</p>
     }
-
     const url = "http://localhost:9000/controller/save/";
     return (
-      <div>
+      <div className="profile">
         <form onSubmit={this.onSubmit}>
-          <table>
+          <table className="profile_table">
             <tbody>
               <tr className="profile_tr">
-                <td className="profile_td">프로필사진</td>
+                <td className="profile_t">프로필사진</td>
                 <td className="profile_td">
                   <div>
                     {this.state.showdata}
                   </div>
-                  <img style={{ width: '200px', height: '200px' }} src={url + this.state.image} alt="" />
+                  <img style={{ width: '200px', height: '200px' }} src={url + this.state.profileimg} alt="" />
                   <input type="file" onChange={this.onImageUpload.bind(this)}
-                    name="image" />
+                    name="profileimg" />
                 </td>
               </tr>
               <tr className="profile_tr">
-                <td className="profile_td">닉네임</td>
+                <td className="profile_t">닉네임</td>
                 <td className="profile_td"><b>{this.state.user_name}</b></td>
               </tr>
               <tr className="profile_tr">
-                <td className="profile_td">비밀번호</td>
+                <td className="profile_t">비밀번호</td>
                 <td className="profile_td">
                   <input type="password" className="pass1"
                     name="password" placeholder="비밀번호"
-                    onChange={this.passwordCheck.bind(this)}
+                    onChange={this.onKeyChange}
                     value={this.state.password} /></td>
               </tr>
               <tr className="profile_tr">
-                <td className="profile_td">비밀번호확인</td>
+                <td className="profile_t">비밀번호확인</td>
                 <td className="profile_td">
                   <input type="password" className="pass2"
                     name="password2" placeholder="비밀번호 확인"
-                    onChange={this.passwordCheck.bind(this)} 
+                    onChange={this.onKeyChange} 
                     value={this.state.password2}/>
-                  {stateP}
+                    {stateP}
                 </td>
               </tr>
               <tr className="profile_tr">
-                <td className="profile_td">이메일</td>
+                <td className="profile_t">이메일</td>
                 <td className="profile_td">
                   <input className="mail" type="text" name="email"
                     value={this.state.email}
                     onChange={this.onKeyChange} />
                 </td>
               </tr>
-              <div className="save">
-                <button type="submit" className="profile_btn">회원정보 수정</button>
-              </div>
+              <tr className="profile_tr">
+                <td className="save" colSpan="2">
+                  <button type="submit" className="profile_btn">회원정보 수정</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </form>
