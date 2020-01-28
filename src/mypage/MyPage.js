@@ -40,7 +40,7 @@ export default class MyPage extends Component {
         <div className="profile_img">
         </div>
         <div className="profile_name">
-          <b>{localStorage.state}</b> 님의 마이페이지
+        <b><a href="http://localhost:3000/mypage/profile">{localStorage.state}</a></b> 님의 마이페이지
         </div>
         <Category />
       </div>

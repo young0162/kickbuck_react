@@ -36,6 +36,7 @@ import FAQ_signup from "./community/FAQ/FAQ_signup";
 import FAQ_contents from "./community/FAQ/FAQ_contents";
 import FAQ_etc from "./community/FAQ/FAQ_etc";
 import Bmrlist from "./community/FAQ/Bmrlist";
+import MyProfile from "./profile/MyProfile";
 
 export default class Main extends Component {
   render() {
@@ -146,6 +147,8 @@ export default class Main extends Component {
 
           {/* GuestBook  */}
           <Route export path='/community/guestboard' component={Bmrlist}/>
+
+          <Route exact path="/mypage/profile" component={MyProfile} />
 
 
         </div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from './node_modules/react';
 import './Board.css';
 import QnaBoard from './QnaBoard/QnaBoard';
 import FreeBoard from './FreeBoard/FreeBoardList';
