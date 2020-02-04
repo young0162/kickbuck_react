@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../Board.css';
+import "../Board.css";
 import axios from "axios";
 import FreeBoardItem from "./FreeBoardItem";
 import Button from "@material-ui/core/Button";
@@ -32,6 +32,7 @@ class FreeBoardList extends Component {
         console.log("list 오류");
       });
   };
+
   onClickNext = () => {
     if (this.state.freeBoardListData.length !== 0) {
       this.setState((prevState, props) => ({
@@ -92,26 +93,50 @@ class FreeBoardList extends Component {
   render() {
     return (
       <div>
-      
-        <div className='section-top'>
-          <div className='community_title'>
-              <span>COMMUNITY</span>
+        <div className="section-top">
+          <div className="community_title">
+            <span>COMMUNITY</span>
           </div>
-        </div>  
-
-        <div className='board_container'>
-            <ul className='board_tab'>
-                <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
-                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
-            </ul>
         </div>
-         
-        <div className="board_container">          
+
+        <div className="board_container">
+          <ul className="board_tab">
+            <li
+              className="tab_on"
+              onClick={() => {
+                this.props.history.push("/community/freeboardlist");
+              }}
+            >
+              Free Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/qnaboard");
+              }}
+            >
+              Q & A Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/guestboard");
+              }}
+            >
+              Guest Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/FAQ_signup");
+              }}
+            >
+              FAQ
+            </li>
+          </ul>
+        </div>
+
+        <div className="board_container">
           <table className="board">
-            <thead className='board_head'>
-              <tr height= '80px'>
+            <thead className="board_head">
+              <tr height="80px">
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -119,7 +144,7 @@ class FreeBoardList extends Component {
                 <th>작성일</th>
               </tr>
             </thead>
-            <tbody className='board_body'>
+            <tbody className="board_body">
               {this.state.freeBoardListData.map((row, idx) => (
                 <FreeBoardItem
                   row={row}
@@ -130,34 +155,44 @@ class FreeBoardList extends Component {
             </tbody>
           </table>
 
-          <br/>
+          <br />
           <div>
-              <Button variant="contained" onClick={this.onClickPre} style={{margin: '5px', marginLeft: '50px'}}>
-                  ＜ Pre
-              </Button>
-              
-              <Button variant="contained" onClick={this.onClickNext} style={{margin: '5px', marginLeft: '940px'}}>
-                  Next ＞
-              </Button>
-          </div>            
-          <br/>
+            <Button
+              variant="contained"
+              onClick={this.onClickPre}
+              style={{ margin: "5px", marginLeft: "50px" }}
+            >
+              ＜ Pre
+            </Button>
 
-          <div style={{float:'right'}}>
-            <Button className='btn_function' variant="contained" color="primary"
+            <Button
+              variant="contained"
+              onClick={this.onClickNext}
+              style={{ margin: "5px", marginLeft: "940px" }}
+            >
+              Next ＞
+            </Button>
+          </div>
+          <br />
+
+          <div style={{ float: "right" }}>
+            <Button
+              className="btn_function"
+              variant="contained"
+              color="primary"
               onClick={() => {
                 if (localStorage.length === 1) {
                   this.props.history.push("/community/freeboardinsert");
                 } else {
                   alert("로그인을 해주세요");
                 }
-              }}>
+              }}
+            >
               글쓰기
             </Button>
           </div>
         </div>
-
       </div>
-      
     );
   }
 }

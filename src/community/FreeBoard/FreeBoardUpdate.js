@@ -72,7 +72,7 @@ export default class FreeBoardDetail extends Component {
       [e.target.name]: e.target.value
     });
   };
-
+  //서버로 전송
   onSubmit = e => {
     e.preventDefault();
 
@@ -109,15 +109,40 @@ export default class FreeBoardDetail extends Component {
           <div className="community_title">
             <span>COMMUNITY</span>
           </div>
-        </div>  
+        </div>
 
-        <div className='board_container'>
-            <ul className='board_tab'>
-                <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
-                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
-            </ul>
+        <div className="board_container">
+          <ul className="board_tab">
+            <li
+              className="tab_on"
+              onClick={() => {
+                this.props.history.push("/community/freeboardlist");
+              }}
+            >
+              Free Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/qnaboard");
+              }}
+            >
+              Q & A Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/guestboard");
+              }}
+            >
+              Guest Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/FAQ_signup");
+              }}
+            >
+              FAQ
+            </li>
+          </ul>
         </div>
 
         <div className="board_container">

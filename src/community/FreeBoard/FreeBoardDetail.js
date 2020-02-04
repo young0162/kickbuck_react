@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import FreeBoardComment from "./FreeBoardComment";
 import Button from "@material-ui/core/Button";
@@ -39,7 +39,7 @@ export default class FreeBoardDetail extends Component {
         console.log("select error");
       });
   };
-
+  //글 삭제
   onDelete = () => {
     if (localStorage.state === this.state.selectData.user_name) {
       var url =
@@ -80,126 +80,187 @@ export default class FreeBoardDetail extends Component {
 
     let loginBtn1;
     let loginBtn2;
-    
-    if (localStorage.state === this.state.selectData.user_name)
-    {
-        loginBtn1 = 
-        <Button variant="contained" style={{margin: '5px'}} 
-            onClick={()=>{this.history.push("/community/freeboardupdate/" + this.state.selectData.num);}}>
-            수    정
-        </Button>
 
-        loginBtn2 =
-        <Button variant="contained" style={{margin: '5px'}} color="secondary" onClick={this.handleClickOpen}>
-            삭    제
+    if (localStorage.state === this.state.selectData.user_name) {
+      loginBtn1 = (
+        <Button
+          variant="contained"
+          style={{ margin: "5px" }}
+          onClick={() => {
+            this.history.push(
+              "/community/freeboardupdate/" + this.state.selectData.num
+            );
+          }}
+        >
+          수 정
         </Button>
+      );
+
+      loginBtn2 = (
+        <Button
+          variant="contained"
+          style={{ margin: "5px" }}
+          color="secondary"
+          onClick={this.handleClickOpen}
+        >
+          삭 제
+        </Button>
+      );
     }
-
 
     return (
       <div>
-
-        <div className='section-top'>
-          <div className='community_title'>
-              <span>COMMUNITY</span>
+        <div className="section-top">
+          <div className="community_title">
+            <span>COMMUNITY</span>
           </div>
-        </div>  
-
-        <div className='board_container'>
-            <ul className='board_tab'>
-                <li className='tab_on' onClick={()=>{this.props.history.push("/community/freeboardlist");}}>Free Board</li>
-                <li onClick={()=>{this.props.history.push("/community/qnaboard");}}>Q & A Board</li>
-                <li onClick={()=>{this.props.history.push("/community/guestboard");}}>Guest Board</li>
-                <li onClick={()=>{this.props.history.push("/community/FAQ_signup");}}>FAQ</li>
-            </ul>
         </div>
 
-        <div className='board_container'>
-          <table className="board">
-            <thead className='board_head'>
-                <tr height= '80px'>
-                    <td colSpan="2">
-                      {this.state.selectData.title}
-                    </td>
-                </tr>
-            </thead>
-            <tbody className='board_body'>
+        <div className="board_container">
+          <ul className="board_tab">
+            <li
+              className="tab_on"
+              onClick={() => {
+                this.props.history.push("/community/freeboardlist");
+              }}
+            >
+              Free Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/qnaboard");
+              }}
+            >
+              Q & A Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/guestboard");
+              }}
+            >
+              Guest Board
+            </li>
+            <li
+              onClick={() => {
+                this.props.history.push("/community/FAQ_signup");
+              }}
+            >
+              FAQ
+            </li>
+          </ul>
+        </div>
 
-              <tr height='66px'>
-                  <td width="1000px">
-                      작 성 자 &nbsp;&nbsp;:&nbsp;&nbsp; <b>{this.state.selectData.user_name}</b>
-                  </td>
-                  <td style={{textAlign: 'right'}}>
-                      조회수 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.readcnt}
-                  </td>
+        <div className="board_container">
+          <table className="board">
+            <thead className="board_head">
+              <tr height="80px">
+                <td colSpan="2">{this.state.selectData.title}</td>
               </tr>
-              
-              <tr >
-                  <td colSpan='2' style={{textAlign: 'right'}}>
-                      작성일 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.day} &nbsp;&nbsp;&nbsp;&nbsp;
-                      
-                      {loginBtn1}{loginBtn2}                                    
-                      
-                      <Dialog open={this.state.open} onClose={this.handleClickClose}>
-                        <DialogTitle onClose={this.handleClickClose}>삭제 경고</DialogTitle>
-                        <DialogContent>
-                          <Typography gutterBottom>선택한 게시물을 삭제하시겠습니까?</Typography>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button
-                            variant="contained"
-                            color="secondary"
-                            onClick={this.onDelete}
-                          >
-                            삭제
-                          </Button>
-                          <Button
-                            variant="contained"
-                            onClick={this.handleClickClose}
-                          >
-                            닫기
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                  </td>                               
+            </thead>
+            <tbody className="board_body">
+              <tr height="66px">
+                <td width="1000px">
+                  작 성 자 &nbsp;&nbsp;:&nbsp;&nbsp;{" "}
+                  <b>{this.state.selectData.user_name}</b>
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  조회수 &nbsp;&nbsp;:&nbsp;&nbsp;{" "}
+                  {this.state.selectData.readcnt}
+                </td>
+              </tr>
+
+              <tr>
+                <td colSpan="2" style={{ textAlign: "right" }}>
+                  작성일 &nbsp;&nbsp;:&nbsp;&nbsp; {this.state.selectData.day}{" "}
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  {loginBtn1}
+                  {loginBtn2}
+                  <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClickClose}
+                  >
+                    <DialogTitle onClose={this.handleClickClose}>
+                      삭제 경고
+                    </DialogTitle>
+                    <DialogContent>
+                      <Typography gutterBottom>
+                        선택한 게시물을 삭제하시겠습니까?
+                      </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={this.onDelete}
+                      >
+                        삭제
+                      </Button>
+                      <Button
+                        variant="contained"
+                        onClick={this.handleClickClose}
+                      >
+                        닫기
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </td>
               </tr>
               <tr>
                 <td colSpan="2" width="1000px" height="600px">
-                  <div style={{backgroundColor: '#f6f6f6'}}>   
-                    <p style={{textAlign:'center', margin: '5px 5px 5px 5px'}}>        
-                      <img src={url + this.state.selectData.imagename} alt="" style={{textAlign: 'center', maxWidth: '900px'}}/>
+                  <div style={{ backgroundColor: "#f6f6f6" }}>
+                    <p
+                      style={{ textAlign: "center", margin: "5px 5px 5px 5px" }}
+                    >
+                      <img
+                        src={url + this.state.selectData.imagename}
+                        alt=""
+                        style={{ textAlign: "center", maxWidth: "900px" }}
+                      />
                     </p>
-                    <textarea className="input_content input_area" style={{width:'1150px', height:'500px'}}
-                    value={this.state.selectData.content}/>
+                    <textarea
+                      className="input_content input_area"
+                      style={{ width: "1150px", height: "500px" }}
+                      value={this.state.selectData.content}
+                    />
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <br/>
-          <div style={{float:'right'}}>
+          <br />
+          <div style={{ float: "right" }}>
+            <Button
+              className="btn_function"
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                if (localStorage.length === 1) {
+                  this.props.history.push("/community/freeboardinsert");
+                } else {
+                  alert("로그인을 해주세요");
+                }
+              }}
+            >
+              글쓰기
+            </Button>
 
-              <Button className='btn_function' variant="contained" color="primary" onClick={() => {
-                  if (localStorage.length === 1) {
-                      this.props.history.push("/community/freeboardinsert");
-                  } else {
-                    alert("로그인을 해주세요");
-                  }
-                }}>
-                  글쓰기
-              </Button>                        
-
-              <Button className='btn_function' variant="contained" onClick={()=>{this.history.push("/community/freeboardlist");}}>
-                  목    록
-              </Button>
-
+            <Button
+              className="btn_function"
+              variant="contained"
+              onClick={() => {
+                this.history.push("/community/freeboardlist");
+              }}
+            >
+              목 록
+            </Button>
           </div>
         </div>
-        
-        <br/><br/><br/>
+
+        <br />
+        <br />
+        <br />
         <FreeBoardComment freeboardnum={this.num} />
-        
       </div>
     );
   }
