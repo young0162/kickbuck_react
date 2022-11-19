@@ -18,7 +18,7 @@
     "react-multi-carousel": "^2.5.0",
     "react-next-paging": "^7.0.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
+    "react-scripts": "5.0.1",
     "reactstrap": "^8.2.0",
     "semantic-ui-react": "^0.88.2"
   },
